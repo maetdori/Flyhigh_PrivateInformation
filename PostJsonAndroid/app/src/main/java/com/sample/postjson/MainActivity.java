@@ -14,6 +14,8 @@ import java.net.URL;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
@@ -113,6 +115,54 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             e.printStackTrace();
         }
         catch (Exception e) {
+            e.printStackTrace();
+            Log.d("InputStream", e.getLocalizedMessage());
+        }
+
+        return result;
+    }
+    public static String GET(String url){
+        InputStream is = null;
+        String result = "";
+        try {
+            URL urlCon = new URL(url);
+            HttpURLConnection httpCon = (HttpURLConnection)urlCon.openConnection();
+
+            // ** Alternative way to convert Person object to JSON string usin Jackson Lib
+            // ObjectMapper mapper = new ObjectMapper();
+            // json = mapper.writeValueAsString(person);
+
+            // Set some headers to inform server about the type of the content
+            httpCon.setRequestMethod("GET");
+            httpCon.setRequestProperty("Accept", "application/json");
+            httpCon.setRequestProperty("Content-type", "application/json");
+
+            // OutputStream으로 POST 데이터를 넘겨주겠다는 옵션.
+            httpCon.setDoOutput(false);
+            // InputStream으로 서버로 부터 응답을 받겠다는 옵션.
+            httpCon.setDoInput(true);
+
+            // receive response as inputStream
+            try {
+                is = httpCon.getInputStream();
+                // convert inputstream to string
+                if(is != null)
+                    result = convertInputStreamToString(is);
+                else
+                    result = "Did not work!";
+            }
+            catch (IOException e) {
+                e.printStackTrace();
+            }
+            finally {
+                httpCon.disconnect();
+            }
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+        catch (Exception e) {
+            e.printStackTrace();
             Log.d("InputStream", e.getLocalizedMessage());
         }
 
@@ -137,7 +187,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     // call AsynTask to perform network operation on separate thread
                     HttpAsyncTask httpTask = new HttpAsyncTask(MainActivity.this);
                     // SERVERURL:연결할 서버
-                    httpTask.execute("http://127.0.0.1:8080/", etMsg.getText().toString());
+                    httpTask.execute("http://192.168.10.204:8080/", etMsg.getText().toString());
                 }
                 break;
         }
@@ -155,7 +205,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             //urls[0] : url
             //urls[1~]: msg
 
-            return POST(urls[0],urls[1]);
+            //return POST(urls[0],urls[1]);
+            return GET(urls[0]);
         }
         // onPostExecute displays the results of the AsyncTask.
         @Override
@@ -167,7 +218,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 public void run() {
                     Toast.makeText(mainAct, "Received!", Toast.LENGTH_LONG).show();
                     try {
-                        JSONArray json = new JSONArray(strJson);
+                        Log.d("strJson",strJson);
+                        JSONObject json = new JSONObject(strJson);
                         mainAct.tvResponse.setText(json.toString(1));
                     } catch (JSONException e) {
                         e.printStackTrace();

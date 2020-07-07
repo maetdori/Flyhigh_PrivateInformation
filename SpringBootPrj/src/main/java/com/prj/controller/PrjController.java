@@ -4,13 +4,12 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
-@Controller
+@RestController
+@RequestMapping("/dummy")
 public class PrjController {
-	
-	@GetMapping("/")
+	@RequestMapping(method = RequestMethod.GET)
 	public @ResponseBody Map<String, String> getInfo() {
 		Map map = new HashMap<>();
 		map.put("name", "HaeIn");
