@@ -187,7 +187,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     // call AsynTask to perform network operation on separate thread
                     HttpAsyncTask httpTask = new HttpAsyncTask(MainActivity.this);
                     // SERVERURL:연결할 서버
-                    httpTask.execute("http://192.168.10.204:8080/", etMsg.getText().toString());
+                    httpTask.execute("http://192.168.10.204:8080/hello/post", etMsg.getText().toString());
                 }
                 break;
         }
@@ -206,7 +206,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             //urls[1~]: msg
 
             //return POST(urls[0],urls[1]);
-            return GET(urls[0]);
+            return POST(urls[0],urls[1]);
         }
         // onPostExecute displays the results of the AsyncTask.
         @Override
