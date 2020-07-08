@@ -1,6 +1,7 @@
 package com.sample.postjson;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 
@@ -49,10 +50,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private static Context context;
     TextView tvIsConnected, tvResponse;
     EditText etServerURL;
+    EditText etId;
     EditText etMsg;
     Button btnPost;
     static    String strJson = "";
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,42 +63,38 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         // get reference to the views
         tvIsConnected = (TextView) findViewById(R.id.tvIsConnected);
         etServerURL = findViewById(R.id.etServerUrl);
+        etId = findViewById(R.id.etId);
         etMsg = (EditText) findViewById(R.id.etMsg);
         btnPost = (Button) findViewById(R.id.btnPost);
         tvResponse = (TextView) findViewById(R.id.tvResponse);
 
-        // check if you are connected or not
-        if(isConnected()){
-            tvIsConnected.setBackgroundColor(0xFF00CC00);
-            tvIsConnected.setText("You are conncted");
-        }
-        else{
-            tvIsConnected.setText("You are NOT conncted");
-        }
+
 
         // add click listener to Button "POST"
         btnPost.setOnClickListener(this);
 
     }
+    @Override
+    protected void onResume() {
+        super.onResume();
+        // check if you are connected or not
+        if (isConnected()) {
+            tvIsConnected.setBackgroundColor(0xFF00CC00);
+            tvIsConnected.setText("You are conncted");
+        } else {
+            tvIsConnected.setBackgroundColor(Color.GREEN);
+            tvIsConnected.setText("You are NOT conncted");
+        }
+    }
 
-    public static String SSLPOST(String url, String msg){
+    public static String SSLPOST(String url,String id ,String msg){
         SSLContext context = null;
         try {
             context = cert(MainActivity.context.getFilesDir().getAbsolutePath() + "/cert.cer");
-        } catch (CertificateException e) {
+        } catch (CertificateException | IOException | KeyStoreException | NoSuchAlgorithmException | KeyManagementException e) {
             e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (KeyStoreException e) {
-            e.printStackTrace();
-        } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
-        } catch (KeyManagementException e) {
-            e.printStackTrace();
+            return "ERR";
         }
-        if(context == null)
-            return POST(url,msg);
-
         InputStream is = null;
         String result = "";
         try {
@@ -109,6 +106,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             // build jsonObject
             JSONObject jsonObject = new JSONObject();
+            jsonObject.accumulate("id",id);
             jsonObject.accumulate("message", msg );
 
             // convert JSONObject to JSON to String
@@ -160,115 +158,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             e.printStackTrace();
             Log.d("InputStream", e.getLocalizedMessage());
         }
-
-        return result;
-    }
-    public static String POST(String url, String msg){
-        InputStream is = null;
-        String result = "";
-        try {
-            URL urlCon = new URL(url);
-            HttpURLConnection httpCon = (HttpURLConnection)urlCon.openConnection();
-
-            String json = "";
-
-            // build jsonObject
-            JSONObject jsonObject = new JSONObject();
-            jsonObject.accumulate("message", msg );
-
-            // convert JSONObject to JSON to String
-            json = jsonObject.toString();
-
-            // ** Alternative way to convert Person object to JSON string usin Jackson Lib
-            // ObjectMapper mapper = new ObjectMapper();
-            // json = mapper.writeValueAsString(person);
-
-            // Set some headers to inform server about the type of the content
-            httpCon.setRequestMethod("POST");
-            httpCon.setRequestProperty("Accept", "application/json");
-            httpCon.setRequestProperty("Content-type", "application/json");
-
-            // OutputStream으로 POST 데이터를 넘겨주겠다는 옵션.
-            httpCon.setDoOutput(true);
-            // InputStream으로 서버로 부터 응답을 받겠다는 옵션.
-            httpCon.setDoInput(true);
-
-            OutputStream os = httpCon.getOutputStream();
-            os.write(json.getBytes("utf-8"));
-            os.flush();
-            // receive response as inputStream
-            try {
-                is = httpCon.getInputStream();
-                // convert inputstream to string
-                if(is != null)
-                    result = convertInputStreamToString(is);
-                else
-                    result = "Did not work!";
-            }
-            catch (IOException e) {
-                e.printStackTrace();
-            }
-            finally {
-                httpCon.disconnect();
-            }
-        }
-        catch (IOException e) {
-            e.printStackTrace();
-        }
-        catch (Exception e) {
-            e.printStackTrace();
-            Log.d("InputStream", e.getLocalizedMessage());
-        }
-
-        return result;
-    }
-    public static String GET(String url){
-        InputStream is = null;
-        String result = "";
-        try {
-            URL urlCon = new URL(url);
-            HttpURLConnection httpCon = (HttpURLConnection)urlCon.openConnection();
-
-            // ** Alternative way to convert Person object to JSON string usin Jackson Lib
-            // ObjectMapper mapper = new ObjectMapper();
-            // json = mapper.writeValueAsString(person);
-
-            // Set some headers to inform server about the type of the content
-            httpCon.setRequestMethod("GET");
-            httpCon.setRequestProperty("Accept", "application/json");
-            httpCon.setRequestProperty("Content-type", "application/json");
-
-            // OutputStream으로 POST 데이터를 넘겨주겠다는 옵션.
-            httpCon.setDoOutput(false);
-            // InputStream으로 서버로 부터 응답을 받겠다는 옵션.
-            httpCon.setDoInput(true);
-
-            // receive response as inputStream
-
-
-            try {
-                is = httpCon.getInputStream();
-                // convert inputstream to string
-                if(is != null)
-                    result = convertInputStreamToString(is);
-                else
-                    result = "Did not work!";
-            }
-            catch (IOException e) {
-                e.printStackTrace();
-            }
-            finally {
-                httpCon.disconnect();
-            }
-        }
-        catch (IOException e) {
-            e.printStackTrace();
-        }
-        catch (Exception e) {
-            e.printStackTrace();
-            Log.d("InputStream", e.getLocalizedMessage());
-        }
-
         return result;
     }
 
@@ -322,7 +211,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     // call AsynTask to perform network operation on separate thread
                     HttpAsyncTask httpTask = new HttpAsyncTask(MainActivity.this);
                     // SERVERURL:연결할 서버
-                    httpTask.execute("https://192.168.10.204:8080/hello/post", etMsg.getText().toString());
+                    httpTask.execute("https://192.168.10.204:8080/api/insert",etId.getText().toString() ,etMsg.getText().toString());
                 }
                 break;
         }
@@ -340,7 +229,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             //urls[0] : url
             //urls[1~]: msg
             //return POST(urls[0],urls[1]);
-            return SSLPOST(urls[0],urls[1]);
+            return SSLPOST(urls[0],urls[1],urls[2]);
         }
         // onPostExecute displays the results of the AsyncTask.
         @Override

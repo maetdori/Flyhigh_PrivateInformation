@@ -24,13 +24,27 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignBaseline="@id/etServerUrl"
-            android:text="ServerURL: " />
+            android:text="RequestURL: " />
 
         <EditText
             android:id="@+id/etServerUrl"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:layout_toRightOf="@id/tvServerURL" />
+
+        <TextView
+            android:id="@+id/tvId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/etId"
+            android:text="Id : " />
+
+        <EditText
+            android:id="@+id/etId"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tvServerURL"
+            android:layout_toRightOf="@+id/tvId" />
 
         <TextView
             android:id="@+id/tvMsg"
@@ -43,7 +57,7 @@
             android:id="@+id/etMsg"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
-            android:layout_below="@id/tvServerURL"
+            android:layout_below="@id/tvId"
             android:layout_toRightOf="@+id/tvMsg" />
 
     </RelativeLayout>

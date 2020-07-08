@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.prj.dao.DBMapper">
+    <sql id="id">
+        <choose>
+            <when test="id != null">
+                #{id}
+            </when>
+            <otherwise>
+                ' '
+            </otherwise>
+        </choose>
+    </sql>
+
+    <sql id="message">
+        <choose>
+            <when test="message != null">
+                #{message}
+            </when>
+            <otherwise>
+                ' '
+            </otherwise>
+        </choose>
+    </sql>
+    <insert id="insertRow" parameterType="Param">
+        INSERT INTO MSGTABLE VALUES
+        (<include refid="id"/>,
+        <include refid="message"/>)
+    </insert>
+
+
+    <select id="selectById" parameterType="String" resultType="Param">
+        SELECT * FROM MSGTABLE WHERE id = #{id}
+    </select>
+</mapper>
