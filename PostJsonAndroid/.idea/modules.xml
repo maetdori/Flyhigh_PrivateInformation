@@ -3,6 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/PostJson.iml" filepath="$PROJECT_DIR$/PostJson.iml" group="PostJson" />
+      <module fileurl="file://$PROJECT_DIR$/PostJsonAndroid-PostJson.iml" filepath="$PROJECT_DIR$/PostJsonAndroid-PostJson.iml" group="PostJson" />
+      <module fileurl="file://$PROJECT_DIR$/app/PostJsonAndroid-app.iml" filepath="$PROJECT_DIR$/app/PostJsonAndroid-app.iml" group="PostJson/app" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" group="PostJson/app" />
     </modules>
   </component>
