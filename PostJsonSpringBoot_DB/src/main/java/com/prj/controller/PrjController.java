@@ -14,6 +14,9 @@ import org.springframework.web.bind.annotation.*;
 public class PrjController {
 	@Autowired
 	private DBMapper dbMapper;
+
+
+
 	@PostMapping(value = "/insert")
 	public @ResponseBody Param responseHello(@RequestBody Param param) {
 		dbMapper.insertRow(param);

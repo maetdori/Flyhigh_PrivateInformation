@@ -4,6 +4,13 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
 
+    <Button
+        android:id="@+id/btnGetCert"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="onClick"
+        android:text="Get Cert" />
+
     <TextView
         android:id="@+id/tvIsConnected"
         android:layout_width="wrap_content"
