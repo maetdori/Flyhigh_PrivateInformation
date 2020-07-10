@@ -40,6 +40,19 @@ public class Parse {
         System.out.println("notBefore : " + notBefore);
         System.out.println("notAfter : " + notAfter);
 
+
+        String url = "https://localhost:8080/api";
+        int pos = url.indexOf("/");
+        String tmp = url.substring(pos + 2);
+        pos += tmp.indexOf("/");
+        pos += 2;
+        String host = url.substring(0,pos);
+        System.out.println(host);
+        strings(new String[] {"1","2"});
+    }
+    private static void strings(String[] s) {
+        System.out.println(s[0]);
+        System.out.println(s[1]);
     }
 
 }

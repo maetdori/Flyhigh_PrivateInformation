@@ -72,13 +72,14 @@ public class Parse {
         InputStream is = new FileInputStream(new File("keystore.p12"));
         keystore.load(is, "123456".toCharArray());
         String alias = keystore.aliases().nextElement();
+        PrivateKey key = (PrivateKey)keystore.getKey(alias, "123456".toCharArray());
         System.out.println(alias);
         X509Certificate certificate = (X509Certificate) keystore.
                 getCertificate(alias);
 
         System.out.println(new String(certificate.getEncoded()));
-        /*PublicKey publicKey = certificate.getPublicKey();
-        PrivateKey key = (PrivateKey)keystore.getKey(alias, "123456".toCharArray());
+        PublicKey publicKey = certificate.getPublicKey();
+
         System.out.println(byteArrayToHex(key.getEncoded()));
         System.out.println(byteArrayToHex(publicKey.getEncoded()));
         byte[] cipherText = encryptRSA(publicKey.getEncoded(),"hello".getBytes());
@@ -89,9 +90,13 @@ public class Parse {
         String test = new String(encoder.encode(publicKey.getEncoded()));
         System.out.println(test);
         System.out.println(byteArrayToHex(encoder.encode(publicKey.getEncoded())));
-        System.out.println(byteArrayToHex(test.getBytes()));*/
+        System.out.println(byteArrayToHex(test.getBytes()));
         FileOutputStream out = new FileOutputStream("pub.cer");
         out.write(certificate.getEncoded());
+
+        String s ="hellorgjerigjoerijgioerjgoerjgoierjgoeijgoeirjgoeirgjoeirjgeoijgeorijgoerjgeroijghellorgjerigjoerijgioerjgoerjgoierjgoeijgoeirjgoeirgjoeirjgeoijgeorijgoerjgeroijghellorgjerigjoerijgioerjgoerjgoierjgoeijgoeirjgoeirgjoeirjgeoijgeorijgoerjgeroijghellorgjerigjoerijgioerjgoerjgoierjgoeijgoeirjgoeirgjoeirjgeoijgeorijgoerjgeroijghellorgjerigjoerijgioerjgoerjgoierjgoeijgoeirjgoeirgjoeirjgeoijgeorijgoerjgeroijghellorgjerigjoerijgioerjgoerjgoierjgoeijgoeirjgoeirgjoeirjgeoijgeorijgoerjgeroijghellorgjerigjoerijgioerjgoerjgoierjgoeijgoeirjgoeirgjoeirjgeoijgeorijgoerjgeroijghellorgjerigjoerijgioerjgoerjgoierjgoeijgoeirjgoeirgjoeirjgeoijgeorijgoerjgeroijghellorgjerigjoerijgioerjgoerjgoierjgoeijgoeirjgoeirgjoeirjgeoijgeorijgoerjgeroijghellorgjerigjoerijgioerjgoerjgoierjgoeijgoeirjgoeirgjoeirjgeoijgeorijgoerjgeroijghellorgjerigjoerijgioerjgoerjgoierjgoeijgoeirjgoeirgjoeirjgeoijgeorijgoerjgeroijghellorgjerigjoerijgioerjgoerjgoierjgoeijgoeirjgoeirgjoeirjgeoijgeorijgoerjgeroijghellorgjerigjoerijgioerjgoerjgoierjgoeijgoeirjgoeirgjoeirjgeoijgeorijgoerjgeroijghellorgjerigjoerijgioerjgoerjgoierjgoeijgoeirjgoeirgjoeirjgeoijgeorijgoerjgeroijghellorgjerigjoerijgioerjgoerjgoierjgoeijgoeirjgoeirgjoeirjgeoijgeorijgoerjgeroijghellorgjerigjoerijgioerjgoerjgoierjgoeijgoeirjgoeirgjoeirjgeoijgeorijgoerjgeroijghellorgjerigjoerijgioerjgoerjgoierjgoeijgoeirjgoeirgjoeirjgeoijgeorijgoerjgeroijghellorgjerigjoerijgioerjgoerjgoierjgoeijgoeirjgoeirgjoeirjgeoijgeorijgoerjgeroijghellorgjerigjoerijgioerjgoerjgoierjgoeijgoeirjgoeirgjoeirjgeoijgeorijgoerjgeroijghellorgjerigjoerijgioerjgoerjgoierjgoeijgoeirjgoeirgjoeirjgeoijgeorijgoerjgeroijghellorgjerigjoerijgioerjgoerjgoierjgoeijgoeirjgoeirgjoeirjgeoijgeorijgoerjgeroijghellorgjerigjoerijgioerjgoerjgoierjgoeijgoeirjgoeirgjoeirjgeoijgeorijgoerjgeroijghellorgjerigjoerijgioerjgoerjgoierjgoeijgoeirjgoeirgjoeirjgeoijgeorijgoerjgeroijghellorgjerigjoerijgioerjgoerjgoierjgoeijgoeirjgoeirgjoeirjgeoijgeorijgoerjgeroijghellorgjerigjoerijgioerjgoerjgoierjgoeijgoeirjgoeirgjoeirjgeoijgeorijgoerjgeroijghellorgjerigjoerijgioerjgoerjgoierjgoeijgoeirjgoeirgjoeirjgeoijgeorijgoerjgeroijg";
+        String ss = Base64.getEncoder().encodeToString(s.getBytes());
+        System.out.println(ss);
 
     }
 }

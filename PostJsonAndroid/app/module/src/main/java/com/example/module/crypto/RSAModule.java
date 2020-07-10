@@ -1,5 +1,7 @@
-package com.prj.key_exhange;
+package com.example.module.crypto;
 
+import android.security.keystore.KeyGenParameterSpec;
+import android.util.Log;
 
 import javax.crypto.BadPaddingException;
 import javax.crypto.Cipher;
@@ -15,7 +17,7 @@ public class RSAModule {
     public static byte[] encryptRSA(byte[] key,byte[] input)
             throws NoSuchPaddingException, NoSuchAlgorithmException, NoSuchProviderException, InvalidKeyException,
             BadPaddingException, IllegalBlockSizeException, InvalidKeySpecException {
-        Cipher cipher = Cipher.getInstance("RSA/ECB/PKCS1PADDING","SunJCE");
+        Cipher cipher = Cipher.getInstance("RSA/ECB/PKCS1PADDING");
 
         // Turn the encoded key into a real RSA public key.
         // Public keys are encoded in X.509.
@@ -30,20 +32,20 @@ public class RSAModule {
             KeyFactory rkeyFactory = KeyFactory.getInstance("RSA");
             privateKey = rkeyFactory.generatePrivate(rKeySpec);
             cipher.init(Cipher.ENCRYPT_MODE, privateKey);
-            System.out.println("RSAMODULE : EncryptWithPrivateKey");
+            Log.i("RSAMODULE", "EncryptWithPrivateKey");
             byte[] cipherText = cipher.doFinal(input);
             return cipherText;
         }
 
         // 공개키를 전달하여 암호화
         cipher.init(Cipher.ENCRYPT_MODE, publicKey);
-        System.out.println("RSAMODULE : EncryptWithPublicKey");
+        Log.i("RSAMODULE", "EncryptWithPublicKey");
         byte[] cipherText = cipher.doFinal(input);
         return cipherText;
     }
     public static byte[] decryptRSA(byte[] key, byte[] cipherText) throws NoSuchAlgorithmException, NoSuchProviderException,
             NoSuchPaddingException, InvalidKeyException, BadPaddingException, IllegalBlockSizeException, InvalidKeySpecException {
-        Cipher cipher = Cipher.getInstance("RSA/ECB/PKCS1PADDING","SunJCE");
+        Cipher cipher = Cipher.getInstance("RSA/ECB/PKCS1PADDING");
         // Turn the encoded key into a real RSA private key.
         // Private keys are encoded in PKCS#8.
         PKCS8EncodedKeySpec rkeySpec = new PKCS8EncodedKeySpec(key);
@@ -57,12 +59,12 @@ public class RSAModule {
             KeyFactory ukeyFactory = KeyFactory.getInstance("RSA");
             publicKey = ukeyFactory.generatePublic(ukeySpec);
             cipher.init(Cipher.DECRYPT_MODE, publicKey);
-            System.out.println("RSAMODULE : DecryptWithPublicKey");
+            Log.i("RSAMODULE","DecryptWithPublicKey");
             byte[] plainText = cipher.doFinal(cipherText);
             return plainText;
         }
         cipher.init(Cipher.DECRYPT_MODE, privateKey);
-        System.out.println("RSAMODULE : DecryptWithPrivateKey");
+        Log.i("RSAMODULE","DecryptWithPrivateKey");
         byte[] plainText = cipher.doFinal(cipherText);
         return plainText;
     }
