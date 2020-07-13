@@ -141,7 +141,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     HttpAsyncTask httpTask = new HttpAsyncTask(MainActivity.this);
                     // SERVERURL:연결할 서버
                     try {
-                        String strJson = httpTask.execute(SERVER_URL + "/api/insert",
+                        String strJson = httpTask.execute(SERVER_URL + "/api/test",
                                 etId.getText().toString(),etMsg.getText().toString()).get();
                         Toast.makeText(this, "Received!", Toast.LENGTH_LONG).show();
                         try {

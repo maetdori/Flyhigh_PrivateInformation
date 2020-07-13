@@ -4,6 +4,7 @@ import java.security.cert.Certificate;
 import java.security.cert.CertificateException;
 import java.security.cert.CertificateFactory;
 import java.security.cert.X509Certificate;
+import java.util.*;
 
 public class Parse {
     static String cert = "-----BEGIN CERTIFICATE-----\n" +
@@ -49,6 +50,20 @@ public class Parse {
         String host = url.substring(0,pos);
         System.out.println(host);
         strings(new String[] {"1","2"});
+
+        Map<String,Object> s  = new HashMap<>();
+        s.put("a","b");
+        ArrayList<Map<String,Object>> list = new ArrayList<>();
+        list.add(s);
+        s.put("a","c");
+        System.out.println(list.get(0));
+        System.out.println(list instanceof List);
+
+        byte[] a = {1,2,3,4};
+        String aa = new String(a);
+        byte[] b = {1,2,3,5};
+        String bb = new String(b);
+        System.out.println(aa.equals(bb));
     }
     private static void strings(String[] s) {
         System.out.println(s[0]);

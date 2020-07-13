@@ -197,7 +197,7 @@ public class API {
         // build jsonObject
 
         JSONObject jsonObject = new JSONObject();
-        if (ext.equals("insert")) {
+        if (ext.equals("test")) {
             jsonObject.accumulate("pubKey",Base64.encodeToString(pubKey.getEncoded(),
                     Base64.NO_WRAP));
             jsonObject.accumulate("cKey", Base64.encodeToString(ecKey, Base64.NO_WRAP));

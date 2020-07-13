@@ -3,6 +3,6 @@ package com.prj.dao;
 import java.util.Map;
 
 public interface DBMapper {
-    public void insertRow (Map<String,String> map);
-    public Map<String,String> selectById (String id);
+    public void insertRow (Map<String,Object> map);
+    public Map<String,Object> selectById (String id);
 }
