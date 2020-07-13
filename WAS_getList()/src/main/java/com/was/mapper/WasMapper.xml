@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.was.mapper.WasMapper">
+
+	<select id="certCount" parameterType="String" resultType="com.was.domain.WasVO">
+        SELECT
+            count(if(co_name=#{co_name}, co_name, null))
+        FROM TB_CERTIFICATION
+    </select>
+	
+	<select id="certSearch" parameterType="String" resultType="com.was.domain.WasVO">
+        SELECT
+            co_name, co_active_date, co_exp_date
+        FROM TB_CERTIFICATION
+        WHERE
+            CO_NAME = #{co_name}
+    </select>
+    
+</mapper>
