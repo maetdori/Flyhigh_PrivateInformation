@@ -1,6 +1,7 @@
 package com.example.module;
 
 
+import android.app.Activity;
 import android.content.Context;
 
 import android.provider.Settings;
@@ -15,6 +16,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
+import java.net.MalformedURLException;
 import java.net.ProtocolException;
 import java.net.URL;
 import java.security.GeneralSecurityException;
@@ -109,11 +111,31 @@ public class API {
                     return true;//default가 false 입니다.
                 }
             });
+            httpCon.connect();
+            urlCon = new URL(url);
+            httpCon = (HttpsURLConnection) urlCon.openConnection();
+            httpCon.setSSLSocketFactory(sslContext.getSocketFactory());
+            httpCon.setHostnameVerifier(new HostnameVerifier() {
+                @Override
+                public boolean verify(String hostname, SSLSession session) {
+                    return true;//default가 false 입니다.
+                }
+            });
             return httpCon;
         } catch (Exception e) {
             e.printStackTrace();
-            return null;
+            Log.e("set Connection","reconnect");
+            URL urlCon = null;
+            try {
+                urlCon = new URL(url);
+                HttpsURLConnection httpCon = (HttpsURLConnection) urlCon.openConnection();
+                //httpCon.connect();
+                return httpCon;
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
         }
+        return null;
     }
     private static String requestCert(Context context, String url) throws ProtocolException {
         HttpsURLConnection httpCon = setConnection(context,url);
@@ -188,15 +210,16 @@ public class API {
 
         HttpsURLConnection httpCon = setConnection(context,url);
         String json = "";
+        JSONObject jsonObject = new JSONObject();
 
-        PublicKey pubKey = certificate.getPublicKey();
+        /*PublicKey pubKey = certificate.getPublicKey();
         SecureRandom rand = new SecureRandom();
         byte[] cKey = new byte[16];
         rand.nextBytes(cKey);
         byte[] ecKey = RSAModule.encryptRSA(pubKey.getEncoded(), cKey);
         // build jsonObject
 
-        JSONObject jsonObject = new JSONObject();
+
         if (ext.equals("test")) {
             jsonObject.accumulate("pubKey",Base64.encodeToString(pubKey.getEncoded(),
                     Base64.NO_WRAP));
@@ -210,8 +233,10 @@ public class API {
             jsonObject.accumulate("cKey", Base64.encodeToString(ecKey, Base64.NO_WRAP));
             jsonObject.accumulate("id", id);
         }
+        jsonObject.accumulate("id",id);
+        jsonObject.accumulate("message",msg);
         // convert JSONObject to JSON to String
-        json = jsonObject.toString();
+        json = jsonObject.toString();*/
 
         //getAndroidID
         TelephonyManager tm = (TelephonyManager)
@@ -221,6 +246,12 @@ public class API {
 
         String transactionTime = " ";
 
+        httpCon.connect();
+        Certificate certs[] = httpCon.getServerCertificates();
+        Log.d("NaverCert","" + certs.length);
+        Log.d("NaverCert","" + ((X509Certificate)certs[0]).getSubjectDN());
+        Log.d("NaverCert","" + ((X509Certificate)certs[1]).getSubjectDN());
+        Log.d("NaverCert","" + ((X509Certificate)certs[2]).getSubjectDN());
         //setHttpMethod
         httpCon.setRequestMethod("POST");
         //setHeaders
@@ -234,7 +265,7 @@ public class API {
         // InputStream으로 서버로 부터 응답을 받겠다는 옵션.
         httpCon.setDoInput(true);
 
-        InputStream is = null;
+       /* InputStream is = null;
         OutputStream os = httpCon.getOutputStream();
         os.write(json.getBytes("utf-8"));
         os.flush();
@@ -274,16 +305,17 @@ public class API {
         }
         responseJSON.remove("encryptedElements");
         responseJSON.remove("sKey");
-        result = responseJSON.toString(1);
+        result = responseJSON.toString(1);*/
         return result;
     }
-    public static String getListPrivateInformation(Context context,String url,String username) throws IOException, GeneralSecurityException, JSONException {
+    public static String getListPrivateInformation(Context context,String url,String username)
+            throws IOException, GeneralSecurityException, JSONException {
         return POSTSSL(context,url + "/private/getList",username,null);
     }
-    /*public static String getPrivateInformation(Context context, String url, String username,
+    public static String getPrivateInformation(Context context, String url, String username,
                                                String subject, Date notBefore, Date NotAfter) {
-
-    }*/
+        return null;
+    }
 
 
 }

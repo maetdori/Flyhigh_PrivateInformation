@@ -40,32 +40,60 @@
             android:layout_toRightOf="@id/tvServerURL" />
 
         <TextView
-            android:id="@+id/tvId"
+            android:id="@+id/tvUsername"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/etId"
-            android:text="Id : " />
+            android:layout_alignBaseline="@+id/etUsername"
+            android:text="username : " />
 
         <EditText
-            android:id="@+id/etId"
+            android:id="@+id/etUsername"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:layout_below="@id/tvServerURL"
-            android:layout_toRightOf="@+id/tvId" />
+            android:layout_toRightOf="@+id/tvUsername" />
 
         <TextView
-            android:id="@+id/tvMsg"
+            android:id="@+id/tvSubject"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/etMsg"
-            android:text="Message : " />
+            android:layout_alignBaseline="@+id/etSubject"
+            android:text="Subject : " />
 
         <EditText
-            android:id="@+id/etMsg"
+            android:id="@+id/etSubject"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
-            android:layout_below="@id/tvId"
-            android:layout_toRightOf="@+id/tvMsg" />
+            android:layout_below="@id/tvUsername"
+            android:layout_toRightOf="@+id/tvSubject" />
+
+        <TextView
+            android:id="@+id/tvNotBefore"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/etNotBefore"
+            android:text="NotBefore : " />
+
+        <EditText
+            android:id="@+id/etNotBefore"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tvSubject"
+            android:layout_toRightOf="@+id/tvNotBefore" />
+
+        <TextView
+            android:id="@+id/tvNotAfter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/etNotAfter"
+            android:text="NotAfter : " />
+
+        <EditText
+            android:id="@+id/etNotAfter"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tvNotBefore"
+            android:layout_toRightOf="@+id/tvNotAfter" />
 
     </RelativeLayout>
 

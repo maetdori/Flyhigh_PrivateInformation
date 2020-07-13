@@ -72,7 +72,7 @@ import javax.net.ssl.SSLSession;
 import javax.net.ssl.TrustManagerFactory;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
-    private static String SERVER_URL = "https://192.168.10.204:8080";
+    private static String SERVER_URL = "https://www.google.com:443";
     private static Context context;
     TextView tvIsConnected, tvResponse;
     EditText etServerURL;
@@ -101,8 +101,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         // get reference to the views
         tvIsConnected = (TextView) findViewById(R.id.tvIsConnected);
         etServerURL = findViewById(R.id.etServerUrl);
-        etId = findViewById(R.id.etId);
-        etMsg = (EditText) findViewById(R.id.etMsg);
+        etId = findViewById(R.id.etUsername);
+        etMsg = (EditText) findViewById(R.id.etSubject);
         btnPost = (Button) findViewById(R.id.btnPost);
         tvResponse = (TextView) findViewById(R.id.tvResponse);
         // add click listener to Button "POST"
@@ -141,7 +141,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     HttpAsyncTask httpTask = new HttpAsyncTask(MainActivity.this);
                     // SERVERURL:연결할 서버
                     try {
-                        String strJson = httpTask.execute(SERVER_URL + "/api/test",
+                        String strJson = httpTask.execute(SERVER_URL,
                                 etId.getText().toString(),etMsg.getText().toString()).get();
                         Toast.makeText(this, "Received!", Toast.LENGTH_LONG).show();
                         try {
