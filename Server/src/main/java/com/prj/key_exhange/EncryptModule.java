@@ -17,7 +17,7 @@ import java.security.spec.InvalidKeySpecException;
 import java.util.*;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/private")
 public class EncryptModule {
 
     private static KeyStore loadKeyStore(String keyStorePath, String passWord) {

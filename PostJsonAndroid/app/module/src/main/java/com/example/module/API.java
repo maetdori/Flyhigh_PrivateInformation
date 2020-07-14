@@ -38,6 +38,7 @@ import android.util.Base64;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 
 import org.json.JSONArray;
@@ -49,6 +50,7 @@ import android.util.Log;
 
 
 import com.example.module.crypto.AES128Util;
+import com.example.module.crypto.DecryptModule;
 import com.example.module.crypto.RSAModule;
 import javax.net.ssl.HostnameVerifier;
 import javax.net.ssl.HttpsURLConnection;
@@ -137,7 +139,7 @@ public class API {
         }
         return null;
     }
-    private static String requestCert(Context context, String url) throws ProtocolException {
+    private static String requestCertBase64(Context context, String url) throws ProtocolException {
         HttpsURLConnection httpCon = setConnection(context,url);
         //getAndroidID
         TelephonyManager tm =(TelephonyManager)
@@ -182,12 +184,16 @@ public class API {
         String host = url.substring(0,pos);
         return host;
     }
-    public static String POSTSSL(Context context, String url,String id ,String msg)
-            throws JSONException, IOException, GeneralSecurityException {
+    private static X509Certificate getCert(Context context,String url) {
         X509Certificate certificate = null;
-        String result = null;
+
         String host = getHost(url);
-        result = requestCert(context,host + "/api/getCert");
+        try {
+            requestCertBase64(context,host + "/private/getCert");
+        } catch (ProtocolException e) {
+            e.printStackTrace();
+            Log.e("MODULE.API.POSTSSL","PUBKEY CERTIFICATE IS NULL");
+        }
         try {
             FileInputStream is = new FileInputStream(context.getFilesDir()
                     + File.separator + "/pub.cer");
@@ -195,77 +201,94 @@ public class API {
                     .generateCertificate(is);
         } catch (IOException | CertificateException e) {
             e.printStackTrace();
+            Log.e("MODULE.API.POSTSSL","ERROR LOADING PUBKEY CERTIFICATE");
         }
         if (certificate == null) {
-            Log.e("MODULE.API.POSTSSL","CERTIFICATE IS NULL");
+            Log.e("MODULE.API.POSTSSL","PUBKEY CERTIFICATE IS NULL");
             return null;
         } else if (certificate.getNotAfter().getTime() < System.currentTimeMillis()) {
-            Log.e("MODULE.API.POSTSSL","CERTIFICATE IS EXPIRED");
+            Log.e("MODULE.API.POSTSSL","PUBKEY CERTIFICATE IS EXPIRED");
             return null;
         }
-        int pos = url.lastIndexOf("/");
-        String ext = url.substring(pos + 1);
-        if(ext.equals("getCert"))
-            return result;
 
+        return certificate;
+    }
+    private static String POSTSSL(Context context, String url,String... args)
+            throws JSONException, IOException, GeneralSecurityException {
+        X509Certificate certificate = getCert(context,url);
+        //load publicKey Cert
+        String result = null;
         HttpsURLConnection httpCon = setConnection(context,url);
         String json = "";
         JSONObject jsonObject = new JSONObject();
 
-        /*PublicKey pubKey = certificate.getPublicKey();
+        PublicKey pubKey = certificate.getPublicKey();
         SecureRandom rand = new SecureRandom();
         byte[] cKey = new byte[16];
         rand.nextBytes(cKey);
         byte[] ecKey = RSAModule.encryptRSA(pubKey.getEncoded(), cKey);
+
+
         // build jsonObject
-
-
+        int pos = url.lastIndexOf("/");
+        String ext = url.substring(pos + 1);
+        jsonObject.accumulate("pubKey",Base64.encodeToString(pubKey.getEncoded(),
+                Base64.NO_WRAP));
+        jsonObject.accumulate("cKey", Base64.encodeToString(ecKey, Base64.NO_WRAP));
         if (ext.equals("test")) {
+            String s =" {\"a\":[{\"b\":[{\"c\":\"c1\"},{\"c\":\"c2\"},{\"c\":\"c3\"}]}," +
+                    "  {\"b\":[{\"c\":\"c4\"},{\"c\":\"c5\"},{\"c\":\"c6\"}]}," +
+                    "  {\"b\":[{\"c\":\"c7\"},{\"c\":\"c8\"},{\"c\":\"c9\"}]}]," +
+                    " \"d\": \"d1\",\n" +
+                    " \"e\" : \"e1\"}";
+            jsonObject = new JSONObject(s);
             jsonObject.accumulate("pubKey",Base64.encodeToString(pubKey.getEncoded(),
                     Base64.NO_WRAP));
-            jsonObject.accumulate("cKey", Base64.encodeToString(ecKey, Base64.NO_WRAP));
-            jsonObject.accumulate("id",id);
-            jsonObject.accumulate("message",msg);
+            jsonObject.accumulate("cKey", Base64.encodeToString(ecKey,
+                    Base64.NO_WRAP));;
+        }
+        else if(ext.equals("getList")) {
+            jsonObject.accumulate("username",args[0]);
         }
         else if(ext.equals("getInfo")) {
-            jsonObject.accumulate("pubKey",Base64.encodeToString(pubKey.getEncoded(),
-                    Base64.NO_WRAP));
-            jsonObject.accumulate("cKey", Base64.encodeToString(ecKey, Base64.NO_WRAP));
-            jsonObject.accumulate("id", id);
+            jsonObject.accumulate("username",args[0]);
+            jsonObject.accumulate("Subject",args[1]);
+            JSONObject validity = new JSONObject();
+            validity.accumulate("NotBefore",args[2]);
+            jsonObject.accumulate("validity",validity);
+            validity = new JSONObject();
+            validity.accumulate("NotAfter",args[3]);
+            jsonObject.accumulate("validity",validity);
         }
-        jsonObject.accumulate("id",id);
-        jsonObject.accumulate("message",msg);
         // convert JSONObject to JSON to String
-        json = jsonObject.toString();*/
+        json = jsonObject.toString();
 
         //getAndroidID
-        TelephonyManager tm = (TelephonyManager)
-                context.getSystemService(Context.TELEPHONY_SERVICE);
+        /*TelephonyManager tm = (TelephonyManager)
+                context.getSystemService(Context.TELEPHONY_SERVICE);*/
         String androidId = Settings.Secure.getString
                 (context.getContentResolver(), Settings.Secure.ANDROID_ID);
 
-        String transactionTime = " ";
-
+        String transactionTime = "123456";
+        //getServerCert
         httpCon.connect();
-        Certificate certs[] = httpCon.getServerCertificates();
-        Log.d("NaverCert","" + certs.length);
-        Log.d("NaverCert","" + ((X509Certificate)certs[0]).getSubjectDN());
-        Log.d("NaverCert","" + ((X509Certificate)certs[1]).getSubjectDN());
-        Log.d("NaverCert","" + ((X509Certificate)certs[2]).getSubjectDN());
+        X509Certificate cert =(X509Certificate) httpCon.getServerCertificates()[0];
         //setHttpMethod
+        httpCon = setConnection(context,url);
         httpCon.setRequestMethod("POST");
         //setHeaders
         httpCon.setRequestProperty("Content-type", "application/json");
         httpCon.setRequestProperty("Device-id", androidId);
         httpCon.setRequestProperty("TransactionTime",transactionTime);
+        httpCon.setRequestProperty("Server-Cert-Id",Base64.encodeToString(
+                cert.getSignature(),Base64.NO_WRAP));
 
         // OutputStream으로 POST 데이터를 넘겨주겠다는 옵션.
         httpCon.setDoOutput(true);
-
         // InputStream으로 서버로 부터 응답을 받겠다는 옵션.
         httpCon.setDoInput(true);
 
-       /* InputStream is = null;
+        InputStream is = null;
         OutputStream os = httpCon.getOutputStream();
         os.write(json.getBytes("utf-8"));
         os.flush();
@@ -282,7 +305,8 @@ public class API {
         } finally {
             httpCon.disconnect();
         }
-        Log.i("RESPONSE JSON",result);
+        Log.i("RESPONSE JSON","result : " +result);
+        if(result == null) return "null";
         JSONObject responseJSON = new JSONObject(result);
         JSONArray encryptedListJSON = (JSONArray) responseJSON.get("encryptedElements");
         List<String> encList = new ArrayList<>();
@@ -298,14 +322,14 @@ public class API {
         System.arraycopy(sKey,0,key,16,16);
         Log.d("keyBase64" , Base64.encodeToString(key,Base64.NO_WRAP));
         AES128Util aes = new AES128Util(key);
+
         for(String s :encList) {
-            String tmp = responseJSON.getString(s);
-            responseJSON.remove(s);
-            responseJSON.accumulate(s,aes.decrypt(Base64.decode(tmp.getBytes(),Base64.NO_WRAP)));
+            Log.d("ENCLIST",s);
+            DecryptModule.Decrypt(s,responseJSON,aes);
         }
         responseJSON.remove("encryptedElements");
         responseJSON.remove("sKey");
-        result = responseJSON.toString(1);*/
+        result = responseJSON.toString(1);
         return result;
     }
     public static String getListPrivateInformation(Context context,String url,String username)
@@ -313,8 +337,14 @@ public class API {
         return POSTSSL(context,url + "/private/getList",username,null);
     }
     public static String getPrivateInformation(Context context, String url, String username,
-                                               String subject, Date notBefore, Date NotAfter) {
-        return null;
+                                               String subject, Date notBefore, Date notAfter)
+            throws IOException, GeneralSecurityException, JSONException {
+        return POSTSSL(context,url + "/private/getInfo",username,subject,
+                "" + notBefore.getTime(),"" + notAfter.getTime());
+    }
+    public static String test(Context context, String url) throws IOException
+            , GeneralSecurityException, JSONException {
+        return POSTSSL(context,url + "/private/test");
     }
 
 
