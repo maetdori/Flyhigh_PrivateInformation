@@ -308,7 +308,12 @@ public class API {
         Log.i("RESPONSE JSON","result : " +result);
         if(result == null) return "null";
         JSONObject responseJSON = new JSONObject(result);
-        JSONArray encryptedListJSON = (JSONArray) responseJSON.get("encryptedElements");
+        JSONArray encryptedListJSON = null;
+        try {
+            encryptedListJSON = (JSONArray) responseJSON.get("encryptedElements");
+        } catch(JSONException e) {
+            return responseJSON.toString();
+        }
         List<String> encList = new ArrayList<>();
         for(int i = 0; i < encryptedListJSON.length(); i++){
             encList.add(encryptedListJSON.getJSONObject(i).getString("name"));

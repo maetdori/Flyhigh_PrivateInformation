@@ -30,7 +30,7 @@ CREATE TABLE `tb_certification` (
   `co_cert_der` varchar(2560) NOT NULL,
   `co_cert_key` varchar(2560) NOT NULL,
   `co_certification` varchar(4096) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+);
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -53,7 +53,7 @@ DROP TABLE IF EXISTS `tb_key`;
 CREATE TABLE `tb_key` (
   `co_name` varchar(50) NOT NULL,
   `co_key` varchar(40) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+);
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -83,7 +83,7 @@ CREATE TABLE `tb_person` (
   `co_relation_name` varchar(50) DEFAULT NULL,
   `co_house_hold` varchar(50) DEFAULT NULL,
   `co_car` varchar(10) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+);
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -107,7 +107,7 @@ CREATE TABLE `tb_siteinfo` (
   `co_domain` varchar(50) NOT NULL,
   `co_id` varchar(20) NOT NULL,
   `co_pw` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+);
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --

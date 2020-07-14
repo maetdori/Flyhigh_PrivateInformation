@@ -1,5 +1,5 @@
-import java.io.ByteArrayInputStream;
-import java.io.InputStream;
+import java.io.*;
+import java.security.*;
 import java.security.cert.Certificate;
 import java.security.cert.CertificateException;
 import java.security.cert.CertificateFactory;
@@ -28,18 +28,38 @@ public class Parse {
             "J6xn1IJz/xIQPIEX0omnJQMEjrmxx4+5Rg==\n" +
             "-----END CERTIFICATE-----\n";
 
-    public static void main(String args[]) throws CertificateException {
-        InputStream is = new ByteArrayInputStream(cert.getBytes());
+    public static void main(String args[]) throws CertificateException, IOException, KeyStoreException, NoSuchAlgorithmException, UnrecoverableKeyException {
+        //InputStream is = new ByteArrayInputStream(cert.getBytes());
+        KeyStore keystore = KeyStore.getInstance("PKCS12");
+        InputStream is = new FileInputStream(new File("han1g.pfx"));
+        keystore.load(is, "flyhigh@Cert".toCharArray());
+        String alias = keystore.aliases().nextElement();
+        PrivateKey key = (PrivateKey)keystore.getKey(alias, "flyhigh@Cert".toCharArray());
+        //System.out.println(alias);
+        X509Certificate certificate = (X509Certificate) keystore.
+                getCertificate(alias);
+
+        /*InputStream is = new FileInputStream("intermed-ca.der");
         CertificateFactory factory = CertificateFactory.getInstance("X.509");
-        X509Certificate certificate = (X509Certificate) factory.generateCertificate(is);
+        X509Certificate certificate = (X509Certificate) factory.generateCertificate(is);*/
         String issuer = certificate.getIssuerDN().getName();
         String subject = certificate.getSubjectDN().getName();
         String notBefore = certificate.getNotBefore().toString();
         String notAfter = certificate.getNotAfter().toString();
-        System.out.println("issuer : " + issuer);
-        System.out.println("subject : " + subject);
+        System.out.println(certificate.getVersion());
+        System.out.println(certificate.getSerialNumber());
+        System.out.println(certificate.getSigAlgName());
+        //System.out.println(sighashAlgorithm);
+        System.out.println("issuer : " + issuer + " " +issuer.length());
         System.out.println("notBefore : " + notBefore);
         System.out.println("notAfter : " + notAfter);
+        System.out.println("subject : " + subject);
+        System.out.println(certificate.getPublicKey().getAlgorithm());
+        System.out.println(byteToString(certificate.getPublicKey().getEncoded()));
+        System.out.println(booleanToString(certificate.getIssuerUniqueID()));
+        System.out.println(booleanToString(certificate.getSubjectUniqueID()));
+        System.out.println(byteToString(certificate.getSignature()));
+
 
 
         String url = "https://localhost:8080/api";
@@ -49,7 +69,6 @@ public class Parse {
         pos += 2;
         String host = url.substring(0,pos);
         System.out.println(host);
-        strings(new String[] {"1","2"});
 
         Map<String,Object> s  = new HashMap<>();
         s.put("a","b");
@@ -65,9 +84,39 @@ public class Parse {
         String bb = new String(b);
         System.out.println(aa.equals(bb));
     }
-    private static void strings(String[] s) {
-        System.out.println(s[0]);
-        System.out.println(s[1]);
+    private static String byteToString(byte[] bytes) {
+        System.out.println("length: " + bytes.length);
+        String ret = "";
+        for(int i = 0;i < bytes.length;i++) {
+            if(i < bytes.length - 1) {
+                if(bytes[i] < 0x10 && bytes[i] >= 0)
+                    ret += String.format("0%x:", bytes[i]);
+                else
+                    ret += String.format("%x:", bytes[i]);
+            }
+            else {
+                if(bytes[i] < 0x10 && bytes[i] >= 0)
+                    ret += String.format("0%x", bytes[i]);
+                else
+                    ret += String.format("%x", bytes[i]);
+            }
+        }
+        return ret;
+    }
+    private static String booleanToString(boolean[] bs) {
+        if(bs == null)
+            return "null";
+        String ret = "";
+        for(int i = 0 ; i < bs.length;i++) {
+            if(bs[i]) {
+                ret += "1";
+            }else {
+                ret += "0";
+            }
+            if(i < bs.length - 1)
+                ret+=":";
+        }
+        return ret;
     }
 
 }
