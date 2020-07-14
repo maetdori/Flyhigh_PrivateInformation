@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.was.domain.CertVO;
 import com.was.domain.SiteVO;
+import com.was.key_exchange.EncryptModule;
 import com.was.service.WasService;
 
 @Controller
@@ -71,6 +72,9 @@ public class WasController {
 		response.put("cert_pw", cert.getCo_cert_pw());
 		response.put("certification", cert.getCo_cert_der());
 		response.put("count", countList);
+		
+		EncryptModule.encrypt("keystore2.p12","123456",
+				new String[] {"cert_pw", "certification", "count/site", "count/id", "count/pw"},req,response);
 		
 		return response;
 	}
