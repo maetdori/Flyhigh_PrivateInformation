@@ -44,7 +44,7 @@ public class WasController {
 			validity.put("NotAfter", c.getCo_exp_date());
 			Map<String, Object> account = new HashMap<>(); //Account Map
 			account.put("Subject", c.getCo_name());
-			account.put("Validity", validity);
+			account.put("validity", validity);
 			accList.add(account);
 		}
 	
