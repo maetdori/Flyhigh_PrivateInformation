@@ -2,15 +2,30 @@
 
 <mapper namespace="com.web.mapper.SiteMapper">
  
+ 	<select id="siteList" parameterType="String" resultType="com.web.domain.CertVO">
+        SELECT
+            *
+        FROM TB_SITEINFO
+        WHERE
+            CO_NAME = #{co_name}
+    </select>
+ 	
+ 	<select id="siteSearch" parameterType="String" resultType="com.web.domain.CertVO">
+        SELECT
+            *
+        FROM TB_CERTIFICATION
+        WHERE
+            CO_NAME = #{co_name}
+        AND CO_DOMAIN = #{co_domain}    
+    </select>
+    
     <insert id="siteInsert" parameterType="com.web.domain.SiteVO">
         INSERT INTO
         TB_SITEINFO (CO_NAME, CO_DOMAIN, CO_ID, CO_PW)
         VALUES(#{co_name},#{co_domain},#{co_id},#{co_pw}) 
     </insert>
-   
-   <!-- 
-   
-    <update id="certUpdate" parameterType="com.web.domain.CertVO">
+ 
+    <update id="siteUpdate" parameterType="String">
         UPDATE TB_CERTIFICATION
             SET
         <if test="name != null">
@@ -26,7 +41,5 @@
     <delete id="certDelete" parameterType="int">
         DELETE FROM BOARD WHERE NO = #{no}
     </delete>
-    
-    -->
     
 </mapper>
