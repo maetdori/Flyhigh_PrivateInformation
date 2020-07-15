@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mapper namespace="com.web.mapper.SiteMapper">
+ 
+    <insert id="siteInsert" parameterType="com.web.domain.SiteVO">
+        INSERT INTO
+        TB_SITEINFO (CO_NAME, CO_DOMAIN, CO_ID, CO_PW)
+        VALUES(#{co_name},#{co_domain},#{co_id},#{co_pw}) 
+    </insert>
+   
+   <!-- 
+   
+    <update id="certUpdate" parameterType="com.web.domain.CertVO">
+        UPDATE TB_CERTIFICATION
+            SET
+        <if test="name != null">
+            NAME = #{name}
+        </if>
+        <if test="name != null and content != null"> , </if>
+        <if test="cert != null">
+            CERT = #{cert}
+        </if>
+        WHERE NO = #{no}
+    </update>
+    
+    <delete id="certDelete" parameterType="int">
+        DELETE FROM BOARD WHERE NO = #{no}
+    </delete>
+    
+    -->
+    
+</mapper>
