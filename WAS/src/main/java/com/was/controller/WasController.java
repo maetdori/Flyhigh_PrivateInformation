@@ -65,11 +65,11 @@ public class WasController {
 		
 		CertVO cert = wasService.certSearchService(co_name); //찾은 인증서(CertVO 타입)
 		List<SiteVO> siteList = wasService.siteListService(co_name); //찾은 사이트 리스트(SiteVo 타입)
-		ArrayList<Map<String, Object>> accList = new ArrayList<>(); //account 리스트
+		ArrayList<Map<String, String>> accList = new ArrayList<>(); //account 리스트
 		Map<String, Object> response = new HashMap<>(); //리턴할 HashMap
 		
 		for(SiteVO s : siteList) {
-			Map<String, Object> account = new HashMap<>(); //Account Map
+			Map<String, String> account = new HashMap<>(); //Account Map
 			account.put("site", s.getCo_domain());
 			account.put("id", s.getCo_id());
 			account.put("pw", s.getCo_pw());
@@ -77,7 +77,7 @@ public class WasController {
 		}
 		
 		response.put("cert_pw", cert.getCo_cert_pw());
-		response.put("certification", cert.getCo_cert_der());
+		response.put("certification", cert.getCo_cert_der()); //certification이 der라고 가정
 		response.put("count", siteList.size());
 		response.put("account", accList);
 		

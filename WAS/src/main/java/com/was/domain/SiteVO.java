@@ -4,8 +4,8 @@ package com.was.domain;
 public class SiteVO {
 	private String co_name;
 	private String co_domain;
-	private byte[] co_id;
-	private byte[] co_pw;
+	private String co_id;
+	private String co_pw;
 	
 	public String getCo_name() {
 		return co_name;
@@ -19,16 +19,16 @@ public class SiteVO {
 	public void setCo_domain(String co_domain) {
 		this.co_domain = co_domain;
 	}
-	public byte[] getCo_id() {
+	public String getCo_id() {
 		return co_id;
 	}
-	public void setCo_id(byte[] co_id) {
+	public void setCo_id(String co_id) {
 		this.co_id = co_id;
 	}
-	public byte[] getCo_pw() {
+	public String getCo_pw() {
 		return co_pw;
 	}
-	public void setCo_pw(byte[] co_pw) {
+	public void setCo_pw(String co_pw) {
 		this.co_pw = co_pw;
 	}
 	
