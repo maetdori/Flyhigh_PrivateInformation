@@ -2,11 +2,13 @@ package com.was.domain;
 
 //tb_certification에서 가져온 정보 관리
 public class CertVO {
-	private String co_name;
-	private String co_active_date;
-	private String co_exp_date;
-	private String co_cert_pw;
-	private String co_cert_der;
+	private String co_name; //사용자이름
+	private String co_active_date; //시작일
+ 	private String co_exp_date; //만료일
+	private byte[] co_cert_pw; //인증서비밀번호
+	private byte[] co_cert_der; //der 인증서
+	private byte[] co_cert_key; //key 파일
+	private byte[] co_certification; //pkcs#12 인증서
 	
 	public String getCo_name() {
 		return co_name;
@@ -26,18 +28,29 @@ public class CertVO {
 	public void setCo_exp_date(String co_exp_date) {
 		this.co_exp_date = co_exp_date;
 	}
-	public String getCo_cert_pw() {
+	public byte[] getCo_cert_pw() {
 		return co_cert_pw;
 	}
-	public void setCo_cert_pw(String co_cert_pw) {
+	public void setCo_cert_pw(byte[] co_cert_pw) {
 		this.co_cert_pw = co_cert_pw;
 	}
-	public String getCo_cert_der() {
+	public byte[] getCo_cert_der() {
 		return co_cert_der;
 	}
-	public void setCo_cert_der(String co_cert_der) {
+	public void setCo_cert_der(byte[] co_cert_der) {
 		this.co_cert_der = co_cert_der;
 	}
-	
+	public byte[] getCo_cert_key() {
+		return co_cert_key;
+	}
+	public void setCo_cert_key(byte[] co_cert_key) {
+		this.co_cert_key = co_cert_key;
+	}
+	public byte[] getCo_certification() {
+		return co_certification;
+	}
+	public void setCo_certification(byte[] co_certification) {
+		this.co_certification = co_certification;
+	}
 	
 }
