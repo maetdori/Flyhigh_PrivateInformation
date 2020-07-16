@@ -1,5 +1,6 @@
 package com.web.service;
 
+import java.util.HashMap;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -26,8 +27,17 @@ public class SiteService {
     	return siteMapper.siteSearch(co_name, co_domain);
     }
 
-    public void siteInsertService(SiteVO site) throws Exception{
+    public void siteInsertService(SiteVO site) throws Exception {
  
     	siteMapper.siteInsert(site);
+    }
+    
+    public void siteUpdateService(HashMap<String, String> param) throws Exception {
+    	
+    	siteMapper.siteUpdate(param);
+    }
+    
+    public void siteDeleteService(String co_name, String co_domain) throws Exception {
+    	siteMapper.siteDelete(co_name, co_domain);
     }
 }

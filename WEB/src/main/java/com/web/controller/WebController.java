@@ -5,6 +5,7 @@ import java.security.KeyStoreException;
 import java.security.NoSuchAlgorithmException;
 import java.security.UnrecoverableKeyException;
 import java.security.cert.CertificateException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Base64;
 import java.util.Base64.Decoder;
@@ -18,6 +19,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.web.domain.CertVO;
 import com.web.domain.SiteVO;
 import com.web.parse.ParseDer;
@@ -29,20 +31,25 @@ import com.web.service.SiteService;
 public class WebController {
 	
 	@Resource(name="com.web.service.CertService")
-	CertService certService;
+	private CertService certService;
 	@Resource(name="com.web.service.SiteService")
-	SiteService siteService;
+	private SiteService siteService;
 	
-	CertVO cv;
-	SiteVO sv;
+	@JsonFormat(pattern = "yyyy-MM-dd") 
+	private LocalDate currentDate = LocalDate.now();
 	
-	@RequestMapping("/register") //인증서등록
+	private CertVO cv;
+	private SiteVO sv;
+	
+	//인증서등록
+	@RequestMapping("/register")
 	private Map<String, Object> certRegister(@RequestBody Map<String, Object> req, HttpServletResponse resp) throws Exception {
-		
+	
 		resp.setContentType("application/json");
 		resp.addHeader("Location", "http://localhost:8080/private/register");
 		
-		Map<String, Object> response = new HashMap<>(); //리턴할 hashMap
+		
+		Map<String, Object> response = new HashMap<>(); //리턴할 HashMap
 		
 		cv = new CertVO();
 		sv = new SiteVO();
@@ -55,6 +62,7 @@ public class WebController {
 		validity.put("NotBefore", cv.getCo_active_date());
 		validity.put("NotAfter", cv.getCo_exp_date());
 		
+		response.put("registerDate", currentDate);
 		response.put("Subject", cv.getCo_name());
 		response.put("validity", validity);
 		response.put("count", (int) req.get("count"));
@@ -62,42 +70,42 @@ public class WebController {
 		return response;
 	}
 	
-	@RequestMapping("/modify") //인증서수정 (수정가능정보: cert_pw, account)
+	//인증서수정 (수정가능정보: cert_pw, account)
+	//Client는 수정하고 싶은 정보만 RequestBody에 담아 보낸다.
+	//req.containsKey()를 이용해 RequestBody가 어떤 key를 가지고 있는지 확인하고 key에 해당하는 정보를 수정한다. 
+	@RequestMapping("/modify") 
 	private Map<String, Object> certModify(@RequestBody Map<String, Object> req, HttpServletResponse resp) throws Exception{
 		
 		resp.setContentType("application/json");
 		resp.addHeader("Location", "http://localhost:8080/private/modify");
 		
-		Map<String, Object> response = new HashMap<>(); //리턴할 hashMap
-		
-		cv = new CertVO();
-		sv = new SiteVO();
+		Map<String, Object> response = new HashMap<>(); //리턴할 HashMap
 		
 		if(req.containsKey("cert_pw")) { //인증서 패스워드 수정하는 경우
+			cv = new CertVO();
 			certService.certUpdateService((String)req.get("cert_pw"), (String)req.get("owner"));
+		
 			if(req.containsKey("flag")) { //사이트 정보 수정하는 경우
+		
+				@SuppressWarnings("unchecked")
 				ArrayList<Map<String, String>> accountList = (ArrayList<Map<String, String>>) req.get("account"); //flag와 함께 요청된 수정할 accountList 
-				switch((int)req.get("flag")) {
-				//flag==1: account 추가
-				case 1: 
-					for(Map<String,String> acc : accountList) {
-						sv.setCo_name((String)acc.get("owner"));
-						sv.setCo_domain((String)acc.get("site"));
-						sv.setCo_id((String)acc.get("id"));
-						sv.setCo_pw((String)acc.get("pw"));
-						siteService.siteInsertService(sv);
-					}
-				//flag==2: 기존 account 수정	- pw만 수정 가능
-				case 2:
-					
-				}
+				
+				updateSite((int)req.get("flag"), accountList, (String)req.get("owner"));
 			}
 		}
+		
+		Map<String, String> validity = new HashMap<>(); //validity map
+		validity.put("NotBefore", cv.getCo_active_date());
+		validity.put("NotAfter", cv.getCo_exp_date());
+		
+		response.put("Subject", cv.getCo_name());
+		response.put("validity", validity);
+		response.put("count", (int) req.get("count"));
 		
 		return response;
 	}
 	
-	
+	//certRegister()에서 호출하는 메소드
 	//RequestBody로 들어온 정보를 VO에 저장
 	private void setVO(Map<String, Object> req, CertVO cv, SiteVO sv) throws UnrecoverableKeyException, KeyStoreException, NoSuchAlgorithmException, IOException {
 		
@@ -149,6 +157,50 @@ public class WebController {
 		}
 	}
 	
+	//certModify()에서 호출하는 메소드
+	//tb_siteInfo를 update
+	private void updateSite(int flag, ArrayList<Map<String, String>> accountList, String co_name) throws Exception {
+		
+		sv = new SiteVO();
+		
+		switch(flag) {
+		
+		//flag==1: account 추가
+		case 1: 
+			for(Map<String,String> acc : accountList) {
+				sv.setCo_name(co_name);
+				sv.setCo_domain((String)acc.get("site"));
+				sv.setCo_id((String)acc.get("id"));
+				sv.setCo_pw((String)acc.get("pw"));
+				siteService.siteInsertService(sv);
+				break;
+			}
+		
+		//flag==2: 기존 account 수정	- pw만 수정 가능
+		case 2:
+			for(Map<String, String> acc : accountList) {
+				HashMap<String, String> param = new HashMap<>();
+				param.put("co_name", co_name);
+				param.put("co_domain", (String)acc.get("site"));
+				param.put("co_pw", (String)acc.get("pw"));
+				siteService.siteUpdateService(param);
+				break;
+			}
+		
+		//flag==3: account 삭제 
+		case 3:
+			for(Map<String, String> acc : accountList) {
+				siteService.siteDeleteService(co_name, (String)acc.get("site"));
+			break;
+			}
+		default:
+			System.out.println("Invalid flag");
+			break;
+		}
+	}
+	
+	//setVO()에서 호출하는 메소드
+	//base64 decoder
 	public static byte[] base64Decoder(byte[] encoded_bytes) {
 		Decoder decoder = Base64.getDecoder();
 		byte[] decodedBytes = decoder.decode(encoded_bytes);

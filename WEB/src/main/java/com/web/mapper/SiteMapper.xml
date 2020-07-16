@@ -2,7 +2,7 @@
 
 <mapper namespace="com.web.mapper.SiteMapper">
  
- 	<select id="siteList" parameterType="String" resultType="com.web.domain.CertVO">
+ 	<select id="siteList" parameterType="String" resultType="com.web.domain.SiteVO">
         SELECT
             *
         FROM TB_SITEINFO
@@ -10,10 +10,10 @@
             CO_NAME = #{co_name}
     </select>
  	
- 	<select id="siteSearch" parameterType="String" resultType="com.web.domain.CertVO">
+ 	<select id="siteSearch" parameterType="String" resultType="com.web.domain.SiteVO">
         SELECT
             *
-        FROM TB_CERTIFICATION
+        FROM TB_SITEINFO
         WHERE
             CO_NAME = #{co_name}
         AND CO_DOMAIN = #{co_domain}    
@@ -25,21 +25,19 @@
         VALUES(#{co_name},#{co_domain},#{co_id},#{co_pw}) 
     </insert>
  
-    <update id="siteUpdate" parameterType="String">
-        UPDATE TB_CERTIFICATION
-            SET
-        <if test="name != null">
-            NAME = #{name}
-        </if>
-        <if test="name != null and content != null"> , </if>
-        <if test="cert != null">
-            CERT = #{cert}
-        </if>
-        WHERE NO = #{no}
+    <update id="siteUpdate" parameterType="HashMap">
+        UPDATE TB_SITEINFO
+            SET CO_PW = #{co_pw}
+        WHERE 
+        	CO_NAME = #{co_name}
+        AND CO_DOMAIN = #{co_domain}
     </update>
     
-    <delete id="certDelete" parameterType="int">
-        DELETE FROM BOARD WHERE NO = #{no}
+    <delete id="siteDelete" parameterType="String">
+        DELETE FROM TB_SITEINFO
+        WHERE 
+        	CO_NAME = #{co_name} 
+        AND CO_DOMAIN = #{co_domain}
     </delete>
     
 </mapper>
