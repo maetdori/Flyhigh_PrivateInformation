@@ -18,5 +18,5 @@ public interface CertMapper {
 			@Param("co_name") String co_name) throws Exception;
 	
 	//delete
-	public void certDelete(CertVO cert) throws Exception;
+	public void certDelete(String co_name) throws Exception;
 }

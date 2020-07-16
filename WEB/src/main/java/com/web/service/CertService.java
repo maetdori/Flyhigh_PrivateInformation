@@ -27,5 +27,9 @@ public class CertService {
     	
     	certMapper.certUpdate(co_cert_pw, co_name);
     }
+    
+    public void certDeleteService(String co_name) throws Exception {
+    	certMapper.certDelete(co_name);
+    }
 }
  

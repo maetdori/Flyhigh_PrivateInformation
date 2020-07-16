@@ -23,8 +23,8 @@
         	CO_NAME = #{co_name}
     </update>
     
-    <delete id="certDelete" parameterType="int">
-        DELETE FROM BOARD WHERE NO = #{no}
+    <delete id="certDelete" parameterType="String">
+        DELETE FROM TB_CERTIFICATION WHERE CO_NAME = #{co_name}
     </delete>
     
     -->

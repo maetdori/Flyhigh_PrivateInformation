@@ -40,4 +40,10 @@
         AND CO_DOMAIN = #{co_domain}
     </delete>
     
+    <delete id="siteListDelete" parameterType="String">
+        DELETE FROM TB_SITEINFO
+        WHERE 
+        	CO_NAME = #{co_name}
+    </delete>
+    
 </mapper>

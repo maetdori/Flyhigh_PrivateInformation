@@ -23,8 +23,11 @@ public interface SiteMapper {
 	//modify
 	public void siteUpdate(HashMap<String, String> param) throws Exception;
 	
-	//delete
+	//delete "an" element matching with both co_name && co_domain
 	public void siteDelete(
 			@Param("co_name") String co_name, 
 			@Param("co_domain") String co_domain) throws Exception;
+	
+	//delete elements matching with co_name
+	public void siteListDelete(String co_name) throws Exception;
 }

@@ -40,4 +40,8 @@ public class SiteService {
     public void siteDeleteService(String co_name, String co_domain) throws Exception {
     	siteMapper.siteDelete(co_name, co_domain);
     }
+    
+    public void siteListDeleteService(String co_name) throws Exception {
+    	siteMapper.siteListDelete(co_name);
+    }
 }

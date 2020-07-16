@@ -27,7 +27,7 @@ import com.web.service.CertService;
 import com.web.service.SiteService;
 
 @Controller
-@RequestMapping("private")
+@RequestMapping("/private")
 public class WebController {
 	
 	@Resource(name="com.web.service.CertService")
@@ -74,7 +74,7 @@ public class WebController {
 	//Client는 수정하고 싶은 정보만 RequestBody에 담아 보낸다.
 	//req.containsKey()를 이용해 RequestBody가 어떤 key를 가지고 있는지 확인하고 key에 해당하는 정보를 수정한다. 
 	@RequestMapping("/modify") 
-	private Map<String, Object> certModify(@RequestBody Map<String, Object> req, HttpServletResponse resp) throws Exception{
+	private Map<String, Object> certModify(@RequestBody Map<String, Object> req, HttpServletResponse resp) throws Exception {
 		
 		resp.setContentType("application/json");
 		resp.addHeader("Location", "http://localhost:8080/private/modify");
@@ -101,6 +101,23 @@ public class WebController {
 		response.put("Subject", cv.getCo_name());
 		response.put("validity", validity);
 		response.put("count", (int) req.get("count"));
+		
+		return response;
+	}
+	
+	//인증서삭제 (인증서로 로그인할 수 있는 사이트 정보도 삭제)
+	@RequestMapping("/delete")
+	private Map<String, String> certDelete(String subject, HttpServletResponse resp) throws Exception {
+		
+		resp.setContentType("application/json");
+		resp.addHeader("Location", "http://localhost:8080/private/delete");
+		
+		Map<String, String> response = new HashMap<>(); //리턴할 HashMap
+		
+		certService.certDeleteService(subject);
+		siteService.siteListDeleteService(subject);
+	
+		response.put("Subject", cv.getCo_name());
 		
 		return response;
 	}
