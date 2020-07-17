@@ -1,10 +1,13 @@
 package com.web.mapper;
 
+import org.apache.ibatis.annotations.Mapper;
 import org.springframework.data.repository.query.Param;
+import org.springframework.stereotype.Repository;
 
 import com.web.domain.CertVO;
 
-public interface CertMapper {
+@Repository("com.web.mapper.CertMapper")
+public @Mapper interface CertMapper {
 
 	//search
 	public CertVO certSearch(String co_name) throws Exception;

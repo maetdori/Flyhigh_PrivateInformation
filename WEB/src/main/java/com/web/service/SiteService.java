@@ -7,7 +7,6 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
-import com.web.domain.CertVO;
 import com.web.domain.SiteVO;
 import com.web.mapper.SiteMapper;
 
@@ -17,7 +16,7 @@ public class SiteService {
 	@Resource(name="com.web.mapper.SiteMapper")
     SiteMapper siteMapper;
 	
-	public List<SiteVO> siteList(String co_name) throws Exception {
+	public List<SiteVO> siteListService(String co_name) throws Exception {
 		
 		return siteMapper.siteList(co_name);
 	}

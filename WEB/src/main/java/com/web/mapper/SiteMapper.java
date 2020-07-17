@@ -3,11 +3,14 @@ package com.web.mapper;
 import java.util.HashMap;
 import java.util.List;
 
+import org.apache.ibatis.annotations.Mapper;
 import org.springframework.data.repository.query.Param;
+import org.springframework.stereotype.Repository;
 
 import com.web.domain.SiteVO;
 
-public interface SiteMapper {
+@Repository("com.web.mapper.SiteMapper")
+public @Mapper interface SiteMapper {
 
 	//search by co_name(return siteList)
 	public List<SiteVO> siteList(String co_name) throws Exception;
