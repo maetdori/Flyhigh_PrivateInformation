@@ -19,6 +19,30 @@
 	</properties>
 
 	<dependencies>
+	
+		<!-- BootStrap 
+		<dependency>
+			<groupId>org.webjars</groupId>
+			<artifactId>bootstrap</artifactId>
+			<version>4.1.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.webjars</groupId>
+			<artifactId>jquery</artifactId>
+			<version>3.3.1</version>
+		</dependency>
+		-->
+		<!-- JSP -->
+		<dependency>
+	        <groupId>org.apache.tomcat.embed</groupId>
+	        <artifactId>tomcat-embed-jasper</artifactId>
+	    </dependency>
+	    <dependency>
+	        <groupId>jstl</groupId>
+	        <artifactId>jstl</artifactId>
+	        <version>1.2</version>
+	    </dependency>
+    
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>

@@ -24,6 +24,7 @@ public class ParseDer{
 		
 		this.notBefore = certificate.getNotBefore().toString();
 		this.notAfter = certificate.getNotAfter().toString();	
+		
 	}
 
 	public String getNotBefore() {
