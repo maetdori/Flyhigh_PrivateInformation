@@ -1,6 +1,5 @@
-package com.example.module.crypto;
+package com.private_information;
 
-import android.security.keystore.KeyGenParameterSpec;
 import android.util.Log;
 
 import javax.crypto.BadPaddingException;
@@ -10,11 +9,10 @@ import javax.crypto.NoSuchPaddingException;
 import java.security.*;
 import java.security.spec.InvalidKeySpecException;
 import java.security.spec.PKCS8EncodedKeySpec;
-import java.security.spec.RSAPrivateKeySpec;
 import java.security.spec.X509EncodedKeySpec;
 
-public class RSAModule {
-    public static byte[] encryptRSA(byte[] key,byte[] input)
+class RSAModule {
+    static byte[] encryptRSA(byte[] key,byte[] input)
             throws NoSuchPaddingException, NoSuchAlgorithmException, NoSuchProviderException, InvalidKeyException,
             BadPaddingException, IllegalBlockSizeException, InvalidKeySpecException {
         Cipher cipher = Cipher.getInstance("RSA/ECB/PKCS1PADDING");
@@ -43,7 +41,7 @@ public class RSAModule {
         byte[] cipherText = cipher.doFinal(input);
         return cipherText;
     }
-    public static byte[] decryptRSA(byte[] key, byte[] cipherText) throws NoSuchAlgorithmException, NoSuchProviderException,
+    static byte[] decryptRSA(byte[] key, byte[] cipherText) throws NoSuchAlgorithmException, NoSuchProviderException,
             NoSuchPaddingException, InvalidKeyException, BadPaddingException, IllegalBlockSizeException, InvalidKeySpecException {
         Cipher cipher = Cipher.getInstance("RSA/ECB/PKCS1PADDING");
         // Turn the encoded key into a real RSA private key.

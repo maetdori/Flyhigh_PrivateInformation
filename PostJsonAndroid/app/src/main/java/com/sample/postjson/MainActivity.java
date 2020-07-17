@@ -14,7 +14,6 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.security.GeneralSecurityException;
 
-import java.util.Date;
 import java.util.concurrent.ExecutionException;
 
 import org.json.JSONException;
@@ -36,7 +35,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
-import com.example.module.API;
+import com.private_information.API;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     private static String SERVER_URL = "https://192.168.10.204:8080";
@@ -159,7 +158,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 }
                 break;
             case R.id.btnTest:
-                HttpAsyncTask httpTask = new HttpAsyncTask(MainActivity.this);
+               /* HttpAsyncTask httpTask = new HttpAsyncTask(MainActivity.this);
                 // SERVERURL:연결할 서버
                 try {
                     String strJson = httpTask.execute(SERVER_URL).get();
@@ -176,14 +175,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     e.printStackTrace();
                 } catch (InterruptedException e) {
                     e.printStackTrace();
-                }
-                /*String s;
-                try {
-                    JSONObject obj = new JSONObject(s);
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-                DecryptModule.Decrypt();*/
+                }*/
                 break;
         }
 
@@ -263,10 +255,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             //urls[0] : url
             //urls[1~]: msg
             //return POST(urls[0],urls[1]);
-            Date notBefore = new Date(Long.parseLong(urls[3]));
-            Date notAfter = new Date(Long.parseLong(urls[4]));
             try {
-                return API.getPrivateInformation(mainAct,urls[0], urls[1],urls[2],notBefore,notAfter);
+                return API.getPrivateInformation(mainAct,urls[0], urls[1],urls[2],urls[3],urls[4]);
             }catch (ParseException e) {
                 e.printStackTrace();
                 return "ERR";

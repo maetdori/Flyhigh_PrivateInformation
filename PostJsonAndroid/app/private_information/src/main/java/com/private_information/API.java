@@ -1,9 +1,10 @@
-package com.example.module;
+package com.private_information;
 
 
-import android.app.Activity;
 import android.content.Context;
 
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.provider.Settings;
 import android.telephony.TelephonyManager;
 
@@ -16,7 +17,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
-import java.net.MalformedURLException;
 import java.net.ProtocolException;
 import java.net.URL;
 import java.security.GeneralSecurityException;
@@ -36,9 +36,7 @@ import android.util.Base64;
 
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
-import java.util.Map;
 
 
 import org.json.JSONArray;
@@ -49,16 +47,30 @@ import org.json.JSONObject;
 import android.util.Log;
 
 
-import com.example.module.crypto.AES128Util;
-import com.example.module.crypto.DecryptModule;
-import com.example.module.crypto.RSAModule;
 import javax.net.ssl.HostnameVerifier;
 import javax.net.ssl.HttpsURLConnection;
 import javax.net.ssl.SSLContext;
 import javax.net.ssl.SSLSession;
 import javax.net.ssl.TrustManagerFactory;
 public class API {
-    private static String convertInputStreamToString(InputStream inputStream) throws IOException{
+    public static final int TYPE_WIFI = 1;
+    public static final int TYPE_MOBILE = 2;
+    public static final int TYPE_NOT_CONNECTED = 3;
+    public static int getConnectivityStatus(Context context) { //해당 context의 서비스를 사용하기위해서 context객체를 받는다.
+        ConnectivityManager manager = (ConnectivityManager) context.getSystemService(context.CONNECTIVITY_SERVICE);
+
+        NetworkInfo networkInfo = manager.getActiveNetworkInfo();
+        if(networkInfo != null){
+            int type = networkInfo.getType();
+            if(type == ConnectivityManager.TYPE_MOBILE){//쓰리지나 LTE로 연결된것(모바일을 뜻한다.)
+                return TYPE_MOBILE;
+            }else if(type == ConnectivityManager.TYPE_WIFI){//와이파이 연결된것
+                return TYPE_WIFI;
+            }
+        }
+        return TYPE_NOT_CONNECTED;  //연결이 되지않은 상태
+    }
+    private static String convertInputStreamToString(InputStream inputStream) {
         BufferedReader bufferedReader = new BufferedReader( new InputStreamReader(inputStream));
         String line = "";
         String result = "";
@@ -69,8 +81,7 @@ public class API {
         return result;
 
     }
-    private static SSLContext cert(String certPath) throws CertificateException, IOException,
-            KeyStoreException, NoSuchAlgorithmException, KeyManagementException {
+    private static SSLContext cert(String certPath) {
         // Load CAs from an InputStream
         // (could be from a resource or ByteArrayInputStream or ...)
         CertificateFactory cf = CertificateFactory.getInstance("X.509");
@@ -214,7 +225,10 @@ public class API {
         return certificate;
     }
     private static String POSTSSL(Context context, String url,String... args)
-            throws JSONException, IOException, GeneralSecurityException {
+            throws APIException {
+        if(getConnectivityStatus(context) == TYPE_NOT_CONNECTED)
+            throw new APIException("NO Internet",APIException.NO_INTERNET);
+
         X509Certificate certificate = getCert(context,url);
         //load publicKey Cert
         String result = null;
@@ -330,26 +344,42 @@ public class API {
 
         for(String s :encList) {
             Log.d("ENCLIST",s);
-            DecryptModule.Decrypt(s,responseJSON,aes);
+            JsonDecryptModule.Decrypt(s,responseJSON,aes);
         }
         responseJSON.remove("encryptedElements");
         responseJSON.remove("sKey");
         result = responseJSON.toString(1);
         return result;
     }
-    public static String getListPrivateInformation(Context context,String url,String username)
-            throws IOException, GeneralSecurityException, JSONException {
+
+    public static String getListPrivateInformation(Context context,String url,String username) {
         return POSTSSL(context,url + "/private/getList",username,null);
     }
     public static String getPrivateInformation(Context context, String url, String username,
-                                               String subject, Date notBefore, Date notAfter)
-            throws IOException, GeneralSecurityException, JSONException {
-        return POSTSSL(context,url + "/private/getInfo",username,subject,
-                "" + notBefore.getTime(),"" + notAfter.getTime());
+                                               String subject, String notBefore, String notAfter) {
+        String ret = null;
+        try {
+            ret = POSTSSL(context,url,username,subject,notBefore,notAfter);
+        }catch(APIException e) {
+            e.printStackTrace();
+            Log.e("getPrivateInformation","Error while getting Data. get from DB");
+            ret = DatabaseManager.getInstance(context).searchByNameFromInfo(subject);
+            return ret;
+        }
+        try {
+            DatabaseManager.getInstance(context).updatePrivateInformation(ret,subject);
+        } catch (APIException e) {
+            e.printStackTrace();
+        }
+        return ret;
     }
-    public static String test(Context context, String url) throws IOException
-            , GeneralSecurityException, JSONException {
-        return POSTSSL(context,url + "/private/test");
+    public static String test(Context context, String url) {
+        try {
+            return POSTSSL(context,url + "/private/test");
+        } catch (APIException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
 

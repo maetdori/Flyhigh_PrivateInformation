@@ -6,7 +6,7 @@
       <module fileurl="file://$PROJECT_DIR$/PostJsonAndroid-PostJson.iml" filepath="$PROJECT_DIR$/PostJsonAndroid-PostJson.iml" group="PostJson" />
       <module fileurl="file://$PROJECT_DIR$/app/PostJsonAndroid-app.iml" filepath="$PROJECT_DIR$/app/PostJsonAndroid-app.iml" group="PostJson/app" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" group="PostJson/app" />
-      <module fileurl="file://$PROJECT_DIR$/app/module/module.iml" filepath="$PROJECT_DIR$/app/module/module.iml" group="PostJson/app/module" />
+      <module fileurl="file://$PROJECT_DIR$/app/private_information/private_information.iml" filepath="$PROJECT_DIR$/app/private_information/private_information.iml" group="PostJson/app/private_information" />
     </modules>
   </component>
 </project>

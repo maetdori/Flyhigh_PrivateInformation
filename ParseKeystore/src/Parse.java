@@ -1,12 +1,10 @@
-import javax.crypto.BadPaddingException;
-import javax.crypto.Cipher;
-import javax.crypto.IllegalBlockSizeException;
-import javax.crypto.NoSuchPaddingException;
+import javax.crypto.*;
 import java.io.*;
 import java.security.*;
 import java.security.cert.CertificateException;
 import java.security.cert.X509Certificate;
 import java.security.spec.InvalidKeySpecException;
+import java.security.spec.KeySpec;
 import java.security.spec.PKCS8EncodedKeySpec;
 import java.security.spec.X509EncodedKeySpec;
 import java.util.Base64;
@@ -69,30 +67,18 @@ public class Parse {
             IllegalBlockSizeException, InvalidKeyException, BadPaddingException,
             NoSuchProviderException, NoSuchPaddingException, InvalidKeySpecException {
         KeyStore keystore = KeyStore.getInstance("PKCS12");
-        InputStream is = new FileInputStream(new File("keystore.p12"));
-        keystore.load(is, "123456".toCharArray());
+        InputStream is = new FileInputStream(new File("signPri.key"));
+        keystore.load(is, "1q2w3e4r5t@".toCharArray());
         String alias = keystore.aliases().nextElement();
-        PrivateKey key = (PrivateKey)keystore.getKey(alias, "123456".toCharArray());
+        PrivateKey key = (PrivateKey)keystore.getKey(alias, "1q2w3e4r5t@".toCharArray());
         System.out.println(alias);
         X509Certificate certificate = (X509Certificate) keystore.
                 getCertificate(alias);
 
-        System.out.println(new String(certificate.getEncoded()));
-        PublicKey publicKey = certificate.getPublicKey();
+        System.out.println(Base64.getEncoder().encodeToString(certificate.getEncoded()));
+        System.out.println(Base64.getEncoder().encodeToString(key.getEncoded()));
 
-        System.out.println(byteArrayToHex(key.getEncoded()));
-        System.out.println(byteArrayToHex(publicKey.getEncoded()));
-        byte[] cipherText = encryptRSA(publicKey.getEncoded(),"hello".getBytes());
-        byte[] result = decryptRSA(key.getEncoded(),cipherText);
-        System.out.println(new String(result));
 
-        Base64.Encoder encoder = Base64.getEncoder();
-        String test = new String(encoder.encode(publicKey.getEncoded()));
-        System.out.println(test);
-        System.out.println(byteArrayToHex(encoder.encode(publicKey.getEncoded())));
-        System.out.println(byteArrayToHex(test.getBytes()));
-        FileOutputStream out = new FileOutputStream("pub.cer");
-        out.write(certificate.getEncoded());
 
     }
 }

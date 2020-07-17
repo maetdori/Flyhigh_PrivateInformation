@@ -1,4 +1,4 @@
-package com.example.module.crypto;
+package com.private_information;
 
 import java.nio.charset.StandardCharsets;
 import java.security.GeneralSecurityException;
@@ -8,7 +8,7 @@ import javax.crypto.Cipher;
 import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
 
-public class AES128Util {
+class AES128Util {
     private byte[] iv;
     private Key keySpec;
     public AES128Util(byte[] key) {

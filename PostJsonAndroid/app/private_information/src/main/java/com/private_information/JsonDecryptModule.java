@@ -1,4 +1,4 @@
-package com.example.module.crypto;
+package com.private_information;
 
 import android.util.Log;
 
@@ -7,12 +7,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.security.GeneralSecurityException;
-import java.util.ArrayList;
-import java.util.Base64;
-import java.util.List;
-import java.util.Map;
 
-public class DecryptModule {
+class JsonDecryptModule {
     private static void dfs(String s, JSONArray parent, AES128Util aes)
             throws GeneralSecurityException, JSONException {
         int pos = s.indexOf("/");
@@ -40,7 +36,7 @@ public class DecryptModule {
             }
         }
     }
-    public static void Decrypt(String element, JSONObject json,AES128Util aes) {
+    static void Decrypt(String element, JSONObject json,AES128Util aes) {
         JSONArray jsonArray = new JSONArray();
         jsonArray.put(json);
         try {
