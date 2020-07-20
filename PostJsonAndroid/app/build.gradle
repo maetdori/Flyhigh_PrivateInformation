@@ -1,3 +1,24 @@
+buildscript {
+
+    repositories {
+        jcenter() // or mavenCentral()
+        mavenCentral()
+        maven {url "https://maven.google.com"}
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.6.3'
+    }
+
+}
+
+allprojects {
+    repositories {
+        google()
+        jcenter()
+
+    }
+}
+
 apply plugin: 'com.android.application'
 
 android {
@@ -24,7 +45,7 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'androidx.appcompat:appcompat:1.1.0'
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
-    testImplementation 'junit:junit:4.12'
+    testImplementation 'junit:junit:4.13'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
     implementation project(path: ':app:private_information')

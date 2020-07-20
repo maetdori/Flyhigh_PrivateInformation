@@ -36,6 +36,7 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import com.private_information.API;
+import com.private_information.APIException;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     private static String SERVER_URL = "https://192.168.10.204:8080";
@@ -192,16 +193,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             //return POST(urls[0],urls[1]);
             try {
                 return API.test(mainAct,urls[0]);
-            }catch (ParseException e) {
-                e.printStackTrace();
-                return "ERR";
-            } catch (GeneralSecurityException e) {
-                e.printStackTrace();
-                return "ERR";
-            } catch (IOException e) {
-                e.printStackTrace();
-                return "ERR";
-            } catch (JSONException e) {
+            } catch (Exception e) {
                 e.printStackTrace();
                 return "ERR";
             }
@@ -224,16 +216,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             //return POST(urls[0],urls[1]);
             try {
                 return API.getListPrivateInformation(mainAct,urls[0], urls[1]);
-            }catch (ParseException e) {
-                e.printStackTrace();
-                return "ERR";
-            } catch (GeneralSecurityException e) {
-                e.printStackTrace();
-                return "ERR";
-            } catch (IOException e) {
-                e.printStackTrace();
-                return "ERR";
-            } catch (JSONException e) {
+            } catch (Exception e) {
                 e.printStackTrace();
                 return "ERR";
             }
@@ -257,20 +240,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             //return POST(urls[0],urls[1]);
             try {
                 return API.getPrivateInformation(mainAct,urls[0], urls[1],urls[2],urls[3],urls[4]);
-            }catch (ParseException e) {
-                e.printStackTrace();
-                return "ERR";
-            } catch (GeneralSecurityException e) {
-                e.printStackTrace();
-                return "ERR";
-            } catch (IOException e) {
-                e.printStackTrace();
-                return "ERR";
-            } catch (JSONException e) {
+            } catch (APIException e) {
                 e.printStackTrace();
                 return "ERR";
             }
-
         }
         // onPostExecute displays the results of the AsyncTask.
         @Override

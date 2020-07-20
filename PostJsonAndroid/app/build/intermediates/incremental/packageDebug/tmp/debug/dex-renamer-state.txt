@@ -1,4 +1,4 @@
-#Fri Jul 17 09:03:34 KST 2020
+#Mon Jul 20 10:21:26 KST 2020
 base.0=C\:\\Users\\jacob\\Desktop\\privateinformation\\PostJsonAndroid\\app\\build\\intermediates\\dex\\debug\\out\\classes.dex
 path.0=classes.dex
 renamed.0=classes.dex

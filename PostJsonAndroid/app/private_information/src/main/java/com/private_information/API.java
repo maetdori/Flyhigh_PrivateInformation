@@ -53,10 +53,10 @@ import javax.net.ssl.SSLContext;
 import javax.net.ssl.SSLSession;
 import javax.net.ssl.TrustManagerFactory;
 public class API {
-    public static final int TYPE_WIFI = 1;
-    public static final int TYPE_MOBILE = 2;
-    public static final int TYPE_NOT_CONNECTED = 3;
-    public static int getConnectivityStatus(Context context) { //해당 context의 서비스를 사용하기위해서 context객체를 받는다.
+    static final int TYPE_WIFI = 1;
+    static final int TYPE_MOBILE = 2;
+    static final int TYPE_NOT_CONNECTED = 3;
+    static int getConnectivityStatus(Context context) { //해당 context의 서비스를 사용하기위해서 context객체를 받는다.
         ConnectivityManager manager = (ConnectivityManager) context.getSystemService(context.CONNECTIVITY_SERVICE);
 
         NetworkInfo networkInfo = manager.getActiveNetworkInfo();
@@ -70,7 +70,7 @@ public class API {
         }
         return TYPE_NOT_CONNECTED;  //연결이 되지않은 상태
     }
-    private static String convertInputStreamToString(InputStream inputStream) {
+    private static String convertInputStreamToString(InputStream inputStream) throws Exception{
         BufferedReader bufferedReader = new BufferedReader( new InputStreamReader(inputStream));
         String line = "";
         String result = "";
@@ -81,7 +81,7 @@ public class API {
         return result;
 
     }
-    private static SSLContext cert(String certPath) {
+    private static SSLContext cert(String certPath) throws Exception{
         // Load CAs from an InputStream
         // (could be from a resource or ByteArrayInputStream or ...)
         CertificateFactory cf = CertificateFactory.getInstance("X.509");
@@ -179,10 +179,9 @@ public class API {
             else
                 result = "Did not work!";
         }
-        catch (IOException e) {
+        catch (Exception e) {
             e.printStackTrace();
-        }
-        finally {
+        } finally {
             httpCon.disconnect();
         }
         return result;
@@ -225,7 +224,7 @@ public class API {
         return certificate;
     }
     private static String POSTSSL(Context context, String url,String... args)
-            throws APIException {
+            throws Exception {
         if(getConnectivityStatus(context) == TYPE_NOT_CONNECTED)
             throw new APIException("NO Internet",APIException.NO_INTERNET);
 
@@ -352,11 +351,11 @@ public class API {
         return result;
     }
 
-    public static String getListPrivateInformation(Context context,String url,String username) {
+    public static String getListPrivateInformation(Context context,String url,String username) throws Exception {
         return POSTSSL(context,url + "/private/getList",username,null);
     }
     public static String getPrivateInformation(Context context, String url, String username,
-                                               String subject, String notBefore, String notAfter) {
+                                               String subject, String notBefore, String notAfter) throws APIException {
         String ret = null;
         try {
             ret = POSTSSL(context,url,username,subject,notBefore,notAfter);
@@ -365,6 +364,8 @@ public class API {
             Log.e("getPrivateInformation","Error while getting Data. get from DB");
             ret = DatabaseManager.getInstance(context).searchByNameFromInfo(subject);
             return ret;
+        } catch (Exception e) {
+            e.printStackTrace();
         }
         try {
             DatabaseManager.getInstance(context).updatePrivateInformation(ret,subject);
@@ -373,7 +374,7 @@ public class API {
         }
         return ret;
     }
-    public static String test(Context context, String url) {
+    public static String test(Context context, String url) throws Exception {
         try {
             return POSTSSL(context,url + "/private/test");
         } catch (APIException e) {
