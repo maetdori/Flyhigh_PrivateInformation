@@ -75,7 +75,8 @@ public class EncryptModule {
         }
         return pairs;
     }
-    private static void dfs(String s, ArrayList<Map<String,Object>> parent, AES128Util aes) throws GeneralSecurityException {
+    @SuppressWarnings("unchecked")
+	private static void dfs(String s, ArrayList<Map<String,Object>> parent, AES128Util aes) throws GeneralSecurityException {
         int pos = s.indexOf("/");
         if(pos == -1) {
             for(Map<String,Object> child : parent)
