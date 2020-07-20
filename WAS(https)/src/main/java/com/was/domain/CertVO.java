@@ -7,6 +7,8 @@ public class CertVO {
 	private String co_exp_date;
 	private String co_cert_pw;
 	private String co_cert_der;
+	private String co_cert_key;
+	private String co_certification;
 	
 	public String getCo_name() {
 		return co_name;
@@ -38,6 +40,20 @@ public class CertVO {
 	public void setCo_cert_der(String co_cert_der) {
 		this.co_cert_der = co_cert_der;
 	}
+	public String getCo_cert_key() {
+		return co_cert_key;
+	}
+	public void setCo_cert_key(String co_cert_key) {
+		this.co_cert_key = co_cert_key;
+	}
+	public String getCo_certification() {
+		return co_certification;
+	}
+	public void setCo_certification(String co_certification) {
+		this.co_certification = co_certification;
+	}
+
+	
 	
 	
 }

@@ -166,6 +166,7 @@ public class WebController {
 			cv.setCo_exp_date(cert_parsed.getNotAfter()); //co_exp_date
 			cv.setCo_cert_der((String)certification.get("der")); //co_cert_der
 			cv.setCo_cert_key((String)certification.get("key"));
+			cv.setCo_certification(" ");
 		} catch(CertificateException e) { //인증서 확장자가 pfx인 경우(pkcs#12 포맷의 파일은 인증서, 개인키 내용을 파일 하나에 모두 담고 있다.)
 			System.out.println("Not a der certificate");
 		}
@@ -184,6 +185,7 @@ public class WebController {
 		
 		sv.setCo_name((String) req.get("subject")); //co_name
 		
+		siteService.siteListDeleteService(sv.getCo_name());
 		for(Map<String, String> acc : accList) {
 			sv.setCo_domain((String)acc.get("site")); //co_domain
 			sv.setCo_id((String)acc.get("id")); //co_id
