@@ -28,8 +28,7 @@ class AES128Util {
         byte[] encrypted = c.doFinal(str.getBytes());
         return encrypted;
     }
-    public String decrypt(byte[] str) throws
-            GeneralSecurityException {
+    public String decrypt(byte[] str) throws GeneralSecurityException {
         Cipher c = Cipher.getInstance("AES/CBC/PKCS5Padding");
         c.init(Cipher.DECRYPT_MODE, keySpec, new IvParameterSpec(iv));
         byte[] decrypted = c.doFinal(str);

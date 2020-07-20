@@ -13,7 +13,7 @@ import java.security.spec.X509EncodedKeySpec;
 
 class RSAModule {
     static byte[] encryptRSA(byte[] key,byte[] input)
-            throws NoSuchPaddingException, NoSuchAlgorithmException, NoSuchProviderException, InvalidKeyException,
+            throws NoSuchPaddingException, NoSuchAlgorithmException, InvalidKeyException,
             BadPaddingException, IllegalBlockSizeException, InvalidKeySpecException {
         Cipher cipher = Cipher.getInstance("RSA/ECB/PKCS1PADDING");
 

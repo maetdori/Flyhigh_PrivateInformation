@@ -1,8 +1,25 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Users\\jacob\\Desktop\\privateinformation\\PostJsonAndroid\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values\\values.xml",
+            "outputFile": "C:\\Users\\jacob\\AndroidStudioProjects\\PostJsonAndroid\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values\\values.xml",
             "map": [
+                {
+                    "source": "C:\\Users\\jacob\\AndroidStudioProjects\\PostJsonAndroid\\app\\src\\main\\res\\values\\colors.xml",
+                    "from": {
+                        "startLines": "4,2,3",
+                        "startColumns": "4,4,4",
+                        "startOffsets": "157,57,105",
+                        "endColumns": "45,46,50",
+                        "endOffsets": "198,99,151"
+                    },
+                    "to": {
+                        "startLines": "152,153,154",
+                        "startColumns": "4,4,4",
+                        "startOffsets": "7643,7689,7736",
+                        "endColumns": "45,46,50",
+                        "endOffsets": "7684,7731,7782"
+                    }
+                },
                 {
                     "source": "C:\\Users\\jacob\\.gradle\\caches\\transforms-2\\files-2.1\\ef8a364a6a39421e69c96cf68eeb3e63\\appcompat-1.1.0\\res\\values\\values.xml",
                     "from": {
@@ -23,22 +40,20 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\jacob\\Desktop\\privateinformation\\PostJsonAndroid\\app\\src\\main\\res\\values\\styles.xml",
+                    "source": "C:\\Users\\jacob\\AndroidStudioProjects\\PostJsonAndroid\\app\\src\\main\\res\\values\\strings.xml",
                     "from": {
-                        "startLines": "3",
+                        "startLines": "1",
                         "startColumns": "4",
-                        "startOffsets": "57",
-                        "endLines": "8",
-                        "endColumns": "12",
-                        "endOffsets": "376"
+                        "startOffsets": "17",
+                        "endColumns": "45",
+                        "endOffsets": "58"
                     },
                     "to": {
-                        "startLines": "415",
+                        "startLines": "407",
                         "startColumns": "4",
-                        "startOffsets": "24764",
-                        "endLines": "420",
-                        "endColumns": "12",
-                        "endOffsets": "25078"
+                        "startOffsets": "24152",
+                        "endColumns": "45",
+                        "endOffsets": "24193"
                     }
                 },
                 {
@@ -99,7 +114,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\jacob\\Desktop\\privateinformation\\PostJsonAndroid\\app\\src\\main\\res\\values\\dimens.xml",
+                    "source": "C:\\Users\\jacob\\AndroidStudioProjects\\PostJsonAndroid\\app\\src\\main\\res\\values\\dimens.xml",
                     "from": {
                         "startLines": "2,3",
                         "startColumns": "4,4",
@@ -116,37 +131,22 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\jacob\\Desktop\\privateinformation\\PostJsonAndroid\\app\\src\\main\\res\\values\\colors.xml",
+                    "source": "C:\\Users\\jacob\\AndroidStudioProjects\\PostJsonAndroid\\app\\src\\main\\res\\values\\styles.xml",
                     "from": {
-                        "startLines": "4,2,3",
-                        "startColumns": "4,4,4",
-                        "startOffsets": "157,57,105",
-                        "endColumns": "45,46,50",
-                        "endOffsets": "198,99,151"
+                        "startLines": "3",
+                        "startColumns": "4",
+                        "startOffsets": "57",
+                        "endLines": "8",
+                        "endColumns": "12",
+                        "endOffsets": "376"
                     },
                     "to": {
-                        "startLines": "152,153,154",
-                        "startColumns": "4,4,4",
-                        "startOffsets": "7643,7689,7736",
-                        "endColumns": "45,46,50",
-                        "endOffsets": "7684,7731,7782"
-                    }
-                },
-                {
-                    "source": "C:\\Users\\jacob\\Desktop\\privateinformation\\PostJsonAndroid\\app\\src\\main\\res\\values\\strings.xml",
-                    "from": {
-                        "startLines": "1",
+                        "startLines": "415",
                         "startColumns": "4",
-                        "startOffsets": "17",
-                        "endColumns": "45",
-                        "endOffsets": "58"
-                    },
-                    "to": {
-                        "startLines": "407",
-                        "startColumns": "4",
-                        "startOffsets": "24152",
-                        "endColumns": "45",
-                        "endOffsets": "24193"
+                        "startOffsets": "24764",
+                        "endLines": "420",
+                        "endColumns": "12",
+                        "endOffsets": "25078"
                     }
                 }
             ]

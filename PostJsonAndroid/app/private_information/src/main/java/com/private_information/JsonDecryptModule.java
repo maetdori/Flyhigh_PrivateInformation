@@ -40,7 +40,7 @@ class JsonDecryptModule {
         JSONArray jsonArray = new JSONArray();
         jsonArray.put(json);
         try {
-            Log.d("Decrypt",element);
+            Log.d("JsonDecryptModule", "decrypt: " + element);
             dfs(element,jsonArray,aes);
         } catch (GeneralSecurityException e) {
             e.printStackTrace();

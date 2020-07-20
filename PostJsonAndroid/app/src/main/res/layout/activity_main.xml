@@ -95,19 +95,24 @@
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:text="GETLIST"/>
+        android:onClick="onClick"
+        android:text="GETLIST" />
+
     <Button
         android:id="@+id/btnGetInfo"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:text="GETINFO"/>
+        android:onClick="onClick"
+        android:text="GETINFO" />
+
     <Button
         android:id="@+id/btnTest"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:text="test"/>
+        android:onClick="onClick"
+        android:text="test" />
     <ScrollView
         android:id="@+id/scrollView1"
         android:layout_width="match_parent"

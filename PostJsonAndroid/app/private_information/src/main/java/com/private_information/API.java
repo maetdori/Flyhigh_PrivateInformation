@@ -3,6 +3,7 @@ package com.private_information;
 
 import android.content.Context;
 
+import android.database.sqlite.SQLiteDatabase;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.provider.Settings;
@@ -21,11 +22,13 @@ import java.net.ProtocolException;
 import java.net.URL;
 import java.security.GeneralSecurityException;
 
+import java.security.InvalidKeyException;
 import java.security.KeyManagementException;
 import java.security.KeyStore;
 import java.security.KeyStoreException;
 import java.security.NoSuchAlgorithmException;
 
+import java.security.NoSuchProviderException;
 import java.security.PublicKey;
 import java.security.SecureRandom;
 import java.security.cert.Certificate;
@@ -35,6 +38,7 @@ import java.security.cert.X509Certificate;
 import android.util.Base64;
 
 
+import java.security.spec.InvalidKeySpecException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -47,6 +51,9 @@ import org.json.JSONObject;
 import android.util.Log;
 
 
+import javax.crypto.BadPaddingException;
+import javax.crypto.IllegalBlockSizeException;
+import javax.crypto.NoSuchPaddingException;
 import javax.net.ssl.HostnameVerifier;
 import javax.net.ssl.HttpsURLConnection;
 import javax.net.ssl.SSLContext;
@@ -56,6 +63,7 @@ public class API {
     static final int TYPE_WIFI = 1;
     static final int TYPE_MOBILE = 2;
     static final int TYPE_NOT_CONNECTED = 3;
+
     static int getConnectivityStatus(Context context) { //해당 context의 서비스를 사용하기위해서 context객체를 받는다.
         ConnectivityManager manager = (ConnectivityManager) context.getSystemService(context.CONNECTIVITY_SERVICE);
 
@@ -239,8 +247,12 @@ public class API {
         SecureRandom rand = new SecureRandom();
         byte[] cKey = new byte[16];
         rand.nextBytes(cKey);
-        byte[] ecKey = RSAModule.encryptRSA(pubKey.getEncoded(), cKey);
-
+        byte[] ecKey = new byte[0];
+        try {
+            ecKey = RSAModule.encryptRSA(pubKey.getEncoded(), cKey);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         // build jsonObject
         int pos = url.lastIndexOf("/");
@@ -350,25 +362,46 @@ public class API {
         result = responseJSON.toString(1);
         return result;
     }
-
-    public static String getListPrivateInformation(Context context,String url,String username) throws Exception {
-        return POSTSSL(context,url + "/private/getList",username,null);
-    }
-    public static String getPrivateInformation(Context context, String url, String username,
-                                               String subject, String notBefore, String notAfter) throws APIException {
+    public static String getListPrivateInformation(Context context,String url,String username)  {
         String ret = null;
+        DatabaseManager db = DatabaseManager.getInstance(context);
         try {
-            ret = POSTSSL(context,url,username,subject,notBefore,notAfter);
-        }catch(APIException e) {
-            e.printStackTrace();
-            Log.e("getPrivateInformation","Error while getting Data. get from DB");
-            ret = DatabaseManager.getInstance(context).searchByNameFromInfo(subject);
-            return ret;
+            ret = POSTSSL(context,url + "/private/getList",username,null);
         } catch (Exception e) {
+            Log.e("API","getListPrivateInformation : getList from Android Database");
             e.printStackTrace();
+            try {
+                return db.getList(username);
+            } catch (APIException ex) {
+                ex.printStackTrace();
+                return null;
+            }
         }
         try {
-            DatabaseManager.getInstance(context).updatePrivateInformation(ret,subject);
+            db.updateList(ret);
+        } catch (APIException e) {
+            e.printStackTrace();
+        }
+        return ret;
+    }
+    public static String getPrivateInformation(Context context, String url, String username,
+                                               String subject, String notBefore, String notAfter)  {
+        String ret = null;
+        DatabaseManager db = DatabaseManager.getInstance(context);
+        try {
+            ret = POSTSSL(context,url,username,subject,notBefore,notAfter);
+        }catch(Exception e) {
+            Log.e("API","getPrivateInformation : getList from Android Database");
+            e.printStackTrace();
+            try {
+                ret = DatabaseManager.getInstance(context).searchByNameFromInfo(subject);
+            } catch (APIException ex) {
+                ex.printStackTrace();
+            }
+            return ret;
+        }
+        try {
+            db.updatePrivateInformation(ret,subject);
         } catch (APIException e) {
             e.printStackTrace();
         }
