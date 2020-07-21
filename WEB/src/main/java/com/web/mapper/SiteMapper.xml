@@ -23,9 +23,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     </select>
     
     <insert id="siteInsert" parameterType="com.web.domain.SiteVO">
-	        INSERT INTO
-	        TB_SITEINFO (CO_NAME, CO_DOMAIN, CO_ID, CO_PW)
-	        VALUES(#{co_name},#{co_domain},#{co_id},#{co_pw})
+        INSERT INTO
+        TB_SITEINFO (CO_NAME, CO_DOMAIN, CO_ID, CO_PW)
+        VALUES(#{co_name},#{co_domain},#{co_id},#{co_pw}) 
     </insert>
  
     <update id="siteUpdate" parameterType="HashMap">

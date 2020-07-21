@@ -53,7 +53,6 @@ public class WebController {
 		resp.setContentType("application/json");
 		resp.addHeader("Location", "http://localhost:8080/private/register");
 		
-		
 		Map<String, Object> response = new HashMap<>(); //리턴할 HashMap
 		
 		insert(req); //데이터베이스에 req를 저장
