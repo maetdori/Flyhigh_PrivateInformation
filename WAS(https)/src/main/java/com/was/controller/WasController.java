@@ -36,11 +36,11 @@ public class WasController {
 		
 		for(CertVO c : certList) {
 			Map<String, String> validity = new HashMap<>(); //Validity Map
-			validity.put("NotBefore", c.getCo_active_date());
-			validity.put("NotAfter", c.getCo_exp_date());
+			validity.put("notBefore", c.getCo_active_date());
+			validity.put("notAfter", c.getCo_exp_date());
 			Map<String, Object> account = new HashMap<>(); //Account Map
-			account.put("Subject", c.getCo_name());
-			account.put("Validity", validity);
+			account.put("subject", c.getCo_name());
+			account.put("validity", validity);
 			accList.add(account);
 		}
 	
@@ -54,7 +54,7 @@ public class WasController {
 	@ResponseBody
 	public Map<String, Object> getInfo(@RequestBody Map<String, Object> req) throws Exception {
 		
-		String co_name = (String) req.get("Subject"); //request의 subject값을 co_name에 저장
+		String co_name = (String) req.get("subject"); //request의 subject값을 co_name에 저장
 		
 		CertVO cert = wasService.certSearchService(co_name); //찾은 인증서(CertVO 타입)
 		List<SiteVO> siteList = wasService.siteListService(co_name); //찾은 사이트 리스트(SiteVo 타입)

@@ -240,7 +240,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             //return POST(urls[0],urls[1]);
             try {
                 return API.getPrivateInformation(mainAct,urls[0], urls[1],urls[2],urls[3],urls[4]);
-            } catch (APIException e) {
+            } catch (Exception e) {
                 e.printStackTrace();
                 return "ERR";
             }
