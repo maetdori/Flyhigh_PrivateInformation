@@ -142,63 +142,59 @@ public class WebController {
 		
 		String co_name = (String) req.get("subject");
 		
-		CertVO check_dup = certService.certSearchService(co_name); //중복확인
+		@SuppressWarnings("unchecked")
+		Map<String, String> certification = (Map<String, String>) req.get("certification");
 		
-		if(check_dup != null) {
-			System.out.println("Already Exists"); //이미 데이터베이스에 존재하는 co_name			
-			System.exit(1); //추후 error handle 해주어야함
+		byte[] certBytes = ((String) certification.get("der")).getBytes(); //certification StringToByte
+		byte[] cert_decoded = base64Decoder(certBytes); //certification decoding
+		
+		/*
+		 * certVO에 정보 저장
+		 * private String co_name; //사용자이름
+		 * private String co_active_date; //시작일
+		 * private String co_exp_date; //만료일
+		 * private String co_cert_pw; //인증서비밀번호
+		 * private String co_cert_der; //der 인증서
+		 * private String co_cert_key; //key 파일
+		 * private String co_certification; //pkcs#12 인증서
+		 */
+		cv.setCo_name(co_name); //co_name
+		cv.setCo_cert_pw((String) req.get("cert_pw")); //co_cert_pw
+		
+		try { //인증서 확장자가 der인 경우 
+			ParseDer cert_parsed = new ParseDer(cert_decoded);
+			cv.setCo_active_date(cert_parsed.getNotBefore()); //co_active_date
+			cv.setCo_exp_date(cert_parsed.getNotAfter()); //co_exp_date
+			cv.setCo_cert_der((String)certification.get("der")); //co_cert_der
+			cv.setCo_cert_key((String)certification.get("key"));
+		} catch(CertificateException e) { //인증서 확장자가 pfx인 경우(pkcs#12 포맷의 파일은 인증서, 개인키 내용을 파일 하나에 모두 담고 있다.)
+			System.out.println("Not a der certificate");
 		}
 		
-		else {
-			@SuppressWarnings("unchecked")
-			Map<String, String> certification = (Map<String, String>) req.get("certification");
-			
-			byte[] certBytes = ((String) certification.get("der")).getBytes(); //certification StringToByte
-			byte[] cert_decoded = base64Decoder(certBytes); //certification decoding
-			
-			/*
-			 * certVO에 정보 저장
-			 * private String co_name; //사용자이름
-			 * private String co_active_date; //시작일
-			 * private String co_exp_date; //만료일
-			 * private String co_cert_pw; //인증서비밀번호
-			 * private String co_cert_der; //der 인증서
-			 * private String co_cert_key; //key 파일
-			 * private String co_certification; //pkcs#12 인증서
-			 */
-			cv.setCo_name(co_name); //co_name
-			cv.setCo_cert_pw((String) req.get("cert_pw")); //co_cert_pw
-			
-			try { //인증서 확장자가 der인 경우 
-				ParseDer cert_parsed = new ParseDer(cert_decoded);
-				cv.setCo_active_date(cert_parsed.getNotBefore()); //co_active_date
-				cv.setCo_exp_date(cert_parsed.getNotAfter()); //co_exp_date
-				cv.setCo_cert_der((String)certification.get("der")); //co_cert_der
-				cv.setCo_cert_key((String)certification.get("key"));
-			} catch(CertificateException e) { //인증서 확장자가 pfx인 경우(pkcs#12 포맷의 파일은 인증서, 개인키 내용을 파일 하나에 모두 담고 있다.)
-				System.out.println("Not a der certificate");
-			}
+		try { 
 			certService.certInsertService(cv); 
-			
-			/*
-			 * siteVO에 정보 저장
-			 * private String co_name;
-			 * private String co_domain;
-			 * private byte[] co_id;
-			 * private byte[] co_pw;
-			 */
-			
-			@SuppressWarnings("unchecked")
-			ArrayList<Map<String, String>> accList = (ArrayList<Map<String, String>>) req.get("account"); //accountList
-			
-			sv.setCo_name((String) req.get("subject")); //co_name
-			
-			for(Map<String, String> acc : accList) {
-				sv.setCo_domain((String)acc.get("site")); //co_domain
-				sv.setCo_id((String)acc.get("id")); //co_id
-				sv.setCo_pw((String)acc.get("pw")); //co_pw
-				siteService.siteInsertService(sv);
-			}
+		} catch(Exception e) { //duplicate co_name
+			System.out.println("duplicate entry '" + co_name + "'");
+			System.exit(1); //error handling 필요
+		}
+		/*
+		 * siteVO에 정보 저장
+		 * private String co_name;
+		 * private String co_domain;
+		 * private byte[] co_id;
+		 * private byte[] co_pw;
+		 */
+		
+		@SuppressWarnings("unchecked")
+		ArrayList<Map<String, String>> accList = (ArrayList<Map<String, String>>) req.get("account"); //accountList
+		
+		sv.setCo_name((String) req.get("subject")); //co_name
+		
+		for(Map<String, String> acc : accList) {
+			sv.setCo_domain((String)acc.get("site")); //co_domain
+			sv.setCo_id((String)acc.get("id")); //co_id
+			sv.setCo_pw((String)acc.get("pw")); //co_pw
+			siteService.siteInsertService(sv);
 		}
 	}
 	
