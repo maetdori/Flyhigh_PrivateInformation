@@ -57,6 +57,8 @@ public class WebController {
 		
 		insert(req); //데이터베이스에 req를 저장
 		
+		String co_name = (String)req.get("subject");
+		
 		Map<String, String> validity = new HashMap<>(); //validity map
 		validity.put("notBefore", cv.getCo_active_date());
 		validity.put("notAfter", cv.getCo_exp_date());
@@ -64,7 +66,7 @@ public class WebController {
 		response.put("registerDate", currentDate);
 		response.put("subject", cv.getCo_name());
 		response.put("validity", validity);
-		response.put("count", (int) req.get("count"));
+		response.put("count", siteService.siteListService(co_name).size());
 		
 		return response;
 	}
