@@ -8,6 +8,7 @@
 	<title>Register</title>
 	<link rel="stylesheet" href="/webjars/bootstrap/4.1.0/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="/css/Home.css">
+<<<<<<< HEAD
 	<script src="/webjars/jquery/3.3.1/jquery.min.js"></script>
 	<script src="/webjars/bootstrap/4.1.0/js/bootstrap.min.js"></script>
 	
@@ -40,6 +41,8 @@
  	});
  	
 	</script>
+=======
+>>>>>>> 5aacec6ed8a2d42c50de466845e048b783ad2925
 </head>
 
 <body class="my-Home-page">
@@ -56,6 +59,7 @@
 							인증서 등록
 							<p></p>
 							</h4>
+<<<<<<< HEAD
 								<div class="form-group has-feedback">
 									<label class="control-label" for="co_name"><strong>성명(영문)</strong></label>
 									<input class="form-control" type="text" id="co_name" name="co_name" placeholder="Name" autofocus required/>
@@ -63,6 +67,16 @@
 								<div class="form-group has-feedback">
 									<label class="control-label" for="co_cert_pw"><strong>인증서 비밀번호</strong></label>
 									<input class="form-control" type="password" id="co_cert_pw" name="co_cert_pw" placeholder="Certificate Password" required/>
+=======
+							<form method="POST">
+								<div class="form-group has-feedback">
+									<label class="control-label" for="co_name">성명(영문)</label>
+									<input class="form-control" type="text" id="co_name" name="co_name" />
+								</div>
+								<div class="form-group has-feedback">
+									<label class="control-label" for="co_cert_pw">인증서 비밀번호</label>
+									<input class="form-control" type="password" id="co_cert_pw" name="co_cert_pw" />
+>>>>>>> 5aacec6ed8a2d42c50de466845e048b783ad2925
 								</div>
 								<div class="form-group has-feedback" id="certs">
 									<label class="control-label" for="co_cert_der">인증서</label>
@@ -73,6 +87,7 @@
 										<input class="form-control" type="file" id="co_cert_der" name="co_cert_der" accept=".der" />
 										<label class="control-label" for="co_cert_key">key</label>
 										<input class="form-control" type="file" id="co_cert_key" name="co_cert_key" accept=".key" /></div></div>
+<<<<<<< HEAD
 								<div style="width:100%; height:200px; overflow:auto">
 									<table id="accountTable" class="table" style="margin-top: 20px;">
 										<colgroup>
@@ -105,6 +120,29 @@
 					</div>
 				<div class="footer">
 					Copyright © <a href="https://www.flyhigh-x.com/" class="badge badge-info">FLYHIGH</a> 2020
+=======
+								<div class="form-group has-feedback">
+									<label class="control-label" for="account">계정</label>
+									<input type ="button" value="+"  onclick="addSite()" style="WIDTH: 20pt;"/>
+									<input type ="button" value="-"  onclick="deleteSite()" style="WIDTH: 20pt;"/></div>
+								<div id ="sites">
+									<div>
+										<input class="form-control" type="text" id="co_domain" name="co_domain" placeholder="url" />
+										<input class="form-control" type="text" id="co_id" name="co_id" placeholder="id"/>
+										<input class="form-control" type="text" id="co_pw" name="co_pw" placeholder="pw"/>
+										<hr/>
+									</div>
+								</div>
+								<div class="form-group has-feedback">
+										<input type="button" value="등록" class="btn btn-info btn-block" onclick="register()"/>
+								</div>
+							</form>
+						</div>
+					</div>
+					<div class="footer">
+						Copyright © <a href="https://www.flyhigh-x.com/" class="badge badge-info">FLYHIGH</a> 2020
+					</div>
+>>>>>>> 5aacec6ed8a2d42c50de466845e048b783ad2925
 				</div>
 			</div>
 		</div>
@@ -294,7 +332,10 @@
 			//href
 		}
 		
+<<<<<<< HEAD
 		/*
+=======
+>>>>>>> 5aacec6ed8a2d42c50de466845e048b783ad2925
 		function addSite() {
 			var sites = document.getElementById("sites");
 			var newDomain = document.createElement("div");
@@ -327,7 +368,10 @@
 	        if (sites.childElementCount > 1)
 	           sites.removeChild(sites.lastChild);
 		}
+<<<<<<< HEAD
 		*/
+=======
+>>>>>>> 5aacec6ed8a2d42c50de466845e048b783ad2925
 	</script>
 
 	<script src="/webjars/jquery/3.3.1/jquery.min.js"></script>

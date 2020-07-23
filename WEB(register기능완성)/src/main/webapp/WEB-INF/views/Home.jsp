@@ -23,7 +23,11 @@
 					<div class="card fat">
 						<div class="card-body">
 							<h4 class="card-title text-center text-dark">
+<<<<<<< HEAD
 							Welcome to OmniDoc Demo
+=======
+							인증서 관리
+>>>>>>> 5aacec6ed8a2d42c50de466845e048b783ad2925
 							<p></p>
 							</h4>
 							<table border="1">
@@ -47,6 +51,7 @@
 							            <td><%= cert.getCo_cert_pw() %> </td>
 							        </tr>
 							<% } %>
+<<<<<<< HEAD
 							</table>
 							<div class="form-group margin-top20">
 								<button type="button" class="btn btn-info btn-block" id="btnRegister"
@@ -59,6 +64,20 @@
 								<button type="button" class="btn btn-info btn-block" id="btnDelete">
 									인증서 삭제
 								</button>
+=======
+							    </table>
+							<div class="form-group margin-top20">
+								<form action='/registerPage' >
+									<button type="submit" class="btn btn-info btn-block" id="btnRegister">
+										인증서 등록
+									</button>
+								</form>
+								<form>
+									<button  type="button" class="btn btn-info btn-block" id="btnDelete">
+										인증서 삭제
+									</button>
+								</form>
+>>>>>>> 5aacec6ed8a2d42c50de466845e048b783ad2925
 							</div>
 						</div>
 					</div>
