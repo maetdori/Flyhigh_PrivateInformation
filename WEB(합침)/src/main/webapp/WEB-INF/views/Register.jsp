@@ -65,13 +65,13 @@
 									<input class="form-control" type="password" id="co_cert_pw" name="co_cert_pw" placeholder="Certificate Password" required/>
 								</div>
 								<div class="form-group has-feedback" id="certs">
-									<label class="control-label" for="co_cert_der">인증서</label>
+									<label class="control-label" for="co_cert_der"><strong>인증서</strong></label>
 									<input type="radio" name="cert_type" value="der/key" checked="checked"/> der/key
 									<input type="radio" name="cert_type" value="pfx"  /> pfx
 									<div>
-										<label class="control-label" for="co_cert_der">der</label>
+										<label class="control-label" for="co_cert_der"><strong>der</strong></label>
 										<input class="form-control" type="file" id="co_cert_der" name="co_cert_der" accept=".der" />
-										<label class="control-label" for="co_cert_key">key</label>
+										<label class="control-label" for="co_cert_key"><strong>key</strong></label>
 										<input class="form-control" type="file" id="co_cert_key" name="co_cert_key" accept=".key" /></div></div>
 								<div style="width:100%; height:200px; overflow:auto">
 									<table id="accountTable" class="table" style="margin-top: 20px;">
@@ -103,8 +103,6 @@
 							</div>
 						</div>
 					</div>
-				<div class="footer">
-					Copyright © <a href="https://www.flyhigh-x.com/" class="badge badge-info">FLYHIGH</a> 2020
 				</div>
 			</div>
 		</div>
