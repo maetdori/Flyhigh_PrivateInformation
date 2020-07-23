@@ -78,8 +78,11 @@ public class EncryptModule {
     private static void dfs(String s, ArrayList<Map<String,Object>> parent, AES128Util aes) throws GeneralSecurityException {
         int pos = s.indexOf("/");
         if(pos == -1) {
-            for(Map<String,Object> child : parent)
+            for(Map<String,Object> child : parent) {
+            	System.out.println("[dfs] s : " + s);
+            	System.out.println("[dfs] child.get(s) : " + child.get(s));
                 child.put(s,Base64.getEncoder().encodeToString(aes.encrypt((String) child.get(s))));
+            }
         } else {
             String token = s.substring(0,pos);
             String ss = s.substring(pos + 1);
@@ -103,7 +106,7 @@ public class EncryptModule {
             throws CertificateEncodingException {
         X509Certificate certificate = (X509Certificate) loadCertFromKeyStore("keystore2.p12","123456");
         Map<String,String> ret = new HashMap<>();
-        ret.put("Cert-base64",new String(Base64.getEncoder().encode(certificate.getEncoded())));
+        ret.put("cert_base64",new String(Base64.getEncoder().encode(certificate.getEncoded())));
         return ret;
     }
 
@@ -111,8 +114,11 @@ public class EncryptModule {
                                               Map<String,Object> reqParam,Map<String,Object> response) {
         SecureRandom rand = new SecureRandom();
         String sPubKey = new String(loadCertFromKeyStore(keystorePath,passWord).getPublicKey().getEncoded());
+        
         String cPubKey = new String(Base64.getDecoder().decode((String) reqParam.get("pubKey")));
         if(!sPubKey.equals(cPubKey)) {
+        	System.err.println("sPubkey : " + sPubKey);
+        	System.err.println("cPubkey : " + cPubKey);
             PublicKeyIncorrectException e = new PublicKeyIncorrectException("PublicKey Incorrect");
             throw e;
         }

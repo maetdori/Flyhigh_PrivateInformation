@@ -60,7 +60,6 @@ public class WasController {
 		List<SiteVO> siteList = wasService.siteListService(co_name); //찾은 사이트 리스트(SiteVo 타입)
 		ArrayList<Map<String, Object>> countList = new ArrayList<>(); //count 리스트
 		Map<String, Object> response = new HashMap<>(); //리턴할 HashMap
-		
 		for(SiteVO s : siteList) {
 			Map<String, Object> count = new HashMap<>(); //Count Map
 			count.put("site", s.getSite());
@@ -68,13 +67,35 @@ public class WasController {
 			count.put("pw", s.getPw());
 			countList.add(count);
 		}
-		
+		System.out.println("cert_pw : " + cert.getCo_cert_pw());
+		response.put("account", countList);
+		response.put("count", siteList.size());
 		response.put("cert_pw", cert.getCo_cert_pw());
-		response.put("certification", cert.getCo_cert_der());
-		response.put("count", countList);
+		Map<String,String> certification = new HashMap<>();
+		String der = cert.getCo_cert_der();
+		int cert_type = 0;
+		if(der != "") {
+			cert_type = 1;
+			certification.put("der", der);
+			certification.put("key", cert.getCo_cert_key());
+			certification.put("pfx", null);
+			response.put("certification", certification);
+			response.put("cert_type", cert_type);
+			EncryptModule.encrypt("keystore2.p12","123456",
+					new String[] {"cert_pw", "certification/der","certification/key", "account/site", "account/id", "account/pw"},req,response);
+		}
+		else {
+			cert_type = 2;
+			certification.put("der", null);
+			certification.put("key", null);
+			certification.put("pfx", cert.getCo_certification());
+			response.put("certification", certification);
+			response.put("cert_type", cert_type);
+			EncryptModule.encrypt("keystore2.p12","123456",
+					new String[] {"cert_pw", "certification/pfx", "count/site", "count/id", "count/pw"},req,response);
+		}
 		
-		EncryptModule.encrypt("keystore2.p12","123456",
-				new String[] {"cert_pw", "certification", "count/site", "count/id", "count/pw"},req,response);
+		
 		
 		return response;
 	}
