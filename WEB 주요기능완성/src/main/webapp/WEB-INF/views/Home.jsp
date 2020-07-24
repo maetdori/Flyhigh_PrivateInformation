@@ -55,7 +55,7 @@
 									</button>
 								</form>
 								<form>
-									<button  type="button" class="btn btn-info btn-block" id="btnDelete">
+									<button  type="button" class="btn btn-info btn-block" id="btnDelete" onclick="deleteFunc()">
 										인증서 삭제
 									</button>
 								</form>
@@ -76,15 +76,26 @@
 </body>
 
 <script type="text/javascript">
-	function delete() {
+	function deleteFunc() {
 		
 		var checkbox = $("input:checkbox[name=co_name]:checked");
-		
-		checkbox.each(function (i) {
+		console.log(checkbox);
+		$.each(checkbox,function (i,item) {
 			var tr = checkbox.parent().parent().eq(i);
 			
+			console.log(i);
+			console.log(item);
+			
+			var co_name = $(item).attr("value");
+			console.log(co_name);
+			var request = new Object();
+			request.subject = co_name;
+			
+			console.log("request:\n" + JSON.stringify(request));
+			
+			
 			//fetch
-			fetch('/private/modify',{
+			fetch('/private/delete',{
 		        method: 'POST', // *GET, POST, PUT, DELETE, etc.
 		        mode: 'cors', // no-cors, cors, *same-origin
 		        cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
@@ -103,11 +114,10 @@
 				  //do something with json
 			    console.log("response: \n" + JSON.stringify(myJson));
 			  });
-			
 			tr.remove();
 		});
 		
-		
+		//refresh to see result
 		
 	}
 </script>
