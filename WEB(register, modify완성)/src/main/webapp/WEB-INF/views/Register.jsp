@@ -47,7 +47,7 @@
 								<div id ="sites"></div>
 								<input type ="button" value="+"  onclick="addSite()" style="WIDTH: 30pt; margin-bottom: 10px"/>
 								<div class="form-group has-feedback">
-										<input type="button" value="등록" class="btn btn-info btn-block" onclick="register()"/>
+										<input type="button" value="등록" class="btn btn-info btn-block" onclick="register(); window.open('/');"/>
 								</div>
 							</form>
 						</div>
