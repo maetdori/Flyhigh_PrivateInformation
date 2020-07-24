@@ -47,7 +47,7 @@
 								<div id ="sites"></div>
 								<input type ="button" value="+"  onclick="addSite()" style="WIDTH: 30pt; margin-bottom: 10px"/>
 								<div class="form-group has-feedback">
-										<input type="button" value="등록" class="btn btn-info btn-block" onclick="register(); window.open('/');"/>
+										<input type="button" value="등록" class="btn btn-info btn-block" onclick="register();"/>
 								</div>
 							</form>
 						</div>
@@ -265,10 +265,9 @@
 			  .then(function(myJson) {
 				  //do something with json
 			    console.log("response: \n" + JSON.stringify(myJson));
+				window.location.href="/"; 
 			  });
 			
-			
-			//href
 		}
 		
 		function addSite() {

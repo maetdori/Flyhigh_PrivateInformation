@@ -113,12 +113,17 @@ public class WebController {
 		String co_name = (String)req.get("subject");
 		Map<String, String> response = new HashMap<>(); //리턴할 HashMap
 		
-		certService.certDeleteService(co_name);
-		siteService.siteListDeleteService(co_name);
-		
-		response.put("subject", co_name);
-		
-		return response;
+		//if(certService.certSearchService(co_name)==null) {
+			//
+		//}
+		//else {
+			certService.certDeleteService(co_name);
+			siteService.siteListDeleteService(co_name);
+			
+			response.put("subject", co_name);
+			
+			return response;
+		//}
 	}
 	
 	//certRegister()에서 호출하는 메소드
