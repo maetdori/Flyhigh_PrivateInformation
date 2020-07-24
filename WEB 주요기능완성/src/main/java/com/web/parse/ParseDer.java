@@ -17,7 +17,7 @@ public class ParseDer{
 	private String notBefore;
 	private String notAfter;
 	
-	public ParseDer(byte[] certBytes) throws CertificateException, IOException, KeyStoreException, NoSuchAlgorithmException, UnrecoverableKeyException {
+	public ParseDer(byte[] certBytes) throws CertificateException  {
 		
 		SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");
 		InputStream is = new ByteArrayInputStream(certBytes);
@@ -28,7 +28,7 @@ public class ParseDer{
 		this.notAfter = format.format(certificate.getNotAfter());	
 		
 	}
-public ParseDer(X509Certificate certificate) throws CertificateException, IOException, KeyStoreException, NoSuchAlgorithmException, UnrecoverableKeyException {
+public ParseDer(X509Certificate certificate) {
 		
 		SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");
 		

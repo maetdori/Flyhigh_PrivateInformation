@@ -72,39 +72,48 @@
 </body>
 
 <script type="text/javascript">
-	function delete() {
+function deleteFunc() {
+	var checkbox = $("input:checkbox[name=co_name]:checked");
+	console.log(checkbox);
+	$.each(checkbox,function (i,item) {
+		var tr = checkbox.parent().parent().eq(i);
 		
-		var checkbox = $("input:checkbox[name=co_name]:checked");
+		console.log(i);
+		console.log(item);
 		
-		checkbox.each(function (i) {
-			var tr = checkbox.parent().parent().eq(i);
+		var co_name = $(item).attr("value");
+		console.log(co_name);
+		var request = new Object();
+		request.subject = co_name;
+		
+		console.log("request:\n" + JSON.stringify(request));
+		
+		
+		//fetch
+		fetch('/private/delete',{
+	        method: 'POST', // *GET, POST, PUT, DELETE, etc.
+	        mode: 'cors', // no-cors, cors, *same-origin
+	        cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+	        credentials: 'same-origin', // include, *same-origin, omit
+	        headers: {
+	            'Content-Type': 'application/json'
+	        },
+	        redirect: 'follow', // manual, *follow, error
+	        referrer: 'no-referrer', // no-referrer, *client
+	        body: JSON.stringify(request) // body data type must match "Content-Type" header
+	    }) // private/register로 request 보냄
+		  .then(function(response) {
+		    return response.json(); //response를 json객체로
+		  })
+		  .then(function(myJson) {
+			  //do something with json
+		    console.log("response: \n" + JSON.stringify(myJson));
 			
-			//fetch
-			fetch('/private/modify',{
-		        method: 'POST', // *GET, POST, PUT, DELETE, etc.
-		        mode: 'cors', // no-cors, cors, *same-origin
-		        cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
-		        credentials: 'same-origin', // include, *same-origin, omit
-		        headers: {
-		            'Content-Type': 'application/json'
-		        },
-		        redirect: 'follow', // manual, *follow, error
-		        referrer: 'no-referrer', // no-referrer, *client
-		        body: JSON.stringify(request) // body data type must match "Content-Type" header
-		    }) // private/register로 request 보냄
-			  .then(function(response) {
-			    return response.json(); //response를 json객체로
-			  })
-			  .then(function(myJson) {
-				  //do something with json
-			    console.log("response: \n" + JSON.stringify(myJson));
-			  });
-			
-			tr.remove();
-		});
-		
-		
-		
-	}
+		  });
+	});
+	
+	//refresh to see result
+	
+}
 </script>
 </html>
