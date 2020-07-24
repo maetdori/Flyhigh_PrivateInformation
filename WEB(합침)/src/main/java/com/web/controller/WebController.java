@@ -118,6 +118,7 @@ public class WebController {
 	
 	@PostMapping("/delete")
 	@ResponseBody
+	//subject json의 arrayList로 받아와서 for loop으로 delete 실행 ..
 	private Map<String, String> certDelete(@RequestBody Map<String, Object> req, HttpServletResponse resp) throws Exception {
 		
 		resp.setContentType("application/json");

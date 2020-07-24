@@ -31,7 +31,6 @@ public class HomeController {
 	    @RequestMapping(value="/modifyPage")
 	    public String modifyPage() {
 	    	System.out.println("modify");
-	    	
 	        return "Modify";
 	    }
 }

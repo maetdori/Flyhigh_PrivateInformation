@@ -37,11 +37,9 @@
 								    <tbody>
 									<%for(CertVO cert : list){%>
 								        <tr>
-								        	<td style="text-align:center;"><input type="checkbox" name="co_name" value=<%= cert.getCo_name() %>></td>
+								        	<td style="text-align:center;"><input type="checkbox" id="co_name" name="co_name" value=<%= cert.getCo_name() %>></td>
 								        	<td><label for="checkbox"><%= cert.getCo_name() %></label></td>
-								            <td>
-									            <!-- <a href='/modifyPage'><%= cert.getCo_name() %></a> -->
-								            </td>
+								            <!-- <td><a href='/modifyPage'><%= cert.getCo_name() %></a></td>  -->
 								        </tr>
 									<%}%>
 									</tbody>
@@ -55,7 +53,7 @@
 								<button type="button" class="btn btn-info btn-block" id="btnModify">
 									인증서 수정
 								</button>
-								<button type="button" class="btn btn-info btn-block" id="btnDelete">
+								<button type="button" class="btn btn-info btn-block" id="btnDelete" onclick="delete()">
 									인증서 삭제
 								</button>
 							</div>
@@ -68,6 +66,27 @@
 			</div>
 		</div>
 	</section>
+	
+	<script language=javascript> 
+		function delete() {
+			var cnt = $("input[name='co_name']:checked").length; //count checked element 
+			var checkedList = new ArrayList(); //체크된 co_name을 담을 arrList
+			$("input[name='co_name']:checked").each(function() { 
+				checkedList.push($(this).val()); //체크된 co_name을 arr에 push
+			});
+			if(cnt == 0) {
+				alert("삭제할 항목을 선택하세요.");
+			}
+			else {
+				for (var i in checkedList) {
+					fetch('/private/delete',{
+				        method: 'POST', // *GET, POST, PUT, DELETE, etc.
+					}
+				}
+			}
+		}
+	</script>
+	
 	<script src="/webjars/jquery/3.3.1/jquery.min.js"></script>
 	<script src="/webjars/bootstrap/4.1.0/js/bootstrap.min.js"></script>
 

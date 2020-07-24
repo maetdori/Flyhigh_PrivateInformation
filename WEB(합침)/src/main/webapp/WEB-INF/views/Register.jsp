@@ -74,29 +74,44 @@
 										<label class="control-label" for="co_cert_key"><strong>key</strong></label>
 										<input class="form-control" type="file" id="co_cert_key" name="co_cert_key" accept=".key" /></div></div>
 								<div style="width:100%; height:200px; overflow:auto">
-									<table id="accountTable" class="table" style="margin-top: 20px;">
-										<colgroup>
-											<col width="45%"/>
-											<col width="25%"/>
-											<col width="25%"/>
-										</colgroup>
+									<!-- 
+									<table id="accountTable" class="table"  style="margin-top: 20px;">
 										<thead>
 											<tr>
 												<th>도메인 이름</th>
-												<th>ID</th>
-												<th>PW</th>
 												<th></th>
 											</tr>
 										</thead>
 										<tbody id="accountTbody">
 											<tr>
 												<td><input class="form-control form-control-sm" type="text" id="co_domain" name="co_domain" placeholder="Domain" required></td>
+											</tr>
+											<tr>
 												<td><input class="form-control form-control-sm" type="text" id="co_id" name="co_id" placeholder="ID" required></td>
 												<td><input class="form-control form-control-sm" type="password" id="co_pw" name="co_pw" placeholder="PW" required></td>
 												<td></td>
 											</tr>  
 										</tbody>
 									</table>
+									-->
+									
+									<div class="form-group has-feedback">
+										<label class="control-label" for="account"><strong>계정</strong></label>
+									</div>
+									<div id="sites">
+										<div>
+											<input class="form-control" type="text" id="co_domain" name="co_domain" placeholder="Domain Name" />
+											<p></p>
+										</div>
+										<form class="form-inline">
+											<div class="input-group">
+												<input class="form-control" type="text" id="co_id" name="co_id" placeholder="ID" style="width:163px"/><p>&nbsp;&nbsp;&nbsp;</p>
+												<span class="form-group">
+													<input class="form-control" type="text" id="co_pw" name="co_pw" width="50px" placeholder="PW" style="width:163px"/>
+												</span>
+											</div>
+										</form>
+									</div>
 									<input type="button" value="추가" id="add">
 								</div>
 								<input class="btn btn-info btn-block" type="submit" value="등록" onclick="register()" />
