@@ -21,33 +21,32 @@
 						<img src="/img/logo.png">
 					</div>
 					<div class="card fat">
-						<div class="card-body">
+						<div class="card-body" align="center">
 							<h4 class="card-title text-center text-dark">
 							Welcome to OmniDoc Demo
 							<p></p>
 							</h4>
-							<table border="1">
-						        <tr>
-						        	<th>  </th>
-						            <th> subject </th>
-						            <th> cert_pw </th>
-						            <th> not_before </th>
-						            <th> not_after </th>
-						        </tr>
-							<%
-							    for( CertVO cert : list){
-							%>
-							        <tr>
-							        	<td><input type="checkbox" name="co_name" value=<%= cert.getCo_name() %>>
-							            <td>
-								            <a href='/modifyPage'>
-								            	<%= cert.getCo_name() %>
-								            </a>
-							            </td>
-							            <td><%= cert.getCo_cert_pw() %> </td>
-							        </tr>
-							<% } %>
-							</table>
+						    <div style="width:90%; height:200px; overflow:auto">
+								<table class="table table-striped table-hover">
+									<thead>
+								        <tr>
+								        	<th width="40%"></th>
+								            <th width="60%">인증서목록</th>
+								        </tr>
+								    </thead>
+								    <tbody>
+									<%for(CertVO cert : list){%>
+								        <tr>
+								        	<td style="text-align:center;"><input type="checkbox" name="co_name" value=<%= cert.getCo_name() %>></td>
+								        	<td><label for="checkbox"><%= cert.getCo_name() %></label></td>
+								            <td>
+									            <!-- <a href='/modifyPage'><%= cert.getCo_name() %></a> -->
+								            </td>
+								        </tr>
+									<%}%>
+									</tbody>
+								</table>
+							</div>
 							<div class="form-group margin-top20">
 								<button type="button" class="btn btn-info btn-block" id="btnRegister"
 										onclick="location.href='/registerPage'">
@@ -69,7 +68,6 @@
 			</div>
 		</div>
 	</section>
-
 	<script src="/webjars/jquery/3.3.1/jquery.min.js"></script>
 	<script src="/webjars/bootstrap/4.1.0/js/bootstrap.min.js"></script>
 

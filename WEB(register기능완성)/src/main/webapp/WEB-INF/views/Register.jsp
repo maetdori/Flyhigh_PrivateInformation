@@ -41,8 +41,6 @@
  	});
  	
 	</script>
-=======
->>>>>>> 5aacec6ed8a2d42c50de466845e048b783ad2925
 </head>
 
 <body class="my-Home-page">
