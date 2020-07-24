@@ -23,11 +23,7 @@
 					<div class="card fat">
 						<div class="card-body">
 							<h4 class="card-title text-center text-dark">
-<<<<<<< HEAD
-							Welcome to OmniDoc Demo
-=======
 							인증서 관리
->>>>>>> 5aacec6ed8a2d42c50de466845e048b783ad2925
 							<p></p>
 							</h4>
 							<table border="1">
@@ -44,27 +40,13 @@
 							        <tr>
 							        	<td><input type="checkbox" name="co_name" value=<%= cert.getCo_name() %>>
 							            <td>
-								            <a href='/modifyPage'>
+								            <a href='/modifyPage?co_name=<%= cert.getCo_name() %>'>
 								            	<%= cert.getCo_name() %>
 								            </a>
 							            </td>
 							            <td><%= cert.getCo_cert_pw() %> </td>
 							        </tr>
 							<% } %>
-<<<<<<< HEAD
-							</table>
-							<div class="form-group margin-top20">
-								<button type="button" class="btn btn-info btn-block" id="btnRegister"
-										onclick="location.href='/registerPage'">
-									인증서 등록
-								</button>
-								<button type="button" class="btn btn-info btn-block" id="btnModify">
-									인증서 수정
-								</button>
-								<button type="button" class="btn btn-info btn-block" id="btnDelete">
-									인증서 삭제
-								</button>
-=======
 							    </table>
 							<div class="form-group margin-top20">
 								<form action='/registerPage' >
@@ -77,7 +59,6 @@
 										인증서 삭제
 									</button>
 								</form>
->>>>>>> 5aacec6ed8a2d42c50de466845e048b783ad2925
 							</div>
 						</div>
 					</div>
@@ -93,4 +74,41 @@
 	<script src="/webjars/bootstrap/4.1.0/js/bootstrap.min.js"></script>
 
 </body>
+
+<script type="text/javascript">
+	function delete() {
+		
+		var checkbox = $("input:checkbox[name=co_name]:checked");
+		
+		checkbox.each(function (i) {
+			var tr = checkbox.parent().parent().eq(i);
+			
+			//fetch
+			fetch('/private/modify',{
+		        method: 'POST', // *GET, POST, PUT, DELETE, etc.
+		        mode: 'cors', // no-cors, cors, *same-origin
+		        cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+		        credentials: 'same-origin', // include, *same-origin, omit
+		        headers: {
+		            'Content-Type': 'application/json'
+		        },
+		        redirect: 'follow', // manual, *follow, error
+		        referrer: 'no-referrer', // no-referrer, *client
+		        body: JSON.stringify(request) // body data type must match "Content-Type" header
+		    }) // private/register로 request 보냄
+			  .then(function(response) {
+			    return response.json(); //response를 json객체로
+			  })
+			  .then(function(myJson) {
+				  //do something with json
+			    console.log("response: \n" + JSON.stringify(myJson));
+			  });
+			
+			tr.remove();
+		});
+		
+		
+		
+	}
+</script>
 </html>

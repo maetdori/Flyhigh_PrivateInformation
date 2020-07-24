@@ -8,39 +8,6 @@
 	<title>Register</title>
 	<link rel="stylesheet" href="/webjars/bootstrap/4.1.0/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="/css/Home.css">
-<<<<<<< HEAD
-	<script src="/webjars/jquery/3.3.1/jquery.min.js"></script>
-	<script src="/webjars/bootstrap/4.1.0/js/bootstrap.min.js"></script>
-	
-	<script type='text/javascript'>
-	
- 	$(function() {
- 		$("#add").on("click", function() {
- 			//clone
- 			$.trClone = $("#accountTable tr:last").clone().html();
- 			$.newTr = $("<tr>" + $.trClone + "</tr>");
- 			
- 			//append
- 			$("#accountTable").append($.newTr);
- 			
- 			//delete Button 추가
- 			$.btnDelete = $(document.createElement("input"));
- 			$.btnDelete.attr({
- 				name : "btnRemove",
- 				type : "button",
- 				value : "삭제"
- 			});
- 			$("#accountTable tr:last td:last").html("");
- 			$("#accountTable tr:last td:last").append($.btnDelete);
- 			
- 			//버튼에 클릭 이벤트 추가
- 			$("#accountTable tr>td:last>input[type='button']").on('click', function() {
- 				$(this).parent().parent().remove();
- 			});
- 		});
- 	});
- 	
-	</script>
 </head>
 
 <body class="my-Home-page">
@@ -57,15 +24,6 @@
 							인증서 등록
 							<p></p>
 							</h4>
-<<<<<<< HEAD
-								<div class="form-group has-feedback">
-									<label class="control-label" for="co_name"><strong>성명(영문)</strong></label>
-									<input class="form-control" type="text" id="co_name" name="co_name" placeholder="Name" autofocus required/>
-								</div>
-								<div class="form-group has-feedback">
-									<label class="control-label" for="co_cert_pw"><strong>인증서 비밀번호</strong></label>
-									<input class="form-control" type="password" id="co_cert_pw" name="co_cert_pw" placeholder="Certificate Password" required/>
-=======
 							<form method="POST">
 								<div class="form-group has-feedback">
 									<label class="control-label" for="co_name">성명(영문)</label>
@@ -74,7 +32,6 @@
 								<div class="form-group has-feedback">
 									<label class="control-label" for="co_cert_pw">인증서 비밀번호</label>
 									<input class="form-control" type="password" id="co_cert_pw" name="co_cert_pw" />
->>>>>>> 5aacec6ed8a2d42c50de466845e048b783ad2925
 								</div>
 								<div class="form-group has-feedback" id="certs">
 									<label class="control-label" for="co_cert_der">인증서</label>
@@ -85,52 +42,10 @@
 										<input class="form-control" type="file" id="co_cert_der" name="co_cert_der" accept=".der" />
 										<label class="control-label" for="co_cert_key">key</label>
 										<input class="form-control" type="file" id="co_cert_key" name="co_cert_key" accept=".key" /></div></div>
-<<<<<<< HEAD
-								<div style="width:100%; height:200px; overflow:auto">
-									<table id="accountTable" class="table" style="margin-top: 20px;">
-										<colgroup>
-											<col width="45%"/>
-											<col width="25%"/>
-											<col width="25%"/>
-										</colgroup>
-										<thead>
-											<tr>
-												<th>도메인 이름</th>
-												<th>ID</th>
-												<th>PW</th>
-												<th></th>
-											</tr>
-										</thead>
-										<tbody id="accountTbody">
-											<tr>
-												<td><input class="form-control form-control-sm" type="text" id="co_domain" name="co_domain" placeholder="Domain" required></td>
-												<td><input class="form-control form-control-sm" type="text" id="co_id" name="co_id" placeholder="ID" required></td>
-												<td><input class="form-control form-control-sm" type="password" id="co_pw" name="co_pw" placeholder="PW" required></td>
-												<td></td>
-											</tr>  
-										</tbody>
-									</table>
-									<input type="button" value="추가" id="add">
-								</div>
-								<input class="btn btn-info btn-block" type="submit" value="등록" onclick="register()" />
-							</div>
-						</div>
-					</div>
-				<div class="footer">
-					Copyright © <a href="https://www.flyhigh-x.com/" class="badge badge-info">FLYHIGH</a> 2020
-=======
 								<div class="form-group has-feedback">
-									<label class="control-label" for="account">계정</label>
-									<input type ="button" value="+"  onclick="addSite()" style="WIDTH: 20pt;"/>
-									<input type ="button" value="-"  onclick="deleteSite()" style="WIDTH: 20pt;"/></div>
-								<div id ="sites">
-									<div>
-										<input class="form-control" type="text" id="co_domain" name="co_domain" placeholder="url" />
-										<input class="form-control" type="text" id="co_id" name="co_id" placeholder="id"/>
-										<input class="form-control" type="text" id="co_pw" name="co_pw" placeholder="pw"/>
-										<hr/>
-									</div>
-								</div>
+									<label class="control-label" for="account">계정</label></div>
+								<div id ="sites"></div>
+								<input type ="button" value="+"  onclick="addSite()" style="WIDTH: 30pt; margin-bottom: 10px"/>
 								<div class="form-group has-feedback">
 										<input type="button" value="등록" class="btn btn-info btn-block" onclick="register()"/>
 								</div>
@@ -140,12 +55,12 @@
 					<div class="footer">
 						Copyright © <a href="https://www.flyhigh-x.com/" class="badge badge-info">FLYHIGH</a> 2020
 					</div>
->>>>>>> 5aacec6ed8a2d42c50de466845e048b783ad2925
 				</div>
 			</div>
 		</div>
 	</section>
 	<script type="text/javascript">
+		window.onload = addSite();
 		var isDer = true;
 		var rad = document.getElementsByName("cert_type");
 		console.log(rad);
@@ -224,11 +139,28 @@
 		
 		function readFile(file, callback) {
 			return new Promise((resolve,reject) =>  {
+				const derMaxSize = 4096;
+				const pfxMaxSize = 8192;
+				
+				if(file.files[0] == null || file.files[0].size == 0) {
+					reject(new Error("[msg : file is null or size is 0] [code : ]"));
+				}
+				
+				if(isDer) {
+					if(file.files[0].size > derMaxSize) {
+						reject(new Error("[msg : Der/key File size too big] [code : ]"));
+					}
+				} else {
+					if(file.files[0].size > pfxMaxSize) {
+						reject(new Error("[msg : pfx File size too big] [code : ]"));
+					}
+				}
 				var fileReader = new FileReader();
 				 fileReader.onload = () => {
 					callback(fileReader.result);
 					resolve();// promise는 resolve가 호출될때까지 기다린다.(resolve();가 promise에선 return;과 같다.)
 				} 
+				 
 				fileReader.onError = reject;
 				
 				fileReader.readAsBinaryString(file.files[0]);
@@ -250,20 +182,30 @@
 			
 			var onload = false;
 			if(isDer) {
-				await readFile(document.getElementById("co_cert_der"),function(e) {
-					co_cert_der = btoa(e);
-					//console.log("co_cert_der : " +co_cert_der);
-				});
-				await readFile(document.getElementById("co_cert_key"),function(e) {
-					co_cert_key = btoa(e);
-					//console.log("co_cert_key : " +co_cert_key);
-				});
+				try {
+					await readFile(document.getElementById("co_cert_der"),function(e) {
+						co_cert_der = btoa(e);
+						//console.log("co_cert_der : " +co_cert_der);
+					});
+					await readFile(document.getElementById("co_cert_key"),function(e) {
+						co_cert_key = btoa(e);
+						//console.log("co_cert_key : " +co_cert_key);
+					});
+				} catch(err) {
+					alert('err : ${err.name}: ${err.message}');
+					return;
+				}
 				console.log("co_cert_der : " +co_cert_der);
 				console.log("co_cert_key : " +co_cert_key);
 			} else {
-				await readFile(document.getElementById("co_cert_pfx"),function(e) {
-					co_certification = btoa(e);
-				});
+				try {
+					await readFile(document.getElementById("co_cert_pfx"),function(e) {
+						co_certification = btoa(e);
+					});
+				} catch(err) {
+					alert('err : ${err.name}: ${err.message}');
+					return;
+				}
 				console.log("co_certification : " +co_certification);
 			}
 			
@@ -311,12 +253,11 @@
 		        cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
 		        credentials: 'same-origin', // include, *same-origin, omit
 		        headers: {
-		            'Content-Type': 'application/json',
-		            // 'Content-Type': 'application/x-www-form-urlencoded',
+		            'Content-Type': 'application/json'
 		        },
 		        redirect: 'follow', // manual, *follow, error
 		        referrer: 'no-referrer', // no-referrer, *client
-		        body: JSON.stringify(json), // body data type must match "Content-Type" header
+		        body: JSON.stringify(request) // body data type must match "Content-Type" header
 		    }) // private/register로 request 보냄
 			  .then(function(response) {
 			    return response.json(); //response를 json객체로
@@ -330,17 +271,17 @@
 			//href
 		}
 		
-<<<<<<< HEAD
-		/*
-=======
->>>>>>> 5aacec6ed8a2d42c50de466845e048b783ad2925
 		function addSite() {
 			var sites = document.getElementById("sites");
 			var newDomain = document.createElement("div");
 			var urlNode = document.createElement("input");
 			var idNode = document.createElement("input");
 			var pwNode = document.createElement("input");
+			var button = document.createElement("input");
 			var border= document.createElement("hr");
+			
+			console.log(sites.childElementCount);
+			
 			urlNode.name = "co_domain";
 			urlNode.className = "form-control"
 			urlNode.placeholder = "url";
@@ -349,27 +290,34 @@
 			idNode.className = "form-control"
 			idNode.placeholder = "id";
 			
-			pwNode.name = "co_pw";
+			pwNode.name = "co_pw"
 			pwNode.className = "form-control"
 			pwNode.placeholder = "pw";
+			//<input type ="button" value="+"  onclick="addSite()" style="WIDTH: 30pt;"/>
+			
+			
+			button.setAttribute('type',"button");
+			button.setAttribute('value',"-");
+			button.setAttribute('style',"WIDTH: 30pt;");
+			button.addEventListener('click',function() {deleteSite(button)});
 			
 			newDomain.appendChild(urlNode);
 			newDomain.appendChild(idNode);
 			newDomain.appendChild(pwNode);
+			newDomain.appendChild(button);
 			newDomain.appendChild(border);
 			
 			sites.appendChild(newDomain);
+			console.log(sites.lastChild);
 		}
-		function deleteSite() {
+		function deleteSite(node) {
 			var sites = document.getElementById("sites");
 			console.log(sites.childElementCount);
+			console.log(node);
+			console.log(node.parentElement);
 	        if (sites.childElementCount > 1)
-	           sites.removeChild(sites.lastChild);
+	        	node.parentElement.remove();
 		}
-<<<<<<< HEAD
-		*/
-=======
->>>>>>> 5aacec6ed8a2d42c50de466845e048b783ad2925
 	</script>
 
 	<script src="/webjars/jquery/3.3.1/jquery.min.js"></script>

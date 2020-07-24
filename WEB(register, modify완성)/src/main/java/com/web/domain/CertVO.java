@@ -9,6 +9,8 @@ public class CertVO {
 	private String co_cert_der; //der 인증서
 	private String co_cert_key; //key 파일
 	private String co_certification; //pkcs#12 인증서
+	private int co_cert_type;
+	
 	
 	public String getCo_name() {
 		return co_name;
@@ -51,6 +53,13 @@ public class CertVO {
 	}
 	public void setCo_certification(String co_certification) {
 		this.co_certification = co_certification;
+	}
+	
+	public int getCo_cert_type() {
+		return co_cert_type;
+	}
+	public void setCo_cert_type(int co_cert_type) {
+		this.co_cert_type = co_cert_type;
 	}
 	
 }

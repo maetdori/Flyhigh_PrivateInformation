@@ -28,6 +28,14 @@ public class ParseDer{
 		this.notAfter = format.format(certificate.getNotAfter());	
 		
 	}
+public ParseDer(X509Certificate certificate) throws CertificateException, IOException, KeyStoreException, NoSuchAlgorithmException, UnrecoverableKeyException {
+		
+		SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");
+		
+		this.notBefore = format.format(certificate.getNotBefore());
+		this.notAfter = format.format(certificate.getNotAfter());	
+		
+	}
 
 	public String getNotBefore() {
 		return notBefore;

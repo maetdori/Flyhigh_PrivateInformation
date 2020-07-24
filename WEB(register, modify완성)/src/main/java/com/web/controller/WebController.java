@@ -1,6 +1,10 @@
 package com.web.controller;
 
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
+import java.security.KeyStore;
 import java.security.cert.CertificateException;
+import java.security.cert.X509Certificate;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Base64;
@@ -27,6 +31,8 @@ import com.web.service.SiteService;
 @Controller
 @RequestMapping("/private")
 public class WebController {
+	private final static int INSERT = 0;
+	private final static int MODIFY = 1;
 	
 	@Resource(name="com.web.service.CertService")
 	private CertService certService;
@@ -56,7 +62,7 @@ public class WebController {
 		
 		Map<String, Object> response = new HashMap<>(); //리턴할 HashMap
 		
-		insert(req); //데이터베이스에 req를 저장
+		insertOrModify(req,INSERT); //데이터베이스에 req를 저장
 		
 		Map<String, String> validity = new HashMap<>(); //validity map
 		validity.put("notBefore", cv.getCo_active_date());
@@ -80,38 +86,19 @@ public class WebController {
 		resp.setContentType("application/json");
 		resp.addHeader("Location", "http://localhost:8080/private/modify");
 		
+		
 		Map<String, Object> response = new HashMap<>(); //리턴할 HashMap
 		
-		cv = new CertVO();
-		String co_name = (String)req.get("subject");
-		cv = certService.certSearchService(co_name);
-		
-		if(req.containsKey("cert_pw")) { //인증서 패스워드 수정하는 경우
-			certService.certUpdateService((String)req.get("cert_pw"), co_name);
-		
-			if(req.containsKey("flag")) { //사이트 정보 수정하는 경우
-		
-				@SuppressWarnings("unchecked")
-				ArrayList<Map<String, String>> accountList = (ArrayList<Map<String, String>>) req.get("account"); //flag와 함께 요청된 수정할 accountList 
-				
-				updateSite((int)req.get("flag"), accountList, co_name);
-			}
-		}
-		else if(req.containsKey("flag")) {
-			
-			@SuppressWarnings("unchecked")
-			ArrayList<Map<String, String>> accountList = (ArrayList<Map<String, String>>) req.get("account"); //flag와 함께 요청된 수정할 accountList 
-			
-			updateSite((int) req.get("flag"), accountList, co_name);
-		}
+		insertOrModify(req,MODIFY); //데이터베이스에 req를 저장
 		
 		Map<String, String> validity = new HashMap<>(); //validity map
 		validity.put("notBefore", cv.getCo_active_date());
 		validity.put("notAfter", cv.getCo_exp_date());
 		
+		response.put("registerDate", currentDate);
 		response.put("subject", cv.getCo_name());
 		response.put("validity", validity);
-		response.put("count", siteService.siteListService(co_name).size());
+		response.put("count", (int) req.get("count"));
 		
 		return response;
 	}
@@ -136,16 +123,24 @@ public class WebController {
 	
 	//certRegister()에서 호출하는 메소드
 	//RequestBody로 들어온 정보를 VO에 저장
-	private void insert(Map<String, Object> req) throws Exception {
+	private void insertOrModify(Map<String, Object> req,int mode) throws Exception {
 		
 		@SuppressWarnings("unchecked")
 		Map<String, String> certification = (Map<String, String>) req.get("certification");
-		
-		byte[] certBytes = ((String) certification.get("der")).getBytes(); //certification StringToByte
-		byte[] cert_decoded = base64Decoder(certBytes); //certification decoding
-		
 		cv = new CertVO();
 		sv = new SiteVO();
+		
+		String der = certification.get("der");
+		String key = certification.get("key");
+		String pfx = certification.get("pfx");
+		System.out.println(der);
+		System.out.println(key);
+		System.out.println(pfx);
+		
+		cv.setCo_cert_der(der); //co_cert_der
+		cv.setCo_cert_key(key);
+		cv.setCo_certification(pfx);
+		
 		
 		/*
 		 * certVO에 정보 저장
@@ -160,17 +155,51 @@ public class WebController {
 		cv.setCo_name((String) req.get("subject")); //co_name
 		cv.setCo_cert_pw((String) req.get("cert_pw")); //co_cert_pw
 		
-		try { //인증서 확장자가 der인 경우 
-			ParseDer cert_parsed = new ParseDer(cert_decoded);
-			cv.setCo_active_date(cert_parsed.getNotBefore()); //co_active_date
-			cv.setCo_exp_date(cert_parsed.getNotAfter()); //co_exp_date
-			cv.setCo_cert_der((String)certification.get("der")); //co_cert_der
-			cv.setCo_cert_key((String)certification.get("key"));
-			cv.setCo_certification(" ");
-		} catch(CertificateException e) { //인증서 확장자가 pfx인 경우(pkcs#12 포맷의 파일은 인증서, 개인키 내용을 파일 하나에 모두 담고 있다.)
-			System.out.println("Not a der certificate");
+		if(certification.get("der") != null) { //인증서 확장자가 der인 경우 
+			try { 
+				byte[] certBytes = ((String) certification.get("der")).getBytes(); //certification StringToByte
+				byte[] cert_decoded = base64Decoder(certBytes); //certification decoding
+				ParseDer cert_parsed = new ParseDer(cert_decoded);
+				cv.setCo_active_date(cert_parsed.getNotBefore()); //co_active_date
+				cv.setCo_exp_date(cert_parsed.getNotAfter()); //co_exp_date
+				cv.setCo_cert_type(1);
+			} catch(CertificateException e) { 
+				//catch caluse
+			}
+			
+			if(cv.getCo_cert_key() == null) {
+				throw new Exception("null key for given der");
+			}
+			
+		} else if(certification.get("pfx") != null) {
+			try {
+				byte[] bpfx = base64Decoder(cv.getCo_certification().getBytes());
+				KeyStore keystore = KeyStore.getInstance("PKCS12");
+		        InputStream is = new ByteArrayInputStream(bpfx);
+		        keystore.load(is, cv.getCo_cert_pw().toCharArray());
+		        String alias = keystore.aliases().nextElement();
+		        X509Certificate certificate = (X509Certificate) keystore.
+		                getCertificate(alias);
+		        ParseDer cert_parsed = new ParseDer(certificate);
+		        cv.setCo_cert_type(2);
+		        cv.setCo_active_date(cert_parsed.getNotBefore()); //co_active_date
+				cv.setCo_exp_date(cert_parsed.getNotAfter()); //co_exp_date
+			} catch (CertificateException e) {
+				//catch caluse
+			}
+		} else {
+			if(mode == INSERT) {
+				throw new Exception("no der or pfx");
+			}
 		}
-		certService.certInsertService(cv); 
+
+		
+		
+		if(mode == INSERT)
+			certService.certInsertService(cv);
+		else if(mode == MODIFY)
+			certService.certUpdateService(cv);
+			
 		
 		/*
 		 * siteVO에 정보 저장
@@ -196,7 +225,7 @@ public class WebController {
 	
 	//certModify()에서 호출하는 메소드
 	//tb_siteInfo를 update
-	private void updateSite(int flag, ArrayList<Map<String, String>> accountList, String co_name) throws Exception {
+	/*private void updateSite(int flag, ArrayList<Map<String, String>> accountList, String co_name) throws Exception {
 		
 		sv = new SiteVO();
 		
@@ -235,7 +264,7 @@ public class WebController {
 			System.out.println("Invalid flag");
 			break;
 		}
-	}
+	}*/
 	
 	//setVO()에서 호출하는 메소드
 	//base64 decoder

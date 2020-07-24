@@ -30,9 +30,8 @@ public class CertService {
         certMapper.certInsert(cert);
     }
      
-    public void certUpdateService(String co_name, String co_cert_pw) throws Exception {
-    	
-    	certMapper.certUpdate(co_cert_pw, co_name);
+    public void certUpdateService(CertVO cert) throws Exception {
+    	certMapper.certUpdate(cert);
     }
     
     public void certDeleteService(String co_name) throws Exception {
