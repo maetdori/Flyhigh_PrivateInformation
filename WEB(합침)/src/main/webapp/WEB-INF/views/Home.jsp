@@ -39,7 +39,9 @@
 								        <tr>
 								        	<td style="text-align:center;"><input type="checkbox" id="co_name" name="co_name" value=<%= cert.getCo_name() %>></td>
 								        	<td><label for="checkbox"><%= cert.getCo_name() %></label></td>
-								            <!-- <td><a href='/modifyPage'><%= cert.getCo_name() %></a></td>  -->
+								            <!-- <td><a href='/modifyPage?co_name=<%= cert.getCo_name() %>'>
+								            	<%= cert.getCo_name() %>
+								            </a></td>  -->
 								        </tr>
 									<%}%>
 									</tbody>
