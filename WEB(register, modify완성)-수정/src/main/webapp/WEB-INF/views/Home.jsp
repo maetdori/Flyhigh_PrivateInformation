@@ -48,18 +48,6 @@
 								</table>
 							</div>
 							<div class="form-group margin-top20">
-<<<<<<< HEAD:WEB 주요기능완성/src/main/webapp/WEB-INF/views/Home.jsp
-								<form action='/registerPage' >
-									<button type="submit" class="btn btn-info btn-block" id="btnRegister">
-										인증서 등록
-									</button>
-								</form>
-								<form>
-									<button  type="button" class="btn btn-info btn-block" id="btnDelete" onclick="deleteFunc()">
-										인증서 삭제
-									</button>
-								</form>
-=======
 								<button type="button" class="btn btn-info btn-block" id="btnRegister"
 										onclick="location.href='/registerPage'">
 									인증서 등록
@@ -67,7 +55,6 @@
 								<button type="button" class="btn btn-info btn-block" id="btnDelete" onclick="delete()">
 									인증서 삭제
 								</button>
->>>>>>> 6773fe85419d0568656ac2b5e5c3ce8f6758f2f9:WEB(register, modify완성)/src/main/webapp/WEB-INF/views/Home.jsp
 							</div>
 						</div>
 					</div>
@@ -85,26 +72,15 @@
 </body>
 
 <script type="text/javascript">
-	function deleteFunc() {
+	function delete() {
 		
 		var checkbox = $("input:checkbox[name=co_name]:checked");
-		console.log(checkbox);
-		$.each(checkbox,function (i,item) {
+		
+		checkbox.each(function (i) {
 			var tr = checkbox.parent().parent().eq(i);
 			
-			console.log(i);
-			console.log(item);
-			
-			var co_name = $(item).attr("value");
-			console.log(co_name);
-			var request = new Object();
-			request.subject = co_name;
-			
-			console.log("request:\n" + JSON.stringify(request));
-			
-			
 			//fetch
-			fetch('/private/delete',{
+			fetch('/private/modify',{
 		        method: 'POST', // *GET, POST, PUT, DELETE, etc.
 		        mode: 'cors', // no-cors, cors, *same-origin
 		        cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
@@ -123,10 +99,11 @@
 				  //do something with json
 			    console.log("response: \n" + JSON.stringify(myJson));
 			  });
+			
 			tr.remove();
 		});
 		
-		//refresh to see result
+		
 		
 	}
 </script>
