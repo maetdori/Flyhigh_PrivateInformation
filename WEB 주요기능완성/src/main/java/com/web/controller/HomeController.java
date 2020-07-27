@@ -12,15 +12,14 @@ import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.web.domain.CertVO;
 import com.web.domain.SiteVO;
+import com.web.exception.WebException;
 import com.web.service.CertService;
 import com.web.service.SiteService;
-
-
-import exception.WebException;
 
 @Controller
 public class HomeController {
@@ -49,7 +48,7 @@ public class HomeController {
 		    	CertVO cv = certService.certSearchService(co_name);
 		    	List<SiteVO> svs = siteService.siteListService(co_name);
 		    	if(cv == null || svs == null) {
-		    		WebException e = new WebException("no such name in DB : " + co_name,WebException.MODIFY | WebException.NO_SUCH_NAME);
+		    		WebException e = new WebException("no such name in DB : " + co_name,WebException.HC_MODIFY_NO_SUCH_NAME);
 		    		logger.error(e.toString(),e);
 		    		return "error/" + 404;
 		    	}
@@ -59,12 +58,12 @@ public class HomeController {
 		    	model.addAttribute("getSiteList",svs);
 		        return "Modify";
 	    	} catch(DataAccessException e2) {
-	    		WebException ee = new WebException("Error while Accessing DB : " + co_name,WebException.MODIFY | WebException.DATABASE_ERROR,e2);
+	    		WebException ee = new WebException("Error while Accessing DB : " + co_name,WebException.HC_MODIFY_DATABASE_ERROR,e2);
 	    		logger.error(ee.toString(),ee);
 	    		return "error/" + 500;
 	    	}
 	    	catch(Exception e) {
-	    		WebException ee = new WebException("Unknown error" + co_name,WebException.MODIFY,e);
+	    		WebException ee = new WebException("Unknown error" + co_name,WebException.HC_MODIFY,e);
 	    		logger.error(ee.toString(),ee);
 	    		return "error/" + 500;
 	    	}
