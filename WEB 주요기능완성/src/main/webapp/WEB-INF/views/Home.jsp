@@ -48,21 +48,6 @@
 								</table>
 							</div>
 							<div class="form-group margin-top20">
-<<<<<<< HEAD
-								<!-- <form action='/registerPage' >
-=======
-								<form action='/registerPage' >
->>>>>>> 7a19fe53ef3d9203589c3cb703be4050799331f3
-									<button type="submit" class="btn btn-info btn-block" id="btnRegister">
-										인증서 등록
-									</button>
-								</form>
-								<form>
-									<button  type="button" class="btn btn-info btn-block" id="btnDelete" onclick="deleteFunc()">
-										인증서 삭제
-									</button>
-<<<<<<< HEAD
-								</form> -->
 								<button type="button" class="btn btn-info btn-block" id="btnRegister"
 										onclick="location.href='/registerPage'">
 									인증서 등록
@@ -70,9 +55,7 @@
 								<button type="button" class="btn btn-info btn-block" id="btnDelete" onclick="deleteFunc()">
 									인증서 삭제
 								</button>
-=======
 								</form>
->>>>>>> 7a19fe53ef3d9203589c3cb703be4050799331f3
 							</div>
 						</div>
 					</div>

@@ -29,34 +29,34 @@
 							인증서 수정
 							<p></p>
 							</h4>
-							<form method="POST">
+							<form method="post" name="modifyForm" onsubmit="return modify()" action="/">
 								<div class="form-group has-feedback">
-									<label class="control-label" for="co_name">성명(영문)</label>
-									<input class="form-control" type="text" id="co_name" name="co_name" value = "<%=cert.getCo_name()%>"/>
+									<label class="control-label" for="co_name"><strong>성명(영문)</strong></label>
+									<input class="form-control" type="text" id="co_name" name="co_name" value = "<%=cert.getCo_name()%>" readonly />
 								</div>
 								<div class="form-group has-feedback">
-									<label class="control-label" for="co_cert_pw">인증서 비밀번호</label>
-									<input class="form-control" type="password" id="co_cert_pw" name="co_cert_pw" value = "<%=cert.getCo_cert_pw()%>"/>
+									<label class="control-label" for="co_cert_pw"><strong>인증서 비밀번호</strong></label>
+									<input class="form-control" type="password" id="co_cert_pw" name="co_cert_pw" value = "<%=cert.getCo_cert_pw()%>" placeholder="인증서 비밀번호" required/>
 								</div>
 								<div class="form-group has-feedback" id="certs">
-									<label class="control-label" for="co_cert_der">인증서</label>
+									<label class="control-label" for="co_cert_der"><strong>인증서</strong></label>
 									<input type="radio" name="cert_type" value="der/key" checked="checked"/> der/key
 									<input type="radio" name="cert_type" value="pfx"  /> pfx
 									<div>
-										<label class="control-label" for="co_cert_der">der</label>
-										<input class="form-control" type="file" id="co_cert_der" name="co_cert_der" accept=".der" />
-										<label class="control-label" for="co_cert_key">key</label>
-										<input class="form-control" type="file" id="co_cert_key" name="co_cert_key" accept=".key" /></div></div>
+										<label class="control-label" for="co_cert_der"><strong>der</strong></label>
+										<input class="form-control" type="file" id="co_cert_der" name="co_cert_der" accept=".der"/>
+										<label class="control-label" for="co_cert_key"><strong>key</strong></label>
+										<input class="form-control" type="file" id="co_cert_key" name="co_cert_key" accept=".key"/></div></div>
 								<div class="form-group has-feedback">
-									<label class="control-label" for="account">계정</label>
+									<label class="control-label" for="account"><strong>계정</strong></label>
 								<div id ="sites"><%int i = 0;for(SiteVO site : siteList) { %><div>
-										<input class="form-control" type="text" name="co_domain" value="<%=site.getCo_domain() %>" placeholder="url" />
-										<input class="form-control" type="text" name="co_id" value="<%=site.getCo_id() %>" placeholder="id"/>
-										<input class="form-control" type="text" name="co_pw" value="<%=site.getCo_pw() %>" placeholder="pw"/>
+										<input class="form-control" type="text" name="co_domain" value="<%=site.getCo_domain() %>" placeholder="도메인" />
+										<input class="form-control" type="text" name="co_id" value="<%=site.getCo_id() %>" placeholder="아이디"/>
+										<input class="form-control" type="text" name="co_pw" value="<%=site.getCo_pw() %>" placeholder="패스워드"/>
 									</div><%i++;}%></div>
 									<input type ="button" value="+"  onclick="addSite()" style="WIDTH: 30pt; margin-bottom: 10px"/>
 								<div class="form-group has-feedback">
-										<input type="button" value="수정" class="btn btn-info btn-block" onclick="modify(); location.href='/';"/>
+										<input type="submit" value="수정" class="btn btn-info btn-block"/>
 								</div>
 							</form>
 						</div>

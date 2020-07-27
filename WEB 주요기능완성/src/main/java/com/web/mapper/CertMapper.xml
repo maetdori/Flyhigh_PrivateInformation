@@ -32,7 +32,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     <update id="certUpdate" parameterType="com.web.domain.CertVO">
         UPDATE TB_CERTIFICATION
             SET CO_CERT_PW = #{co_cert_pw} 
-            <if test = "co_cert_der != null">
+            <if test = "#co_cert_der != null">
                , CO_CERT_DER = #{co_cert_der}
                , CO_ACTIVE_DATE = #{co_active_date}
                , CO_EXP_DATE = #{co_exp_date}
@@ -41,7 +41,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test = "#co_cert_key != null">,
                , CO_CERT_KEY = #{co_cert_key}
             </if>
-            <if test = "co_certification != null">,
+            <if test = "#co_certification != null">,
                , CO_CERTIFICATION = #{co_certification}
                , CO_ACTIVE_DATE = #{co_active_date}
                , CO_EXP_DATE = #{co_exp_date}
