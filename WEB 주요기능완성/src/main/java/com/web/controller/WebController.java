@@ -177,10 +177,9 @@ public class WebController {
 				return error;
 			}
 			
-			response.put("subject", co_name);
-			
+			response.put("subject",co_name);
 			return response;
-		}   catch(Exception e) {
+		} catch(Exception e) {
 			logger.error(e.toString(),e);
 			resp.setStatus(500);
 			Map<String, Object> error = new HashMap<>(); //리턴할 HashMap
@@ -189,7 +188,7 @@ public class WebController {
 			return error;
 		}
 	}
-	
+
 	//certRegister()에서 호출하는 메소드
 	//RequestBody로 들어온 정보를 VO에 저장
 	private void insertOrModify(Map<String, Object> req,int mode) throws WebException {

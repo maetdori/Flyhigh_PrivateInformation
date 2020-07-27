@@ -1,0 +1,70 @@
+@charset "UTF-8";
+
+html,body {
+	height: 100%;
+}
+
+body.my-Home-page {
+	background-color: #f7f9fb;
+	font-size: 14px;
+}
+
+.my-Home-page .brand {
+	/* width, height : 로그인창에 노출되는 로고의 크기 */
+	width: 150px;
+	height: 150px;
+	overflow: hidden;
+	border-radius: 50%;
+	margin: 40px auto;
+	box-shadow: 0 0 40px rgba(0,0,0,.05);
+	display: flex;
+    align-items: center;
+}
+
+.my-Home-page .brand img {
+	width: 100%;
+	height: auto;
+}
+
+.my-Home-page .card-wrapper {
+	width: 400px;
+}
+
+.my-Home-page .card {
+	border-color: transparent;
+	box-shadow: 0 0 40px rgba(0,0,0,.05);
+}
+
+.my-Home-page .card.fat {
+	padding: 10px;
+}
+
+.my-Home-page .card .card-title {
+	margin-bottom: 30px;
+}
+
+.my-Home-page .form-control {
+	border-width: 2.3px;
+}
+
+.my-Home-page .form-group label {
+	width: 100%;
+}
+
+.my-Home-page .btn.btn-block {
+	padding: 12px 10px;
+}
+
+.my-Home-page .margin-top20 {
+	margin-top: 20px;
+}
+
+.my-Home-page .no-margin {
+	margin: 40px 0px 0px 0px;
+}
+
+.my-Home-page .footer {
+	margin: 40px 0;
+	color: #888;
+	text-align: center;
+}

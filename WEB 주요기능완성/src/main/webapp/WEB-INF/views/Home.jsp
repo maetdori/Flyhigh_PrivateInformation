@@ -48,15 +48,13 @@
 								</table>
 							</div>
 							<div class="form-group margin-top20">
-								<form action='/registerPage' >
-									<button type="submit" class="btn btn-info btn-block" id="btnRegister">
-										인증서 등록
-									</button>
-								</form>
-								<form>
-									<button  type="button" class="btn btn-info btn-block" id="btnDelete" onclick="deleteFunc()">
-										인증서 삭제
-									</button>
+								<button type="button" class="btn btn-info btn-block" id="btnRegister"
+										onclick="location.href='/registerPage'">
+									인증서 등록
+								</button>
+								<button type="button" class="btn btn-info btn-block" id="btnDelete" onclick="deleteFunc()">
+									인증서 삭제
+								</button>
 								</form>
 							</div>
 						</div>
