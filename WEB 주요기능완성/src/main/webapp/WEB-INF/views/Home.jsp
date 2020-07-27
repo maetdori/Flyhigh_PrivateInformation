@@ -48,8 +48,7 @@
 								</table>
 							</div>
 							<div class="form-group margin-top20">
-<<<<<<< HEAD:WEB 주요기능완성/src/main/webapp/WEB-INF/views/Home.jsp
-								<form action='/registerPage' >
+								<!-- <form action='/registerPage' >
 									<button type="submit" class="btn btn-info btn-block" id="btnRegister">
 										인증서 등록
 									</button>
@@ -58,16 +57,14 @@
 									<button  type="button" class="btn btn-info btn-block" id="btnDelete" onclick="deleteFunc()">
 										인증서 삭제
 									</button>
-								</form>
-=======
+								</form> -->
 								<button type="button" class="btn btn-info btn-block" id="btnRegister"
 										onclick="location.href='/registerPage'">
 									인증서 등록
 								</button>
-								<button type="button" class="btn btn-info btn-block" id="btnDelete" onclick="delete()">
+								<button type="button" class="btn btn-info btn-block" id="btnDelete" onclick="deleteFunc()">
 									인증서 삭제
 								</button>
->>>>>>> 6773fe85419d0568656ac2b5e5c3ce8f6758f2f9:WEB(register, modify완성)/src/main/webapp/WEB-INF/views/Home.jsp
 							</div>
 						</div>
 					</div>

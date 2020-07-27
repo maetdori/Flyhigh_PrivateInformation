@@ -4,10 +4,12 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	
 	<title>Register</title>
 	<link rel="stylesheet" href="/webjars/bootstrap/4.1.0/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="/css/Home.css">
+	
+	<script type="text/javascript" src="js/jquery-2.1.4.js"></script>
+	<script type="text/javascript" src="js/plugins/validation/jquery.validate.min.js"></script>
 </head>
 
 <body class="my-Home-page">
@@ -24,30 +26,30 @@
 							인증서 등록
 							<p></p>
 							</h4>
-							<form method="POST">
+							<form method="post" name="inputForm" onsubmit="return register()" action="/">
 								<div class="form-group has-feedback">
-									<label class="control-label" for="co_name">성명(영문)</label>
-									<input class="form-control" type="text" id="co_name" name="co_name" />
+									<label class="control-label" for="co_name"><strong>성명(영문)</strong></label>
+									<input class="form-control" type="text" id="co_name" name="co_name" placeholder="성명(영문)" required autofocus/>
 								</div>
 								<div class="form-group has-feedback">
-									<label class="control-label" for="co_cert_pw">인증서 비밀번호</label>
-									<input class="form-control" type="password" id="co_cert_pw" name="co_cert_pw" />
+									<label class="control-label" for="co_cert_pw"><strong>인증서 비밀번호</strong></label>
+									<input class="form-control" type="password" id="co_cert_pw" name="co_cert_pw" placeholder="인증서 비밀번호" required/>
 								</div>
 								<div class="form-group has-feedback" id="certs">
-									<label class="control-label" for="co_cert_der">인증서</label>
+									<label class="control-label" for="co_cert_der"><strong>인증서</strong></label>
 									<input type="radio" name="cert_type" value="der/key" checked="checked"/> der/key
 									<input type="radio" name="cert_type" value="pfx"  /> pfx
 									<div>
-										<label class="control-label" for="co_cert_der">der</label>
-										<input class="form-control" type="file" id="co_cert_der" name="co_cert_der" accept=".der" />
-										<label class="control-label" for="co_cert_key">key</label>
-										<input class="form-control" type="file" id="co_cert_key" name="co_cert_key" accept=".key" /></div></div>
+										<label class="control-label" for="co_cert_der"><strong>der</strong></label>
+										<input class="form-control" type="file" id="co_cert_der" name="co_cert_der" accept=".der" required/>
+										<label class="control-label" for="co_cert_key"><strong>key</strong></label>
+										<input class="form-control" type="file" id="co_cert_key" name="co_cert_key" accept=".key" required/></div></div>
 								<div class="form-group has-feedback">
-									<label class="control-label" for="account">계정</label></div>
+									<label class="control-label" for="account"><strong>계정</strong></label></div>
 								<div id ="sites"></div>
 								<input type ="button" value="+"  onclick="addSite()" style="WIDTH: 30pt; margin-bottom: 10px"/>
 								<div class="form-group has-feedback">
-										<input type="button" value="등록" class="btn btn-info btn-block" onclick="register();"/>
+										<input type="submit" value="등록" class="btn btn-info btn-block"/>
 								</div>
 							</form>
 						</div>
@@ -59,6 +61,32 @@
 			</div>
 		</div>
 	</section>
+
+	<script>
+		/*$(function()) {
+			$("form").validate({
+				submitHandler: function() {
+					var f = confirm("등록하시겠습니까?");
+					if(f) {
+						return true;
+					} else {
+						return false;
+					}
+				},
+				
+				rules: {
+					co_name: {
+						required: true,
+					},
+					co_cert_pw: {
+						required: true,
+						minlength: 4
+					}
+				}
+			});
+		}*/
+	</script>
+	
 	<script type="text/javascript">
 		window.onload = addSite();
 		var isDer = true;
@@ -129,6 +157,7 @@
 			pfxPicker.setAttribute('type',"file");
 			pfxPicker.setAttribute('id',"co_cert_pfx");
 			pfxPicker.setAttribute('name',"co_cert_pfx");
+			pfxPicker.setAttribute('required', "true");
 			pfxPicker.setAttribute('accept',".pfx");
 			
 			pickerContainer.appendChild(pfxLabel);
@@ -245,7 +274,7 @@
 			console.log("request: \n" + JSON.stringify(json));
 			
 			var request = json;
-
+			
 			//fetch
 			fetch('/private/register',{
 		        method: 'POST', // *GET, POST, PUT, DELETE, etc.
@@ -260,14 +289,13 @@
 		        body: JSON.stringify(request) // body data type must match "Content-Type" header
 		    }) // private/register로 request 보냄
 			  .then(function(response) {
-			    return response.json(); //response를 json객체로
+
+				  return response.json(); //response를 json객체로
 			  })
 			  .then(function(myJson) {
 				  //do something with json
-			    console.log("response: \n" + JSON.stringify(myJson));
-				window.location.href="/"; 
+				  console.log("response: \n" + JSON.stringify(myJson));
 			  });
-			
 		}
 		
 		function addSite() {
@@ -283,15 +311,18 @@
 			
 			urlNode.name = "co_domain";
 			urlNode.className = "form-control"
-			urlNode.placeholder = "url";
+			urlNode.placeholder = "도메인";
+			urlNode.setAttribute('required', "true");
 			
 			idNode.name = "co_id";
 			idNode.className = "form-control"
-			idNode.placeholder = "id";
+			idNode.placeholder = "아이디";
+			idNode.setAttribute('required', "true");
 			
 			pwNode.name = "co_pw"
 			pwNode.className = "form-control"
-			pwNode.placeholder = "pw";
+			pwNode.placeholder = "패스워드";
+			pwNode.setAttribute('required', "true");
 			//<input type ="button" value="+"  onclick="addSite()" style="WIDTH: 30pt;"/>
 			
 			
@@ -309,6 +340,7 @@
 			sites.appendChild(newDomain);
 			console.log(sites.lastChild);
 		}
+		
 		function deleteSite(node) {
 			var sites = document.getElementById("sites");
 			console.log(sites.childElementCount);
