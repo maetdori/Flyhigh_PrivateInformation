@@ -219,15 +219,17 @@
 			if(isDer) {
 				try {
 					await readFile(document.getElementById("co_cert_der"),function(e) {
-						co_cert_der = btoa(e);
+						co_cert_der = btoa(e); //encoded
 						//console.log("co_cert_der : " +co_cert_der);
 					});
 				} catch(err) {
-					alert('err : ${err.name}: ${err.message}');
+					//alert('err : ${err.name}: ${err.message}');
+					alert(err);
+					//return false;
 				}
 				
 				await readFile(document.getElementById("co_cert_key"),function(e) {
-					co_cert_key = btoa(e);
+					co_cert_key = btoa(e); //decoded
 					//console.log("co_cert_key : " +co_cert_key);
 				});
 				console.log("co_cert_der : " +co_cert_der);
@@ -238,7 +240,9 @@
 					co_certification = btoa(e);
 				});
 				} catch(err) {
-					alert('err : ${err.name}: ${err.message}');
+					//alert('err : ${err.name}: ${err.message}');
+					alert(err);
+					//return false;
 				}
 				console.log("co_certification : " +co_certification);
 			}
