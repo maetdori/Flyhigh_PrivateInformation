@@ -223,7 +223,9 @@
 						//console.log("co_cert_der : " +co_cert_der);
 					});
 				} catch(err) {
-					alert('err : ${err.name}: ${err.message}');
+					alert(err);
+					//alert('err : ${err.name}: ${err.message}');
+					//return false;
 				}
 				
 				await readFile(document.getElementById("co_cert_key"),function(e) {
@@ -238,7 +240,9 @@
 					co_certification = btoa(e);
 				});
 				} catch(err) {
-					alert('err : ${err.name}: ${err.message}');
+					alert(err);
+					//alert('err : ${err.name}: ${err.message}');
+					//return false;
 				}
 				console.log("co_certification : " +co_certification);
 			}

@@ -75,6 +75,7 @@ public class WebController {
 				Map<String, Object> error = new HashMap<>();
 				error.put("code",String.format("0x%x", e.getCode()));
 				error.put("message",e.getMessage());
+				return error;
 			}
 			
 			Map<String, String> validity = new HashMap<>(); //validity map
@@ -90,6 +91,7 @@ public class WebController {
 			response.put("count", (int) req.get("count"));
 			
 			return response;
+			
 		} catch(Exception e) {
 			logger.error(e.toString(),e);
 			resp.setStatus(500);

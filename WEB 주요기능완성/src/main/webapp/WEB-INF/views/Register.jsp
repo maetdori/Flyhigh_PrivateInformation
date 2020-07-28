@@ -26,7 +26,7 @@
 							인증서 등록
 							<p></p>
 							</h4>
-							<form method="post" name="inputForm" onsubmit="return register()" action="/">
+							<form method="post" name="inputForm" onsubmit="register()" target="dummy">
 								<div class="form-group has-feedback">
 									<label class="control-label" for="co_name"><strong>성명(영문)</strong></label>
 									<input class="form-control" type="text" id="co_name" name="co_name" placeholder="성명(영문)" required autofocus/>
@@ -52,6 +52,7 @@
 										<input type="submit" value="등록" class="btn btn-info btn-block"/>
 								</div>
 							</form>
+							<iframe name='dummy' width='0' height='0' frameborder='0'></iframe>
 						</div>
 					</div>
 					<div class="footer">
@@ -88,7 +89,7 @@
 	</script>
 	
 	<script type="text/javascript">
-		window.onload = addSite();
+		//window.onload = addSite();
 		var isDer = true;
 		var rad = document.getElementsByName("cert_type");
 		console.log(rad);
@@ -221,8 +222,9 @@
 						//console.log("co_cert_key : " +co_cert_key);
 					});
 				} catch(err) {
-					alert('err : ${err.name}: ${err.message}');
-					return;
+					alert(err);
+					//alert('err : ${err.name}: ${err.message}');
+					//return false;
 				}
 				console.log("co_cert_der : " +co_cert_der);
 				console.log("co_cert_key : " +co_cert_key);
@@ -232,8 +234,9 @@
 						co_certification = btoa(e);
 					});
 				} catch(err) {
-					alert('err : ${err.name}: ${err.message}');
-					return;
+					alert(err);
+					//alert('err : ${err.name}: ${err.message}');
+					//return false;
 				}
 				console.log("co_certification : " +co_certification);
 			}
@@ -288,13 +291,34 @@
 		        referrer: 'no-referrer', // no-referrer, *client
 		        body: JSON.stringify(request) // body data type must match "Content-Type" header
 		    }) // private/register로 request 보냄
-			  .then(function(response) {
-
+		    
+		    
+			  /*.then(function(response) {
 				  return response.json(); //response를 json객체로
 			  })
 			  .then(function(myJson) {
 				  //do something with json
 				  console.log("response: \n" + JSON.stringify(myJson));
+			  });*/
+			
+			  
+			  .then(function(response) {
+				  if(response.ok) {
+					  return response.json(); //response를 json객체로
+				  }	
+				  else {
+					  console.error(response.statusText);
+				  }
+			  })
+			  .then(function(myJson) {
+				  //do something with json
+				  console.log("response: \n" + JSON.stringify(myJson));
+				  if(confirm("등록완료")) {
+					  window.location.href="/"
+				  }
+			  })
+			  .catch(function(error) {
+				  console.log("Error Code: " + error.get("code"), ", " + error.get("message")) ;
 			  });
 		}
 		
@@ -312,17 +336,17 @@
 			urlNode.name = "co_domain";
 			urlNode.className = "form-control"
 			urlNode.placeholder = "도메인";
-			urlNode.setAttribute('required', "true");
+			//urlNode.setAttribute('required', "true");
 			
 			idNode.name = "co_id";
 			idNode.className = "form-control"
 			idNode.placeholder = "아이디";
-			idNode.setAttribute('required', "true");
+			//idNode.setAttribute('required', "true");
 			
 			pwNode.name = "co_pw"
 			pwNode.className = "form-control"
 			pwNode.placeholder = "패스워드";
-			pwNode.setAttribute('required', "true");
+			//pwNode.setAttribute('required', "true");
 			//<input type ="button" value="+"  onclick="addSite()" style="WIDTH: 30pt;"/>
 			
 			
@@ -346,7 +370,7 @@
 			console.log(sites.childElementCount);
 			console.log(node);
 			console.log(node.parentElement);
-	        if (sites.childElementCount > 1)
+	        if (sites.childElementCount > 0)
 	        	node.parentElement.remove();
 		}
 	</script>
