@@ -824,3 +824,8 @@ DEBUG 20-07-28 11:03:48[http-nio-8080-exec-1] [certDelete:137] - <==    Updates:
 DEBUG 20-07-28 11:03:48[http-nio-8080-exec-1] [siteListDelete:137] - ==>  Preparing: DELETE FROM TB_SITEINFO WHERE CO_NAME = ?
 DEBUG 20-07-28 11:03:48[http-nio-8080-exec-1] [siteListDelete:137] - ==> Parameters: sdf(String)
 DEBUG 20-07-28 11:03:48[http-nio-8080-exec-1] [siteListDelete:137] - <==    Updates: 1
+INFO  20-07-28 11:46:22[RMI TCP Connection(2)-127.0.0.1] [SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin:159] - Application shutdown requested.
+INFO  20-07-28 11:46:22[RMI TCP Connection(2)-127.0.0.1] [LocalContainerEntityManagerFactoryBean:598] - Closing JPA EntityManagerFactory for persistence unit 'default'
+INFO  20-07-28 11:46:22[RMI TCP Connection(2)-127.0.0.1] [ThreadPoolTaskExecutor:218] - Shutting down ExecutorService 'applicationTaskExecutor'
+INFO  20-07-28 11:46:22[RMI TCP Connection(2)-127.0.0.1] [HikariDataSource:350] - HikariPool-1 - Shutdown initiated...
+INFO  20-07-28 11:46:22[RMI TCP Connection(2)-127.0.0.1] [HikariDataSource:352] - HikariPool-1 - Shutdown completed.
