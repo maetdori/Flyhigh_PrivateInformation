@@ -13,7 +13,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     
     <select id="certSearch" parameterType="String" resultType="com.web.domain.CertVO">
         SELECT
-            co_name, co_active_date, co_exp_date, co_cert_pw, co_cert_der, co_cert_key, co_certification
+            co_name, co_active_date, co_exp_date, co_cert_pw, co_cert_der, co_cert_key, co_certification, co_cert_type
         FROM TB_CERTIFICATION
         WHERE
             CO_NAME = #{co_name}

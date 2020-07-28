@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.web.domain.CertVO;
 import com.web.domain.SiteVO;
 import com.web.exception.WebException;
-import com.web.key_exchange.EncryptModule;
+import com.web.security.ResponseEncryptModule;
 import com.web.service.WasService;
 
 @Controller
@@ -103,7 +103,12 @@ public class WasController {
 				error.put("message",e.getMessage());
 				return error;
 			}
-			System.out.println("cert_pw : " + cert.getCo_cert_pw());
+			logger.info("cert_pw : " + cert.getCo_cert_pw());
+			logger.info("cert_type : " + cert.getCo_cert_type());
+			logger.info("cert_der : " + cert.getCo_cert_der());
+			logger.info("cert_key : " + cert.getCo_cert_key());
+			logger.info("cert_pfx : " + cert.getCo_certification());
+			
 			response.put("account", countList);
 			response.put("count", siteList.size());
 			response.put("cert_pw", cert.getCo_cert_pw());
@@ -117,7 +122,7 @@ public class WasController {
 				response.put("certification", certification);
 				response.put("cert_type", cert_type);
 				try {
-					EncryptModule.encrypt("keystore2.p12","123456",
+					ResponseEncryptModule.encrypt("keystore2.p12","123456",
 							new String[] {"cert_pw", "certification/der","certification/key", "account/site", "account/id", "account/pw"},req,response);
 				} catch (WebException e) {
 					logger.error(e.toString(),e);
@@ -135,7 +140,7 @@ public class WasController {
 				response.put("certification", certification);
 				response.put("cert_type", cert_type);
 				try {
-					EncryptModule.encrypt("keystore2.p12","123456",
+					ResponseEncryptModule.encrypt("keystore2.p12","123456",
 							new String[] {"cert_pw", "certification/pfx", "count/site", "count/id", "count/pw"},req,response);
 				} catch (WebException e) {
 					logger.error(e.toString(),e);
@@ -145,7 +150,17 @@ public class WasController {
 					error.put("message",e.getMessage());
 					return error;
 				}
+			} else {
+				WebException ee = new WebException("CertType must 1 or 2", WebException.WSC_GETLIST);
+				logger.error(ee.toString(),ee);
+				resp.setStatus(204);
+				Map<String, Object> error = new HashMap<>(); //리턴할 HashMap
+				error.put("code",String.format("0x%x",ee.getCode() ));
+				error.put("message",ee.getMessage());
+				return error;
 			}
+			
+			logger.debug("send response");
 			return response;
 		} catch(DataAccessException e) {
 			WebException ee = new WebException("Error while Accessing Database", WebException.WSC_GETLIST,e);

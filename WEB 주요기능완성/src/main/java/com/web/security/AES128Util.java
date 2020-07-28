@@ -1,4 +1,4 @@
-package com.web.key_exchange;
+package com.web.security;
 
 import java.security.GeneralSecurityException;
 import java.security.Key;

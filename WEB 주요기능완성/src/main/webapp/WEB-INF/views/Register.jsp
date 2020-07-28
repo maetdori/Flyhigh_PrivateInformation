@@ -206,14 +206,14 @@
 			var co_certification = null;
 			console.log("name : " +co_name);
 			console.log("pw : " +co_name);
-			console.log("type : " +co_cert_type);		
+			console.log("type : " +co_cert_type);
+			
 			
 			var onload = false;
-			
 			if(isDer) {
 				try {
 					await readFile(document.getElementById("co_cert_der"),function(e) {
-						co_cert_der = btoa(e); //base64 encoding
+						co_cert_der = btoa(e);
 						//console.log("co_cert_der : " +co_cert_der);
 					});
 					await readFile(document.getElementById("co_cert_key"),function(e) {
@@ -221,9 +221,8 @@
 						//console.log("co_cert_key : " +co_cert_key);
 					});
 				} catch(err) {
-					//alert('err : ${err.name}: ${err.message}');
-					alert(err);
-					//return false;
+					alert('err : ${err.name}: ${err.message}');
+					return;
 				}
 				console.log("co_cert_der : " +co_cert_der);
 				console.log("co_cert_key : " +co_cert_key);
@@ -233,9 +232,8 @@
 						co_certification = btoa(e);
 					});
 				} catch(err) {
-					//alert('err : ${err.name}: ${err.message}');
-					alert(err);
-					//return false;
+					alert('err : ${err.name}: ${err.message}');
+					return;
 				}
 				console.log("co_certification : " +co_certification);
 			}
@@ -314,17 +312,17 @@
 			urlNode.name = "co_domain";
 			urlNode.className = "form-control"
 			urlNode.placeholder = "도메인";
-			//urlNode.setAttribute('required', "true");
+			urlNode.setAttribute('required', "true");
 			
 			idNode.name = "co_id";
 			idNode.className = "form-control"
 			idNode.placeholder = "아이디";
-			//idNode.setAttribute('required', "true");
+			idNode.setAttribute('required', "true");
 			
 			pwNode.name = "co_pw"
 			pwNode.className = "form-control"
 			pwNode.placeholder = "패스워드";
-			//pwNode.setAttribute('required', "true");
+			pwNode.setAttribute('required', "true");
 			//<input type ="button" value="+"  onclick="addSite()" style="WIDTH: 30pt;"/>
 			
 			

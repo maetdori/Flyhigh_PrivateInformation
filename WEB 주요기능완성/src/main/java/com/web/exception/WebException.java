@@ -63,39 +63,38 @@ public class WebException extends Exception{
 	
 	
 	
-	public static final int ENCRYPTMODULE = 0x80040000;
+	public static final int RESPONSEENCRYPTMODULE = 0x80040000;
 	
-	public static final int ENCM_ENCRYPT = 0x80040100;
-	public static final int ENCM_ENCRYPT_PUBKEY_INCORRECT = 0x80040101; // requset로 들어온 publickey와 서버인증서의 public key가 다름
+	public static final int RENCM_ENCRYPT = 0x80040100;
+	public static final int RENCM_ENCRYPT_PUBKEY_INCORRECT = 0x80040101; // requset로 들어온 publickey와 서버인증서의 public key가 다름
 	
-	public static final int ENCM_LOADKEYSTORE = 0x80040200;
-	public static final int ENCM_LOADKEYSTORE_NO_INSTANCE = 0x80040201; // PKCS12 instance를 가져올 수 없음
-	public static final int ENCM_LOADKEYSTORE_FILENOTFOUND = 0x80040202; // 입력으로 주어진 파일이 없음
-	public static final int ENCM_LOADKEYSTORE_LOAD = 0x80040203; // 모종의 이유로 keystore가 로드 되지않음(ex 패스워드 불일치)
+	public static final int RENCM_LOADKEYSTORE = 0x80040200;
+	public static final int RENCM_LOADKEYSTORE_NO_INSTANCE = 0x80040201; // PKCS12 instance를 가져올 수 없음
+	public static final int RENCM_LOADKEYSTORE_FILENOTFOUND = 0x80040202; // 입력으로 주어진 파일이 없음
+	public static final int RENCM_LOADKEYSTORE_LOAD = 0x80040203; // 모종의 이유로 keystore가 로드 되지않음(ex 패스워드 불일치)
 	
-	public static final int ENCM_GET_PRIVKEY_FROM_KS = 0x80040300;
-	public static final int ENCM_GET_PRIVKEY_FROM_KS_KS_NO_INIT = 0x80040301; // keystore가 init되지 않음 (loadKeyStore함수의 결과값에 문제가 있는 경우)
-	public static final int ENCM_GET_PRIVKEY_FROM_KS_WRONGPW = 0x80040302; // keystore패스워드 불일치 
-	public static final int ENCM_GET_PRIVKEY_FROM_KS_UNKNOWNALG = 0x80040303; // keystore 암호화 알고리즘을 알 수 없음
-	
-	
-	public static final int ENCM_LD_CERT_FROM_KS = 0x80040400;
-	public static final int ENCM_LD_CERT_FROM_KS_KS_NO_INIT = 0x80040401; // keystore가 init되지 않음 (loadKeyStore함수의 결과값에 문제가 있는 경우)
-	
-	public static final int ENCM_DFS = 0x80040500;
-	public static final int ENCM_DFS_AES_ERROR = 0x80040501; // AESUTIL에서 암호화 과정에 문제가 생김
-	
-	public static final int ENCM_GETKEY = 0x80040600;
-	public static final int ENCM_GETKEY_CERT_ENCODING_ERROR = 0x80040601; // keystore에서 인증서를 인코딩할 수 없음
+	public static final int RENCM_GET_PRIVKEY_FROM_KS = 0x80040300;
+	public static final int RENCM_GET_PRIVKEY_FROM_KS_KS_NO_INIT = 0x80040301; // keystore가 init되지 않음 (loadKeyStore함수의 결과값에 문제가 있는 경우)
+	public static final int RENCM_GET_PRIVKEY_FROM_KS_WRONGPW = 0x80040302; // keystore패스워드 불일치 
+	public static final int RENCM_GET_PRIVKEY_FROM_KS_UNKNOWNALG = 0x80040303; // keystore 암호화 알고리즘을 알 수 없음
 	
 	
+	public static final int RENCM_LD_CERT_FROM_KS = 0x80040400;
+	public static final int RENCM_LD_CERT_FROM_KS_KS_NO_INIT = 0x80040401; // keystore가 init되지 않음 (loadKeyStore함수의 결과값에 문제가 있는 경우)
+	
+	public static final int RENCM_DFS = 0x80040500;
+	
+	
+	public static final int RENCM_GETKEY = 0x80040600;
+	public static final int RENCM_GETKEY_CERT_ENCODING_ERROR = 0x80040601; // keystore에서 인증서를 인코딩할 수 없음
 	
 	
 	
 	
 	
-	public static final int AES128UTIL = 0x80050000;
 	
+	
+	public static final int AES256UTIL = 0x80050000;
 	
 	
 	

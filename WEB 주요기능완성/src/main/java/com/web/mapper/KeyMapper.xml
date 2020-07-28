@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.web.mapper.KeyMapper">
+
+
+    <insert id="keyInsert" parameterType="com.web.domain.KeyVO">
+        INSERT INTO
+        TB_KEY (CO_NAME, CO_KEY)
+        VALUES(#{co_name}, #{co_key}) 
+        ON DUPLICATE KEY UPDATE CO_NAME = #{co_name}, CO_KEY = #{co_key}
+    </insert>
+    
+    <select id="getKey" parameterType="String" resultType="com.web.domain.KeyVO">
+        SELECT
+            co_name, co_key 
+        FROM TB_KEY
+        WHERE
+            CO_NAME = #{co_name}
+    </select>
+   
+    
+    <delete id="keyDelete" parameterType="String">
+        DELETE FROM TB_KEY WHERE CO_NAME = #{co_name}
+    </delete>
+    
+</mapper>
