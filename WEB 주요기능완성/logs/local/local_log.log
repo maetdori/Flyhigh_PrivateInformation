@@ -1951,3 +1951,206 @@ INFO  20-07-27 15:40:34[main] [WebApplication:61] - Started WebApplication in 2.
 INFO  20-07-27 15:40:34[http-nio-8080-exec-1] [[/]:173] - Initializing Spring DispatcherServlet 'dispatcherServlet'
 >>>>>>> f59e4dea0fbb1edc6f3f02d238b064ec604cce88
 >>>>>>> 40729a8ad30e545be056c64304a69b589ff75fa5
+INFO  20-07-28 11:53:15[main] [WebApplication:55] - Starting WebApplication on DESKTOP-0AIT5KQ with PID 11480 (C:\Users\minij\Desktop\privateinformation\WEB 주요기능완성\target\classes started by minij in C:\Users\minij\Desktop\privateinformation\WEB 주요기능완성)
+DEBUG 20-07-28 11:53:15[main] [WebApplication:56] - Running with Spring Boot v2.3.1.RELEASE, Spring v5.2.7.RELEASE
+INFO  20-07-28 11:53:15[main] [WebApplication:655] - The following profiles are active: local
+INFO  20-07-28 11:53:15[main] [RepositoryConfigurationDelegate:127] - Bootstrapping Spring Data JPA repositories in DEFERRED mode.
+INFO  20-07-28 11:53:15[main] [RepositoryConfigurationDelegate:187] - Finished Spring Data repository scanning in 13ms. Found 0 JPA repository interfaces.
+DEBUG 20-07-28 11:53:15[main] [LogFactory:105] - Logging initialized using 'class org.apache.ibatis.logging.slf4j.Slf4jImpl' adapter.
+INFO  20-07-28 11:53:15[main] [PostProcessorRegistrationDelegate$BeanPostProcessorChecker:335] - Bean 'org.springframework.ws.config.annotation.DelegatingWsConfiguration' of type [org.springframework.ws.config.annotation.DelegatingWsConfiguration$$EnhancerBySpringCGLIB$$bc527ab5] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+INFO  20-07-28 11:53:15[main] [AnnotationActionEndpointMapping:236] - Supporting [WS-Addressing August 2004, WS-Addressing 1.0]
+INFO  20-07-28 11:53:16[main] [TomcatWebServer:108] - Tomcat initialized with port(s): 8080 (https)
+INFO  20-07-28 11:53:16[main] [Http11NioProtocol:173] - Initializing ProtocolHandler ["https-jsse-nio-8080"]
+INFO  20-07-28 11:53:16[main] [StandardService:173] - Starting service [Tomcat]
+INFO  20-07-28 11:53:16[main] [StandardEngine:173] - Starting Servlet engine: [Apache Tomcat/9.0.36]
+INFO  20-07-28 11:53:16[main] [TldScanner:173] - At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+INFO  20-07-28 11:53:16[main] [[/]:173] - Initializing Spring embedded WebApplicationContext
+INFO  20-07-28 11:53:16[main] [ServletWebServerApplicationContext:285] - Root WebApplicationContext: initialization completed in 1225 ms
+INFO  20-07-28 11:53:16[main] [ThreadPoolTaskExecutor:181] - Initializing ExecutorService 'applicationTaskExecutor'
+INFO  20-07-28 11:53:16[main] [HikariDataSource:110] - HikariPool-1 - Starting...
+INFO  20-07-28 11:53:16[main] [HikariDataSource:123] - HikariPool-1 - Start completed.
+INFO  20-07-28 11:53:16[task-1] [LogHelper:31] - HHH000204: Processing PersistenceUnitInfo [name: default]
+INFO  20-07-28 11:53:16[task-1] [Version:44] - HHH000412: Hibernate ORM core version 5.4.17.Final
+INFO  20-07-28 11:53:16[task-1] [Version:49] - HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+WARN  20-07-28 11:53:16[main] [JpaBaseConfiguration$JpaWebConfiguration:220] - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+INFO  20-07-28 11:53:16[task-1] [Dialect:172] - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+INFO  20-07-28 11:53:17[task-1] [JtaPlatformInitiator:52] - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+INFO  20-07-28 11:53:17[task-1] [LocalContainerEntityManagerFactoryBean:416] - Initialized JPA EntityManagerFactory for persistence unit 'default'
+INFO  20-07-28 11:53:17[main] [Http11NioProtocol:173] - Starting ProtocolHandler ["https-jsse-nio-8080"]
+INFO  20-07-28 11:53:17[main] [TomcatWebServer:220] - Tomcat started on port(s): 8080 (https) with context path ''
+INFO  20-07-28 11:53:17[main] [DeferredRepositoryInitializationListener:49] - Triggering deferred initialization of Spring Data repositories…
+INFO  20-07-28 11:53:17[main] [DeferredRepositoryInitializationListener:53] - Spring Data repositories initialized!
+INFO  20-07-28 11:53:17[main] [WebApplication:61] - Started WebApplication in 2.759 seconds (JVM running for 3.345)
+INFO  20-07-28 11:53:28[RMI TCP Connection(2)-127.0.0.1] [SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin:159] - Application shutdown requested.
+INFO  20-07-28 11:53:28[RMI TCP Connection(2)-127.0.0.1] [LocalContainerEntityManagerFactoryBean:598] - Closing JPA EntityManagerFactory for persistence unit 'default'
+INFO  20-07-28 11:53:28[RMI TCP Connection(2)-127.0.0.1] [ThreadPoolTaskExecutor:218] - Shutting down ExecutorService 'applicationTaskExecutor'
+INFO  20-07-28 11:53:28[RMI TCP Connection(2)-127.0.0.1] [HikariDataSource:350] - HikariPool-1 - Shutdown initiated...
+INFO  20-07-28 11:53:28[RMI TCP Connection(2)-127.0.0.1] [HikariDataSource:352] - HikariPool-1 - Shutdown completed.
+INFO  20-07-28 11:53:35[main] [WebApplication:55] - Starting WebApplication on DESKTOP-0AIT5KQ with PID 2984 (C:\Users\minij\Desktop\privateinformation\WEB 주요기능완성\target\classes started by minij in C:\Users\minij\Desktop\privateinformation\WEB 주요기능완성)
+DEBUG 20-07-28 11:53:35[main] [WebApplication:56] - Running with Spring Boot v2.3.1.RELEASE, Spring v5.2.7.RELEASE
+INFO  20-07-28 11:53:35[main] [WebApplication:655] - The following profiles are active: local
+INFO  20-07-28 11:53:36[main] [RepositoryConfigurationDelegate:127] - Bootstrapping Spring Data JPA repositories in DEFERRED mode.
+INFO  20-07-28 11:53:36[main] [RepositoryConfigurationDelegate:187] - Finished Spring Data repository scanning in 18ms. Found 0 JPA repository interfaces.
+DEBUG 20-07-28 11:53:36[main] [LogFactory:105] - Logging initialized using 'class org.apache.ibatis.logging.slf4j.Slf4jImpl' adapter.
+INFO  20-07-28 11:53:36[main] [PostProcessorRegistrationDelegate$BeanPostProcessorChecker:335] - Bean 'org.springframework.ws.config.annotation.DelegatingWsConfiguration' of type [org.springframework.ws.config.annotation.DelegatingWsConfiguration$$EnhancerBySpringCGLIB$$fcba6235] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+INFO  20-07-28 11:53:36[main] [AnnotationActionEndpointMapping:236] - Supporting [WS-Addressing August 2004, WS-Addressing 1.0]
+INFO  20-07-28 11:53:36[main] [TomcatWebServer:108] - Tomcat initialized with port(s): 8080 (https)
+INFO  20-07-28 11:53:36[main] [Http11NioProtocol:173] - Initializing ProtocolHandler ["https-jsse-nio-8080"]
+INFO  20-07-28 11:53:36[main] [StandardService:173] - Starting service [Tomcat]
+INFO  20-07-28 11:53:36[main] [StandardEngine:173] - Starting Servlet engine: [Apache Tomcat/9.0.36]
+INFO  20-07-28 11:53:36[main] [TldScanner:173] - At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+INFO  20-07-28 11:53:36[main] [[/]:173] - Initializing Spring embedded WebApplicationContext
+INFO  20-07-28 11:53:36[main] [ServletWebServerApplicationContext:285] - Root WebApplicationContext: initialization completed in 1222 ms
+INFO  20-07-28 11:53:37[main] [ThreadPoolTaskExecutor:181] - Initializing ExecutorService 'applicationTaskExecutor'
+INFO  20-07-28 11:53:37[main] [HikariDataSource:110] - HikariPool-1 - Starting...
+INFO  20-07-28 11:53:37[main] [HikariDataSource:123] - HikariPool-1 - Start completed.
+INFO  20-07-28 11:53:37[task-1] [LogHelper:31] - HHH000204: Processing PersistenceUnitInfo [name: default]
+INFO  20-07-28 11:53:37[task-1] [Version:44] - HHH000412: Hibernate ORM core version 5.4.17.Final
+INFO  20-07-28 11:53:37[task-1] [Version:49] - HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+WARN  20-07-28 11:53:37[main] [JpaBaseConfiguration$JpaWebConfiguration:220] - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+INFO  20-07-28 11:53:37[task-1] [Dialect:172] - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+INFO  20-07-28 11:53:37[task-1] [JtaPlatformInitiator:52] - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+INFO  20-07-28 11:53:37[task-1] [LocalContainerEntityManagerFactoryBean:416] - Initialized JPA EntityManagerFactory for persistence unit 'default'
+INFO  20-07-28 11:53:37[main] [Http11NioProtocol:173] - Starting ProtocolHandler ["https-jsse-nio-8080"]
+INFO  20-07-28 11:53:38[main] [TomcatWebServer:220] - Tomcat started on port(s): 8080 (https) with context path ''
+INFO  20-07-28 11:53:38[main] [DeferredRepositoryInitializationListener:49] - Triggering deferred initialization of Spring Data repositories…
+INFO  20-07-28 11:53:38[main] [DeferredRepositoryInitializationListener:53] - Spring Data repositories initialized!
+INFO  20-07-28 11:53:38[main] [WebApplication:61] - Started WebApplication in 2.731 seconds (JVM running for 3.185)
+WARN  20-07-28 12:50:17[HikariPool-1 housekeeper] [HikariPool:787] - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=16m39s951ms777µs500ns).
+INFO  20-07-28 12:53:28[https-jsse-nio-8080-exec-6] [[/]:173] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+INFO  20-07-28 12:53:28[https-jsse-nio-8080-exec-6] [DispatcherServlet:525] - Initializing Servlet 'dispatcherServlet'
+INFO  20-07-28 12:53:28[https-jsse-nio-8080-exec-6] [DispatcherServlet:547] - Completed initialization in 4 ms
+DEBUG 20-07-28 12:53:28[https-jsse-nio-8080-exec-6] [certList:137] - ==>  Preparing: SELECT * FROM TB_CERTIFICATION
+DEBUG 20-07-28 12:53:28[https-jsse-nio-8080-exec-6] [certList:137] - ==> Parameters: 
+DEBUG 20-07-28 12:53:28[https-jsse-nio-8080-exec-6] [certList:137] - <==      Total: 1
+DEBUG 20-07-28 12:53:57[https-jsse-nio-8080-exec-6] [certList:137] - ==>  Preparing: SELECT * FROM TB_CERTIFICATION
+DEBUG 20-07-28 12:53:57[https-jsse-nio-8080-exec-6] [certList:137] - ==> Parameters: 
+DEBUG 20-07-28 12:53:57[https-jsse-nio-8080-exec-6] [certList:137] - <==      Total: 1
+INFO  20-07-28 12:53:57[https-jsse-nio-8080-exec-7] [WebController:215] - co_name : luikee
+INFO  20-07-28 12:53:57[https-jsse-nio-8080-exec-7] [WebController:216] - co_cert_pw : 123
+ERROR 20-07-28 12:53:57[https-jsse-nio-8080-exec-7] [WebController:70] - error: no der or pfx code:0x80020401
+com.web.exception.WebException: no der or pfx
+	at com.web.controller.WebController.insertOrModify(WebController.java:265)
+	at com.web.controller.WebController.certRegister(WebController.java:68)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:564)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:190)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:138)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:105)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:879)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:793)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1040)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:943)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006)
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:909)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:660)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:741)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:202)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:541)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:139)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:373)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:868)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1590)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:630)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:832)
+DEBUG 20-07-28 12:57:46[https-jsse-nio-8080-exec-3] [certList:137] - ==>  Preparing: SELECT * FROM TB_CERTIFICATION
+DEBUG 20-07-28 12:57:46[https-jsse-nio-8080-exec-3] [certList:137] - ==> Parameters: 
+DEBUG 20-07-28 12:57:46[https-jsse-nio-8080-exec-3] [certList:137] - <==      Total: 1
+DEBUG 20-07-28 12:57:48[https-jsse-nio-8080-exec-4] [certSearch:137] - ==>  Preparing: SELECT * FROM TB_CERTIFICATION WHERE CO_NAME = ?
+DEBUG 20-07-28 12:57:48[https-jsse-nio-8080-exec-4] [certSearch:137] - ==> Parameters: meagan(String)
+DEBUG 20-07-28 12:57:48[https-jsse-nio-8080-exec-4] [certSearch:137] - <==      Total: 1
+DEBUG 20-07-28 12:57:48[https-jsse-nio-8080-exec-4] [siteList:137] - ==>  Preparing: SELECT * FROM TB_SITEINFO WHERE CO_NAME = ?
+DEBUG 20-07-28 12:57:48[https-jsse-nio-8080-exec-4] [siteList:137] - ==> Parameters: meagan(String)
+DEBUG 20-07-28 12:57:48[https-jsse-nio-8080-exec-4] [siteList:137] - <==      Total: 1
+INFO  20-07-28 12:58:08[https-jsse-nio-8080-exec-8] [WebController:215] - co_name : meagan
+INFO  20-07-28 12:58:08[https-jsse-nio-8080-exec-8] [WebController:216] - co_cert_pw : 12122
+INFO  20-07-28 12:58:08[https-jsse-nio-8080-exec-8] [WebController:268] - co_cert_der : null
+INFO  20-07-28 12:58:08[https-jsse-nio-8080-exec-8] [WebController:269] - co_cert_key : null
+INFO  20-07-28 12:58:08[https-jsse-nio-8080-exec-8] [WebController:270] - co_certification : null
+INFO  20-07-28 12:58:08[https-jsse-nio-8080-exec-8] [WebController:271] - co_notBefore : null
+INFO  20-07-28 12:58:08[https-jsse-nio-8080-exec-8] [WebController:272] - co_notAfter : null
+INFO  20-07-28 12:58:08[https-jsse-nio-8080-exec-8] [WebController:273] - co_cert_type : 0
+DEBUG 20-07-28 12:58:08[https-jsse-nio-8080-exec-7] [certList:137] - ==>  Preparing: SELECT * FROM TB_CERTIFICATION
+DEBUG 20-07-28 12:58:08[https-jsse-nio-8080-exec-7] [certList:137] - ==> Parameters: 
+DEBUG 20-07-28 12:58:08[https-jsse-nio-8080-exec-7] [certList:137] - <==      Total: 1
+DEBUG 20-07-28 12:58:08[https-jsse-nio-8080-exec-8] [certUpdate:137] - ==>  Preparing: UPDATE TB_CERTIFICATION SET CO_CERT_PW = ? WHERE CO_NAME = ?
+DEBUG 20-07-28 12:58:08[https-jsse-nio-8080-exec-8] [certUpdate:137] - ==> Parameters: 12122(String), meagan(String)
+DEBUG 20-07-28 12:58:08[https-jsse-nio-8080-exec-8] [certUpdate:137] - <==    Updates: 1
+DEBUG 20-07-28 12:58:08[https-jsse-nio-8080-exec-8] [siteListDelete:137] - ==>  Preparing: DELETE FROM TB_SITEINFO WHERE CO_NAME = ?
+DEBUG 20-07-28 12:58:08[https-jsse-nio-8080-exec-8] [siteListDelete:137] - ==> Parameters: meagan(String)
+DEBUG 20-07-28 12:58:08[https-jsse-nio-8080-exec-8] [siteListDelete:137] - <==    Updates: 1
+DEBUG 20-07-28 12:58:08[https-jsse-nio-8080-exec-8] [siteInsert:137] - ==>  Preparing: INSERT INTO TB_SITEINFO (CO_NAME, CO_DOMAIN, CO_ID, CO_PW) VALUES(?,?,?,?)
+DEBUG 20-07-28 12:58:08[https-jsse-nio-8080-exec-8] [siteInsert:137] - ==> Parameters: meagan(String), 123123(String), mod(String), 12313(String)
+DEBUG 20-07-28 12:58:08[https-jsse-nio-8080-exec-8] [siteInsert:137] - <==    Updates: 1
+DEBUG 20-07-28 12:58:09[https-jsse-nio-8080-exec-3] [certSearch:137] - ==>  Preparing: SELECT * FROM TB_CERTIFICATION WHERE CO_NAME = ?
+DEBUG 20-07-28 12:58:09[https-jsse-nio-8080-exec-3] [certSearch:137] - ==> Parameters: meagan(String)
+DEBUG 20-07-28 12:58:09[https-jsse-nio-8080-exec-3] [certSearch:137] - <==      Total: 1
+DEBUG 20-07-28 12:58:09[https-jsse-nio-8080-exec-3] [siteList:137] - ==>  Preparing: SELECT * FROM TB_SITEINFO WHERE CO_NAME = ?
+DEBUG 20-07-28 12:58:09[https-jsse-nio-8080-exec-3] [siteList:137] - ==> Parameters: meagan(String)
+DEBUG 20-07-28 12:58:09[https-jsse-nio-8080-exec-3] [siteList:137] - <==      Total: 1
+INFO  20-07-28 12:58:18[https-jsse-nio-8080-exec-5] [WebController:215] - co_name : meagan
+INFO  20-07-28 12:58:18[https-jsse-nio-8080-exec-5] [WebController:216] - co_cert_pw : od
+INFO  20-07-28 12:58:18[https-jsse-nio-8080-exec-5] [WebController:268] - co_cert_der : null
+INFO  20-07-28 12:58:18[https-jsse-nio-8080-exec-5] [WebController:269] - co_cert_key : null
+INFO  20-07-28 12:58:18[https-jsse-nio-8080-exec-5] [WebController:270] - co_certification : null
+INFO  20-07-28 12:58:18[https-jsse-nio-8080-exec-5] [WebController:271] - co_notBefore : null
+INFO  20-07-28 12:58:18[https-jsse-nio-8080-exec-5] [WebController:272] - co_notAfter : null
+INFO  20-07-28 12:58:18[https-jsse-nio-8080-exec-5] [WebController:273] - co_cert_type : 0
+DEBUG 20-07-28 12:58:18[https-jsse-nio-8080-exec-5] [certUpdate:137] - ==>  Preparing: UPDATE TB_CERTIFICATION SET CO_CERT_PW = ? WHERE CO_NAME = ?
+DEBUG 20-07-28 12:58:18[https-jsse-nio-8080-exec-5] [certUpdate:137] - ==> Parameters: od(String), meagan(String)
+DEBUG 20-07-28 12:58:18[https-jsse-nio-8080-exec-5] [certUpdate:137] - <==    Updates: 1
+DEBUG 20-07-28 12:58:18[https-jsse-nio-8080-exec-5] [siteListDelete:137] - ==>  Preparing: DELETE FROM TB_SITEINFO WHERE CO_NAME = ?
+DEBUG 20-07-28 12:58:18[https-jsse-nio-8080-exec-5] [siteListDelete:137] - ==> Parameters: meagan(String)
+DEBUG 20-07-28 12:58:18[https-jsse-nio-8080-exec-5] [siteListDelete:137] - <==    Updates: 1
+DEBUG 20-07-28 12:58:18[https-jsse-nio-8080-exec-5] [siteInsert:137] - ==>  Preparing: INSERT INTO TB_SITEINFO (CO_NAME, CO_DOMAIN, CO_ID, CO_PW) VALUES(?,?,?,?)
+DEBUG 20-07-28 12:58:18[https-jsse-nio-8080-exec-5] [siteInsert:137] - ==> Parameters: meagan(String), 123123(String), mod(String), 12313(String)
+DEBUG 20-07-28 12:58:18[https-jsse-nio-8080-exec-5] [siteInsert:137] - <==    Updates: 1
+DEBUG 20-07-28 12:58:18[https-jsse-nio-8080-exec-4] [certList:137] - ==>  Preparing: SELECT * FROM TB_CERTIFICATION
+DEBUG 20-07-28 12:58:18[https-jsse-nio-8080-exec-4] [certList:137] - ==> Parameters: 
+DEBUG 20-07-28 12:58:18[https-jsse-nio-8080-exec-4] [certList:137] - <==      Total: 1
+DEBUG 20-07-28 12:58:18[https-jsse-nio-8080-exec-1] [certList:137] - ==>  Preparing: SELECT * FROM TB_CERTIFICATION
+DEBUG 20-07-28 12:58:18[https-jsse-nio-8080-exec-1] [certList:137] - ==> Parameters: 
+DEBUG 20-07-28 12:58:18[https-jsse-nio-8080-exec-1] [certList:137] - <==      Total: 1
+DEBUG 20-07-28 12:58:20[https-jsse-nio-8080-exec-7] [certSearch:137] - ==>  Preparing: SELECT * FROM TB_CERTIFICATION WHERE CO_NAME = ?
+DEBUG 20-07-28 12:58:20[https-jsse-nio-8080-exec-7] [certSearch:137] - ==> Parameters: meagan(String)
+DEBUG 20-07-28 12:58:20[https-jsse-nio-8080-exec-7] [certSearch:137] - <==      Total: 1
+DEBUG 20-07-28 12:58:20[https-jsse-nio-8080-exec-7] [siteList:137] - ==>  Preparing: SELECT * FROM TB_SITEINFO WHERE CO_NAME = ?
+DEBUG 20-07-28 12:58:20[https-jsse-nio-8080-exec-7] [siteList:137] - ==> Parameters: meagan(String)
+DEBUG 20-07-28 12:58:20[https-jsse-nio-8080-exec-7] [siteList:137] - <==      Total: 1
+DEBUG 20-07-28 12:58:25[https-jsse-nio-8080-exec-2] [certList:137] - ==>  Preparing: SELECT * FROM TB_CERTIFICATION
+DEBUG 20-07-28 12:58:25[https-jsse-nio-8080-exec-2] [certList:137] - ==> Parameters: 
+DEBUG 20-07-28 12:58:25[https-jsse-nio-8080-exec-2] [certList:137] - <==      Total: 1
+INFO  20-07-28 13:23:20[RMI TCP Connection(2)-127.0.0.1] [SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin:159] - Application shutdown requested.
+INFO  20-07-28 13:23:20[RMI TCP Connection(2)-127.0.0.1] [LocalContainerEntityManagerFactoryBean:598] - Closing JPA EntityManagerFactory for persistence unit 'default'
+INFO  20-07-28 13:23:20[RMI TCP Connection(2)-127.0.0.1] [ThreadPoolTaskExecutor:218] - Shutting down ExecutorService 'applicationTaskExecutor'
+INFO  20-07-28 13:23:20[RMI TCP Connection(2)-127.0.0.1] [HikariDataSource:350] - HikariPool-1 - Shutdown initiated...
+INFO  20-07-28 13:23:20[RMI TCP Connection(2)-127.0.0.1] [HikariDataSource:352] - HikariPool-1 - Shutdown completed.
