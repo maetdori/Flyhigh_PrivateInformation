@@ -305,20 +305,16 @@
 			  .then(function(response) {
 				  if(response.ok) {
 					  return response.json(); //response를 json객체로
-				  }	
-				  else {
-					  console.error(response.status);
-					  alert("오류 발생: " + response.status + response.statusText);
 				  }
 			  })
 			  .then(function(myJson) {
 				  //do something with json
-				  if(response.ok) {
-					  console.log("response: \n" + JSON.stringify(myJson));
-					  if(confirm("등록완료")) {
-						  window.location.href="/";
-					  }
+				  console.log("response: \n" + JSON.stringify(myJson));
+				  alert("오류 발생: ");
+				  if(confirm("등록완료")) {
+					  window.location.href="/";
 				  }
+				  
 			  })
 			  .catch(function(error) {
 				  console.log("Error Code: " + error.get("code"), ", " + error.get("message")) ;

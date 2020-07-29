@@ -73,7 +73,7 @@ public class WebController {
 					resp.setStatus(500);
 				}
 				else if(e.getCode() == WebException.WC_IOM_WRONG_PW) { //잘못된 패스워드 입력
-					resp.setStatus(500, "check your pw");
+					resp.setStatus(500);
 				}
 				else
 					resp.setStatus(400);
