@@ -309,28 +309,29 @@
 			    window.location.href="/"; 
 			  });*/
 			
-			    .then(function(response) {
-					  if(response.ok) {
-						  return response.json(); //response를 json객체로
-					  }	
-					  else {
-						  console.error(response.statusText);
-						  alert("오류발생: " + response.statusText);
+		      .then(function(response) {
+				  if(response.ok) {
+					  return response.json(); //response를 json객체로
+				  }	
+				  else {
+					  console.error(response.statusText);
+					  alert("네트워크 오류 발생");
+				  }
+			  })
+			  .then(function(myJson) {
+				  //do something with json
+				  if(response.ok) {
+					  console.log("response: \n" + JSON.stringify(myJson));
+					  if(confirm("수정완료")) {
+						  window.location.href="/";
 					  }
-				  })
-				 .then(function(myJson) {
-					//do something with json
-					  if(response.ok) {
-						  console.log("response: \n" + JSON.stringify(myJson));
-						  if(confirm("수정완료")) {
-							  window.location.href="/";
-						  }
-					  }
-				  })
-				  .catch(function(error) {
-					  console.log("Error Code: " + error.get("code"), ", " + error.get("message")) ;
-					  alert("서버 에러 발생 Error Code: " + error.get("code"), ", " + error.get("message"));
-				  });
+				  }
+			  })
+			  .catch(function(error) {
+				  console.log("Error Code: " + error.get("code"), ", " + error.get("message")) ;
+				  alert("서버 에러 발생 Error Code: " + error.get("code"), ", " + error.get("message"));
+			  });
+
 			}
 			
 			function addSite() {

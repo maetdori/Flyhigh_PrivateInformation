@@ -62,7 +62,7 @@ public class HomeController {
 	    		return "error/" + 500;
 	    	}
 	    	catch(Exception e) {
-	    		WebException ee = new WebException("Unknown error" + co_name,WebException.HC_MODIFY,e);
+	    		WebException ee = new WebException("Unknown error : " + co_name,WebException.HC_MODIFY,e);
 	    		logger.error(ee.toString(),ee);
 	    		return "error/" + 500;
 	    	}

@@ -44,10 +44,11 @@ public class WebException extends Exception{
 	public static final int WC_IOM_NO_KEY = 0x80020402; // request의 key을 찾지못함 (bad request)
 	public static final int WC_IOM_INV_DER = 0x80020403; // request의 der형식이 잘못됨 (bad request)
 	public static final int WC_IOM_INV_PFX = 0x80020404; // request의 pfx형식이 잘못됨 (bad request)
-	public static final int WC_IOM_INV_NAME_PW = 0x80020405; // request의 name을 찾지못함 (bad request)
-	public static final int WC_IOM_INV_SITE_INFO = 0x80020406; // request의 site_info의 형식이 잘못됨 (bad request)
-	public static final int WC_IOM_DATABASE_ERROR = 0x80020407; // 데이터 베이스 접근중에 예외 발생
-	public static final int WC_IOM_WRONG_PW = 0x80020408; //request의 인증서 비밀번호가 일치하지 않음
+	public static final int WC_IOM_PFX_DEC_ERR = 0x80020405; // request의 pw로 pfx를 복호화할 수없음 (bad request)
+	public static final int WC_IOM_INV_NAME_PW = 0x80020406; // request의 name을 찾지못함 (bad request)
+	public static final int WC_IOM_INV_SITE_INFO = 0x80020407; // request의 site_info의 형식이 잘못됨 (bad request)
+	public static final int WC_IOM_DATABASE_ERROR = 0x80020408; // 데이터 베이스 접근중에 예외 발생
+	
 	
 	
 	
@@ -131,7 +132,7 @@ public class WebException extends Exception{
     }
     @Override
     public String toString() {
-        return "error: " + getMessage() + ", code: " + String.format("0x%x",code);
+        return "error: " + getMessage() + " code:" + String.format("0x%x",code);
     }
     
     public int getCode() {
