@@ -29,7 +29,7 @@
 							인증서 수정
 							<p></p>
 							</h4>
-							<form method="post" name="modifyForm" onsubmit="return modify()" action="/">
+							<form method="post" name="modifyForm" onsubmit="modify()" target="dummy">
 								<div class="form-group has-feedback">
 									<label class="control-label" for="co_name"><strong>성명(영문)</strong></label>
 									<input class="form-control" type="text" id="co_name" name="co_name" value = "<%=cert.getCo_name()%>" readonly />
@@ -59,6 +59,7 @@
 										<input type="submit" value="수정" class="btn btn-info btn-block"/>
 								</div>
 							</form>
+							<iframe name='dummy' width='0' height='0' frameborder='0'></iframe>
 						</div>
 					</div>
 					<div class="footer">
@@ -297,17 +298,40 @@
 		        referrer: 'no-referrer', // no-referrer, *client
 		        body: JSON.stringify(request) // body data type must match "Content-Type" header
 		    }) // private/register로 request 보냄
-			  .then(function(response) {
+			  
+		    
+		      /*.then(function(response) {
 			    return response.json(); //response를 json객체로
 			  })
 			  .then(function(myJson) {
 				  //do something with json
 			    console.log("response: \n" + JSON.stringify(myJson));
 			    window.location.href="/"; 
-			  });
-		}
-		
-		function addSite() {
+			  });*/
+			
+			    .then(function(response) {
+					  if(response.ok) {
+						  return response.json(); //response를 json객체로
+					  }	
+					  else {
+						  console.error(response.statusText);
+						  alert("네트워크 오류 발생");
+					  }
+				  })
+				  .then(function(myJson) {
+					  //do something with json
+					  console.log("response: \n" + JSON.stringify(myJson));
+					  if(confirm("등록완료")) {
+						  window.location.href="/";
+					  }
+				  })
+				  .catch(function(error) {
+					  console.log("Error Code: " + error.get("code"), ", " + error.get("message")) ;
+					  alert("서버 에러 발생 Error Code: " + error.get("code"), ", " + error.get("message"));
+				  });
+			}
+			
+			function addSite() {
 			var sites = document.getElementById("sites");
 			var newDomain = document.createElement("div");
 			var urlNode = document.createElement("input");
