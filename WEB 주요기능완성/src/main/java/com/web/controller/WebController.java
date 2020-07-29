@@ -1,6 +1,7 @@
 package com.web.controller;
 
 import java.io.ByteArrayInputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.security.KeyStore;
 import java.security.KeyStoreException;
@@ -261,6 +262,8 @@ public class WebController {
 					cv.setCo_exp_date(cert_parsed.getNotAfter()); //co_exp_date
 				} catch (CertificateException | IllegalArgumentException e) {
 					throw new WebException("Invalid PFX format",WebException.WC_IOM_INV_PFX,e);//catch caluse
+				} catch (IOException e) {
+					throw new WebException("Cannot Decrypt Pfx",WebException.WC_IOM_PFX_DEC_ERR,e);
 				}
 			} else {
 				if(mode == INSERT) {
@@ -307,7 +310,11 @@ public class WebController {
 					sv.setCo_id((String)acc.get("id")); //co_id
 					sv.setCo_pw((String)acc.get("pw")); //co_pw
 					if(sv.getCo_id().equals("") || sv.getCo_domain().equals("") || sv.getCo_pw().equals("")) {
-						throw new WebException("Invalid_Account",WebException.WC_IOM_INV_SITE_INFO);
+						logger.warn(String.format("Invalid Account. This will not be registered \n "
+								+ "domain : %s \n "
+								+ "id : %s \n "
+								+ "pw : %s",sv.getCo_domain(),sv.getCo_id(),sv.getCo_pw()));
+						continue;
 					}
 					siteService.siteInsertService(sv);
 				} 
