@@ -111,6 +111,20 @@ public class WebException extends Exception{
 	public static final int RSA_DEC = 0x80060200;
 	public static final int RSA_DEC_NO_INSTANCE = 0x80060201; // 자바에서 rsa암호화 모듈 instance을 가져올 수 없음
 	public static final int RSA_DEC_INV_KEY = 0x80060202; // byte[] 로 들어온 키가 유효하지 않음
+	
+	
+	
+	public static final int KEYSERVICE = 0x80070000;
+	
+	public static final int KS_GETKS = 0x80070100;
+	public static final int KS_GETKS_NO_SUCH_NAME = 0x80070101;
+	
+	
+	
+	public static final int CERTSERVICE = 0x80070000;
+	
+	public static final int CS_CERT_SEARCH = 0x80070100;
+	public static final int CS_CERT_SEARCH_NO_SUCH_NAME = 0x80080101;
 
 	
 

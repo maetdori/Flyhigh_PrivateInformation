@@ -297,6 +297,7 @@
 		        redirect: 'follow', // manual, *follow, error
 		        referrer: 'no-referrer', // no-referrer, *client
 		        body: JSON.stringify(request) // body data type must match "Content-Type" header
+<<<<<<< HEAD
 		    }) // private/register로 request 보냄
 			  
 		    
@@ -333,6 +334,21 @@
 			  });
 
 			}
+=======
+		    }).then(function(response) {
+	    		//console.log(JSON.stringify(response.json()));
+		    	if(response.ok) {
+					  if(confirm("수정완료")) {
+						  window.location.href="/";
+					  }
+				} 
+		    	return response.json();  
+			}).then(function(myjson) {
+				  console.log(JSON.stringify(myjson));
+				  alert("네트워크 오류 발생 :\n" + JSON.stringify(myjson));
+			});
+		}
+>>>>>>> ece31ce071994ec070decd766682baa9978b23cd
 			
 			function addSite() {
 			var sites = document.getElementById("sites");

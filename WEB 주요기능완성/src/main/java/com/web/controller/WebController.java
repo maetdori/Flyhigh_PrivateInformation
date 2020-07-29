@@ -126,6 +126,7 @@ public class WebController {
 				Map<String, Object> error = new HashMap<>();
 				error.put("code",String.format("0x%x", e.getCode()));
 				error.put("message",e.getMessage());
+				return error;
 			}
 			
 			
@@ -143,6 +144,7 @@ public class WebController {
 			logger.error(e.toString(),e);
 			resp.setStatus(500);
 			Map<String, Object> error = new HashMap<>(); //리턴할 HashMap
+			error.put("status", 500);
 			error.put("code",String.format("0x%x", WebException.WC_MODIFY));
 			error.put("message","Unknown Error");
 			return error;

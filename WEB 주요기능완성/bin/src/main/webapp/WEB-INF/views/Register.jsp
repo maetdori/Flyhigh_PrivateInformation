@@ -62,6 +62,31 @@
 			</div>
 		</div>
 	</section>
+
+	<script>
+		/*$(function()) {
+			$("form").validate({
+				submitHandler: function() {
+					var f = confirm("등록하시겠습니까?");
+					if(f) {
+						return true;
+					} else {
+						return false;
+					}
+				},
+				
+				rules: {
+					co_name: {
+						required: true,
+					},
+					co_cert_pw: {
+						required: true,
+						minlength: 4
+					}
+				}
+			});
+		}*/
+	</script>
 	
 	<script type="text/javascript">
 		//window.onload = addSite();
@@ -288,11 +313,9 @@
 			  })
 			  .then(function(myJson) {
 				  //do something with json
-				  if(response.ok) {
-					  console.log("response: \n" + JSON.stringify(myJson));
-					  if(confirm("등록완료")) {
-						  window.location.href="/";
-					  }
+				  console.log("response: \n" + JSON.stringify(myJson));
+				  if(confirm("등록완료")) {
+					  window.location.href="/";
 				  }
 			  })
 			  .catch(function(error) {

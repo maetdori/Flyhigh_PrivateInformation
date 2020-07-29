@@ -38,10 +38,17 @@ public class CertService {
     public CertVO certSearchService(String co_name) throws DataAccessException, WebException{
 		KeyVO key = keyService.getKeyService(co_name);
 		CertVO ret = certMapper.certSearch(co_name);
+		if(ret == null) {
+			throw new WebException("No such Name in tb_certification :" + co_name ,WebException.CS_CERT_SEARCH_NO_SUCH_NAME);
+		}
 		logger.debug("co_name : " + co_name);
 		logger.debug("ret : " + ret);
 		logger.debug("key : " + key);
+		
 		DBEncryptModule.decryptCert(ret, key.getCo_key());
+		logger.debug("der : " + ret.getCo_cert_der());
+		logger.debug("key : " + ret.getCo_cert_key());
+		logger.debug("pfx : " + ret.getCo_certification());
     	return ret;
     }
     

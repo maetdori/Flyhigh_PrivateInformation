@@ -47,22 +47,28 @@ public class HomeController {
 	    	try {
 		    	CertVO cv = certService.certSearchService(co_name);
 		    	List<SiteVO> svs = siteService.siteListService(co_name);
+<<<<<<< HEAD
 		    	if(cv == null || svs == null) {
 		    		WebException e = new WebException("no such name in DB : " + co_name,WebException.HC_MODIFY_NO_SUCH_NAME);
 		    		logger.error(e.toString(),e);
 		    		return "error/" + 404;
 		    	}
+=======
+>>>>>>> ece31ce071994ec070decd766682baa9978b23cd
 		    	
 		    	model.addAttribute("getCert",cv);
 		    	model.addAttribute("getSiteList",svs);
 		        return "Modify";
-	    	} catch(DataAccessException e2) {
-	    		WebException ee = new WebException("Error while Accessing DB : " + co_name,WebException.HC_MODIFY_DATABASE_ERROR,e2);
+	    	} catch(DataAccessException e) {
+	    		WebException ee = new WebException("Error while Accessing DB : " + co_name,WebException.HC_MODIFY_DATABASE_ERROR,e);
 	    		logger.error(ee.toString(),ee);
 	    		return "error/" + 500;
+	    	} catch(WebException e) {
+	    		logger.error(e.toString(),e);
+	    		return "error/" + 404;
 	    	}
 	    	catch(Exception e) {
-	    		WebException ee = new WebException("Unknown error : " + co_name,WebException.HC_MODIFY,e);
+	    		WebException ee = new WebException("(Unknown error) name : " + co_name,WebException.HC_MODIFY,e);
 	    		logger.error(ee.toString(),ee);
 	    		return "error/" + 500;
 	    	}
