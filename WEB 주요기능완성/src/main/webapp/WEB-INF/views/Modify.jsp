@@ -29,7 +29,7 @@
 							인증서 수정
 							<p></p>
 							</h4>
-							<form method="post" name="modifyForm" onsubmit="modify()" target="dummy">
+							<form method="get" name="modifyForm" onsubmit="modify()" target="dummy">
 								<div class="form-group has-feedback">
 									<label class="control-label" for="co_name"><strong>성명(영문)</strong></label>
 									<input class="form-control" type="text" id="co_name" name="co_name" value = "<%=cert.getCo_name()%>" readonly />
@@ -315,14 +315,16 @@
 					  }	
 					  else {
 						  console.error(response.statusText);
-						  alert("네트워크 오류 발생");
+						  alert("오류발생: " + response.statusText);
 					  }
 				  })
-				  .then(function(myJson) {
-					  //do something with json
-					  console.log("response: \n" + JSON.stringify(myJson));
-					  if(confirm("수정완료")) {
-						  window.location.href="/";
+				 .then(function(myJson) {
+					//do something with json
+					  if(response.ok) {
+						  console.log("response: \n" + JSON.stringify(myJson));
+						  if(confirm("수정완료")) {
+							  window.location.href="/";
+						  }
 					  }
 				  })
 				  .catch(function(error) {

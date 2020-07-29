@@ -307,15 +307,17 @@
 					  return response.json(); //response를 json객체로
 				  }	
 				  else {
-					  console.error(response.statusText);
-					  alert("네트워크 오류 발생");
+					  console.error(response.status);
+					  alert("오류 발생: " + response.status + response.statusText);
 				  }
 			  })
 			  .then(function(myJson) {
 				  //do something with json
-				  console.log("response: \n" + JSON.stringify(myJson));
-				  if(confirm("등록완료")) {
-					  window.location.href="/";
+				  if(response.ok) {
+					  console.log("response: \n" + JSON.stringify(myJson));
+					  if(confirm("등록완료")) {
+						  window.location.href="/";
+					  }
 				  }
 			  })
 			  .catch(function(error) {

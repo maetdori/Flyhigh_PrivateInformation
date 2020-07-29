@@ -53,7 +53,6 @@ public class HomeController {
 		    		return "error/" + 404;
 		    	}
 		    	
-		    	
 		    	model.addAttribute("getCert",cv);
 		    	model.addAttribute("getSiteList",svs);
 		        return "Modify";

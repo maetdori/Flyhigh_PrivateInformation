@@ -1,6 +1,7 @@
 package com.web.controller;
 
 import java.io.ByteArrayInputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.security.KeyStore;
 import java.security.KeyStoreException;
@@ -67,9 +68,13 @@ public class WebController {
 			try {
 				insertOrModify(req,INSERT); //데이터베이스에 req를 저장
 			} catch (WebException e){
-				logger.error(e.toString(),e);
-				if(e.getCode() == WebException.WC_IOM_DATABASE_ERROR)
+				logger.error(e.toString(), e);
+				if(e.getCode() == WebException.WC_IOM_DATABASE_ERROR) { //잘못된 데이터베이스 접근
 					resp.setStatus(500);
+				}
+				else if(e.getCode() == WebException.WC_IOM_WRONG_PW) { //잘못된 패스워드 입력
+					resp.setStatus(500, "check your pw");
+				}
 				else
 					resp.setStatus(400);
 				Map<String, Object> error = new HashMap<>();
@@ -193,7 +198,7 @@ public class WebController {
 
 	//certRegister()에서 호출하는 메소드
 	//RequestBody로 들어온 정보를 VO에 저장
-	private void insertOrModify(Map<String, Object> req,int mode) throws WebException {
+	private void insertOrModify(Map<String, Object> req, int mode) throws WebException {
 		try {
 			@SuppressWarnings("unchecked")
 			Map<String, String> certification = (Map<String, String>) req.get("certification");
@@ -316,6 +321,8 @@ public class WebController {
 			}
 		} catch(WebException ee) {
 			throw ee;
+		} catch(IOException ioe) {
+			throw new WebException("Password Error", WebException.WC_IOM_WRONG_PW, ioe);
 		} catch(Exception e) {
 			throw new WebException("Unknown Error", WebException.INSERT_OR_MODIFY, e);
 		}
