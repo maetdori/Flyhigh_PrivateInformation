@@ -3110,3 +3110,11 @@ INFO  20-07-28 17:40:58[task-1] [JtaPlatformInitiator:52] - HHH000490: Using Jta
 INFO  20-07-28 17:40:58[task-1] [LocalContainerEntityManagerFactoryBean:416] - Initialized JPA EntityManagerFactory for persistence unit 'default'
 INFO  20-07-28 17:40:58[main] [Http11NioProtocol:173] - Starting ProtocolHandler ["https-jsse-nio-8080"]
 INFO  20-07-28 17:40:58[main] [TomcatWebServer:220] - Tomcat started on port(s): 8080 (https) with context path ''
+INFO  20-07-28 17:40:58[main] [DeferredRepositoryInitializationListener:49] - Triggering deferred initialization of Spring Data repositories…
+INFO  20-07-28 17:40:58[main] [DeferredRepositoryInitializationListener:53] - Spring Data repositories initialized!
+INFO  20-07-28 17:40:58[main] [WebApplication:61] - Started WebApplication in 2.662 seconds (JVM running for 3.137)
+INFO  20-07-28 17:58:15[RMI TCP Connection(2)-127.0.0.1] [SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin:159] - Application shutdown requested.
+INFO  20-07-28 17:58:15[RMI TCP Connection(2)-127.0.0.1] [LocalContainerEntityManagerFactoryBean:598] - Closing JPA EntityManagerFactory for persistence unit 'default'
+INFO  20-07-28 17:58:15[RMI TCP Connection(2)-127.0.0.1] [ThreadPoolTaskExecutor:218] - Shutting down ExecutorService 'applicationTaskExecutor'
+INFO  20-07-28 17:58:15[RMI TCP Connection(2)-127.0.0.1] [HikariDataSource:350] - HikariPool-1 - Shutdown initiated...
+INFO  20-07-28 17:58:15[RMI TCP Connection(2)-127.0.0.1] [HikariDataSource:352] - HikariPool-1 - Shutdown completed.

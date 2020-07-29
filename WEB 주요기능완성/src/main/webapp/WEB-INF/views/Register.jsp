@@ -308,6 +308,7 @@
 				  }	
 				  else {
 					  console.error(response.statusText);
+					  alert("네트워크 오류 발생");
 				  }
 			  })
 			  .then(function(myJson) {
@@ -319,6 +320,7 @@
 			  })
 			  .catch(function(error) {
 				  console.log("Error Code: " + error.get("code"), ", " + error.get("message")) ;
+				  alert("서버 에러 발생 Error Code: " + error.get("code"), ", " + error.get("message"));
 			  });
 		}
 		
