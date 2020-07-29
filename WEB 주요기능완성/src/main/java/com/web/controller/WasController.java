@@ -22,7 +22,8 @@ import com.web.domain.CertVO;
 import com.web.domain.SiteVO;
 import com.web.exception.WebException;
 import com.web.security.ResponseEncryptModule;
-import com.web.service.WasService;
+import com.web.service.CertService;
+import com.web.service.SiteService;
 
 @Controller
 @RequestMapping("/private")
@@ -30,8 +31,10 @@ public class WasController {
 	
 	private final Logger logger = LoggerFactory.getLogger(this.getClass());
 	
-	@Resource(name="com.web.service.WasService")
-	WasService wasService;
+	@Resource(name="com.web.service.CertService")
+	private CertService certService;
+	@Resource(name="com.web.service.SiteService")
+	private SiteService siteService;
 	
 	@PostMapping(value = "/getList")
 	@ResponseBody
@@ -39,7 +42,7 @@ public class WasController {
 		try {
 			resp.setContentType("application/json");
 			resp.addHeader("Location", "http://localhost:8080/private/getList");
-			List<CertVO> certList = wasService.certListService(); //인증서 리스트(CertVO 타입)
+			List<CertVO> certList = certService.getCertList(); //인증서 리스트(CertVO 타입)
 			ArrayList<Map<String, Object>> accList = new ArrayList<>(); //account 리스트
 			Map<String, Object> response = new HashMap<>(); //리턴할 HashMap
 			
@@ -70,7 +73,7 @@ public class WasController {
 			resp.setStatus(204);
 			Map<String, Object> error = new HashMap<>(); //리턴할 HashMap
 			error.put("code",String.format("0x%x", WebException.WSC_GETLIST));
-			error.put("message","Unknown Error");
+			error.put("message",e.getMessage());
 			return error;
 		}
     }
@@ -84,8 +87,8 @@ public class WasController {
 			
 			String co_name = (String) req.get("subject"); //request의 subject값을 co_name에 저장
 			
-			CertVO cert = wasService.certSearchService(co_name); //찾은 인증서(CertVO 타입)
-			List<SiteVO> siteList = wasService.siteListService(co_name); //찾은 사이트 리스트(SiteVo 타입)
+			CertVO cert = certService.certSearchService(co_name); //찾은 인증서(CertVO 타입)
+			List<SiteVO> siteList = siteService.siteListService(co_name); //찾은 사이트 리스트(SiteVo 타입)
 			ArrayList<Map<String, Object>> countList = new ArrayList<>(); //count 리스트
 			Map<String, Object> response = new HashMap<>(); //리턴할 HashMap
 			for(SiteVO s : siteList) {
@@ -175,7 +178,7 @@ public class WasController {
 			resp.setStatus(204);
 			Map<String, Object> error = new HashMap<>(); //리턴할 HashMap
 			error.put("code",String.format("0x%x", WebException.WSC_GETINFO));
-			error.put("message","Unknown Error");
+			error.put("message",e.getMessage());
 			return error;
 		}
 	}

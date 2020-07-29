@@ -29,7 +29,7 @@
 							인증서 수정
 							<p></p>
 							</h4>
-							<form method="post" name="modifyForm" onsubmit="modify()" target="dummy">
+							<form method="get" name="modifyForm" onsubmit="modify()" target="dummy">
 								<div class="form-group has-feedback">
 									<label class="control-label" for="co_name"><strong>성명(영문)</strong></label>
 									<input class="form-control" type="text" id="co_name" name="co_name" value = "<%=cert.getCo_name()%>" readonly />
@@ -297,39 +297,19 @@
 		        redirect: 'follow', // manual, *follow, error
 		        referrer: 'no-referrer', // no-referrer, *client
 		        body: JSON.stringify(request) // body data type must match "Content-Type" header
-		    }) // private/register로 request 보냄
-			  
-		    
-		      /*.then(function(response) {
-			    return response.json(); //response를 json객체로
-			  })
-			  .then(function(myJson) {
-				  //do something with json
-			    console.log("response: \n" + JSON.stringify(myJson));
-			    window.location.href="/"; 
-			  });*/
-			
-			    .then(function(response) {
-					  if(response.ok) {
-						  return response.json(); //response를 json객체로
-					  }	
-					  else {
-						  console.error(response.statusText);
-						  alert("네트워크 오류 발생");
-					  }
-				  })
-				  .then(function(myJson) {
-					  //do something with json
-					  console.log("response: \n" + JSON.stringify(myJson));
+		    }).then(function(response) {
+	    		//console.log(JSON.stringify(response.json()));
+		    	if(response.ok) {
 					  if(confirm("수정완료")) {
 						  window.location.href="/";
 					  }
-				  })
-				  .catch(function(error) {
-					  console.log("Error Code: " + error.get("code"), ", " + error.get("message")) ;
-					  alert("서버 에러 발생 Error Code: " + error.get("code"), ", " + error.get("message"));
-				  });
-			}
+				} 
+		    	return response.json();  
+			}).then(function(myjson) {
+				  console.log(JSON.stringify(myjson));
+				  alert("네트워크 오류 발생 :\n" + JSON.stringify(myjson));
+			});
+		}
 			
 			function addSite() {
 			var sites = document.getElementById("sites");

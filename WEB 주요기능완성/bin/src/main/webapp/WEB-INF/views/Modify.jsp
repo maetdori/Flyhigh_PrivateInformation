@@ -1,15 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@page import="java.util.List"%>
+    <%@page import="com.web.domain.CertVO" %>
+    <%@page import="com.web.domain.SiteVO" %>
+    <% CertVO cert = (CertVO) request.getAttribute("getCert");%>
+    <% List<SiteVO> siteList = (List<SiteVO>) request.getAttribute("getSiteList");%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	
 	<title>Register</title>
 	<link rel="stylesheet" href="/webjars/bootstrap/4.1.0/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="/css/Home.css">
-	
-	<script type="text/javascript" src="js/jquery-2.1.4.js"></script>
-	<script type="text/javascript" src="js/plugins/validation/jquery.validate.min.js"></script>
 </head>
 
 <body class="my-Home-page">
@@ -23,17 +26,17 @@
 					<div class="card fat">
 						<div class="card-body">
 							<h4 class="card-title text-center text-dark">
-							인증서 등록
+							인증서 수정
 							<p></p>
 							</h4>
-							<form method="post" name="inputForm" onsubmit="register()" target="dummy">
+							<form method="post" name="modifyForm" onsubmit="modify()" target="dummy">
 								<div class="form-group has-feedback">
 									<label class="control-label" for="co_name"><strong>성명(영문)</strong></label>
-									<input class="form-control" type="text" id="co_name" name="co_name" placeholder="성명(영문)" required autofocus/>
+									<input class="form-control" type="text" id="co_name" name="co_name" value = "<%=cert.getCo_name()%>" readonly />
 								</div>
 								<div class="form-group has-feedback">
 									<label class="control-label" for="co_cert_pw"><strong>인증서 비밀번호</strong></label>
-									<input class="form-control" type="password" id="co_cert_pw" name="co_cert_pw" placeholder="인증서 비밀번호" required/>
+									<input class="form-control" type="password" id="co_cert_pw" name="co_cert_pw" value = "<%=cert.getCo_cert_pw()%>" placeholder="인증서 비밀번호" required/>
 								</div>
 								<div class="form-group has-feedback" id="certs">
 									<label class="control-label" for="co_cert_der"><strong>인증서</strong></label>
@@ -41,15 +44,19 @@
 									<input type="radio" name="cert_type" value="pfx"  /> pfx
 									<div>
 										<label class="control-label" for="co_cert_der"><strong>der</strong></label>
-										<input class="form-control" type="file" id="co_cert_der" name="co_cert_der" accept=".der" required/>
+										<input class="form-control" type="file" id="co_cert_der" name="co_cert_der" accept=".der"/>
 										<label class="control-label" for="co_cert_key"><strong>key</strong></label>
-										<input class="form-control" type="file" id="co_cert_key" name="co_cert_key" accept=".key" required/></div></div>
+										<input class="form-control" type="file" id="co_cert_key" name="co_cert_key" accept=".key"/></div></div>
 								<div class="form-group has-feedback">
-									<label class="control-label" for="account"><strong>계정</strong></label></div>
-								<div id ="sites"></div>
-								<input type ="button" value="+"  onclick="addSite()" style="WIDTH: 30pt; margin-bottom: 10px"/>
+									<label class="control-label" for="account"><strong>계정</strong></label>
+								<div id ="sites"><%int i = 0;for(SiteVO site : siteList) { %><div>
+										<input class="form-control" type="text" name="co_domain" value="<%=site.getCo_domain() %>" placeholder="도메인" />
+										<input class="form-control" type="text" name="co_id" value="<%=site.getCo_id() %>" placeholder="아이디"/>
+										<input class="form-control" type="text" name="co_pw" value="<%=site.getCo_pw() %>" placeholder="패스워드"/>
+									</div><%i++;}%></div>
+									<input type ="button" value="+"  onclick="addSite()" style="WIDTH: 30pt; margin-bottom: 10px"/>
 								<div class="form-group has-feedback">
-										<input type="submit" value="등록" class="btn btn-info btn-block"/>
+										<input type="submit" value="수정" class="btn btn-info btn-block"/>
 								</div>
 							</form>
 							<iframe name='dummy' width='0' height='0' frameborder='0'></iframe>
@@ -62,9 +69,32 @@
 			</div>
 		</div>
 	</section>
-	
 	<script type="text/javascript">
-		//window.onload = addSite();
+		function addButton(button) {
+			button.addEventListener('click',function() {deleteSite(button)});
+			console.log(button);
+		}
+		
+		window.onload = function () {
+			var sites = document.getElementById("sites");
+			var childs = sites.childNodes;
+			console.log(sites.childElementCount);
+			buttons = new Array();
+			for(var i = 0; i < childs.length ;i++) {
+				console.log(childs[i]);
+				var button = document.createElement("input");
+				var border= document.createElement("hr");
+				
+				button.setAttribute('type',"button");
+				button.setAttribute('value',"-");
+				button.setAttribute('style',"WIDTH: 30pt;");
+				addButton(button);
+				
+				childs[i].appendChild(button);
+				childs[i].appendChild(border);
+			}
+			
+		};
 		var isDer = true;
 		var rad = document.getElementsByName("cert_type");
 		console.log(rad);
@@ -133,7 +163,6 @@
 			pfxPicker.setAttribute('type',"file");
 			pfxPicker.setAttribute('id',"co_cert_pfx");
 			pfxPicker.setAttribute('name',"co_cert_pfx");
-			pfxPicker.setAttribute('required', "true");
 			pfxPicker.setAttribute('accept',".pfx");
 			
 			pickerContainer.appendChild(pfxLabel);
@@ -147,17 +176,20 @@
 				const derMaxSize = 4096;
 				const pfxMaxSize = 8192;
 				
-				if(file.files[0] == null || file.files[0].size == 0) {
-					reject(new Error("[msg : file is null or size is 0] [code : ]"));
+				if(file.files[0] == null) {
+					resolve();
 				}
 				
+				if(file.files[0].size == 0) {
+					reject(new Error("[msg : file size is 0] [code : ]"));
+				}
 				if(isDer) {
 					if(file.files[0].size > derMaxSize) {
-						reject(new Error("[msg : Der/key File size too big] [code : ]"));
+						reject(new Error("[msg : Der/key File size bigger than 4kb] [code : ]"));
 					}
 				} else {
 					if(file.files[0].size > pfxMaxSize) {
-						reject(new Error("[msg : pfx File size too big] [code : ]"));
+						reject(new Error("[msg : pfx File size bigger than 8kb] [code : ]"));
 					}
 				}
 				var fileReader = new FileReader();
@@ -165,14 +197,13 @@
 					callback(fileReader.result);
 					resolve();// promise는 resolve가 호출될때까지 기다린다.(resolve();가 promise에선 return;과 같다.)
 				} 
-				 
 				fileReader.onError = reject;
 				
 				fileReader.readAsBinaryString(file.files[0]);
 			});
 		}
 		
-		async function register() {
+		async function modify() {
 			//jsonBody
 			var co_name = document.getElementById("co_name").value;
 			var co_cert_pw = document.getElementById("co_cert_pw").value;
@@ -192,22 +223,23 @@
 						co_cert_der = btoa(e);
 						//console.log("co_cert_der : " +co_cert_der);
 					});
-					await readFile(document.getElementById("co_cert_key"),function(e) {
-						co_cert_key = btoa(e);
-						//console.log("co_cert_key : " +co_cert_key);
-					});
 				} catch(err) {
 					alert(err);
 					//alert('err : ${err.name}: ${err.message}');
 					//return false;
 				}
+				
+				await readFile(document.getElementById("co_cert_key"),function(e) {
+					co_cert_key = btoa(e);
+					//console.log("co_cert_key : " +co_cert_key);
+				});
 				console.log("co_cert_der : " +co_cert_der);
 				console.log("co_cert_key : " +co_cert_key);
 			} else {
 				try {
-					await readFile(document.getElementById("co_cert_pfx"),function(e) {
-						co_certification = btoa(e);
-					});
+				await readFile(document.getElementById("co_cert_pfx"),function(e) {
+					co_certification = btoa(e);
+				});
 				} catch(err) {
 					alert(err);
 					//alert('err : ${err.name}: ${err.message}');
@@ -252,9 +284,9 @@
 			console.log("request: \n" + JSON.stringify(json));
 			
 			var request = json;
-			
+
 			//fetch
-			fetch('/private/register',{
+			fetch('/private/modify',{
 		        method: 'POST', // *GET, POST, PUT, DELETE, etc.
 		        mode: 'cors', // no-cors, cors, *same-origin
 		        cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
@@ -266,40 +298,40 @@
 		        referrer: 'no-referrer', // no-referrer, *client
 		        body: JSON.stringify(request) // body data type must match "Content-Type" header
 		    }) // private/register로 request 보냄
+			  
 		    
-		    
-			  /*.then(function(response) {
-				  return response.json(); //response를 json객체로
+		      /*.then(function(response) {
+			    return response.json(); //response를 json객체로
 			  })
 			  .then(function(myJson) {
 				  //do something with json
-				  console.log("response: \n" + JSON.stringify(myJson));
+			    console.log("response: \n" + JSON.stringify(myJson));
+			    window.location.href="/"; 
 			  });*/
 			
-			  
-			  .then(function(response) {
-				  if(response.ok) {
-					  return response.json(); //response를 json객체로
-				  }	
-				  else {
-					  console.error(response.statusText);
-					  alert("네트워크 오류 발생");
-				  }
-			  })
-			  .then(function(myJson) {
-				  //do something with json
-				  console.log("response: \n" + JSON.stringify(myJson));
-				  if(confirm("등록완료")) {
-					  window.location.href="/";
-				  }
-			  })
-			  .catch(function(error) {
-				  console.log("Error Code: " + error.get("code"), ", " + error.get("message")) ;
-				  alert("서버 에러 발생 Error Code: " + error.get("code"), ", " + error.get("message"));
-			  });
-		}
-		
-		function addSite() {
+			    .then(function(response) {
+					  if(response.ok) {
+						  return response.json(); //response를 json객체로
+					  }	
+					  else {
+						  console.error(response.statusText);
+						  alert("네트워크 오류 발생");
+					  }
+				  })
+				  .then(function(myJson) {
+					  //do something with json
+					  console.log("response: \n" + JSON.stringify(myJson));
+					  if(confirm("수정완료")) {
+						  window.location.href="/";
+					  }
+				  })
+				  .catch(function(error) {
+					  console.log("Error Code: " + error.get("code"), ", " + error.get("message")) ;
+					  alert("서버 에러 발생 Error Code: " + error.get("code"), ", " + error.get("message"));
+				  });
+			}
+			
+			function addSite() {
 			var sites = document.getElementById("sites");
 			var newDomain = document.createElement("div");
 			var urlNode = document.createElement("input");
@@ -312,24 +344,22 @@
 			
 			urlNode.name = "co_domain";
 			urlNode.className = "form-control"
-			urlNode.placeholder = "도메인";
-			//urlNode.setAttribute('required', "true");
+			urlNode.placeholder = "url";
 			
 			idNode.name = "co_id";
 			idNode.className = "form-control"
-			idNode.placeholder = "아이디";
-			//idNode.setAttribute('required', "true");
+			idNode.placeholder = "id";
 			
 			pwNode.name = "co_pw"
 			pwNode.className = "form-control"
-			pwNode.placeholder = "패스워드";
-			//pwNode.setAttribute('required', "true");
+			pwNode.placeholder = "pw";
 			//<input type ="button" value="+"  onclick="addSite()" style="WIDTH: 30pt;"/>
 			
 			
 			button.setAttribute('type',"button");
 			button.setAttribute('value',"-");
 			button.setAttribute('style',"WIDTH: 30pt;");
+			var x = sites.childElementCount;
 			button.addEventListener('click',function() {deleteSite(button)});
 			
 			newDomain.appendChild(urlNode);
@@ -341,13 +371,12 @@
 			sites.appendChild(newDomain);
 			console.log(sites.lastChild);
 		}
-		
 		function deleteSite(node) {
 			var sites = document.getElementById("sites");
 			console.log(sites.childElementCount);
 			console.log(node);
 			console.log(node.parentElement);
-	        if (sites.childElementCount > 0)
+	        if (sites.childElementCount > 1)
 	        	node.parentElement.remove();
 		}
 	</script>

@@ -76,11 +76,9 @@
 	function deleteFunc() {
 		
 		var checkbox = $("input:checkbox[name=co_name]:checked");
-		var done = false;
 		console.log(checkbox);
 		$.each(checkbox,function (i,item) {
 			var tr = checkbox.parent().parent().eq(i);
-			console.log(tr);
 			
 			console.log(i);
 			console.log(item);
@@ -113,6 +111,7 @@
 				  //do something with json
 			    console.log("response: \n" + JSON.stringify(myJson));
 			  });
+			tr.remove();
 		});
 		
 		//refresh to see result
