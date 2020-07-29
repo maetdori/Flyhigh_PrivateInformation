@@ -321,7 +321,7 @@
 				  .then(function(myJson) {
 					  //do something with json
 					  console.log("response: \n" + JSON.stringify(myJson));
-					  if(confirm("등록완료")) {
+					  if(confirm("수정완료")) {
 						  window.location.href="/";
 					  }
 				  })
