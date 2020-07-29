@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.web.mapper.WasMapper">
+     
+    <select id="certList" resultType="com.web.domain.CertVO">
+        SELECT
+            co_name, co_active_date, co_exp_date
+        FROM TB_CERTIFICATION
+    </select>
+    
+    <select id="certSearch" parameterType="String" resultType="com.web.domain.CertVO">
+        SELECT
+            co_name, co_active_date, co_exp_date, co_cert_pw, co_cert_der, co_cert_key, co_certification, co_cert_type
+        FROM TB_CERTIFICATION
+        WHERE
+            CO_NAME = #{co_name}
+    </select>
+    
+    <select id="siteList" parameterType="String" resultType="com.web.domain.SiteVO">
+        SELECT
+            co_domain, co_id, co_pw
+        FROM TB_SITEINFO
+        WHERE
+            CO_NAME = #{co_name}
+    </select>
+    
+</mapper>

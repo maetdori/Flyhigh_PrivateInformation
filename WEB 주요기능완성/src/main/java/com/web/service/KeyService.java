@@ -24,11 +24,11 @@ public class KeyService {
 		
 	}
 
-	public void keyInsertService(KeyVO key) throws DataAccessException {
+	public void keyInsertService(KeyVO key) throws DataAccessException, WebException {
 		keyMapper.keyInsert(key);
 	}
 	
-	public void keyDeleteService(String co_name) throws DataAccessException {
+	public void keyDeleteService(String co_name) throws DataAccessException, WebException {
 		keyMapper.keyDelete(co_name);
 	}
 }

@@ -45,16 +45,16 @@ public class SiteService {
     	siteMapper.siteInsert(site);
     }
     
-    public void siteUpdateService(HashMap<String, String> param) throws DataAccessException {
+    public void siteUpdateService(HashMap<String, String> param) throws DataAccessException, WebException {
     	
     	siteMapper.siteUpdate(param);
     }
     
-    public void siteDeleteService(String co_name, String co_domain) throws DataAccessException {
+    public void siteDeleteService(String co_name, String co_domain) throws DataAccessException, WebException {
     	siteMapper.siteDelete(co_name, co_domain);
     }
     
-    public void siteListDeleteService(String co_name) throws DataAccessException {
+    public void siteListDeleteService(String co_name) throws DataAccessException, WebException {
     	siteMapper.siteListDelete(co_name);
     }
 }

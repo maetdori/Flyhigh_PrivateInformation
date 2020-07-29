@@ -30,7 +30,7 @@ public class CertService {
 	KeyService keyService;
     
     
-    public List<CertVO> getCertList() throws DataAccessException{
+    public List<CertVO> getCertList() throws DataAccessException, WebException{
     	
     	return certMapper.certList();
     }
@@ -74,7 +74,7 @@ public class CertService {
     	certMapper.certUpdate(cert);
     }
     
-    public void certDeleteService(String co_name) throws DataAccessException {
+    public void certDeleteService(String co_name) throws DataAccessException, WebException {
     	keyService.keyDeleteService(co_name);
     	certMapper.certDelete(co_name);
     }
