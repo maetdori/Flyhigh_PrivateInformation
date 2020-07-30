@@ -308,7 +308,7 @@
 			}).then(function(myjson) {
 				  console.log(JSON.stringify(myjson));
 				  if(myjson.hasOwnProperty("code")) //json 객체가 code 값을 포함할 때 (에러발생)
-				 	 alert("오류 발생 \n" + JSON.stringify(myjson));
+				 	 alert(myjson["message"]);
 			});
 		}
 
