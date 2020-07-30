@@ -357,7 +357,7 @@
 			console.log(sites.childElementCount);
 			console.log(node);
 			console.log(node.parentElement);
-	        if (sites.childElementCount > 1)
+	        if (sites.childElementCount > 0)
 	        	node.parentElement.remove();
 		}
 	</script>

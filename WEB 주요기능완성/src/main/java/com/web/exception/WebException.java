@@ -18,6 +18,7 @@ public class WebException extends Exception{
 	public static final int HOMECONTROLLER = 0x80010000;
 	
 	public static final int HC_HOME = 0x80010100;
+	public static final int HC_HOME_DATABASE_ERROR = 0x80010101; // 데이터 베이스 접근중에 예외 발생
 	
 	public static final int HC_REGISTER = 0x80010200;
 	

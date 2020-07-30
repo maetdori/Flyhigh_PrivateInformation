@@ -33,8 +33,22 @@ public class HomeController {
 	
 	    @RequestMapping(value="/")
 	    public String home(Model model) {
+	    	try {
 	    	model.addAttribute("getList",certService.getCertList());
 	        return "Home";
+	    	}catch(DataAccessException e) {
+	    		WebException ee = new WebException("Error while Accessing DB",WebException.HC_HOME_DATABASE_ERROR,e);
+	    		logger.error(ee.toString(),ee);
+	    		return "error/" + 500;
+	    	} catch(WebException e) {
+	    		logger.error(e.toString(),e);
+	    		return "error/" + 404;
+	    	}
+	    	catch(Exception e) {
+	    		WebException ee = new WebException("(Unknown error)",WebException.HC_HOME,e);
+	    		logger.error(ee.toString(),ee);
+	    		return "error/" + 500;
+	    	}
 	    }
 	    
 	    @RequestMapping(value="/registerPage")

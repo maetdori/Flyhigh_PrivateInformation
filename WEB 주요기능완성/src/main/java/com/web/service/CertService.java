@@ -30,9 +30,17 @@ public class CertService {
 	KeyService keyService;
     
     
-    public List<CertVO> getCertList() throws DataAccessException{
+    public List<CertVO> getCertList() throws DataAccessException, WebException{
     	
     	return certMapper.certList();
+    }
+    
+    //데이터베이스에 name에 해당하는 정보가 존재하는지 여부 검사
+    public boolean ifThereIsService(String co_name) throws DataAccessException, WebException {
+    	if(certMapper.certSearch(co_name)!=null)
+    		return true;
+    	else 
+    		return false;
     }
     
     public CertVO certSearchService(String co_name) throws DataAccessException, WebException{
@@ -74,7 +82,7 @@ public class CertService {
     	certMapper.certUpdate(cert);
     }
     
-    public void certDeleteService(String co_name) throws DataAccessException {
+    public void certDeleteService(String co_name) throws DataAccessException, WebException {
     	keyService.keyDeleteService(co_name);
     	certMapper.certDelete(co_name);
     }

@@ -97,6 +97,7 @@ public class ResponseEncryptModule {
             String ss = s.substring(pos + 1);
             for(Map<String,Object> child : parent) {
                 Object childElement = child.get(token);
+                logger.debug(token);
                 if(childElement instanceof List)
                     dfs(ss, (ArrayList<Map<String,Object>>)childElement, aes);
                 else {

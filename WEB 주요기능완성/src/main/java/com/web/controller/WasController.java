@@ -26,7 +26,7 @@ import com.web.service.CertService;
 import com.web.service.SiteService;
 
 @Controller
-@RequestMapping("/private")
+@RequestMapping("/plogrivate")
 public class WasController {
 	
 	private final Logger logger = LoggerFactory.getLogger(this.getClass());
@@ -63,17 +63,23 @@ public class WasController {
 		} catch(DataAccessException e) {
 			WebException ee = new WebException("Error while Accessing Database", WebException.WSC_GETLIST,e);
 			logger.error(ee.toString(),ee);
-			resp.setStatus(204);
 			Map<String, Object> error = new HashMap<>(); //리턴할 HashMap
 			error.put("code",String.format("0x%x",ee.getCode() ));
 			error.put("message",ee.getMessage());
 			return error;
+		} catch(WebException e) {
+			logger.error(e.toString(),e);
+			Map<String, Object> error = new HashMap<>(); //리턴할 HashMap
+			error.put("code",String.format("0x%x", e.getCode()));
+			error.put("message",e.getMessage());
+			logger.debug("error Sent");
+			return error;
 		} catch (Exception e) {
 			logger.error(e.toString(),e);
-			resp.setStatus(204);
 			Map<String, Object> error = new HashMap<>(); //리턴할 HashMap
 			error.put("code",String.format("0x%x", WebException.WSC_GETLIST));
 			error.put("message",e.getMessage());
+			logger.debug("error Sent");
 			return error;
 		}
     }
@@ -100,7 +106,6 @@ public class WasController {
 			}
 			if(cert.getCo_name() == null) {
 				WebException e = new WebException("No such name", WebException.WSC_GETINFO_NO_SUCH_NAME);
-				resp.setStatus(204);
 				Map<String, Object> error = new HashMap<>(); //리턴할 HashMap
 				error.put("code",String.format("0x%x", e.getCode()));
 				error.put("message",e.getMessage());
@@ -129,7 +134,6 @@ public class WasController {
 							new String[] {"cert_pw", "certification/der","certification/key", "account/site", "account/id", "account/pw"},req,response);
 				} catch (WebException e) {
 					logger.error(e.toString(),e);
-					resp.setStatus(204);
 					Map<String, Object> error = new HashMap<>(); //리턴할 HashMap
 					error.put("code",String.format("0x%x", e.getCode()));
 					error.put("message",e.getMessage());
@@ -144,10 +148,9 @@ public class WasController {
 				response.put("cert_type", cert_type);
 				try {
 					ResponseEncryptModule.encrypt("keystore2.p12","123456",
-							new String[] {"cert_pw", "certification/pfx", "count/site", "count/id", "count/pw"},req,response);
+							new String[] {"cert_pw", "certification/pfx", "account/site", "account/id", "account/pw"},req,response);
 				} catch (WebException e) {
 					logger.error(e.toString(),e);
-					resp.setStatus(204);
 					Map<String, Object> error = new HashMap<>(); //리턴할 HashMap
 					error.put("code",String.format("0x%x", e.getCode()));
 					error.put("message",e.getMessage());
@@ -156,7 +159,6 @@ public class WasController {
 			} else {
 				WebException ee = new WebException("CertType must 1 or 2", WebException.WSC_GETLIST);
 				logger.error(ee.toString(),ee);
-				resp.setStatus(204);
 				Map<String, Object> error = new HashMap<>(); //리턴할 HashMap
 				error.put("code",String.format("0x%x",ee.getCode() ));
 				error.put("message",ee.getMessage());
@@ -165,20 +167,26 @@ public class WasController {
 			
 			logger.debug("send response");
 			return response;
-		} catch(DataAccessException e) {
+		}catch (WebException e){
+			logger.error(e.toString(),e);
+			Map<String, Object> error = new HashMap<>();
+			error.put("code",String.format("0x%x", e.getCode()));
+			error.put("message",e.getMessage());
+			return error;
+		}
+		catch(DataAccessException e) {
 			WebException ee = new WebException("Error while Accessing Database", WebException.WSC_GETLIST,e);
 			logger.error(ee.toString(),ee);
-			resp.setStatus(204);
 			Map<String, Object> error = new HashMap<>(); //리턴할 HashMap
 			error.put("code",String.format("0x%x",ee.getCode() ));
 			error.put("message",ee.getMessage());
 			return error;
 		} catch (Exception e) {
 			logger.error(e.toString(),e);
-			resp.setStatus(204);
 			Map<String, Object> error = new HashMap<>(); //리턴할 HashMap
 			error.put("code",String.format("0x%x", WebException.WSC_GETINFO));
 			error.put("message",e.getMessage());
+			logger.debug("error Sent");
 			return error;
 		}
 	}

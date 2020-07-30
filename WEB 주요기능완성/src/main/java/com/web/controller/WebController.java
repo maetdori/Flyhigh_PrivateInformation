@@ -30,6 +30,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import com.web.domain.CertVO;
 import com.web.domain.SiteVO;
 import com.web.exception.WebException;
+import com.web.mapper.CertMapper;
 import com.web.parse.ParseDer;
 import com.web.service.CertService;
 import com.web.service.SiteService;
@@ -200,9 +201,10 @@ public class WebController {
 	//RequestBody로 들어온 정보를 VO에 저장
 	private void insertOrModify(Map<String, Object> req,int mode) throws WebException {
 		try {
-			
 			String co_name = (String)req.get("subject");
-			if(certService.certSearchService(co_name)!=null) {
+			
+			//이미 등록된 name을 register하려고 할 때 오류 발생
+			if(mode==INSERT && certService.ifThereIsService(co_name)==true) {
 				throw new WebException("You already registered", WebException.WC_IOM_DUPL_NAME);
 			}
 			
