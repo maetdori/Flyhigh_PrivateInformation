@@ -122,12 +122,21 @@ public class WebException extends Exception{
 	
 	
 	
-	public static final int CERTSERVICE = 0x80070000;
+	public static final int CERTSERVICE = 0x80080000;
 	
-	public static final int CS_CERT_SEARCH = 0x80070100;
+	public static final int CS_CERT_SEARCH = 0x80080100;
 	public static final int CS_CERT_SEARCH_NO_SUCH_NAME = 0x80080101;
 
 	
+	
+	public static final int SITESERVICE = 0x80090000;
+	
+	
+	
+	public static final int USERSERVUCE = 0x800a0000;
+	public static final int US_GETUSER = 0x800a0100;
+	public static final int US_GETUSER_NO_SUCH_USER = 0x800a0101;
+	public static final int US_INSERT_DUPLICATE_ROW = 0x800a0102;
 
 	
 	

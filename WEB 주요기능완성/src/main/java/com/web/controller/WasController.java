@@ -15,6 +15,7 @@ import org.springframework.stereotype.Controller;
 
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -24,6 +25,7 @@ import com.web.exception.WebException;
 import com.web.security.ResponseEncryptModule;
 import com.web.service.CertService;
 import com.web.service.SiteService;
+import com.web.service.UserService;
 
 @Controller
 @RequestMapping("/private")
@@ -35,11 +37,27 @@ public class WasController {
 	private CertService certService;
 	@Resource(name="com.web.service.SiteService")
 	private SiteService siteService;
+	@Resource(name="com.web.service.UserService")
+	private UserService userService;
 	
 	@PostMapping(value = "/getList")
 	@ResponseBody
-    public Map<String, Object> getList(HttpServletResponse resp) {
+    public Map<String, Object> getList(@RequestHeader(value = "Content-type")String contentType,
+			@RequestHeader(value = "Device-Id")String deviceId,
+			@RequestHeader(value = "Server-Cert-Id")String serverCertId,
+			@RequestBody Map<String, Object> req,
+			HttpServletResponse resp) {
 		try {
+			String co_username = (String) req.get("username");
+			String co_android_id = deviceId;
+			logger.debug("contentType : " + contentType);
+			logger.debug("Device-Id : " + deviceId);
+			logger.debug("Server-Cert-Id : " + serverCertId);
+			logger.debug("username : " + co_username);
+			
+			userService.getUserService(co_username, co_android_id);
+			//User가 없다면 WebException발생하고 오류 리턴
+			
 			resp.setContentType("application/json");
 			resp.addHeader("Location", "http://localhost:8080/private/getList");
 			List<CertVO> certList = certService.getCertList(); //인증서 리스트(CertVO 타입)
@@ -86,7 +104,10 @@ public class WasController {
 	
 	@PostMapping(value = "/getInfo") 
 	@ResponseBody
-	public Map<String, Object> getInfo(@RequestBody Map<String, Object> req, HttpServletResponse resp) {
+	public Map<String, Object> getInfo(@RequestHeader(value = "Content-type")String contentType,
+			@RequestHeader(value = "Device-Id")String deviceId,
+			@RequestHeader(value = "Server-Cert-Id")String serverCertId,@RequestBody Map<String, Object> req, HttpServletResponse resp) {
+		
 		try {
 			resp.setContentType("application/json");
 			resp.addHeader("Location", "http://localhost:8080/private/getInfo");
@@ -189,6 +210,20 @@ public class WasController {
 			logger.debug("error Sent");
 			return error;
 		}
+	}
+	
+	@PostMapping(value = "/test") 
+	@ResponseBody
+	public Map<String, Object> test(@RequestHeader(value = "Content-type")String contentType,
+			@RequestHeader(value = "Device-Id")String deviceId,
+			@RequestHeader(value = "Server-Cert-Id")String serverCertId) {
+			Exception e = new Exception();
+			logger.error(e.toString(),e);
+			Map<String, Object> error = new HashMap<>(); //리턴할 HashMap
+			error.put("code",String.format("0x%x", WebException.WSC_GETINFO));
+			error.put("message",e.getMessage());
+			logger.debug("error Sent");
+			return error;
 	}
 	
 	
