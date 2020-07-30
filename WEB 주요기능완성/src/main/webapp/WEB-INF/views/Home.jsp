@@ -113,10 +113,10 @@
 				  //do something with json
 			    console.log("response: \n" + JSON.stringify(myJson));
 			  });
+			tr.remove();
 		});
 		
 		//refresh to see result
-		
 	}
 </script>
 </html>

@@ -71,6 +71,8 @@ public class WebController {
 				logger.error(e.toString(),e);
 				if(e.getCode() == WebException.WC_IOM_DATABASE_ERROR)
 					resp.setStatus(500);
+				if(e.getCode() == WebException.WC_IOM_PFX_DEC_ERR) 
+					resp.setStatus(500);
 				else
 					resp.setStatus(400);
 				Map<String, Object> error = new HashMap<>();
@@ -198,6 +200,12 @@ public class WebController {
 	//RequestBody로 들어온 정보를 VO에 저장
 	private void insertOrModify(Map<String, Object> req,int mode) throws WebException {
 		try {
+			
+			String co_name = (String)req.get("subject");
+			if(certService.certSearchService(co_name)!=null) {
+				throw new WebException("You already registered", WebException.WC_IOM_DUPL_NAME);
+			}
+			
 			@SuppressWarnings("unchecked")
 			Map<String, String> certification = (Map<String, String>) req.get("certification");
 			cv = new CertVO();
@@ -265,7 +273,7 @@ public class WebController {
 				} catch (CertificateException | IllegalArgumentException e) {
 					throw new WebException("Invalid PFX format",WebException.WC_IOM_INV_PFX,e);//catch caluse
 				} catch (IOException e) {
-					throw new WebException("Cannot Decrypt Pfx",WebException.WC_IOM_PFX_DEC_ERR,e);
+					throw new WebException("Cannot decrypt Pfx. Check your password.",WebException.WC_IOM_PFX_DEC_ERR,e);
 				}
 			} else {
 				if(mode == INSERT) {
