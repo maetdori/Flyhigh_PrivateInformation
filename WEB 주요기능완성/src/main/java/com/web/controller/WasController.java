@@ -28,7 +28,7 @@ import com.web.service.SiteService;
 import com.web.service.UserService;
 
 @Controller
-@RequestMapping("/private")
+@RequestMapping("/plogrivate")
 public class WasController {
 	
 	private final Logger logger = LoggerFactory.getLogger(this.getClass());

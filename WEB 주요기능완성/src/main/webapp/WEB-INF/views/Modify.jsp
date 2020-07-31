@@ -300,17 +300,18 @@
 		    }).then(function(response) {
 	    		//console.log(JSON.stringify(response.json()));
 		    	if(response.ok) {
-					  if(confirm("수정완료")) {
-						  window.location.href="/";
-					  }
+				  if(confirm("수정완료")) {
+					  window.location.href="/";
+				  }
 				} 
 		    	return response.json();  
 			}).then(function(myjson) {
 				  console.log(JSON.stringify(myjson));
-				  alert("네트워크 오류 발생 :\n" + JSON.stringify(myjson));
+				  if(myjson.hasOwnProperty("code")) //json 객체가 code 값을 포함할 때 (에러발생)
+				 	 alert(myjson["message"]);
 			});
 		}
-			
+
 			function addSite() {
 			var sites = document.getElementById("sites");
 			var newDomain = document.createElement("div");
@@ -356,7 +357,7 @@
 			console.log(sites.childElementCount);
 			console.log(node);
 			console.log(node.parentElement);
-	        if (sites.childElementCount > 1)
+	        if (sites.childElementCount > 0)
 	        	node.parentElement.remove();
 		}
 	</script>

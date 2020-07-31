@@ -30,6 +30,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import com.web.domain.CertVO;
 import com.web.domain.SiteVO;
 import com.web.exception.WebException;
+import com.web.mapper.CertMapper;
 import com.web.parse.ParseDer;
 import com.web.service.CertService;
 import com.web.service.SiteService;
@@ -70,6 +71,8 @@ public class WebController {
 			} catch (WebException e){
 				logger.error(e.toString(),e);
 				if(e.getCode() == WebException.WC_IOM_DATABASE_ERROR)
+					resp.setStatus(500);
+				if(e.getCode() == WebException.WC_IOM_PFX_DEC_ERR) 
 					resp.setStatus(500);
 				else
 					resp.setStatus(400);
@@ -198,6 +201,13 @@ public class WebController {
 	//RequestBody로 들어온 정보를 VO에 저장
 	private void insertOrModify(Map<String, Object> req,int mode) throws WebException {
 		try {
+			String co_name = (String)req.get("subject");
+			
+			//이미 등록된 name을 register하려고 할 때 오류 발생
+			if(mode==INSERT && certService.ifThereIsService(co_name)==true) {
+				throw new WebException("You already registered", WebException.WC_IOM_DUPL_NAME);
+			}
+			
 			@SuppressWarnings("unchecked")
 			Map<String, String> certification = (Map<String, String>) req.get("certification");
 			cv = new CertVO();
@@ -265,7 +275,7 @@ public class WebController {
 				} catch (CertificateException | IllegalArgumentException e) {
 					throw new WebException("Invalid PFX format",WebException.WC_IOM_INV_PFX,e);//catch caluse
 				} catch (IOException e) {
-					throw new WebException("Cannot Decrypt Pfx",WebException.WC_IOM_PFX_DEC_ERR,e);
+					throw new WebException("Cannot decrypt Pfx. Check your password.",WebException.WC_IOM_PFX_DEC_ERR,e);
 				}
 			} else {
 				if(mode == INSERT) {

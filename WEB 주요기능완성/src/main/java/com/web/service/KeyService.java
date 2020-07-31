@@ -18,7 +18,7 @@ public class KeyService {
 	public KeyVO getKeyService(String co_name) throws DataAccessException, WebException{
 		KeyVO ret =  keyMapper.getKey(co_name);
 		if(ret == null) {
-			throw new WebException("No such name in tb_key :" + co_name,WebException.KS_GETKS_NO_SUCH_NAME);
+			throw new WebException("No such name in tb_key: " + co_name,WebException.KS_GETKS_NO_SUCH_NAME);
 		}
 		return ret;
 		

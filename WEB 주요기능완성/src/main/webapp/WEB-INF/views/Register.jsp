@@ -265,38 +265,19 @@
 		        redirect: 'follow', // manual, *follow, error
 		        referrer: 'no-referrer', // no-referrer, *client
 		        body: JSON.stringify(request) // body data type must match "Content-Type" header
-		    }) // private/register로 request 보냄
-		    
-		    
-			  /*.then(function(response) {
-				  return response.json(); //response를 json객체로
-			  })
-			  .then(function(myJson) {
-				  //do something with json
-				  console.log("response: \n" + JSON.stringify(myJson));
-			  });*/
-			
-			  
-			  .then(function(response) {
-				  if(response.ok) {
-					  return response.json(); //response를 json객체로
-				  }	
-				  else {
-					  console.error(response.statusText);
-					  alert("네트워크 오류 발생");
-				  }
-			  })
-			  .then(function(myJson) {
-				  //do something with json
-				  console.log("response: \n" + JSON.stringify(myJson));
+		    }).then(function(response) {
+	    		//console.log(JSON.stringify(response.json()));
+		    	if(response.ok) {
 				  if(confirm("등록완료")) {
 					  window.location.href="/";
 				  }
-			  })
-			  .catch(function(error) {
-				  console.log("Error Code: " + error.get("code"), ", " + error.get("message")) ;
-				  alert("서버 에러 발생 Error Code: " + error.get("code"), ", " + error.get("message"));
-			  });
+				} 
+		    	return response.json();  
+			}).then(function(myjson) {
+				  console.log(JSON.stringify(myjson));
+				  if(myjson.hasOwnProperty("code")) //json 객체가 code 값을 포함할 때 (에러발생)
+					alert(myjson["message"]);
+			});
 		}
 		
 		function addSite() {
