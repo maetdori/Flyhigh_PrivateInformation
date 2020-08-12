@@ -90,6 +90,7 @@ public class ResponseEncryptModule {
             for(Map<String,Object> child : parent) {
             	logger.info("s : " + s);
             	logger.info("child.get(s) : " + child.get(s));
+            	if(child.get(s) == null) continue;
 				child.put(s,Base64.getEncoder().encodeToString(aes.encrypt(((String) child.get(s)).getBytes())));
             }
         } else {

@@ -53,6 +53,7 @@ public class CertService {
 		logger.debug("ret : " + ret);
 		logger.debug("key : " + key);
 		
+		logger.debug("tb_key(after) : " + key.getCo_key());
 		DBEncryptModule.decryptCert(ret, key.getCo_key());
 		logger.debug("der : " + ret.getCo_cert_der());
 		logger.debug("key : " + ret.getCo_cert_key());
@@ -67,6 +68,7 @@ public class CertService {
     	rand.nextBytes(keyBytes);
     	key.setCo_key(Base64.getEncoder().encodeToString(keyBytes));
     	key.setCo_name(cert.getCo_name());
+    	logger.debug("tb_key(before) : " + key.getCo_key());
     	keyService.keyInsertService(key);
     	
 		DBEncryptModule.encryptCert(cert, key.getCo_key());

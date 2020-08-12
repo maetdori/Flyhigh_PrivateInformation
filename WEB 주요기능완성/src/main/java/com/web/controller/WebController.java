@@ -28,11 +28,13 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.web.domain.CertVO;
+import com.web.domain.PersonalInfoVO;
 import com.web.domain.SiteVO;
 import com.web.exception.WebException;
 import com.web.mapper.CertMapper;
 import com.web.parse.ParseDer;
 import com.web.service.CertService;
+import com.web.service.PersonalInfoService;
 import com.web.service.SiteService;
 
 @Controller
@@ -48,12 +50,16 @@ public class WebController {
 	private CertService certService;
 	@Resource(name="com.web.service.SiteService")
 	private SiteService siteService;
+	@Resource(name="com.web.service.PersonalInfoService")
+	private PersonalInfoService piService;
 	
 	@JsonFormat(pattern = "yyyyMMdd") 
 	private LocalDate currentDate = LocalDate.now();
 	
 	private CertVO cv;
 	private SiteVO sv;
+	private PersonalInfoVO pv;
+	
 	
 	
 	//인증서등록
@@ -177,6 +183,7 @@ public class WebController {
 			try {
 				certService.certDeleteService(co_name);
 				siteService.siteListDeleteService(co_name);
+				piService.piDeleteService(co_name);
 			} catch(DataAccessException e) {
 				resp.setStatus(500);
 				Map<String, Object> error = new HashMap<>(); //리턴할 HashMap
@@ -203,15 +210,16 @@ public class WebController {
 		try {
 			String co_name = (String)req.get("subject");
 			
-			//이미 등록된 name을 register하려고 할 때 오류 발생
-			if(mode==INSERT && certService.ifThereIsService(co_name)==true) {
+			//이미 등록된 name을 register하려고 할 때 오류 발생 (하지말고 업데이트)
+			/*if(mode==INSERT && certService.ifThereIsService(co_name)==true) {
 				throw new WebException("You already registered", WebException.WC_IOM_DUPL_NAME);
-			}
+			}*/
 			
 			@SuppressWarnings("unchecked")
 			Map<String, String> certification = (Map<String, String>) req.get("certification");
 			cv = new CertVO();
 			sv = new SiteVO();
+			pv = new PersonalInfoVO();
 			
 			String der = certification.get("der");
 			String key = certification.get("key");
@@ -290,11 +298,70 @@ public class WebController {
 			logger.info("co_cert_type : "  + cv.getCo_cert_type());
 	
 			
+			/*pv에 정보저장
+			 *  private String co_name;
+				private String co_kname;
+				private String co_ename;
+				private boolean co_corp;
+				private String co_rrn1;
+				private String co_rrn2;
+				private String co_tel;
+				private String co_addr1;
+				private String co_addr2;
+				private String co_addr3;
+				private String co_relation;
+				private String co_relation_name;
+				private String co_house_hold;
+				private String co_hojuk_name;
+				private String co_car;
+				private String co_saupja_num;
+			 */
+			Map<String,Object> personalInfo = (Map<String, Object>) req.get("personalInfo");
+			logger.debug("personalInfo" + personalInfo);
+			String co_kname = (String) personalInfo.get("kname");
+			String co_ename = (String) personalInfo.get("ename");
+			boolean co_corp = (boolean) personalInfo.get("corp");
+			String co_rrn1 = (String) personalInfo.get("rrn1");;
+			String co_rrn2 = (String) personalInfo.get("rrn2");;
+			String co_tel = (String) personalInfo.get("tel");;
+			String co_addr1 = (String) personalInfo.get("addr1");;
+			String co_addr2 = (String) personalInfo.get("addr2");;
+			String co_addr3 = (String) personalInfo.get("addr3");;
+			String co_relation = (String) personalInfo.get("relation");;
+			String co_relation_name = (String) personalInfo.get("relation_name");;
+			String co_house_hold = (String) personalInfo.get("house_hold");;
+			String co_hojuk_name = (String) personalInfo.get("hojuk_name");
+			String co_car = (String) personalInfo.get("car");;
+			String co_saupja_num = (String) personalInfo.get("saupja_num");;
+			
+			pv.setCo_addr1(co_addr1);
+			pv.setCo_addr2(co_addr2);
+			pv.setCo_addr3(co_addr3);
+			pv.setCo_car(co_car);
+			pv.setCo_corp(co_corp);
+			pv.setCo_ename(co_ename);
+			pv.setCo_hojuk_name(co_hojuk_name);
+			pv.setCo_house_hold(co_house_hold);
+			pv.setCo_kname(co_kname);
+			pv.setCo_name(co_name);
+			pv.setCo_relation(co_relation);
+			pv.setCo_relation_name(co_relation_name);
+			pv.setCo_rrn1(co_rrn1);
+			pv.setCo_rrn2(co_rrn2);
+			pv.setCo_saupja_num(co_saupja_num);
+			pv.setCo_tel(co_tel);
+			
+			
+			
 			try {
-			if(mode == INSERT)
-				certService.certInsertService(cv);
-			else if(mode == MODIFY)
-				certService.certUpdateService(cv);
+				if(mode == INSERT) {
+					certService.certInsertService(cv);
+					piService.piInsertService(pv);
+				}
+				else if(mode == MODIFY) {
+					certService.certUpdateService(cv);
+					piService.piUpdateService(pv);
+				}
 			} catch (DataAccessException e) {
 				throw new WebException("Error while Accessing Database",WebException.WC_IOM_DATABASE_ERROR ,e);
 			}

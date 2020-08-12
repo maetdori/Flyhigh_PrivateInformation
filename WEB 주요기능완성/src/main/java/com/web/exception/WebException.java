@@ -134,12 +134,16 @@ public class WebException extends Exception{
 	
 	
 	
-	public static final int USERSERVUCE = 0x800a0000;
+	public static final int USERSERVICE = 0x800a0000;
 	public static final int US_GETUSER = 0x800a0100;
 	public static final int US_GETUSER_NO_SUCH_USER = 0x800a0101;
 	public static final int US_INSERT_DUPLICATE_ROW = 0x800a0102;
-
 	
+	
+	
+
+	public static final int PERSONALINFOSERVICE = 0x800b0000;
+	public static final int PI_VALIDCHECK = 0x800b0100;
 	
 	
 	

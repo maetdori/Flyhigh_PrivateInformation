@@ -23,22 +23,95 @@
 					<div class="card fat">
 						<div class="card-body">
 							<h4 class="card-title text-center text-dark">
-							인증서 등록
+							개인정보 등록
 							<p></p>
 							</h4>
 							<form method="post" name="inputForm" onsubmit="register()" target="dummy">
-								<div class="form-group has-feedback">
-									<label class="control-label" for="co_name"><strong>성명(영문)</strong></label>
-									<input class="form-control" type="text" id="co_name" name="co_name" placeholder="성명(영문)" required autofocus/>
+								<div class="form-group has-feedback" id="certs">
+									<label class="control-label" for="user_type"><strong>이용자 타입</strong></label>
+									<input type="radio" name="user_type" value="gein" checked="checked"/> 개인
+									<input type="radio" name="user_type" value="bupin"  /> 법인
 								</div>
 								<div class="form-group has-feedback">
-									<label class="control-label" for="co_cert_pw"><strong>인증서 비밀번호</strong></label>
-									<input class="form-control" type="password" id="co_cert_pw" name="co_cert_pw" placeholder="인증서 비밀번호" required/>
+									<label class="control-label" for="co_name"><strong>사용자명(id) (필수)</strong></label>
+									<input class="form-control" type="text" id="co_name" name="co_name" placeholder="사용자id" required autofocus/>
+								</div>
+								<div class="form-group has-feedback">
+									<label class="control-label" for="co_kname"><strong>성명/법인명(한글) (필수)</strong></label>
+									<input class="form-control" type="text" id="co_kname" name="co_kname" placeholder="성명(한글)"
+									onKeyup="this.value=this.value.replace(/[^가-힣 ㄱ-ㅎ ㅏ-ㅣ | \x20]/g,'');" required autofocus/>
+								</div>
+								<div class="form-group has-feedback">
+									<label class="control-label" for="co_ename"><strong>성명/법인명(영문)</strong></label>
+									<input class="form-control" type="text" id="co_ename" name="co_ename" placeholder="성명(영문)"
+									onKeyup="this.value=this.value.replace(/[^a-z A-Z | \x20]/g,'');" />
+								</div>
+								<div class="form-group has-feedback">
+									<label class="control-label" for="co_rrn1"><strong>주민번호 (개인-필수)</strong></label>
+										<input class="form-control" type="text" id="co_rrn1" name="co_rrn1" placeholder="앞자리 6자" style="float:left ; width:40%;" 
+										maxlength="6" onKeyup="this.value=this.value.replace(/[^0-9 | \x20]/g,'');" required/>
+										<!--  주민번호 뒷자리는 일단 안받는걸로
+										<div style="float:left ;" >&nbsp;-&nbsp;</div>
+										<input class="form-control" type="text" id="co_rrn2" name="co_rrn2" placeholder="뒷자리 7자" style="float:left; width:40%;"/>
+										-->
+								</div>
+								<div class="form-group has-feedback">
+									<label class="control-label" for="co_saupja_num"><strong>사업자 번호 (법인-필수)</strong></label>
+									<input class="form-control" type="text" id="co_saupja_num" name="co_saupja_num" placeholder="사업자 번호 10자리" 
+									maxlength="10" onKeyup="this.value=this.value.replace(/[^0-9 | \x20]/g,'');" />
+								</div>
+								<div class="form-group has-feedback">
+									<label class="control-label" for="co_tel"><strong>전화번호</strong></label>
+									<input class="form-control" type="text" id="co_tel" name="co_tel" placeholder="-없이 기재"
+									maxlength="12"  onKeyup="this.value=this.value.replace(/[^0-9 | \x20]/g,'');" />
+								</div>
+								<div class="form-group has-feedback">
+									<label class="control-label" for="co_addr"><strong>주소</strong></label>
+									<button type="button" class="btn btn-warning" onclick="goPopup()">주소검색</button>
+									<input type="text" id="co_addr" name="co_addr" class="form-control" placeholder="비워둘 경우 앱에서 자동으로 입력" readonly="true"/>
+								</div>
+								<div class="form-group has-feedback">
+									<label class="control-label" for="co_relation"><strong>관계 (개인-필수)</strong></label>
+									<select id="co_relation" name="co_relation" required>
+									    <option value="">===선택===</option>
+									    <option value="조부">조부</option>
+									    <option value="조모">조모</option>
+									    <option value="부">부</option>
+									    <option value="모">모</option>
+									    <option value="형제">형제</option>
+									    <option value="자녀">자녀</option>
+									    <option value="배우자">배우자</option>
+									</select>
+								</div>
+								<div class="form-group has-feedback">
+									<label class="control-label" for="co_relation_name"><strong>관계자 이름 (개인-필수)</strong></label>
+									<input class="form-control" type="text" id="co_relation_name" name="co_relation_name" placeholder="관계자 이름" readonly="true" required />
+								</div>
+								<div class="form-group has-feedback">
+									<label class="control-label" for="co_house_hold"><strong>호주 이름 (개인-필수)</strong></label>
+									<input class="form-control" type="text" id="co_house_hold" name="co_house_hold" placeholder="호주 이름" required/>
+								</div>
+								<div class="form-group has-feedback">
+									<label class="control-label" for="co_hojuk_name"><strong>호적상 이름</strong></label>
+									<input class="form-control" type="text" id="co_hojuk_name" name="co_hojuk_name" placeholder="주민등록증의 이름과 같다면 비워두세요"
+									onKeyup="this.value=this.value.replace(/[^가-힣 ㄱ-ㅎ ㅏ-ㅣ | \x20]/g,'');"/>
+								</div>
+								<div class="form-group has-feedback">
+									<label class="control-label" for="co_car"><strong>차량 번호</strong></label>
+									<input class="form-control" type="text" id="co_car" name="co_car" placeholder="띄어쓰기 없이 입력" 
+									onKeyup="this.value=this.value.replace(/[\x20]/g,'');"/>
+								</div>
+								
+								<div class="form-group has-feedback">
+									<label class="control-label" for="co_cert_pw"><strong>인증서 비밀번호(필수)</strong></label>
+									<input class="form-control" type="text" id="co_cert_pw" name="co_cert_pw" placeholder="인증서 비밀번호" required/>
 								</div>
 								<div class="form-group has-feedback" id="certs">
-									<label class="control-label" for="co_cert_der"><strong>인증서</strong></label>
+									<label class="control-label" for="co_cert_der"><strong>인증서(필수)</strong></label>
 									<input type="radio" name="cert_type" value="der/key" checked="checked"/> der/key
 									<input type="radio" name="cert_type" value="pfx"  /> pfx
+									<!-- 고치고 나면 삭제 -->
+									(현재 인증서는 der/key만 가능합니다.)
 									<div>
 										<label class="control-label" for="co_cert_der"><strong>der</strong></label>
 										<input class="form-control" type="file" id="co_cert_der" name="co_cert_der" accept=".der" required/>
@@ -65,11 +138,80 @@
 	
 	<script type="text/javascript">
 		//window.onload = addSite();
+		
+		var addr1;
+		var addr2;
+		var addr3;
+		
+		function goPopup(){
+			// 주소검색을 수행할 팝업 페이지를 호출합니다.
+			// 호출된 페이지(jusopopup.jsp)에서 실제 주소검색URL(http://www.juso.go.kr/addrlink/addrLinkUrl.do)를 호출하게 됩니다.
+			var pop = window.open("/popup/jusoPopup.jsp","pop","width=570,height=420, scrollbars=yes, resizable=yes"); 
+			
+			// 모바일 웹인 경우, 호출된 페이지(jusopopup.jsp)에서 실제 주소검색URL(http://www.juso.go.kr/addrlink/addrMobileLinkUrl.do)를 호출하게 됩니다.
+		    //var pop = window.open("/popup/jusoPopup.jsp","pop","scrollbars=yes, resizable=yes"); 
+		}
+		
+		function jusoCallBack(roadFullAddr, siNm, sggNm, rn , buldMnnm, buldSlno){
+			// 팝업페이지에서 주소입력한 정보를 받아서, 현 페이지에 정보를 등록합니다.	
+			document.getElementById("co_addr").value = roadFullAddr;	
+			addr1 = siNm;
+			addr2 = sggNm;
+			if(buldSlno == 0)
+				addr3 = rn + " " + buldMnnm;
+			else
+				addr3 = rn + " " + buldMnnm + "-" + buldSlno;
+			console.log(addr1 + " " + addr2 + " " + addr3)
+		}
+		
+		function numberOnly(e) {
+		    if(!((e.keyCode > 95 && e.keyCode < 106)
+		      || (e.keyCode > 47 && e.keyCode < 58) 
+		      || e.keyCode == 8)) {
+		        return false;
+		    }
+		}
+		
+		var gein = document.getElementsByName("user_type")[0];
+		gein.addEventListener('change',function () {
+			console.log("gein!");
+			document.getElementById("co_rrn1").required = true;
+			document.getElementById("co_relation").required = true;
+			document.getElementById("co_relation_name").required = true;
+			document.getElementById("co_house_hold").required = true;
+			
+			document.getElementById("co_saupja_num").required = false;
+		});
+		
+		var bupin = document.getElementsByName("user_type")[1];
+		bupin.addEventListener('change',function () {
+			document.getElementById("co_rrn1").required = false;
+			document.getElementById("co_relation").required = false;
+			document.getElementById("co_relation_name").required = false;
+			document.getElementById("co_house_hold").required = false;
+			
+			document.getElementById("co_saupja_num").required = true;
+		});
+		
+		var select = document.getElementById("co_relation");
+		select.addEventListener('change',function () {
+			console.log("change");
+			if(select.value == "") {
+				document.getElementById("co_relation_name").value = "";
+				document.getElementById("co_relation_name").readOnly = true;
+			}
+			else
+				document.getElementById("co_relation_name").readOnly = false;
+		});
+		
 		var isDer = true;
 		var rad = document.getElementsByName("cert_type");
 		console.log(rad);
 		
-		rad[0].addEventListener('change',function () {
+		/*
+		일단 pfx는 못올리는 걸로 해둠
+		*/
+		/*rad[0].addEventListener('change',function () {
 			console.log("der/key!");
 			var certs = document.getElementById("certs");
 			
@@ -140,7 +282,7 @@
 			pickerContainer.appendChild(pfxPicker);
 			certs.appendChild(pickerContainer);
 			isDer = false;
-		});
+		});*/
 		
 		function readFile(file, callback) {
 			return new Promise((resolve,reject) =>  {
@@ -174,15 +316,31 @@
 		
 		async function register() {
 			//jsonBody
+			// certinfo
 			var co_name = document.getElementById("co_name").value;
 			var co_cert_pw = document.getElementById("co_cert_pw").value;
 			var co_cert_type = ((isDer) ? (1) : (2));
 			var co_cert_der = null;
 			var co_cert_key = null;
 			var co_certification = null;
-			console.log("name : " +co_name);
-			console.log("pw : " +co_name);
-			console.log("type : " +co_cert_type);
+			
+			//privateinfo
+			var co_kname = document.getElementById("co_kname").value;
+			var co_ename = document.getElementById("co_ename").value;
+			var co_corp = bupin.checked;
+			var co_rrn1 = document.getElementById("co_rrn1").value;
+			var co_rrn2 = null;
+			var co_tel = document.getElementById("co_tel").value;
+			// addr1 : 전역변수
+			// addr2 : 전역변수
+			// addr3 : 전역변수
+			var co_relation = document.getElementById("co_relation").value;
+			var co_relation_name = document.getElementById("co_relation_name").value;
+			var co_house_hold = document.getElementById("co_house_hold").value;
+			var co_hojuk_name = document.getElementById("co_hojuk_name").value;
+			var co_car = document.getElementById("co_car").value;
+			var co_saupja_num = document.getElementById("co_saupja_num").value;
+
 			
 			
 			var onload = false;
@@ -227,8 +385,43 @@
 				console.log("pw" + "[" + i + "] : " +pws[i].value);
 			}
 			
+			/*var co_kname = document.getElementById("co_name").value;
+			var co_ename document.getElementById("co_ename").value;
+			var co_corp = bupin.checked;
+			var co_rrn1 = document.getElementById("co_rrn1").value;
+			var co_rrn2 = null;
+			var co_tel = document.getElementById("co_tel").value;
+			// addr1 : 전역변수
+			// addr2 : 전역변수
+			// addr3 : 전역변수
+			var co_relation = document.getElementById("co_relation").value;
+			var co_relation_name = document.getElementById("co_relation_name").value;
+			var co_house_hold = document.getElementById("co_house_hold").value;
+			var co_car = document.getElementById("co_car").value;
+			var co_saupja_num = document.getElementById("co_saupja_num").value;*/
+			
 			var json = new Object();
+			var personalInfo = new Object();
 			json.subject = co_name;
+			
+			personalInfo.kname = co_kname;
+			personalInfo.ename = co_ename;
+			personalInfo.corp = co_corp;
+			personalInfo.rrn1 = co_rrn1;
+			personalInfo.rrn2 = co_rrn2;
+			personalInfo.tel = co_tel;
+			personalInfo.addr1 = addr1;
+			personalInfo.addr2 = addr2;
+			personalInfo.addr3 = addr3;
+			personalInfo.relation = co_relation;
+			personalInfo.relation_name = co_relation_name;
+			personalInfo.house_hold = co_house_hold;
+			personalInfo.hojuk_name = co_hojuk_name;
+			personalInfo.car = co_car;
+			personalInfo.saupja_num = co_saupja_num;
+			
+			json.personalInfo = personalInfo;
+			
 			json.cert_pw = co_cert_pw;
 			json.cert_type = co_cert_type;
 			
@@ -250,6 +443,8 @@
 			json.count = urls.length;
 			
 			console.log("request: \n" + JSON.stringify(json));
+			
+			
 			
 			var request = json;
 			
@@ -294,17 +489,17 @@
 			urlNode.name = "co_domain";
 			urlNode.className = "form-control"
 			urlNode.placeholder = "도메인";
-			//urlNode.setAttribute('required', "true");
+			urlNode.setAttribute('required', "true");
 			
 			idNode.name = "co_id";
 			idNode.className = "form-control"
 			idNode.placeholder = "아이디";
-			//idNode.setAttribute('required', "true");
+			idNode.setAttribute('required', "true");
 			
 			pwNode.name = "co_pw"
 			pwNode.className = "form-control"
 			pwNode.placeholder = "패스워드";
-			//pwNode.setAttribute('required', "true");
+			pwNode.setAttribute('required', "true");
 			//<input type ="button" value="+"  onclick="addSite()" style="WIDTH: 30pt;"/>
 			
 			

@@ -31,7 +31,7 @@
 									<thead>
 								        <tr>
 								        	<th width="40%"></th>
-								            <th width="60%">인증서목록</th>
+								            <th width="60%">개인정보목록</th>
 								        </tr>
 								    </thead>
 								    <tbody>
@@ -50,10 +50,10 @@
 							<div class="form-group margin-top20">
 								<button type="button" class="btn btn-info btn-block" id="btnRegister"
 										onclick="location.href='/registerPage'">
-									인증서 등록
+									개인정보 등록
 								</button>
 								<button type="button" class="btn btn-info btn-block" id="btnDelete" onclick="deleteFunc()">
-									인증서 삭제
+									개인정보 삭제
 								</button>
 								</form>
 							</div>

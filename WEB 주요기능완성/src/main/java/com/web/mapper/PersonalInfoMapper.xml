@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.web.mapper.PersonalInfoMapper">
+
+	<select id="piList" resultType="com.web.domain.PersonalInfoVO">
+        SELECT
+            *
+        FROM TB_PERSON
+    </select>
+ 
+ 	<select id="piSearch" parameterType="String" resultType="com.web.domain.PersonalInfoVO">
+        SELECT
+            *
+        FROM TB_PERSON
+        WHERE
+            CO_NAME = #{co_name}
+    </select>
+    
+    <insert id="piInsert" parameterType="com.web.domain.PersonalInfoVO">
+        INSERT INTO
+        TB_PERSON (CO_NAME, CO_KNAME,CO_ENAME, CO_CORP, CO_RRN1, CO_RRN2,
+         CO_TEL, CO_ADDR1, CO_ADDR2, CO_ADDR3, CO_RELATION, CO_RELATION_NAME,
+          CO_HOUSE_HOLD,CO_HOJUK_NAME,CO_CAR,CO_SAUPJA_NUM)
+        VALUES(#{co_name}, #{co_kname}, #{co_ename}, #{co_corp}, #{co_rrn1}, #{co_rrn2},
+         #{co_tel}, #{co_addr1},#{co_addr2}, #{co_addr3}, #{co_relation}, #{co_relation_name},
+         #{co_house_hold}, #{co_hojuk_name}, #{co_car}, #{co_saupja_num}) 
+        ON DUPLICATE KEY UPDATE CO_NAME = #{co_name}, CO_KNAME = #{co_kname},CO_ENAME = #{co_ename}, CO_CORP = #{co_corp},
+         CO_RRN1 = #{co_rrn1}, CO_RRN2 = #{co_rrn2}, CO_TEL = #{co_tel}, CO_ADDR1 = #{co_addr1},
+         CO_ADDR2 = #{co_addr2}, CO_ADDR3 = #{co_addr3}, CO_RELATION = #{co_relation}, CO_RELATION_NAME = #{co_relation_name},
+         CO_HOUSE_HOLD = #{co_house_hold}, CO_HOJUK_NAME = #{co_hojuk_name}, CO_CAR = #{co_car}, CO_SAUPJA_NUM = #{co_saupja_num}
+    </insert>
+   
+    <update id="piUpdate" parameterType="com.web.domain.PersonalInfoVO">
+        UPDATE TB_PERSON
+            SET CO_NAME = #{co_name}, CO_KNAME = #{co_kname},CO_ENAME = #{co_ename}, CO_CORP = #{co_corp},
+         CO_RRN1 = #{co_rrn1}, CO_RRN2 = #{co_rrn2}, CO_TEL = #{co_tel}, CO_ADDR1 = #{co_addr1},
+         CO_ADDR2 = #{co_addr2}, CO_ADDR3 = #{co_addr3}, CO_RELATION = #{co_relation}, CO_RELATION_NAME = #{co_relation_name},
+         CO_HOUSE_HOLD = #{co_house_hold}, CO_HOJUK_NAME = #{co_hojuk_name}, CO_CAR = #{co_car}, CO_SAUPJA_NUM = #{co_saupja_num}
+        WHERE 
+        	CO_NAME = #{co_name}
+    </update>
+    
+    <delete id="piDelete" parameterType="String">
+        DELETE FROM TB_PERSON WHERE CO_NAME = #{co_name}
+    </delete>
+    
+</mapper>

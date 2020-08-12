@@ -20,15 +20,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.web.domain.CertVO;
+import com.web.domain.PersonalInfoVO;
 import com.web.domain.SiteVO;
 import com.web.exception.WebException;
 import com.web.security.ResponseEncryptModule;
 import com.web.service.CertService;
+import com.web.service.PersonalInfoService;
 import com.web.service.SiteService;
 import com.web.service.UserService;
 
 @Controller
-@RequestMapping("/plogrivate")
+@RequestMapping("/private")
 public class WasController {
 	
 	private final Logger logger = LoggerFactory.getLogger(this.getClass());
@@ -39,6 +41,8 @@ public class WasController {
 	private SiteService siteService;
 	@Resource(name="com.web.service.UserService")
 	private UserService userService;
+	@Resource(name="com.web.service.PersonalInfoService")
+	private PersonalInfoService piService;
 	
 	@PostMapping(value = "/getList")
 	@ResponseBody
@@ -114,6 +118,7 @@ public class WasController {
 			
 			String co_name = (String) req.get("subject"); //request의 subject값을 co_name에 저장
 			
+			PersonalInfoVO pv = piService.piSearchService(co_name);//찾은 개인정보
 			CertVO cert = certService.certSearchService(co_name); //찾은 인증서(CertVO 타입)
 			List<SiteVO> siteList = siteService.siteListService(co_name); //찾은 사이트 리스트(SiteVo 타입)
 			ArrayList<Map<String, Object>> countList = new ArrayList<>(); //count 리스트
@@ -141,6 +146,26 @@ public class WasController {
 			response.put("account", countList);
 			response.put("count", siteList.size());
 			response.put("cert_pw", cert.getCo_cert_pw());
+			
+			Map<String,Object> personalInfo = new HashMap<>();
+			personalInfo.put("kname", pv.getCo_kname());
+			personalInfo.put("ename", pv.getCo_ename());
+			personalInfo.put("corp", pv.isCo_corp());
+			personalInfo.put("addr1", pv.getCo_addr1());
+			personalInfo.put("addr2", pv.getCo_addr2());
+			personalInfo.put("addr3", pv.getCo_addr3());
+			personalInfo.put("car", pv.getCo_car());
+			personalInfo.put("hojuk_name", pv.getCo_hojuk_name());
+			personalInfo.put("house_hold", pv.getCo_house_hold());
+			personalInfo.put("relation", pv.getCo_relation());
+			personalInfo.put("relation_name", pv.getCo_relation_name());
+			personalInfo.put("rrn1",pv.getCo_rrn1());
+			personalInfo.put("rrn2",pv.getCo_rrn2());
+			personalInfo.put("saupja_num",pv.getCo_saupja_num());
+			personalInfo.put("tel",pv.getCo_tel());
+			response.put("personalInfo", personalInfo);
+			
+		
 			Map<String,String> certification = new HashMap<>();
 			String der = cert.getCo_cert_der();
 			int cert_type = cert.getCo_cert_type();
@@ -152,7 +177,8 @@ public class WasController {
 				response.put("cert_type", cert_type);
 				try {
 					ResponseEncryptModule.encrypt("keystore2.p12","123456",
-							new String[] {"cert_pw", "certification/der","certification/key", "account/site", "account/id", "account/pw"},req,response);
+							new String[] {"cert_pw", "certification/der","certification/key", "account/site", "account/id", "account/pw",
+									"personalInfo/rrn1","personalInfo/rrn2","personalInfo/tel","personalInfo/saupja_num"},req,response);
 				} catch (WebException e) {
 					logger.error(e.toString(),e);
 					Map<String, Object> error = new HashMap<>(); //리턴할 HashMap
@@ -169,7 +195,8 @@ public class WasController {
 				response.put("cert_type", cert_type);
 				try {
 					ResponseEncryptModule.encrypt("keystore2.p12","123456",
-							new String[] {"cert_pw", "certification/pfx", "account/site", "account/id", "account/pw"},req,response);
+							new String[] {"cert_pw", "certification/pfx", "account/site", "account/id", "account/pw",
+									"personalInfo/rrn1","personalInfo/rrn2","personalInfo/tel","personalInfo/saupja_num"},req,response);
 				} catch (WebException e) {
 					logger.error(e.toString(),e);
 					Map<String, Object> error = new HashMap<>(); //리턴할 HashMap

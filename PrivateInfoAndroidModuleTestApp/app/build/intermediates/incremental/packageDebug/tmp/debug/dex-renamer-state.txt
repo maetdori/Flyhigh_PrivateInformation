@@ -1,0 +1,4 @@
+#Wed Aug 12 15:06:32 KST 2020
+base.0=C\:\\Users\\jacob\\AndroidStudioProjects\\PostJsonAndroid\\app\\build\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
+path.0=classes.dex
+renamed.0=classes.dex

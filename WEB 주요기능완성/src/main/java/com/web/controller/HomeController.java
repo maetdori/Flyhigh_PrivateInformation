@@ -11,9 +11,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.web.domain.CertVO;
+import com.web.domain.PersonalInfoVO;
 import com.web.domain.SiteVO;
 import com.web.exception.WebException;
 import com.web.service.CertService;
+import com.web.service.PersonalInfoService;
 import com.web.service.SiteService;
 
 @Controller
@@ -21,6 +23,8 @@ public class HomeController {
 	
 	private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
+	@Resource(name="com.web.service.PersonalInfoService")
+	PersonalInfoService piService;
 	@Resource(name="com.web.service.CertService")
 	CertService certService;
 	@Resource(name="com.web.service.SiteService")
@@ -54,8 +58,12 @@ public class HomeController {
 	    @RequestMapping(value="/modifyPage")
 	    public String modifyPage(String co_name,Model model) {
 	    	try {
+	    		PersonalInfoVO pv = piService.piSearchService(co_name);
+	    		
+	    		logger.debug( "relation: " + pv.getCo_relation());
 		    	CertVO cv = certService.certSearchService(co_name);
 		    	List<SiteVO> svs = siteService.siteListService(co_name);
+		    	model.addAttribute("getPv",pv);
 		    	model.addAttribute("getCert",cv);
 		    	model.addAttribute("getSiteList",svs);
 		        return "Modify";

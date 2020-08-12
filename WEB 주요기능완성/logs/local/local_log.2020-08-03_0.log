@@ -1,0 +1,1189 @@
+INFO  20-08-03 16:02:53[main] [WebApplication:55] - Starting WebApplication on DESKTOP-CA5EFVH with PID 27136 (C:\Users\jacob\Desktop\privateInformation\WEB 주요기능완성\target\classes started by han1g in C:\Users\jacob\Desktop\privateInformation\WEB 주요기능완성)
+DEBUG 20-08-03 16:02:53[main] [WebApplication:56] - Running with Spring Boot v2.3.1.RELEASE, Spring v5.2.7.RELEASE
+INFO  20-08-03 16:02:53[main] [WebApplication:655] - The following profiles are active: local
+INFO  20-08-03 16:02:54[main] [RepositoryConfigurationDelegate:127] - Bootstrapping Spring Data JPA repositories in DEFERRED mode.
+INFO  20-08-03 16:02:54[main] [RepositoryConfigurationDelegate:187] - Finished Spring Data repository scanning in 29ms. Found 0 JPA repository interfaces.
+DEBUG 20-08-03 16:02:54[main] [LogFactory:105] - Logging initialized using 'class org.apache.ibatis.logging.slf4j.Slf4jImpl' adapter.
+INFO  20-08-03 16:02:55[main] [PostProcessorRegistrationDelegate$BeanPostProcessorChecker:335] - Bean 'org.springframework.ws.config.annotation.DelegatingWsConfiguration' of type [org.springframework.ws.config.annotation.DelegatingWsConfiguration$$EnhancerBySpringCGLIB$$d761cb82] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+INFO  20-08-03 16:02:55[main] [AnnotationActionEndpointMapping:236] - Supporting [WS-Addressing August 2004, WS-Addressing 1.0]
+INFO  20-08-03 16:02:56[main] [TomcatWebServer:108] - Tomcat initialized with port(s): 80 (https)
+INFO  20-08-03 16:02:56[main] [Http11NioProtocol:173] - Initializing ProtocolHandler ["https-jsse-nio-80"]
+INFO  20-08-03 16:02:56[main] [StandardService:173] - Starting service [Tomcat]
+INFO  20-08-03 16:02:56[main] [StandardEngine:173] - Starting Servlet engine: [Apache Tomcat/9.0.36]
+INFO  20-08-03 16:02:57[main] [TldScanner:173] - At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+INFO  20-08-03 16:02:57[main] [[/]:173] - Initializing Spring embedded WebApplicationContext
+INFO  20-08-03 16:02:57[main] [ServletWebServerApplicationContext:285] - Root WebApplicationContext: initialization completed in 3320 ms
+INFO  20-08-03 16:02:57[main] [ThreadPoolTaskExecutor:181] - Initializing ExecutorService 'applicationTaskExecutor'
+INFO  20-08-03 16:02:57[main] [HikariDataSource:110] - HikariPool-1 - Starting...
+INFO  20-08-03 16:02:57[main] [HikariDataSource:123] - HikariPool-1 - Start completed.
+INFO  20-08-03 16:02:57[task-1] [LogHelper:31] - HHH000204: Processing PersistenceUnitInfo [name: default]
+INFO  20-08-03 16:02:57[task-1] [Version:44] - HHH000412: Hibernate ORM core version 5.4.17.Final
+INFO  20-08-03 16:02:57[task-1] [Version:49] - HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+WARN  20-08-03 16:02:57[main] [JpaBaseConfiguration$JpaWebConfiguration:220] - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+INFO  20-08-03 16:02:58[task-1] [Dialect:172] - HHH000400: Using dialect: org.hibernate.dialect.MySQL55Dialect
+INFO  20-08-03 16:02:58[main] [Http11NioProtocol:173] - Starting ProtocolHandler ["https-jsse-nio-80"]
+INFO  20-08-03 16:02:58[task-1] [JtaPlatformInitiator:52] - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+INFO  20-08-03 16:02:58[task-1] [LocalContainerEntityManagerFactoryBean:416] - Initialized JPA EntityManagerFactory for persistence unit 'default'
+INFO  20-08-03 16:03:00[main] [TomcatWebServer:220] - Tomcat started on port(s): 80 (https) with context path ''
+INFO  20-08-03 16:03:00[main] [DeferredRepositoryInitializationListener:49] - Triggering deferred initialization of Spring Data repositories…
+INFO  20-08-03 16:03:00[main] [DeferredRepositoryInitializationListener:53] - Spring Data repositories initialized!
+INFO  20-08-03 16:03:00[main] [WebApplication:61] - Started WebApplication in 6.828 seconds (JVM running for 7.347)
+INFO  20-08-03 16:03:14[https-jsse-nio-80-exec-3] [[/]:173] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+INFO  20-08-03 16:03:14[https-jsse-nio-80-exec-3] [DispatcherServlet:525] - Initializing Servlet 'dispatcherServlet'
+INFO  20-08-03 16:03:14[https-jsse-nio-80-exec-3] [DispatcherServlet:547] - Completed initialization in 9 ms
+DEBUG 20-08-03 16:03:14[https-jsse-nio-80-exec-3] [certList:137] - ==>  Preparing: SELECT * FROM TB_CERTIFICATION
+DEBUG 20-08-03 16:03:14[https-jsse-nio-80-exec-3] [certList:137] - ==> Parameters: 
+DEBUG 20-08-03 16:03:14[https-jsse-nio-80-exec-3] [certList:137] - <==      Total: 1
+WARN  20-08-03 16:03:16[https-jsse-nio-80-exec-3] [SessionIdGeneratorBase:173] - Creation of SecureRandom instance for session ID generation using [SHA1PRNG] took [1,173] milliseconds.
+DEBUG 20-08-03 16:03:33[https-jsse-nio-80-exec-8] [certList:137] - ==>  Preparing: SELECT * FROM TB_CERTIFICATION
+DEBUG 20-08-03 16:03:33[https-jsse-nio-80-exec-8] [certList:137] - ==> Parameters: 
+DEBUG 20-08-03 16:03:33[https-jsse-nio-80-exec-8] [certList:137] - <==      Total: 1
+DEBUG 20-08-03 16:03:50[https-jsse-nio-80-exec-2] [certList:137] - ==>  Preparing: SELECT * FROM TB_CERTIFICATION
+DEBUG 20-08-03 16:03:50[https-jsse-nio-80-exec-2] [certList:137] - ==> Parameters: 
+DEBUG 20-08-03 16:03:50[https-jsse-nio-80-exec-2] [certList:137] - <==      Total: 1
+DEBUG 20-08-03 16:03:52[https-jsse-nio-80-exec-1] [getKey:137] - ==>  Preparing: SELECT co_name, co_key FROM TB_KEY WHERE CO_NAME = ?
+DEBUG 20-08-03 16:03:52[https-jsse-nio-80-exec-1] [getKey:137] - ==> Parameters: han1g(String)
+DEBUG 20-08-03 16:03:52[https-jsse-nio-80-exec-1] [getKey:137] - <==      Total: 1
+DEBUG 20-08-03 16:03:52[https-jsse-nio-80-exec-1] [certSearch:137] - ==>  Preparing: SELECT * FROM TB_CERTIFICATION WHERE CO_NAME = ?
+DEBUG 20-08-03 16:03:52[https-jsse-nio-80-exec-1] [certSearch:137] - ==> Parameters: han1g(String)
+DEBUG 20-08-03 16:03:52[https-jsse-nio-80-exec-1] [certSearch:137] - <==      Total: 1
+DEBUG 20-08-03 16:03:52[https-jsse-nio-80-exec-1] [CertService:52] - co_name : han1g
+DEBUG 20-08-03 16:03:52[https-jsse-nio-80-exec-1] [CertService:53] - ret : com.web.domain.CertVO@1cc6e5cf
+DEBUG 20-08-03 16:03:52[https-jsse-nio-80-exec-1] [CertService:54] - key : com.web.domain.KeyVO@153cc543
+DEBUG 20-08-03 16:03:52[https-jsse-nio-80-exec-1] [CertService:57] - der : null
+DEBUG 20-08-03 16:03:52[https-jsse-nio-80-exec-1] [CertService:58] - key : null
+DEBUG 20-08-03 16:03:52[https-jsse-nio-80-exec-1] [CertService:59] - pfx : MIIMAQIBAzCCC8cGCSqGSIb3DQEHAaCCC7gEggu0MIILsDCCBWkGCSqGSIb3DQEHAaCCBVoEggVWMIIFUjCCBU4GCyqGSIb3DQEMCgECoIIFFjCCBRIwHAYKKoZIhvcNAQwBAzAOBAiPYcTwOTA+LAICCAAEggTwXxHcE86FhSfiCU5qPiV6krygHauPkRL5LNEUS+YRmRtlKzwpKLAXqxJytVCQBzraNEsFy9Igl2bGOG1hUqC0nGwkmpZzD9WmQWBZrz9DLj73KDOHSf3mrqcrqmLztjrhE551aNOsb1Ul/jHzhrhCddlOXKYvkzpInVzq6hdmrq3ODku9n22MkwYQzEeQ4YdqeDksQJhQqnz3IENAlzscIYRuK9W809e19iB44U7pCalgoTFSgZGCJUar0tCXOuLMomThfMRxxiLMT1vSvLl8uqGL4yVresoCMc3j4H6pzwQFHJrY9gXf2Tqfx3jfcSwnEQ8lzX4Oml0x69KtpMrgWtMw59IuAZtXTKGZ9klO7Gp0oUKVsyzwLlJPeBybKtS9FmKwKdIAeocEtRITGY9xAzpLlYYOxg1UrQOY0QxgdM8lHNy8SsS9iIOVus+UWBeq9y2U0BUwIoxmIYBV/jPfT/XyH3Gijo0C2U5LkfFrSYSGISxsDgkHvXW+3y1iatSO8HE0PKHV//UcR5MH+A8NZ8hGix7bh5ZIWxbUq08zecxAUavz00kfINAUc1zEdJkMXe+ABFuSCE4o+EvZLcKTFu4HOkl0x5eVwloFZo5fGsWCtNiTFaS+LB5KmEu1e8Iz8a0yVFeNSMXE/Qw5OXZnxUV0+alBPiZrEr/ApOLYU9k4dJik4u9EGHs5pwPdbsgwPAeEG/52cBVDLDff9gREUM6hOcp/03wa6mY8VAPsY0QyQIyM+RmgAFpTDaoFuqPJiddp0ho/gsY22KGoBJM/wXMIpiZ437ruXdTUrjzDeWp1uYirZSer9Du9L6bUQUeyC36nG17/rupldz3Gg3Kzdqam6Zt2WjkSDtyq+aM/7x56Gd2nh6/p9P7pOkUQjLp1HycMYhq7QTh8VGg6mjBzQInU6F2yXpnd2jt02goLzMaIegk5zven3N3Fg2hCfAuIzSIOkdC0kPBKr2JNQTNjoErP9ootP51yIOa/Kk61ENwhn/OABqbAD8G/to1ib0uC9WtVyNrlbj8vAHMtq26o45feVQAXh6gJL5x0CvWKpiq5CgPo9gx+4L4ZvOzZm0FMgF7OwIREkg6Jdzealb7ddLjyz0b25/yxcDwphq1ckXX/kw07MLpxLLIv0icut2uafJR0EnVgDpSfQCQGIKbI9DErXKULxsjwrd96Hr9FzYeDlgaZsV/gbVnz/r28ooJcj9aHRbd7x5fIOezcOfBVJzrh0B9wwn/QWLqaDp53eusqDYRnyD4iZcxS0GovKwFevqLXc3P/HXHYz9G4+5r3rMWHW1eEHhhIFgGiKilO/M+tGOQK03JaMi0dQM07B+MU7N3Pbl6X5WNoKLiwJkWof1RI1epGLZc6aJHLxejeQEVJLLGggHgIujzSZZe4YrTb6MnzBfnULfVz6Oyu7iMyHdVDqsrd5gXRDe9TvMldOGnGOQDKwkUTTvkyThEnf3gm8bJLjGwFbwFIiyCNM6uw26TCkiFvq7FESaXftgz9jReu4ai15e9pQixRkANHhvBSYgV0PbQNYqSq0LoaXhCnxH1vd0zlgl7a+6L1yfep76IRtjtgIqaAq4nNcUkU873of7L2VL7zLFAgDirmJKQJyzOIsavx2XoEkf2a5GEPQrtDJp+7/a/Hqpx14nGF3kNd0Gw9uwqop5D8y0Zqfo4eMjElMCMGCSqGSIb3DQEJFTEWBBQFUi/Or6gMjwCPeFNHtU+Hhvkq2jCCBj8GCSqGSIb3DQEHBqCCBjAwggYsAgEAMIIGJQYJKoZIhvcNAQcBMBwGCiqGSIb3DQEMAQMwDgQIzd9nWlhrKqgCAggAgIIF+FCdU+OXezwo6CdVWMgpBYKF6nbbvvPKG0lzwcZyfOmcZ736HFoQvsQn97p/yFxLNbfUjJZmTyINf7p+ZJO4uMO/4b8RVIroM9Q0zV1Pu3JHHxqCB7EiT9jgBZxVX76Kq54Rn30YfLauC7KPu/jX1SXytzRmhj8DShJkX/ssW26wJwVuGdUwDOdqLf6yVlfUhwtvZ63eLvD47KHMgqXmVMiWwQIqQ+I0c9ecLff5hc9/lZX+qrI8cyR2h/O8RUz9kg5WA1c/PslIrA+p3h231hvyj76jK9KMRZ3ny6c6uxUFL5eABFVoOZgPwwFBrmxNObf/r5W+q3OKhqKrUS9KXyF54pFRJ49f4ncXQd+m25KxmtKZxUBCWbaVOUmX1+MbdrGLHIvkP5PgHEYTBE57RiKruoIZClkONeQ0rS+frQ7HG5w1cTKsN8wiN2MBry9Qo291iqlSty+RZdTGVpCqGS32OMoDtmQLOintYnKIg0nxpHLxLYllB4qxrV+N2eSkYBP95gbKNDipGU/KDU7cravvcySdEP0KMg30BCTLYKhUEYkLKwdWH0JgbEYxBLl57AZnBPYUlZzyuUTds6o+c8CfHLXenhq3UcJre8EZlid+WJhxCRA09PHv/+q9YxHL7fhPIBi8jXHDKVyF+Gsrt98Rr8sKLhnEKc52ueUxZEoWzHJD+aOZcuzz4LFnBk3cs+GdhIi19xOZ6dIUYL9G0SceqhVRzyrOpCQk1t3ixxlPQgP6aghCxYd7tXLRhJ60FdEEhk3wyPfFzadQZMPiyKpkyMlFRErMJf2+Dks04Ewdc5u8cxgtvLRKbSKiGnIEOvfBs7I/S0kDYfZBSjBgju15/998N9d074ifuA2bFDlbzp8HMpj9OMaZLvVKbufGmLVmsQjz10Q4CbLpSjfNJotLombqd7yUGg9ZXyiEby0VjPRyX6ZbuCaxrX77bjV3kjtimI/su20cAvmZGPfuqDzjNrYwk2x627TjWhp9YdPA3bYN4v6UpAee1pPAKxEKWw4eOkdZthVq8WedzpqA+K3epvah2B55mlLYzZ97zFOEt9RxferjOzyn7gYyhxKEhR6N1ou77ww8Ml1PocJ8rTY1YteTOmvGOLkcXUZCJEjk4xtcdp8d2fJFc4u68tMrB0yaspEGkts2j7YxF3goboIkAtM8Dt086V1y7oqLy3HJivK3gx/Bq5R0BAx0gI+7llwE2yNW2yjgioChboNVjYiVeYNO24gUWwDmpx0AS8CzqzqJGaAFJyViCv6352oGsS4hcnSkZhLatM8kZeNFWKwLDDCNaMWHShU24kOe/3tZ91rSxqKyydEovHO3ks4jJ49dAj6RyTp54OSsFwN7aSlhPXehr5VOZ057mgSf7UwNv4kc0+KNN6/rdwn4yhVXTS9kTjR2wyO/0tQJXSP91gdwGtcbB2MDCy9YNtWUjbm4d4m8To4b3fkZgXzlr14qbw4qr2JpYghIIF8LheLqFJM/oc4vJjNsS/KtzYk44jdervYrgoka+MXVoXeiihsQ0hUKRajEB7DNH68lNeIvO5H10kz2gLU9CqTJar85cnco2e2BgVL9bd1G6YQgEC7k35qmEWFYIL5e8zepY50uVTw16P/vRSMOFwFO90QHIC2iYZU9PJlBDT+nmjc8L/Aaq8cL38Z06GvY+mWauN7W7fLIEE9G9T3JZyoGkuZ9odGAtjNzg4UF+kdVrC7ck1BtbwzLbS3SGmSK5HP4/VaJVSaTcSdzuMdqBSf20pslHfoj5V28L6ZQ4y52Ls+6vrNYM593fB4HckG8geu4n1LudeIFtLtoBMKt9fpARe2itLIlcXHYprKg6aiFwoXo7tGGHu7ssF/gSPMDFaRljUdVbskqlfN0enMy3Ts+fSvWkAc8TO4QlHahwiLmUG4Mueaj3DDhWfe6wDUGwgCM2sAcZN46CStBH6ia6rdK5/Km9/I5NkkcQ4R3/wvB7bFoMeCVieXH+ICZi4JToDjAur/Zd1ImtOerSi2pSIceXCjHJnTLYW07lp5DlgkwMTAhMAkGBSsOAwIaBQAEFP0crEILd5S8D9+JC+weQWyLHcNMBAij0BjfMwYfZAICCAA=
+DEBUG 20-08-03 16:03:52[https-jsse-nio-80-exec-1] [getKey:137] - ==>  Preparing: SELECT co_name, co_key FROM TB_KEY WHERE CO_NAME = ?
+DEBUG 20-08-03 16:03:52[https-jsse-nio-80-exec-1] [getKey:137] - ==> Parameters: han1g(String)
+DEBUG 20-08-03 16:03:52[https-jsse-nio-80-exec-1] [getKey:137] - <==      Total: 1
+DEBUG 20-08-03 16:03:52[https-jsse-nio-80-exec-1] [siteList:137] - ==>  Preparing: SELECT * FROM TB_SITEINFO WHERE CO_NAME = ?
+DEBUG 20-08-03 16:03:52[https-jsse-nio-80-exec-1] [siteList:137] - ==> Parameters: han1g(String)
+DEBUG 20-08-03 16:03:52[https-jsse-nio-80-exec-1] [siteList:137] - <==      Total: 0
+DEBUG 20-08-03 16:04:36[https-jsse-nio-80-exec-4] [certList:137] - ==>  Preparing: SELECT * FROM TB_CERTIFICATION
+DEBUG 20-08-03 16:04:36[https-jsse-nio-80-exec-4] [certList:137] - ==> Parameters: 
+DEBUG 20-08-03 16:04:36[https-jsse-nio-80-exec-4] [certList:137] - <==      Total: 1
+DEBUG 20-08-03 16:04:51[https-jsse-nio-80-exec-6] [certList:137] - ==>  Preparing: SELECT * FROM TB_CERTIFICATION
+DEBUG 20-08-03 16:04:51[https-jsse-nio-80-exec-6] [certList:137] - ==> Parameters: 
+DEBUG 20-08-03 16:04:51[https-jsse-nio-80-exec-6] [certList:137] - <==      Total: 1
+INFO  20-08-03 16:26:55[main] [WebApplication:55] - Starting WebApplication on DESKTOP-CA5EFVH with PID 38544 (C:\Users\jacob\Desktop\privateInformation\WEB 주요기능완성\target\classes started by han1g in C:\Users\jacob\Desktop\privateInformation\WEB 주요기능완성)
+DEBUG 20-08-03 16:26:55[main] [WebApplication:56] - Running with Spring Boot v2.3.1.RELEASE, Spring v5.2.7.RELEASE
+INFO  20-08-03 16:26:55[main] [WebApplication:655] - The following profiles are active: local
+INFO  20-08-03 16:26:55[main] [RepositoryConfigurationDelegate:127] - Bootstrapping Spring Data JPA repositories in DEFERRED mode.
+INFO  20-08-03 16:26:55[main] [RepositoryConfigurationDelegate:187] - Finished Spring Data repository scanning in 25ms. Found 0 JPA repository interfaces.
+DEBUG 20-08-03 16:26:56[main] [LogFactory:105] - Logging initialized using 'class org.apache.ibatis.logging.slf4j.Slf4jImpl' adapter.
+INFO  20-08-03 16:26:56[main] [PostProcessorRegistrationDelegate$BeanPostProcessorChecker:335] - Bean 'org.springframework.ws.config.annotation.DelegatingWsConfiguration' of type [org.springframework.ws.config.annotation.DelegatingWsConfiguration$$EnhancerBySpringCGLIB$$62d11167] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+INFO  20-08-03 16:26:56[main] [AnnotationActionEndpointMapping:236] - Supporting [WS-Addressing August 2004, WS-Addressing 1.0]
+INFO  20-08-03 16:26:58[main] [TomcatWebServer:108] - Tomcat initialized with port(s): 80 (https)
+INFO  20-08-03 16:26:58[main] [Http11NioProtocol:173] - Initializing ProtocolHandler ["https-jsse-nio-80"]
+INFO  20-08-03 16:26:58[main] [StandardService:173] - Starting service [Tomcat]
+INFO  20-08-03 16:26:58[main] [StandardEngine:173] - Starting Servlet engine: [Apache Tomcat/9.0.36]
+INFO  20-08-03 16:26:58[main] [TldScanner:173] - At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+INFO  20-08-03 16:26:58[main] [[/]:173] - Initializing Spring embedded WebApplicationContext
+INFO  20-08-03 16:26:58[main] [ServletWebServerApplicationContext:285] - Root WebApplicationContext: initialization completed in 3322 ms
+INFO  20-08-03 16:26:58[main] [ThreadPoolTaskExecutor:181] - Initializing ExecutorService 'applicationTaskExecutor'
+INFO  20-08-03 16:26:58[main] [HikariDataSource:110] - HikariPool-1 - Starting...
+INFO  20-08-03 16:26:58[main] [HikariDataSource:123] - HikariPool-1 - Start completed.
+INFO  20-08-03 16:26:58[task-1] [LogHelper:31] - HHH000204: Processing PersistenceUnitInfo [name: default]
+INFO  20-08-03 16:26:58[task-1] [Version:44] - HHH000412: Hibernate ORM core version 5.4.17.Final
+INFO  20-08-03 16:26:59[task-1] [Version:49] - HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+WARN  20-08-03 16:26:59[main] [JpaBaseConfiguration$JpaWebConfiguration:220] - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+INFO  20-08-03 16:26:59[task-1] [Dialect:172] - HHH000400: Using dialect: org.hibernate.dialect.MySQL55Dialect
+INFO  20-08-03 16:26:59[task-1] [JtaPlatformInitiator:52] - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+INFO  20-08-03 16:26:59[task-1] [LocalContainerEntityManagerFactoryBean:416] - Initialized JPA EntityManagerFactory for persistence unit 'default'
+INFO  20-08-03 16:26:59[main] [Http11NioProtocol:173] - Starting ProtocolHandler ["https-jsse-nio-80"]
+INFO  20-08-03 16:27:01[main] [TomcatWebServer:220] - Tomcat started on port(s): 80 (https) with context path ''
+INFO  20-08-03 16:27:01[main] [DeferredRepositoryInitializationListener:49] - Triggering deferred initialization of Spring Data repositories…
+INFO  20-08-03 16:27:01[main] [DeferredRepositoryInitializationListener:53] - Spring Data repositories initialized!
+INFO  20-08-03 16:27:01[main] [WebApplication:61] - Started WebApplication in 6.789 seconds (JVM running for 7.303)
+INFO  20-08-03 16:27:04[https-jsse-nio-80-exec-4] [[/]:173] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+INFO  20-08-03 16:27:04[https-jsse-nio-80-exec-4] [DispatcherServlet:525] - Initializing Servlet 'dispatcherServlet'
+INFO  20-08-03 16:27:04[https-jsse-nio-80-exec-4] [DispatcherServlet:547] - Completed initialization in 9 ms
+WARN  20-08-03 16:27:06[https-jsse-nio-80-exec-4] [SessionIdGeneratorBase:173] - Creation of SecureRandom instance for session ID generation using [SHA1PRNG] took [1,150] milliseconds.
+INFO  20-08-03 16:27:54[main] [WebApplication:55] - Starting WebApplication on DESKTOP-CA5EFVH with PID 17576 (C:\Users\jacob\Desktop\privateInformation\WEB 주요기능완성\target\classes started by han1g in C:\Users\jacob\Desktop\privateInformation\WEB 주요기능완성)
+DEBUG 20-08-03 16:27:54[main] [WebApplication:56] - Running with Spring Boot v2.3.1.RELEASE, Spring v5.2.7.RELEASE
+INFO  20-08-03 16:27:54[main] [WebApplication:655] - The following profiles are active: local
+INFO  20-08-03 16:27:55[main] [RepositoryConfigurationDelegate:127] - Bootstrapping Spring Data JPA repositories in DEFERRED mode.
+INFO  20-08-03 16:27:55[main] [RepositoryConfigurationDelegate:187] - Finished Spring Data repository scanning in 23ms. Found 0 JPA repository interfaces.
+DEBUG 20-08-03 16:27:55[main] [LogFactory:105] - Logging initialized using 'class org.apache.ibatis.logging.slf4j.Slf4jImpl' adapter.
+INFO  20-08-03 16:27:55[main] [PostProcessorRegistrationDelegate$BeanPostProcessorChecker:335] - Bean 'org.springframework.ws.config.annotation.DelegatingWsConfiguration' of type [org.springframework.ws.config.annotation.DelegatingWsConfiguration$$EnhancerBySpringCGLIB$$b14eecf8] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+INFO  20-08-03 16:27:55[main] [AnnotationActionEndpointMapping:236] - Supporting [WS-Addressing August 2004, WS-Addressing 1.0]
+INFO  20-08-03 16:27:57[main] [TomcatWebServer:108] - Tomcat initialized with port(s): 80 (https)
+INFO  20-08-03 16:27:57[main] [Http11NioProtocol:173] - Initializing ProtocolHandler ["https-jsse-nio-80"]
+INFO  20-08-03 16:27:57[main] [StandardService:173] - Starting service [Tomcat]
+INFO  20-08-03 16:27:57[main] [StandardEngine:173] - Starting Servlet engine: [Apache Tomcat/9.0.36]
+INFO  20-08-03 16:27:57[main] [TldScanner:173] - At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+INFO  20-08-03 16:27:57[main] [[/]:173] - Initializing Spring embedded WebApplicationContext
+INFO  20-08-03 16:27:57[main] [ServletWebServerApplicationContext:285] - Root WebApplicationContext: initialization completed in 3195 ms
+INFO  20-08-03 16:27:57[main] [ThreadPoolTaskExecutor:181] - Initializing ExecutorService 'applicationTaskExecutor'
+INFO  20-08-03 16:27:57[main] [HikariDataSource:110] - HikariPool-1 - Starting...
+INFO  20-08-03 16:27:58[main] [HikariDataSource:123] - HikariPool-1 - Start completed.
+INFO  20-08-03 16:27:58[task-1] [LogHelper:31] - HHH000204: Processing PersistenceUnitInfo [name: default]
+INFO  20-08-03 16:27:58[task-1] [Version:44] - HHH000412: Hibernate ORM core version 5.4.17.Final
+INFO  20-08-03 16:27:58[task-1] [Version:49] - HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+WARN  20-08-03 16:27:58[main] [JpaBaseConfiguration$JpaWebConfiguration:220] - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+INFO  20-08-03 16:27:58[task-1] [Dialect:172] - HHH000400: Using dialect: org.hibernate.dialect.MySQL55Dialect
+INFO  20-08-03 16:27:58[task-1] [JtaPlatformInitiator:52] - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+INFO  20-08-03 16:27:58[task-1] [LocalContainerEntityManagerFactoryBean:416] - Initialized JPA EntityManagerFactory for persistence unit 'default'
+INFO  20-08-03 16:27:58[main] [Http11NioProtocol:173] - Starting ProtocolHandler ["https-jsse-nio-80"]
+INFO  20-08-03 16:28:00[main] [TomcatWebServer:220] - Tomcat started on port(s): 80 (https) with context path ''
+INFO  20-08-03 16:28:00[main] [DeferredRepositoryInitializationListener:49] - Triggering deferred initialization of Spring Data repositories…
+INFO  20-08-03 16:28:00[main] [DeferredRepositoryInitializationListener:53] - Spring Data repositories initialized!
+INFO  20-08-03 16:28:00[main] [WebApplication:61] - Started WebApplication in 6.518 seconds (JVM running for 7.002)
+INFO  20-08-03 16:28:00[https-jsse-nio-80-exec-4] [[/]:173] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+INFO  20-08-03 16:28:00[https-jsse-nio-80-exec-4] [DispatcherServlet:525] - Initializing Servlet 'dispatcherServlet'
+INFO  20-08-03 16:28:00[https-jsse-nio-80-exec-4] [DispatcherServlet:547] - Completed initialization in 9 ms
+WARN  20-08-03 16:28:02[https-jsse-nio-80-exec-4] [SessionIdGeneratorBase:173] - Creation of SecureRandom instance for session ID generation using [SHA1PRNG] took [1,207] milliseconds.
+INFO  20-08-03 16:29:33[main] [WebApplication:55] - Starting WebApplication on DESKTOP-CA5EFVH with PID 63468 (C:\Users\jacob\Desktop\privateInformation\WEB 주요기능완성\target\classes started by han1g in C:\Users\jacob\Desktop\privateInformation\WEB 주요기능완성)
+DEBUG 20-08-03 16:29:33[main] [WebApplication:56] - Running with Spring Boot v2.3.1.RELEASE, Spring v5.2.7.RELEASE
+INFO  20-08-03 16:29:33[main] [WebApplication:655] - The following profiles are active: local
+INFO  20-08-03 16:29:34[main] [RepositoryConfigurationDelegate:127] - Bootstrapping Spring Data JPA repositories in DEFERRED mode.
+INFO  20-08-03 16:29:34[main] [RepositoryConfigurationDelegate:187] - Finished Spring Data repository scanning in 24ms. Found 0 JPA repository interfaces.
+DEBUG 20-08-03 16:29:34[main] [LogFactory:105] - Logging initialized using 'class org.apache.ibatis.logging.slf4j.Slf4jImpl' adapter.
+INFO  20-08-03 16:29:34[main] [PostProcessorRegistrationDelegate$BeanPostProcessorChecker:335] - Bean 'org.springframework.ws.config.annotation.DelegatingWsConfiguration' of type [org.springframework.ws.config.annotation.DelegatingWsConfiguration$$EnhancerBySpringCGLIB$$8a5c9275] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+INFO  20-08-03 16:29:34[main] [AnnotationActionEndpointMapping:236] - Supporting [WS-Addressing August 2004, WS-Addressing 1.0]
+INFO  20-08-03 16:29:36[main] [TomcatWebServer:108] - Tomcat initialized with port(s): 80 (https)
+INFO  20-08-03 16:29:36[main] [Http11NioProtocol:173] - Initializing ProtocolHandler ["https-jsse-nio-80"]
+INFO  20-08-03 16:29:36[main] [StandardService:173] - Starting service [Tomcat]
+INFO  20-08-03 16:29:36[main] [StandardEngine:173] - Starting Servlet engine: [Apache Tomcat/9.0.36]
+INFO  20-08-03 16:29:36[main] [TldScanner:173] - At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+INFO  20-08-03 16:29:36[main] [[/]:173] - Initializing Spring embedded WebApplicationContext
+INFO  20-08-03 16:29:36[main] [ServletWebServerApplicationContext:285] - Root WebApplicationContext: initialization completed in 3293 ms
+INFO  20-08-03 16:29:37[main] [ThreadPoolTaskExecutor:181] - Initializing ExecutorService 'applicationTaskExecutor'
+INFO  20-08-03 16:29:37[main] [HikariDataSource:110] - HikariPool-1 - Starting...
+INFO  20-08-03 16:29:37[main] [HikariDataSource:123] - HikariPool-1 - Start completed.
+INFO  20-08-03 16:29:37[task-1] [LogHelper:31] - HHH000204: Processing PersistenceUnitInfo [name: default]
+INFO  20-08-03 16:29:37[task-1] [Version:44] - HHH000412: Hibernate ORM core version 5.4.17.Final
+INFO  20-08-03 16:29:37[task-1] [Version:49] - HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+WARN  20-08-03 16:29:37[main] [JpaBaseConfiguration$JpaWebConfiguration:220] - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+INFO  20-08-03 16:29:37[task-1] [Dialect:172] - HHH000400: Using dialect: org.hibernate.dialect.MySQL55Dialect
+INFO  20-08-03 16:29:38[main] [Http11NioProtocol:173] - Starting ProtocolHandler ["https-jsse-nio-80"]
+INFO  20-08-03 16:29:38[task-1] [JtaPlatformInitiator:52] - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+INFO  20-08-03 16:29:38[task-1] [LocalContainerEntityManagerFactoryBean:416] - Initialized JPA EntityManagerFactory for persistence unit 'default'
+INFO  20-08-03 16:29:39[main] [TomcatWebServer:220] - Tomcat started on port(s): 80 (https) with context path ''
+INFO  20-08-03 16:29:39[main] [DeferredRepositoryInitializationListener:49] - Triggering deferred initialization of Spring Data repositories…
+INFO  20-08-03 16:29:39[main] [DeferredRepositoryInitializationListener:53] - Spring Data repositories initialized!
+INFO  20-08-03 16:29:39[main] [WebApplication:61] - Started WebApplication in 6.781 seconds (JVM running for 7.273)
+INFO  20-08-03 16:29:40[https-jsse-nio-80-exec-1] [[/]:173] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+INFO  20-08-03 16:29:40[https-jsse-nio-80-exec-1] [DispatcherServlet:525] - Initializing Servlet 'dispatcherServlet'
+INFO  20-08-03 16:29:40[https-jsse-nio-80-exec-1] [DispatcherServlet:547] - Completed initialization in 10 ms
+WARN  20-08-03 16:29:42[https-jsse-nio-80-exec-1] [SessionIdGeneratorBase:173] - Creation of SecureRandom instance for session ID generation using [SHA1PRNG] took [1,133] milliseconds.
+INFO  20-08-03 16:34:35[main] [WebApplication:55] - Starting WebApplication on DESKTOP-CA5EFVH with PID 20848 (C:\Users\jacob\Desktop\privateInformation\WEB 주요기능완성\target\classes started by han1g in C:\Users\jacob\Desktop\privateInformation\WEB 주요기능완성)
+DEBUG 20-08-03 16:34:35[main] [WebApplication:56] - Running with Spring Boot v2.3.1.RELEASE, Spring v5.2.7.RELEASE
+INFO  20-08-03 16:34:35[main] [WebApplication:655] - The following profiles are active: local
+INFO  20-08-03 16:34:35[main] [RepositoryConfigurationDelegate:127] - Bootstrapping Spring Data JPA repositories in DEFERRED mode.
+INFO  20-08-03 16:34:35[main] [RepositoryConfigurationDelegate:187] - Finished Spring Data repository scanning in 22ms. Found 0 JPA repository interfaces.
+DEBUG 20-08-03 16:34:36[main] [LogFactory:105] - Logging initialized using 'class org.apache.ibatis.logging.slf4j.Slf4jImpl' adapter.
+INFO  20-08-03 16:34:36[main] [PostProcessorRegistrationDelegate$BeanPostProcessorChecker:335] - Bean 'org.springframework.ws.config.annotation.DelegatingWsConfiguration' of type [org.springframework.ws.config.annotation.DelegatingWsConfiguration$$EnhancerBySpringCGLIB$$743f0174] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+INFO  20-08-03 16:34:36[main] [AnnotationActionEndpointMapping:236] - Supporting [WS-Addressing August 2004, WS-Addressing 1.0]
+INFO  20-08-03 16:34:37[main] [TomcatWebServer:108] - Tomcat initialized with port(s): 80 (https)
+INFO  20-08-03 16:34:37[main] [Http11NioProtocol:173] - Initializing ProtocolHandler ["https-jsse-nio-80"]
+INFO  20-08-03 16:34:37[main] [StandardService:173] - Starting service [Tomcat]
+INFO  20-08-03 16:34:37[main] [StandardEngine:173] - Starting Servlet engine: [Apache Tomcat/9.0.36]
+INFO  20-08-03 16:34:38[main] [TldScanner:173] - At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+INFO  20-08-03 16:34:38[main] [[/]:173] - Initializing Spring embedded WebApplicationContext
+INFO  20-08-03 16:34:38[main] [ServletWebServerApplicationContext:285] - Root WebApplicationContext: initialization completed in 3081 ms
+INFO  20-08-03 16:34:38[main] [ThreadPoolTaskExecutor:181] - Initializing ExecutorService 'applicationTaskExecutor'
+INFO  20-08-03 16:34:38[main] [HikariDataSource:110] - HikariPool-1 - Starting...
+INFO  20-08-03 16:34:38[main] [HikariDataSource:123] - HikariPool-1 - Start completed.
+INFO  20-08-03 16:34:38[task-1] [LogHelper:31] - HHH000204: Processing PersistenceUnitInfo [name: default]
+INFO  20-08-03 16:34:38[task-1] [Version:44] - HHH000412: Hibernate ORM core version 5.4.17.Final
+INFO  20-08-03 16:34:38[task-1] [Version:49] - HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+WARN  20-08-03 16:34:38[main] [JpaBaseConfiguration$JpaWebConfiguration:220] - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+INFO  20-08-03 16:34:39[task-1] [Dialect:172] - HHH000400: Using dialect: org.hibernate.dialect.MySQL55Dialect
+INFO  20-08-03 16:34:39[task-1] [JtaPlatformInitiator:52] - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+INFO  20-08-03 16:34:39[task-1] [LocalContainerEntityManagerFactoryBean:416] - Initialized JPA EntityManagerFactory for persistence unit 'default'
+INFO  20-08-03 16:34:39[main] [Http11NioProtocol:173] - Starting ProtocolHandler ["https-jsse-nio-80"]
+INFO  20-08-03 16:34:40[main] [TomcatWebServer:220] - Tomcat started on port(s): 80 (https) with context path ''
+INFO  20-08-03 16:34:40[main] [DeferredRepositoryInitializationListener:49] - Triggering deferred initialization of Spring Data repositories…
+INFO  20-08-03 16:34:40[main] [DeferredRepositoryInitializationListener:53] - Spring Data repositories initialized!
+INFO  20-08-03 16:34:40[main] [WebApplication:61] - Started WebApplication in 6.282 seconds (JVM running for 6.766)
+INFO  20-08-03 16:34:45[https-jsse-nio-80-exec-2] [[/]:173] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+INFO  20-08-03 16:34:45[https-jsse-nio-80-exec-2] [DispatcherServlet:525] - Initializing Servlet 'dispatcherServlet'
+INFO  20-08-03 16:34:45[https-jsse-nio-80-exec-2] [DispatcherServlet:547] - Completed initialization in 10 ms
+WARN  20-08-03 16:34:47[https-jsse-nio-80-exec-2] [SessionIdGeneratorBase:173] - Creation of SecureRandom instance for session ID generation using [SHA1PRNG] took [1,183] milliseconds.
+INFO  20-08-03 16:37:28[main] [WebApplication:55] - Starting WebApplication on DESKTOP-CA5EFVH with PID 71280 (C:\Users\jacob\Desktop\privateInformation\WEB 주요기능완성\target\classes started by han1g in C:\Users\jacob\Desktop\privateInformation\WEB 주요기능완성)
+DEBUG 20-08-03 16:37:28[main] [WebApplication:56] - Running with Spring Boot v2.3.1.RELEASE, Spring v5.2.7.RELEASE
+INFO  20-08-03 16:37:28[main] [WebApplication:655] - The following profiles are active: local
+INFO  20-08-03 16:37:29[main] [RepositoryConfigurationDelegate:127] - Bootstrapping Spring Data JPA repositories in DEFERRED mode.
+INFO  20-08-03 16:37:29[main] [RepositoryConfigurationDelegate:187] - Finished Spring Data repository scanning in 27ms. Found 0 JPA repository interfaces.
+DEBUG 20-08-03 16:37:29[main] [LogFactory:105] - Logging initialized using 'class org.apache.ibatis.logging.slf4j.Slf4jImpl' adapter.
+INFO  20-08-03 16:37:30[main] [PostProcessorRegistrationDelegate$BeanPostProcessorChecker:335] - Bean 'org.springframework.ws.config.annotation.DelegatingWsConfiguration' of type [org.springframework.ws.config.annotation.DelegatingWsConfiguration$$EnhancerBySpringCGLIB$$20922e35] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+INFO  20-08-03 16:37:30[main] [AnnotationActionEndpointMapping:236] - Supporting [WS-Addressing August 2004, WS-Addressing 1.0]
+INFO  20-08-03 16:37:31[main] [TomcatWebServer:108] - Tomcat initialized with port(s): 80 (https)
+INFO  20-08-03 16:37:31[main] [Http11NioProtocol:173] - Initializing ProtocolHandler ["https-jsse-nio-80"]
+INFO  20-08-03 16:37:31[main] [StandardService:173] - Starting service [Tomcat]
+INFO  20-08-03 16:37:31[main] [StandardEngine:173] - Starting Servlet engine: [Apache Tomcat/9.0.36]
+INFO  20-08-03 16:37:32[main] [TldScanner:173] - At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+INFO  20-08-03 16:37:32[main] [[/]:173] - Initializing Spring embedded WebApplicationContext
+INFO  20-08-03 16:37:32[main] [ServletWebServerApplicationContext:285] - Root WebApplicationContext: initialization completed in 3400 ms
+INFO  20-08-03 16:37:32[main] [ThreadPoolTaskExecutor:181] - Initializing ExecutorService 'applicationTaskExecutor'
+INFO  20-08-03 16:37:32[main] [HikariDataSource:110] - HikariPool-1 - Starting...
+INFO  20-08-03 16:37:32[main] [HikariDataSource:123] - HikariPool-1 - Start completed.
+INFO  20-08-03 16:37:32[task-1] [LogHelper:31] - HHH000204: Processing PersistenceUnitInfo [name: default]
+INFO  20-08-03 16:37:32[task-1] [Version:44] - HHH000412: Hibernate ORM core version 5.4.17.Final
+INFO  20-08-03 16:37:32[task-1] [Version:49] - HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+WARN  20-08-03 16:37:33[main] [JpaBaseConfiguration$JpaWebConfiguration:220] - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+INFO  20-08-03 16:37:33[task-1] [Dialect:172] - HHH000400: Using dialect: org.hibernate.dialect.MySQL55Dialect
+INFO  20-08-03 16:37:33[task-1] [JtaPlatformInitiator:52] - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+INFO  20-08-03 16:37:33[task-1] [LocalContainerEntityManagerFactoryBean:416] - Initialized JPA EntityManagerFactory for persistence unit 'default'
+INFO  20-08-03 16:37:33[main] [Http11NioProtocol:173] - Starting ProtocolHandler ["https-jsse-nio-80"]
+INFO  20-08-03 16:37:34[main] [TomcatWebServer:220] - Tomcat started on port(s): 80 (https) with context path ''
+INFO  20-08-03 16:37:34[main] [DeferredRepositoryInitializationListener:49] - Triggering deferred initialization of Spring Data repositories…
+INFO  20-08-03 16:37:34[main] [DeferredRepositoryInitializationListener:53] - Spring Data repositories initialized!
+INFO  20-08-03 16:37:34[main] [WebApplication:61] - Started WebApplication in 6.713 seconds (JVM running for 7.246)
+WARN  20-08-03 16:37:38[https-jsse-nio-80-exec-1] [SessionIdGeneratorBase:173] - Creation of SecureRandom instance for session ID generation using [SHA1PRNG] took [1,181] milliseconds.
+INFO  20-08-03 16:40:28[https-jsse-nio-80-exec-2] [[/]:173] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+INFO  20-08-03 16:40:28[https-jsse-nio-80-exec-2] [DispatcherServlet:525] - Initializing Servlet 'dispatcherServlet'
+INFO  20-08-03 16:40:28[https-jsse-nio-80-exec-2] [DispatcherServlet:547] - Completed initialization in 13 ms
+DEBUG 20-08-03 16:45:04[https-jsse-nio-80-exec-7] [certList:137] - ==>  Preparing: SELECT * FROM TB_CERTIFICATION
+DEBUG 20-08-03 16:45:04[https-jsse-nio-80-exec-7] [certList:137] - ==> Parameters: 
+DEBUG 20-08-03 16:45:04[https-jsse-nio-80-exec-7] [certList:137] - <==      Total: 1
+INFO  20-08-03 16:45:33[main] [WebApplication:55] - Starting WebApplication on DESKTOP-CA5EFVH with PID 74072 (C:\Users\jacob\Desktop\privateInformation\WEB 주요기능완성\target\classes started by han1g in C:\Users\jacob\Desktop\privateInformation\WEB 주요기능완성)
+DEBUG 20-08-03 16:45:33[main] [WebApplication:56] - Running with Spring Boot v2.3.1.RELEASE, Spring v5.2.7.RELEASE
+INFO  20-08-03 16:45:33[main] [WebApplication:655] - The following profiles are active: local
+INFO  20-08-03 16:45:34[main] [RepositoryConfigurationDelegate:127] - Bootstrapping Spring Data JPA repositories in DEFERRED mode.
+INFO  20-08-03 16:45:34[main] [RepositoryConfigurationDelegate:187] - Finished Spring Data repository scanning in 23ms. Found 0 JPA repository interfaces.
+DEBUG 20-08-03 16:45:34[main] [LogFactory:105] - Logging initialized using 'class org.apache.ibatis.logging.slf4j.Slf4jImpl' adapter.
+INFO  20-08-03 16:45:34[main] [PostProcessorRegistrationDelegate$BeanPostProcessorChecker:335] - Bean 'org.springframework.ws.config.annotation.DelegatingWsConfiguration' of type [org.springframework.ws.config.annotation.DelegatingWsConfiguration$$EnhancerBySpringCGLIB$$68929863] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+INFO  20-08-03 16:45:34[main] [AnnotationActionEndpointMapping:236] - Supporting [WS-Addressing August 2004, WS-Addressing 1.0]
+INFO  20-08-03 16:45:36[main] [TomcatWebServer:108] - Tomcat initialized with port(s): 80 (https)
+INFO  20-08-03 16:45:36[main] [Http11NioProtocol:173] - Initializing ProtocolHandler ["https-jsse-nio-80"]
+INFO  20-08-03 16:45:36[main] [StandardService:173] - Starting service [Tomcat]
+INFO  20-08-03 16:45:36[main] [StandardEngine:173] - Starting Servlet engine: [Apache Tomcat/9.0.36]
+INFO  20-08-03 16:45:36[main] [TldScanner:173] - At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+INFO  20-08-03 16:45:36[main] [[/]:173] - Initializing Spring embedded WebApplicationContext
+INFO  20-08-03 16:45:36[main] [ServletWebServerApplicationContext:285] - Root WebApplicationContext: initialization completed in 3145 ms
+INFO  20-08-03 16:45:36[main] [ThreadPoolTaskExecutor:181] - Initializing ExecutorService 'applicationTaskExecutor'
+INFO  20-08-03 16:45:36[main] [HikariDataSource:110] - HikariPool-1 - Starting...
+INFO  20-08-03 16:45:36[main] [HikariDataSource:123] - HikariPool-1 - Start completed.
+INFO  20-08-03 16:45:36[task-1] [LogHelper:31] - HHH000204: Processing PersistenceUnitInfo [name: default]
+INFO  20-08-03 16:45:37[task-1] [Version:44] - HHH000412: Hibernate ORM core version 5.4.17.Final
+INFO  20-08-03 16:45:37[task-1] [Version:49] - HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+WARN  20-08-03 16:45:37[main] [JpaBaseConfiguration$JpaWebConfiguration:220] - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+INFO  20-08-03 16:45:37[task-1] [Dialect:172] - HHH000400: Using dialect: org.hibernate.dialect.MySQL55Dialect
+INFO  20-08-03 16:45:37[task-1] [JtaPlatformInitiator:52] - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+INFO  20-08-03 16:45:37[task-1] [LocalContainerEntityManagerFactoryBean:416] - Initialized JPA EntityManagerFactory for persistence unit 'default'
+INFO  20-08-03 16:45:37[main] [Http11NioProtocol:173] - Starting ProtocolHandler ["https-jsse-nio-80"]
+INFO  20-08-03 16:45:39[main] [TomcatWebServer:220] - Tomcat started on port(s): 80 (https) with context path ''
+INFO  20-08-03 16:45:39[main] [DeferredRepositoryInitializationListener:49] - Triggering deferred initialization of Spring Data repositories…
+INFO  20-08-03 16:45:39[main] [DeferredRepositoryInitializationListener:53] - Spring Data repositories initialized!
+INFO  20-08-03 16:45:39[main] [WebApplication:61] - Started WebApplication in 6.372 seconds (JVM running for 6.843)
+INFO  20-08-03 16:45:41[https-jsse-nio-80-exec-3] [[/]:173] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+INFO  20-08-03 16:45:41[https-jsse-nio-80-exec-3] [DispatcherServlet:525] - Initializing Servlet 'dispatcherServlet'
+INFO  20-08-03 16:45:41[https-jsse-nio-80-exec-3] [DispatcherServlet:547] - Completed initialization in 8 ms
+DEBUG 20-08-03 16:45:41[https-jsse-nio-80-exec-3] [certList:137] - ==>  Preparing: SELECT * FROM TB_CERTIFICATION
+DEBUG 20-08-03 16:45:41[https-jsse-nio-80-exec-3] [certList:137] - ==> Parameters: 
+DEBUG 20-08-03 16:45:41[https-jsse-nio-80-exec-3] [certList:137] - <==      Total: 1
+WARN  20-08-03 16:45:43[https-jsse-nio-80-exec-3] [SessionIdGeneratorBase:173] - Creation of SecureRandom instance for session ID generation using [SHA1PRNG] took [1,162] milliseconds.
+INFO  20-08-03 16:46:53[main] [WebApplication:55] - Starting WebApplication on DESKTOP-CA5EFVH with PID 75188 (C:\Users\jacob\Desktop\privateInformation\WEB 주요기능완성\target\classes started by han1g in C:\Users\jacob\Desktop\privateInformation\WEB 주요기능완성)
+DEBUG 20-08-03 16:46:53[main] [WebApplication:56] - Running with Spring Boot v2.3.1.RELEASE, Spring v5.2.7.RELEASE
+INFO  20-08-03 16:46:53[main] [WebApplication:655] - The following profiles are active: local
+INFO  20-08-03 16:46:53[main] [RepositoryConfigurationDelegate:127] - Bootstrapping Spring Data JPA repositories in DEFERRED mode.
+INFO  20-08-03 16:46:54[main] [RepositoryConfigurationDelegate:187] - Finished Spring Data repository scanning in 21ms. Found 0 JPA repository interfaces.
+DEBUG 20-08-03 16:46:54[main] [LogFactory:105] - Logging initialized using 'class org.apache.ibatis.logging.slf4j.Slf4jImpl' adapter.
+INFO  20-08-03 16:46:54[main] [PostProcessorRegistrationDelegate$BeanPostProcessorChecker:335] - Bean 'org.springframework.ws.config.annotation.DelegatingWsConfiguration' of type [org.springframework.ws.config.annotation.DelegatingWsConfiguration$$EnhancerBySpringCGLIB$$477e122c] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+INFO  20-08-03 16:46:54[main] [AnnotationActionEndpointMapping:236] - Supporting [WS-Addressing August 2004, WS-Addressing 1.0]
+INFO  20-08-03 16:46:56[main] [TomcatWebServer:108] - Tomcat initialized with port(s): 80 (https)
+INFO  20-08-03 16:46:56[main] [Http11NioProtocol:173] - Initializing ProtocolHandler ["https-jsse-nio-80"]
+INFO  20-08-03 16:46:56[main] [StandardService:173] - Starting service [Tomcat]
+INFO  20-08-03 16:46:56[main] [StandardEngine:173] - Starting Servlet engine: [Apache Tomcat/9.0.36]
+INFO  20-08-03 16:46:56[main] [TldScanner:173] - At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+INFO  20-08-03 16:46:56[main] [[/]:173] - Initializing Spring embedded WebApplicationContext
+INFO  20-08-03 16:46:56[main] [ServletWebServerApplicationContext:285] - Root WebApplicationContext: initialization completed in 3253 ms
+INFO  20-08-03 16:46:56[main] [ThreadPoolTaskExecutor:181] - Initializing ExecutorService 'applicationTaskExecutor'
+INFO  20-08-03 16:46:56[main] [HikariDataSource:110] - HikariPool-1 - Starting...
+INFO  20-08-03 16:46:56[main] [HikariDataSource:123] - HikariPool-1 - Start completed.
+INFO  20-08-03 16:46:56[task-1] [LogHelper:31] - HHH000204: Processing PersistenceUnitInfo [name: default]
+INFO  20-08-03 16:46:57[task-1] [Version:44] - HHH000412: Hibernate ORM core version 5.4.17.Final
+INFO  20-08-03 16:46:57[task-1] [Version:49] - HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+WARN  20-08-03 16:46:57[main] [JpaBaseConfiguration$JpaWebConfiguration:220] - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+INFO  20-08-03 16:46:57[task-1] [Dialect:172] - HHH000400: Using dialect: org.hibernate.dialect.MySQL55Dialect
+INFO  20-08-03 16:46:57[task-1] [JtaPlatformInitiator:52] - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+INFO  20-08-03 16:46:57[main] [Http11NioProtocol:173] - Starting ProtocolHandler ["https-jsse-nio-80"]
+INFO  20-08-03 16:46:57[task-1] [LocalContainerEntityManagerFactoryBean:416] - Initialized JPA EntityManagerFactory for persistence unit 'default'
+INFO  20-08-03 16:46:59[main] [TomcatWebServer:220] - Tomcat started on port(s): 80 (https) with context path ''
+INFO  20-08-03 16:46:59[main] [DeferredRepositoryInitializationListener:49] - Triggering deferred initialization of Spring Data repositories…
+INFO  20-08-03 16:46:59[main] [DeferredRepositoryInitializationListener:53] - Spring Data repositories initialized!
+INFO  20-08-03 16:46:59[main] [WebApplication:61] - Started WebApplication in 6.591 seconds (JVM running for 7.096)
+INFO  20-08-03 16:47:03[https-jsse-nio-80-exec-5] [[/]:173] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+INFO  20-08-03 16:47:03[https-jsse-nio-80-exec-5] [DispatcherServlet:525] - Initializing Servlet 'dispatcherServlet'
+INFO  20-08-03 16:47:03[https-jsse-nio-80-exec-5] [DispatcherServlet:547] - Completed initialization in 8 ms
+DEBUG 20-08-03 16:47:03[https-jsse-nio-80-exec-5] [certList:137] - ==>  Preparing: SELECT * FROM TB_CERTIFICATION
+DEBUG 20-08-03 16:47:03[https-jsse-nio-80-exec-5] [certList:137] - ==> Parameters: 
+DEBUG 20-08-03 16:47:03[https-jsse-nio-80-exec-5] [certList:137] - <==      Total: 1
+WARN  20-08-03 16:47:05[https-jsse-nio-80-exec-5] [SessionIdGeneratorBase:173] - Creation of SecureRandom instance for session ID generation using [SHA1PRNG] took [1,180] milliseconds.
+DEBUG 20-08-03 16:47:34[https-jsse-nio-80-exec-1] [certList:137] - ==>  Preparing: SELECT * FROM TB_CERTIFICATION
+DEBUG 20-08-03 16:47:34[https-jsse-nio-80-exec-1] [certList:137] - ==> Parameters: 
+DEBUG 20-08-03 16:47:34[https-jsse-nio-80-exec-1] [certList:137] - <==      Total: 1
+INFO  20-08-03 16:48:03[main] [WebApplication:55] - Starting WebApplication on DESKTOP-CA5EFVH with PID 81248 (C:\Users\jacob\Desktop\privateInformation\WEB 주요기능완성\target\classes started by han1g in C:\Users\jacob\Desktop\privateInformation\WEB 주요기능완성)
+DEBUG 20-08-03 16:48:03[main] [WebApplication:56] - Running with Spring Boot v2.3.1.RELEASE, Spring v5.2.7.RELEASE
+INFO  20-08-03 16:48:03[main] [WebApplication:655] - The following profiles are active: local
+INFO  20-08-03 16:48:04[main] [RepositoryConfigurationDelegate:127] - Bootstrapping Spring Data JPA repositories in DEFERRED mode.
+INFO  20-08-03 16:48:04[main] [RepositoryConfigurationDelegate:187] - Finished Spring Data repository scanning in 21ms. Found 0 JPA repository interfaces.
+DEBUG 20-08-03 16:48:04[main] [LogFactory:105] - Logging initialized using 'class org.apache.ibatis.logging.slf4j.Slf4jImpl' adapter.
+INFO  20-08-03 16:48:05[main] [PostProcessorRegistrationDelegate$BeanPostProcessorChecker:335] - Bean 'org.springframework.ws.config.annotation.DelegatingWsConfiguration' of type [org.springframework.ws.config.annotation.DelegatingWsConfiguration$$EnhancerBySpringCGLIB$$ca763791] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+INFO  20-08-03 16:48:05[main] [AnnotationActionEndpointMapping:236] - Supporting [WS-Addressing August 2004, WS-Addressing 1.0]
+INFO  20-08-03 16:48:06[main] [TomcatWebServer:108] - Tomcat initialized with port(s): 80 (https)
+INFO  20-08-03 16:48:06[main] [Http11NioProtocol:173] - Initializing ProtocolHandler ["https-jsse-nio-80"]
+INFO  20-08-03 16:48:06[main] [StandardService:173] - Starting service [Tomcat]
+INFO  20-08-03 16:48:06[main] [StandardEngine:173] - Starting Servlet engine: [Apache Tomcat/9.0.36]
+INFO  20-08-03 16:48:07[main] [TldScanner:173] - At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+INFO  20-08-03 16:48:07[main] [[/]:173] - Initializing Spring embedded WebApplicationContext
+INFO  20-08-03 16:48:07[main] [ServletWebServerApplicationContext:285] - Root WebApplicationContext: initialization completed in 3201 ms
+INFO  20-08-03 16:48:07[main] [ThreadPoolTaskExecutor:181] - Initializing ExecutorService 'applicationTaskExecutor'
+INFO  20-08-03 16:48:07[main] [HikariDataSource:110] - HikariPool-1 - Starting...
+INFO  20-08-03 16:48:07[main] [HikariDataSource:123] - HikariPool-1 - Start completed.
+INFO  20-08-03 16:48:07[task-1] [LogHelper:31] - HHH000204: Processing PersistenceUnitInfo [name: default]
+INFO  20-08-03 16:48:07[task-1] [Version:44] - HHH000412: Hibernate ORM core version 5.4.17.Final
+INFO  20-08-03 16:48:07[task-1] [Version:49] - HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+WARN  20-08-03 16:48:07[main] [JpaBaseConfiguration$JpaWebConfiguration:220] - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+INFO  20-08-03 16:48:08[task-1] [Dialect:172] - HHH000400: Using dialect: org.hibernate.dialect.MySQL55Dialect
+INFO  20-08-03 16:48:08[task-1] [JtaPlatformInitiator:52] - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+INFO  20-08-03 16:48:08[main] [Http11NioProtocol:173] - Starting ProtocolHandler ["https-jsse-nio-80"]
+INFO  20-08-03 16:48:08[task-1] [LocalContainerEntityManagerFactoryBean:416] - Initialized JPA EntityManagerFactory for persistence unit 'default'
+INFO  20-08-03 16:48:09[main] [TomcatWebServer:220] - Tomcat started on port(s): 80 (https) with context path ''
+INFO  20-08-03 16:48:09[main] [DeferredRepositoryInitializationListener:49] - Triggering deferred initialization of Spring Data repositories…
+INFO  20-08-03 16:48:09[main] [DeferredRepositoryInitializationListener:53] - Spring Data repositories initialized!
+INFO  20-08-03 16:48:09[main] [WebApplication:61] - Started WebApplication in 6.571 seconds (JVM running for 7.072)
+WARN  20-08-03 16:48:11[https-jsse-nio-80-exec-9] [SessionIdGeneratorBase:173] - Creation of SecureRandom instance for session ID generation using [SHA1PRNG] took [1,200] milliseconds.
+INFO  20-08-03 16:48:12[https-jsse-nio-80-exec-4] [[/]:173] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+INFO  20-08-03 16:48:12[https-jsse-nio-80-exec-4] [DispatcherServlet:525] - Initializing Servlet 'dispatcherServlet'
+INFO  20-08-03 16:48:12[https-jsse-nio-80-exec-4] [DispatcherServlet:547] - Completed initialization in 9 ms
+DEBUG 20-08-03 16:48:12[https-jsse-nio-80-exec-4] [certList:137] - ==>  Preparing: SELECT * FROM TB_CERTIFICATION
+DEBUG 20-08-03 16:48:12[https-jsse-nio-80-exec-4] [certList:137] - ==> Parameters: 
+DEBUG 20-08-03 16:48:12[https-jsse-nio-80-exec-4] [certList:137] - <==      Total: 1
+INFO  20-08-03 16:56:16[main] [WebApplication:55] - Starting WebApplication on DESKTOP-CA5EFVH with PID 84592 (C:\Users\jacob\Desktop\privateInformation\WEB 주요기능완성\target\classes started by han1g in C:\Users\jacob\Desktop\privateInformation\WEB 주요기능완성)
+DEBUG 20-08-03 16:56:16[main] [WebApplication:56] - Running with Spring Boot v2.3.1.RELEASE, Spring v5.2.7.RELEASE
+INFO  20-08-03 16:56:16[main] [WebApplication:655] - The following profiles are active: local
+INFO  20-08-03 16:56:17[main] [RepositoryConfigurationDelegate:127] - Bootstrapping Spring Data JPA repositories in DEFERRED mode.
+INFO  20-08-03 16:56:17[main] [RepositoryConfigurationDelegate:187] - Finished Spring Data repository scanning in 26ms. Found 0 JPA repository interfaces.
+DEBUG 20-08-03 16:56:17[main] [LogFactory:105] - Logging initialized using 'class org.apache.ibatis.logging.slf4j.Slf4jImpl' adapter.
+INFO  20-08-03 16:56:18[main] [PostProcessorRegistrationDelegate$BeanPostProcessorChecker:335] - Bean 'org.springframework.ws.config.annotation.DelegatingWsConfiguration' of type [org.springframework.ws.config.annotation.DelegatingWsConfiguration$$EnhancerBySpringCGLIB$$6ff38d81] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+INFO  20-08-03 16:56:18[main] [AnnotationActionEndpointMapping:236] - Supporting [WS-Addressing August 2004, WS-Addressing 1.0]
+INFO  20-08-03 16:56:19[main] [TomcatWebServer:108] - Tomcat initialized with port(s): 80 (https)
+INFO  20-08-03 16:56:19[main] [Http11NioProtocol:173] - Initializing ProtocolHandler ["https-jsse-nio-80"]
+INFO  20-08-03 16:56:19[main] [StandardService:173] - Starting service [Tomcat]
+INFO  20-08-03 16:56:19[main] [StandardEngine:173] - Starting Servlet engine: [Apache Tomcat/9.0.36]
+INFO  20-08-03 16:56:20[main] [TldScanner:173] - At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+INFO  20-08-03 16:56:20[main] [[/]:173] - Initializing Spring embedded WebApplicationContext
+INFO  20-08-03 16:56:20[main] [ServletWebServerApplicationContext:285] - Root WebApplicationContext: initialization completed in 3235 ms
+INFO  20-08-03 16:56:20[main] [ThreadPoolTaskExecutor:181] - Initializing ExecutorService 'applicationTaskExecutor'
+INFO  20-08-03 16:56:20[main] [HikariDataSource:110] - HikariPool-1 - Starting...
+INFO  20-08-03 16:56:20[main] [HikariDataSource:123] - HikariPool-1 - Start completed.
+INFO  20-08-03 16:56:20[task-1] [LogHelper:31] - HHH000204: Processing PersistenceUnitInfo [name: default]
+INFO  20-08-03 16:56:20[task-1] [Version:44] - HHH000412: Hibernate ORM core version 5.4.17.Final
+INFO  20-08-03 16:56:21[task-1] [Version:49] - HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+WARN  20-08-03 16:56:21[main] [JpaBaseConfiguration$JpaWebConfiguration:220] - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+INFO  20-08-03 16:56:21[task-1] [Dialect:172] - HHH000400: Using dialect: org.hibernate.dialect.MySQL55Dialect
+INFO  20-08-03 16:56:21[task-1] [JtaPlatformInitiator:52] - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+INFO  20-08-03 16:56:21[task-1] [LocalContainerEntityManagerFactoryBean:416] - Initialized JPA EntityManagerFactory for persistence unit 'default'
+INFO  20-08-03 16:56:21[main] [Http11NioProtocol:173] - Starting ProtocolHandler ["https-jsse-nio-80"]
+INFO  20-08-03 16:56:23[main] [TomcatWebServer:220] - Tomcat started on port(s): 80 (https) with context path ''
+INFO  20-08-03 16:56:23[main] [DeferredRepositoryInitializationListener:49] - Triggering deferred initialization of Spring Data repositories…
+INFO  20-08-03 16:56:23[main] [DeferredRepositoryInitializationListener:53] - Spring Data repositories initialized!
+INFO  20-08-03 16:56:23[main] [WebApplication:61] - Started WebApplication in 6.722 seconds (JVM running for 7.203)
+INFO  20-08-03 16:56:23[https-jsse-nio-80-exec-4] [[/]:173] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+INFO  20-08-03 16:56:23[https-jsse-nio-80-exec-4] [DispatcherServlet:525] - Initializing Servlet 'dispatcherServlet'
+INFO  20-08-03 16:56:23[https-jsse-nio-80-exec-4] [DispatcherServlet:547] - Completed initialization in 8 ms
+WARN  20-08-03 16:56:25[https-jsse-nio-80-exec-4] [SessionIdGeneratorBase:173] - Creation of SecureRandom instance for session ID generation using [SHA1PRNG] took [1,158] milliseconds.
+INFO  20-08-03 17:14:58[main] [WebApplication:55] - Starting WebApplication on DESKTOP-CA5EFVH with PID 131176 (C:\Users\jacob\Desktop\privateInformation\WEB 주요기능완성\target\classes started by han1g in C:\Users\jacob\Desktop\privateInformation\WEB 주요기능완성)
+DEBUG 20-08-03 17:14:58[main] [WebApplication:56] - Running with Spring Boot v2.3.1.RELEASE, Spring v5.2.7.RELEASE
+INFO  20-08-03 17:14:58[main] [WebApplication:655] - The following profiles are active: local
+INFO  20-08-03 17:14:59[main] [RepositoryConfigurationDelegate:127] - Bootstrapping Spring Data JPA repositories in DEFERRED mode.
+INFO  20-08-03 17:14:59[main] [RepositoryConfigurationDelegate:187] - Finished Spring Data repository scanning in 25ms. Found 0 JPA repository interfaces.
+DEBUG 20-08-03 17:14:59[main] [LogFactory:105] - Logging initialized using 'class org.apache.ibatis.logging.slf4j.Slf4jImpl' adapter.
+INFO  20-08-03 17:15:00[main] [PostProcessorRegistrationDelegate$BeanPostProcessorChecker:335] - Bean 'org.springframework.ws.config.annotation.DelegatingWsConfiguration' of type [org.springframework.ws.config.annotation.DelegatingWsConfiguration$$EnhancerBySpringCGLIB$$b14eecf8] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+INFO  20-08-03 17:15:00[main] [AnnotationActionEndpointMapping:236] - Supporting [WS-Addressing August 2004, WS-Addressing 1.0]
+INFO  20-08-03 17:15:01[main] [TomcatWebServer:108] - Tomcat initialized with port(s): 80 (https)
+INFO  20-08-03 17:15:01[main] [Http11NioProtocol:173] - Initializing ProtocolHandler ["https-jsse-nio-80"]
+INFO  20-08-03 17:15:01[main] [StandardService:173] - Starting service [Tomcat]
+INFO  20-08-03 17:15:01[main] [StandardEngine:173] - Starting Servlet engine: [Apache Tomcat/9.0.36]
+INFO  20-08-03 17:15:02[main] [TldScanner:173] - At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+INFO  20-08-03 17:15:02[main] [[/]:173] - Initializing Spring embedded WebApplicationContext
+INFO  20-08-03 17:15:02[main] [ServletWebServerApplicationContext:285] - Root WebApplicationContext: initialization completed in 3277 ms
+INFO  20-08-03 17:15:02[main] [ThreadPoolTaskExecutor:181] - Initializing ExecutorService 'applicationTaskExecutor'
+INFO  20-08-03 17:15:02[main] [HikariDataSource:110] - HikariPool-1 - Starting...
+INFO  20-08-03 17:15:02[main] [HikariDataSource:123] - HikariPool-1 - Start completed.
+INFO  20-08-03 17:15:02[task-1] [LogHelper:31] - HHH000204: Processing PersistenceUnitInfo [name: default]
+INFO  20-08-03 17:15:02[task-1] [Version:44] - HHH000412: Hibernate ORM core version 5.4.17.Final
+INFO  20-08-03 17:15:02[task-1] [Version:49] - HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+WARN  20-08-03 17:15:03[main] [JpaBaseConfiguration$JpaWebConfiguration:220] - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+INFO  20-08-03 17:15:03[task-1] [Dialect:172] - HHH000400: Using dialect: org.hibernate.dialect.MySQL55Dialect
+INFO  20-08-03 17:15:03[main] [Http11NioProtocol:173] - Starting ProtocolHandler ["https-jsse-nio-80"]
+INFO  20-08-03 17:15:03[task-1] [JtaPlatformInitiator:52] - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+INFO  20-08-03 17:15:03[task-1] [LocalContainerEntityManagerFactoryBean:416] - Initialized JPA EntityManagerFactory for persistence unit 'default'
+INFO  20-08-03 17:15:05[main] [TomcatWebServer:220] - Tomcat started on port(s): 80 (https) with context path ''
+INFO  20-08-03 17:15:05[main] [DeferredRepositoryInitializationListener:49] - Triggering deferred initialization of Spring Data repositories…
+INFO  20-08-03 17:15:05[main] [DeferredRepositoryInitializationListener:53] - Spring Data repositories initialized!
+INFO  20-08-03 17:15:05[main] [WebApplication:61] - Started WebApplication in 6.676 seconds (JVM running for 7.169)
+INFO  20-08-03 17:15:05[https-jsse-nio-80-exec-9] [[/]:173] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+INFO  20-08-03 17:15:05[https-jsse-nio-80-exec-9] [DispatcherServlet:525] - Initializing Servlet 'dispatcherServlet'
+INFO  20-08-03 17:15:05[https-jsse-nio-80-exec-9] [DispatcherServlet:547] - Completed initialization in 8 ms
+WARN  20-08-03 17:15:07[https-jsse-nio-80-exec-9] [SessionIdGeneratorBase:173] - Creation of SecureRandom instance for session ID generation using [SHA1PRNG] took [1,161] milliseconds.
+INFO  20-08-03 17:18:15[main] [WebApplication:55] - Starting WebApplication on DESKTOP-CA5EFVH with PID 133920 (C:\Users\jacob\Desktop\privateInformation\WEB 주요기능완성\target\classes started by han1g in C:\Users\jacob\Desktop\privateInformation\WEB 주요기능완성)
+DEBUG 20-08-03 17:18:15[main] [WebApplication:56] - Running with Spring Boot v2.3.1.RELEASE, Spring v5.2.7.RELEASE
+INFO  20-08-03 17:18:15[main] [WebApplication:655] - The following profiles are active: local
+INFO  20-08-03 17:18:16[main] [RepositoryConfigurationDelegate:127] - Bootstrapping Spring Data JPA repositories in DEFERRED mode.
+INFO  20-08-03 17:18:16[main] [RepositoryConfigurationDelegate:187] - Finished Spring Data repository scanning in 21ms. Found 0 JPA repository interfaces.
+DEBUG 20-08-03 17:18:16[main] [LogFactory:105] - Logging initialized using 'class org.apache.ibatis.logging.slf4j.Slf4jImpl' adapter.
+INFO  20-08-03 17:18:17[main] [PostProcessorRegistrationDelegate$BeanPostProcessorChecker:335] - Bean 'org.springframework.ws.config.annotation.DelegatingWsConfiguration' of type [org.springframework.ws.config.annotation.DelegatingWsConfiguration$$EnhancerBySpringCGLIB$$6d52e5fc] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+INFO  20-08-03 17:18:17[main] [AnnotationActionEndpointMapping:236] - Supporting [WS-Addressing August 2004, WS-Addressing 1.0]
+INFO  20-08-03 17:18:18[main] [TomcatWebServer:108] - Tomcat initialized with port(s): 80 (https)
+INFO  20-08-03 17:18:18[main] [Http11NioProtocol:173] - Initializing ProtocolHandler ["https-jsse-nio-80"]
+INFO  20-08-03 17:18:18[main] [StandardService:173] - Starting service [Tomcat]
+INFO  20-08-03 17:18:18[main] [StandardEngine:173] - Starting Servlet engine: [Apache Tomcat/9.0.36]
+INFO  20-08-03 17:18:19[main] [TldScanner:173] - At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+INFO  20-08-03 17:18:19[main] [[/]:173] - Initializing Spring embedded WebApplicationContext
+INFO  20-08-03 17:18:19[main] [ServletWebServerApplicationContext:285] - Root WebApplicationContext: initialization completed in 3213 ms
+INFO  20-08-03 17:18:19[main] [ThreadPoolTaskExecutor:181] - Initializing ExecutorService 'applicationTaskExecutor'
+INFO  20-08-03 17:18:19[main] [HikariDataSource:110] - HikariPool-1 - Starting...
+INFO  20-08-03 17:18:19[main] [HikariDataSource:123] - HikariPool-1 - Start completed.
+INFO  20-08-03 17:18:19[task-1] [LogHelper:31] - HHH000204: Processing PersistenceUnitInfo [name: default]
+INFO  20-08-03 17:18:19[task-1] [Version:44] - HHH000412: Hibernate ORM core version 5.4.17.Final
+INFO  20-08-03 17:18:19[task-1] [Version:49] - HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+WARN  20-08-03 17:18:19[main] [JpaBaseConfiguration$JpaWebConfiguration:220] - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+INFO  20-08-03 17:18:20[task-1] [Dialect:172] - HHH000400: Using dialect: org.hibernate.dialect.MySQL55Dialect
+INFO  20-08-03 17:18:20[task-1] [JtaPlatformInitiator:52] - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+INFO  20-08-03 17:18:20[task-1] [LocalContainerEntityManagerFactoryBean:416] - Initialized JPA EntityManagerFactory for persistence unit 'default'
+INFO  20-08-03 17:18:20[main] [Http11NioProtocol:173] - Starting ProtocolHandler ["https-jsse-nio-80"]
+INFO  20-08-03 17:18:21[main] [TomcatWebServer:220] - Tomcat started on port(s): 80 (https) with context path ''
+INFO  20-08-03 17:18:21[main] [DeferredRepositoryInitializationListener:49] - Triggering deferred initialization of Spring Data repositories…
+INFO  20-08-03 17:18:21[main] [DeferredRepositoryInitializationListener:53] - Spring Data repositories initialized!
+INFO  20-08-03 17:18:21[main] [WebApplication:61] - Started WebApplication in 6.631 seconds (JVM running for 7.141)
+INFO  20-08-03 17:18:23[https-jsse-nio-80-exec-3] [[/]:173] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+INFO  20-08-03 17:18:23[https-jsse-nio-80-exec-3] [DispatcherServlet:525] - Initializing Servlet 'dispatcherServlet'
+INFO  20-08-03 17:18:23[https-jsse-nio-80-exec-3] [DispatcherServlet:547] - Completed initialization in 9 ms
+WARN  20-08-03 17:18:25[https-jsse-nio-80-exec-3] [SessionIdGeneratorBase:173] - Creation of SecureRandom instance for session ID generation using [SHA1PRNG] took [1,188] milliseconds.
+INFO  20-08-03 17:20:31[main] [WebApplication:55] - Starting WebApplication on DESKTOP-CA5EFVH with PID 110028 (C:\Users\jacob\Desktop\privateInformation\WEB 주요기능완성\target\classes started by han1g in C:\Users\jacob\Desktop\privateInformation\WEB 주요기능완성)
+DEBUG 20-08-03 17:20:31[main] [WebApplication:56] - Running with Spring Boot v2.3.1.RELEASE, Spring v5.2.7.RELEASE
+INFO  20-08-03 17:20:31[main] [WebApplication:655] - The following profiles are active: local
+INFO  20-08-03 17:20:31[main] [RepositoryConfigurationDelegate:127] - Bootstrapping Spring Data JPA repositories in DEFERRED mode.
+INFO  20-08-03 17:20:32[main] [RepositoryConfigurationDelegate:187] - Finished Spring Data repository scanning in 23ms. Found 0 JPA repository interfaces.
+DEBUG 20-08-03 17:20:32[main] [LogFactory:105] - Logging initialized using 'class org.apache.ibatis.logging.slf4j.Slf4jImpl' adapter.
+INFO  20-08-03 17:20:32[main] [PostProcessorRegistrationDelegate$BeanPostProcessorChecker:335] - Bean 'org.springframework.ws.config.annotation.DelegatingWsConfiguration' of type [org.springframework.ws.config.annotation.DelegatingWsConfiguration$$EnhancerBySpringCGLIB$$d761cb82] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+INFO  20-08-03 17:20:32[main] [AnnotationActionEndpointMapping:236] - Supporting [WS-Addressing August 2004, WS-Addressing 1.0]
+INFO  20-08-03 17:20:34[main] [TomcatWebServer:108] - Tomcat initialized with port(s): 80 (https)
+INFO  20-08-03 17:20:34[main] [Http11NioProtocol:173] - Initializing ProtocolHandler ["https-jsse-nio-80"]
+INFO  20-08-03 17:20:34[main] [StandardService:173] - Starting service [Tomcat]
+INFO  20-08-03 17:20:34[main] [StandardEngine:173] - Starting Servlet engine: [Apache Tomcat/9.0.36]
+INFO  20-08-03 17:20:34[main] [TldScanner:173] - At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+INFO  20-08-03 17:20:34[main] [[/]:173] - Initializing Spring embedded WebApplicationContext
+INFO  20-08-03 17:20:34[main] [ServletWebServerApplicationContext:285] - Root WebApplicationContext: initialization completed in 3279 ms
+INFO  20-08-03 17:20:34[main] [ThreadPoolTaskExecutor:181] - Initializing ExecutorService 'applicationTaskExecutor'
+INFO  20-08-03 17:20:34[main] [HikariDataSource:110] - HikariPool-1 - Starting...
+INFO  20-08-03 17:20:34[main] [HikariDataSource:123] - HikariPool-1 - Start completed.
+INFO  20-08-03 17:20:34[task-1] [LogHelper:31] - HHH000204: Processing PersistenceUnitInfo [name: default]
+INFO  20-08-03 17:20:35[task-1] [Version:44] - HHH000412: Hibernate ORM core version 5.4.17.Final
+INFO  20-08-03 17:20:35[task-1] [Version:49] - HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+WARN  20-08-03 17:20:35[main] [JpaBaseConfiguration$JpaWebConfiguration:220] - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+INFO  20-08-03 17:20:35[task-1] [Dialect:172] - HHH000400: Using dialect: org.hibernate.dialect.MySQL55Dialect
+INFO  20-08-03 17:20:35[task-1] [JtaPlatformInitiator:52] - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+INFO  20-08-03 17:20:35[task-1] [LocalContainerEntityManagerFactoryBean:416] - Initialized JPA EntityManagerFactory for persistence unit 'default'
+INFO  20-08-03 17:20:35[main] [Http11NioProtocol:173] - Starting ProtocolHandler ["https-jsse-nio-80"]
+WARN  20-08-03 17:20:36[main] [AnnotationConfigServletWebServerApplicationContext:559] - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Failed to start bean 'webServerStartStop'; nested exception is org.springframework.boot.web.server.PortInUseException: Port 80 is already in use
+INFO  20-08-03 17:20:36[main] [LocalContainerEntityManagerFactoryBean:598] - Closing JPA EntityManagerFactory for persistence unit 'default'
+INFO  20-08-03 17:20:36[main] [ThreadPoolTaskExecutor:218] - Shutting down ExecutorService 'applicationTaskExecutor'
+INFO  20-08-03 17:20:36[main] [HikariDataSource:350] - HikariPool-1 - Shutdown initiated...
+INFO  20-08-03 17:20:36[main] [HikariDataSource:352] - HikariPool-1 - Shutdown completed.
+INFO  20-08-03 17:20:36[main] [Http11NioProtocol:173] - Pausing ProtocolHandler ["https-jsse-nio-80"]
+INFO  20-08-03 17:20:36[main] [StandardService:173] - Stopping service [Tomcat]
+INFO  20-08-03 17:20:36[main] [Http11NioProtocol:173] - Stopping ProtocolHandler ["https-jsse-nio-80"]
+INFO  20-08-03 17:20:36[main] [Http11NioProtocol:173] - Destroying ProtocolHandler ["https-jsse-nio-80"]
+INFO  20-08-03 17:20:36[main] [ConditionEvaluationReportLoggingListener:136] - 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+ERROR 20-08-03 17:20:36[main] [LoggingFailureAnalysisReporter:40] - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Web server failed to start. Port 80 was already in use.
+
+Action:
+
+Identify and stop the process that's listening on port 80 or configure this application to listen on another port.
+
+DEBUG 20-08-03 17:20:43[https-jsse-nio-80-exec-1] [certList:137] - ==>  Preparing: SELECT * FROM TB_CERTIFICATION
+DEBUG 20-08-03 17:20:43[https-jsse-nio-80-exec-1] [certList:137] - ==> Parameters: 
+DEBUG 20-08-03 17:20:43[https-jsse-nio-80-exec-1] [certList:137] - <==      Total: 1
+INFO  20-08-03 17:23:27[main] [WebApplication:55] - Starting WebApplication on DESKTOP-CA5EFVH with PID 138792 (C:\Users\jacob\Desktop\privateInformation\WEB 주요기능완성\target\classes started by han1g in C:\Users\jacob\Desktop\privateInformation\WEB 주요기능완성)
+DEBUG 20-08-03 17:23:27[main] [WebApplication:56] - Running with Spring Boot v2.3.1.RELEASE, Spring v5.2.7.RELEASE
+INFO  20-08-03 17:23:27[main] [WebApplication:655] - The following profiles are active: local
+INFO  20-08-03 17:23:28[main] [RepositoryConfigurationDelegate:127] - Bootstrapping Spring Data JPA repositories in DEFERRED mode.
+INFO  20-08-03 17:23:28[main] [RepositoryConfigurationDelegate:187] - Finished Spring Data repository scanning in 22ms. Found 0 JPA repository interfaces.
+DEBUG 20-08-03 17:23:28[main] [LogFactory:105] - Logging initialized using 'class org.apache.ibatis.logging.slf4j.Slf4jImpl' adapter.
+INFO  20-08-03 17:23:29[main] [PostProcessorRegistrationDelegate$BeanPostProcessorChecker:335] - Bean 'org.springframework.ws.config.annotation.DelegatingWsConfiguration' of type [org.springframework.ws.config.annotation.DelegatingWsConfiguration$$EnhancerBySpringCGLIB$$20922e35] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+INFO  20-08-03 17:23:29[main] [AnnotationActionEndpointMapping:236] - Supporting [WS-Addressing August 2004, WS-Addressing 1.0]
+INFO  20-08-03 17:23:30[main] [TomcatWebServer:108] - Tomcat initialized with port(s): 80 (https)
+INFO  20-08-03 17:23:30[main] [Http11NioProtocol:173] - Initializing ProtocolHandler ["https-jsse-nio-80"]
+INFO  20-08-03 17:23:30[main] [StandardService:173] - Starting service [Tomcat]
+INFO  20-08-03 17:23:30[main] [StandardEngine:173] - Starting Servlet engine: [Apache Tomcat/9.0.36]
+INFO  20-08-03 17:23:31[main] [TldScanner:173] - At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+INFO  20-08-03 17:23:31[main] [[/]:173] - Initializing Spring embedded WebApplicationContext
+INFO  20-08-03 17:23:31[main] [ServletWebServerApplicationContext:285] - Root WebApplicationContext: initialization completed in 3112 ms
+INFO  20-08-03 17:23:31[main] [ThreadPoolTaskExecutor:181] - Initializing ExecutorService 'applicationTaskExecutor'
+INFO  20-08-03 17:23:31[main] [HikariDataSource:110] - HikariPool-1 - Starting...
+ERROR 20-08-03 17:23:53[main] [HikariPool:593] - HikariPool-1 - Exception during pool initialization.
+com.mysql.cj.jdbc.exceptions.CommunicationsException: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+	at com.mysql.cj.jdbc.exceptions.SQLError.createCommunicationsException(SQLError.java:174)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:64)
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:836)
+	at com.mysql.cj.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:456)
+	at com.mysql.cj.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:246)
+	at com.mysql.cj.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:197)
+	at com.zaxxer.hikari.util.DriverDataSource.getConnection(DriverDataSource.java:138)
+	at com.zaxxer.hikari.pool.PoolBase.newConnection(PoolBase.java:358)
+	at com.zaxxer.hikari.pool.PoolBase.newPoolEntry(PoolBase.java:206)
+	at com.zaxxer.hikari.pool.HikariPool.createPoolEntry(HikariPool.java:477)
+	at com.zaxxer.hikari.pool.HikariPool.checkFailFast(HikariPool.java:560)
+	at com.zaxxer.hikari.pool.HikariPool.<init>(HikariPool.java:115)
+	at com.zaxxer.hikari.HikariDataSource.getConnection(HikariDataSource.java:112)
+	at org.springframework.jdbc.datasource.DataSourceUtils.fetchConnection(DataSourceUtils.java:158)
+	at org.springframework.jdbc.datasource.DataSourceUtils.doGetConnection(DataSourceUtils.java:116)
+	at org.springframework.jdbc.datasource.DataSourceUtils.getConnection(DataSourceUtils.java:79)
+	at org.springframework.jdbc.core.JdbcTemplate.execute(JdbcTemplate.java:324)
+	at org.springframework.boot.jdbc.EmbeddedDatabaseConnection.isEmbedded(EmbeddedDatabaseConnection.java:120)
+	at org.springframework.boot.autoconfigure.orm.jpa.HibernateDefaultDdlAutoProvider.getDefaultDdlAuto(HibernateDefaultDdlAutoProvider.java:42)
+	at org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaConfiguration.lambda$getVendorProperties$1(HibernateJpaConfiguration.java:130)
+	at org.springframework.boot.autoconfigure.orm.jpa.HibernateSettings.getDdlAuto(HibernateSettings.java:41)
+	at org.springframework.boot.autoconfigure.orm.jpa.HibernateProperties.determineDdlAuto(HibernateProperties.java:136)
+	at org.springframework.boot.autoconfigure.orm.jpa.HibernateProperties.getAdditionalProperties(HibernateProperties.java:102)
+	at org.springframework.boot.autoconfigure.orm.jpa.HibernateProperties.determineHibernateProperties(HibernateProperties.java:94)
+	at org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaConfiguration.getVendorProperties(HibernateJpaConfiguration.java:132)
+	at org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration.entityManagerFactory(JpaBaseConfiguration.java:133)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:567)
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:154)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:650)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:635)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1338)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1177)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:557)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:517)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:323)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:226)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:321)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+	at org.springframework.context.support.AbstractApplicationContext.getBean(AbstractApplicationContext.java:1109)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:869)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:551)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:143)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:758)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:750)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:397)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1237)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1226)
+	at com.web.WebApplication.main(WebApplication.java:12)
+Caused by: com.mysql.cj.exceptions.CJCommunicationsException: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:500)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:481)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:61)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:105)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:151)
+	at com.mysql.cj.exceptions.ExceptionFactory.createCommunicationsException(ExceptionFactory.java:167)
+	at com.mysql.cj.protocol.a.NativeProtocol.readMessage(NativeProtocol.java:538)
+	at com.mysql.cj.protocol.a.NativeProtocol.readServerCapabilities(NativeProtocol.java:490)
+	at com.mysql.cj.protocol.a.NativeProtocol.beforeHandshake(NativeProtocol.java:377)
+	at com.mysql.cj.protocol.a.NativeProtocol.connect(NativeProtocol.java:1340)
+	at com.mysql.cj.NativeSession.connect(NativeSession.java:157)
+	at com.mysql.cj.jdbc.ConnectionImpl.connectOneTryOnly(ConnectionImpl.java:956)
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:826)
+	... 49 common frames omitted
+Caused by: java.net.SocketException: Connection reset
+	at java.base/sun.nio.ch.NioSocketImpl.implRead(NioSocketImpl.java:324)
+	at java.base/sun.nio.ch.NioSocketImpl.read(NioSocketImpl.java:351)
+	at java.base/sun.nio.ch.NioSocketImpl$1.read(NioSocketImpl.java:802)
+	at java.base/java.net.Socket$SocketInputStream.read(Socket.java:937)
+	at com.mysql.cj.protocol.ReadAheadInputStream.fill(ReadAheadInputStream.java:107)
+	at com.mysql.cj.protocol.ReadAheadInputStream.readFromUnderlyingStreamIfNecessary(ReadAheadInputStream.java:150)
+	at com.mysql.cj.protocol.ReadAheadInputStream.read(ReadAheadInputStream.java:180)
+	at java.base/java.io.FilterInputStream.read(FilterInputStream.java:133)
+	at com.mysql.cj.protocol.FullReadInputStream.readFully(FullReadInputStream.java:64)
+	at com.mysql.cj.protocol.a.SimplePacketReader.readHeader(SimplePacketReader.java:63)
+	at com.mysql.cj.protocol.a.SimplePacketReader.readHeader(SimplePacketReader.java:45)
+	at com.mysql.cj.protocol.a.NativeProtocol.readMessage(NativeProtocol.java:532)
+	... 55 common frames omitted
+INFO  20-08-03 17:23:53[task-1] [LogHelper:31] - HHH000204: Processing PersistenceUnitInfo [name: default]
+INFO  20-08-03 17:23:53[task-1] [Version:44] - HHH000412: Hibernate ORM core version 5.4.17.Final
+INFO  20-08-03 17:23:53[task-1] [Version:49] - HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+WARN  20-08-03 17:23:53[main] [JpaBaseConfiguration$JpaWebConfiguration:220] - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+INFO  20-08-03 17:23:53[task-1] [HikariDataSource:110] - HikariPool-1 - Starting...
+INFO  20-08-03 17:23:54[main] [Http11NioProtocol:173] - Starting ProtocolHandler ["https-jsse-nio-80"]
+INFO  20-08-03 17:23:56[main] [TomcatWebServer:220] - Tomcat started on port(s): 80 (https) with context path ''
+INFO  20-08-03 17:23:56[main] [DeferredRepositoryInitializationListener:49] - Triggering deferred initialization of Spring Data repositories…
+INFO  20-08-03 17:23:56[main] [DeferredRepositoryInitializationListener:53] - Spring Data repositories initialized!
+INFO  20-08-03 17:23:56[main] [WebApplication:61] - Started WebApplication in 29.367 seconds (JVM running for 29.873)
+INFO  20-08-03 17:24:24[main] [WebApplication:55] - Starting WebApplication on DESKTOP-CA5EFVH with PID 140104 (C:\Users\jacob\Desktop\privateInformation\WEB 주요기능완성\target\classes started by han1g in C:\Users\jacob\Desktop\privateInformation\WEB 주요기능완성)
+DEBUG 20-08-03 17:24:24[main] [WebApplication:56] - Running with Spring Boot v2.3.1.RELEASE, Spring v5.2.7.RELEASE
+INFO  20-08-03 17:24:24[main] [WebApplication:655] - The following profiles are active: local
+INFO  20-08-03 17:24:25[main] [RepositoryConfigurationDelegate:127] - Bootstrapping Spring Data JPA repositories in DEFERRED mode.
+INFO  20-08-03 17:24:25[main] [RepositoryConfigurationDelegate:187] - Finished Spring Data repository scanning in 25ms. Found 0 JPA repository interfaces.
+DEBUG 20-08-03 17:24:25[main] [LogFactory:105] - Logging initialized using 'class org.apache.ibatis.logging.slf4j.Slf4jImpl' adapter.
+INFO  20-08-03 17:24:25[main] [PostProcessorRegistrationDelegate$BeanPostProcessorChecker:335] - Bean 'org.springframework.ws.config.annotation.DelegatingWsConfiguration' of type [org.springframework.ws.config.annotation.DelegatingWsConfiguration$$EnhancerBySpringCGLIB$$17dede24] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+INFO  20-08-03 17:24:25[main] [AnnotationActionEndpointMapping:236] - Supporting [WS-Addressing August 2004, WS-Addressing 1.0]
+INFO  20-08-03 17:24:27[main] [TomcatWebServer:108] - Tomcat initialized with port(s): 80 (https)
+INFO  20-08-03 17:24:27[main] [Http11NioProtocol:173] - Initializing ProtocolHandler ["https-jsse-nio-80"]
+INFO  20-08-03 17:24:27[main] [StandardService:173] - Starting service [Tomcat]
+INFO  20-08-03 17:24:27[main] [StandardEngine:173] - Starting Servlet engine: [Apache Tomcat/9.0.36]
+INFO  20-08-03 17:24:27[main] [TldScanner:173] - At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+INFO  20-08-03 17:24:27[main] [[/]:173] - Initializing Spring embedded WebApplicationContext
+INFO  20-08-03 17:24:27[main] [ServletWebServerApplicationContext:285] - Root WebApplicationContext: initialization completed in 3124 ms
+INFO  20-08-03 17:24:27[main] [ThreadPoolTaskExecutor:181] - Initializing ExecutorService 'applicationTaskExecutor'
+INFO  20-08-03 17:24:27[main] [HikariDataSource:110] - HikariPool-1 - Starting...
+INFO  20-08-03 17:24:28[main] [HikariDataSource:123] - HikariPool-1 - Start completed.
+INFO  20-08-03 17:24:28[task-1] [LogHelper:31] - HHH000204: Processing PersistenceUnitInfo [name: default]
+INFO  20-08-03 17:24:28[task-1] [Version:44] - HHH000412: Hibernate ORM core version 5.4.17.Final
+INFO  20-08-03 17:24:28[task-1] [Version:49] - HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+WARN  20-08-03 17:24:28[main] [JpaBaseConfiguration$JpaWebConfiguration:220] - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+INFO  20-08-03 17:24:28[task-1] [Dialect:172] - HHH000400: Using dialect: org.hibernate.dialect.MySQL55Dialect
+INFO  20-08-03 17:24:28[task-1] [JtaPlatformInitiator:52] - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+INFO  20-08-03 17:24:28[task-1] [LocalContainerEntityManagerFactoryBean:416] - Initialized JPA EntityManagerFactory for persistence unit 'default'
+INFO  20-08-03 17:24:28[main] [Http11NioProtocol:173] - Starting ProtocolHandler ["https-jsse-nio-80"]
+INFO  20-08-03 17:24:31[main] [TomcatWebServer:220] - Tomcat started on port(s): 80 (https) with context path ''
+INFO  20-08-03 17:24:31[main] [DeferredRepositoryInitializationListener:49] - Triggering deferred initialization of Spring Data repositories…
+INFO  20-08-03 17:24:31[main] [DeferredRepositoryInitializationListener:53] - Spring Data repositories initialized!
+INFO  20-08-03 17:24:31[main] [WebApplication:61] - Started WebApplication in 7.558 seconds (JVM running for 8.025)
+INFO  20-08-03 17:24:39[https-jsse-nio-80-exec-2] [[/]:173] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+INFO  20-08-03 17:24:39[https-jsse-nio-80-exec-2] [DispatcherServlet:525] - Initializing Servlet 'dispatcherServlet'
+INFO  20-08-03 17:24:39[https-jsse-nio-80-exec-2] [DispatcherServlet:547] - Completed initialization in 10 ms
+WARN  20-08-03 17:24:41[https-jsse-nio-80-exec-2] [SessionIdGeneratorBase:173] - Creation of SecureRandom instance for session ID generation using [SHA1PRNG] took [1,173] milliseconds.
+INFO  20-08-03 17:28:51[main] [WebApplication:55] - Starting WebApplication on DESKTOP-CA5EFVH with PID 141148 (C:\Users\jacob\Desktop\privateInformation\WEB 주요기능완성\target\classes started by han1g in C:\Users\jacob\Desktop\privateInformation\WEB 주요기능완성)
+DEBUG 20-08-03 17:28:51[main] [WebApplication:56] - Running with Spring Boot v2.3.1.RELEASE, Spring v5.2.7.RELEASE
+INFO  20-08-03 17:28:51[main] [WebApplication:655] - The following profiles are active: local
+INFO  20-08-03 17:28:52[main] [RepositoryConfigurationDelegate:127] - Bootstrapping Spring Data JPA repositories in DEFERRED mode.
+INFO  20-08-03 17:28:52[main] [RepositoryConfigurationDelegate:187] - Finished Spring Data repository scanning in 22ms. Found 0 JPA repository interfaces.
+DEBUG 20-08-03 17:28:52[main] [LogFactory:105] - Logging initialized using 'class org.apache.ibatis.logging.slf4j.Slf4jImpl' adapter.
+INFO  20-08-03 17:28:52[main] [PostProcessorRegistrationDelegate$BeanPostProcessorChecker:335] - Bean 'org.springframework.ws.config.annotation.DelegatingWsConfiguration' of type [org.springframework.ws.config.annotation.DelegatingWsConfiguration$$EnhancerBySpringCGLIB$$f73e0b27] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+INFO  20-08-03 17:28:52[main] [AnnotationActionEndpointMapping:236] - Supporting [WS-Addressing August 2004, WS-Addressing 1.0]
+INFO  20-08-03 17:28:54[main] [TomcatWebServer:108] - Tomcat initialized with port(s): 80 (https)
+INFO  20-08-03 17:28:54[main] [Http11NioProtocol:173] - Initializing ProtocolHandler ["https-jsse-nio-80"]
+INFO  20-08-03 17:28:54[main] [StandardService:173] - Starting service [Tomcat]
+INFO  20-08-03 17:28:54[main] [StandardEngine:173] - Starting Servlet engine: [Apache Tomcat/9.0.36]
+INFO  20-08-03 17:28:54[main] [TldScanner:173] - At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+INFO  20-08-03 17:28:54[main] [[/]:173] - Initializing Spring embedded WebApplicationContext
+INFO  20-08-03 17:28:54[main] [ServletWebServerApplicationContext:285] - Root WebApplicationContext: initialization completed in 3206 ms
+INFO  20-08-03 17:28:54[main] [ThreadPoolTaskExecutor:181] - Initializing ExecutorService 'applicationTaskExecutor'
+INFO  20-08-03 17:28:54[main] [HikariDataSource:110] - HikariPool-1 - Starting...
+INFO  20-08-03 17:28:55[main] [HikariDataSource:123] - HikariPool-1 - Start completed.
+INFO  20-08-03 17:28:55[task-1] [LogHelper:31] - HHH000204: Processing PersistenceUnitInfo [name: default]
+INFO  20-08-03 17:28:55[task-1] [Version:44] - HHH000412: Hibernate ORM core version 5.4.17.Final
+INFO  20-08-03 17:28:55[task-1] [Version:49] - HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+WARN  20-08-03 17:28:55[main] [JpaBaseConfiguration$JpaWebConfiguration:220] - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+INFO  20-08-03 17:28:55[task-1] [Dialect:172] - HHH000400: Using dialect: org.hibernate.dialect.MySQL55Dialect
+INFO  20-08-03 17:28:55[task-1] [JtaPlatformInitiator:52] - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+INFO  20-08-03 17:28:55[task-1] [LocalContainerEntityManagerFactoryBean:416] - Initialized JPA EntityManagerFactory for persistence unit 'default'
+INFO  20-08-03 17:28:55[main] [Http11NioProtocol:173] - Starting ProtocolHandler ["https-jsse-nio-80"]
+INFO  20-08-03 17:28:58[main] [TomcatWebServer:220] - Tomcat started on port(s): 80 (https) with context path ''
+INFO  20-08-03 17:28:58[main] [DeferredRepositoryInitializationListener:49] - Triggering deferred initialization of Spring Data repositories…
+INFO  20-08-03 17:28:58[main] [DeferredRepositoryInitializationListener:53] - Spring Data repositories initialized!
+INFO  20-08-03 17:28:58[main] [WebApplication:61] - Started WebApplication in 7.267 seconds (JVM running for 7.762)
+INFO  20-08-03 17:28:59[https-jsse-nio-80-exec-7] [[/]:173] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+INFO  20-08-03 17:28:59[https-jsse-nio-80-exec-7] [DispatcherServlet:525] - Initializing Servlet 'dispatcherServlet'
+INFO  20-08-03 17:28:59[https-jsse-nio-80-exec-7] [DispatcherServlet:547] - Completed initialization in 7 ms
+WARN  20-08-03 17:29:01[https-jsse-nio-80-exec-7] [SessionIdGeneratorBase:173] - Creation of SecureRandom instance for session ID generation using [SHA1PRNG] took [1,174] milliseconds.
+INFO  20-08-03 17:30:02[main] [WebApplication:55] - Starting WebApplication on DESKTOP-CA5EFVH with PID 141336 (C:\Users\jacob\Desktop\privateInformation\WEB 주요기능완성\target\classes started by han1g in C:\Users\jacob\Desktop\privateInformation\WEB 주요기능완성)
+DEBUG 20-08-03 17:30:02[main] [WebApplication:56] - Running with Spring Boot v2.3.1.RELEASE, Spring v5.2.7.RELEASE
+INFO  20-08-03 17:30:02[main] [WebApplication:655] - The following profiles are active: local
+INFO  20-08-03 17:30:03[main] [RepositoryConfigurationDelegate:127] - Bootstrapping Spring Data JPA repositories in DEFERRED mode.
+INFO  20-08-03 17:30:03[main] [RepositoryConfigurationDelegate:187] - Finished Spring Data repository scanning in 22ms. Found 0 JPA repository interfaces.
+DEBUG 20-08-03 17:30:03[main] [LogFactory:105] - Logging initialized using 'class org.apache.ibatis.logging.slf4j.Slf4jImpl' adapter.
+INFO  20-08-03 17:30:03[main] [PostProcessorRegistrationDelegate$BeanPostProcessorChecker:335] - Bean 'org.springframework.ws.config.annotation.DelegatingWsConfiguration' of type [org.springframework.ws.config.annotation.DelegatingWsConfiguration$$EnhancerBySpringCGLIB$$286e8ce6] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+INFO  20-08-03 17:30:03[main] [AnnotationActionEndpointMapping:236] - Supporting [WS-Addressing August 2004, WS-Addressing 1.0]
+INFO  20-08-03 17:30:05[main] [TomcatWebServer:108] - Tomcat initialized with port(s): 80 (https)
+INFO  20-08-03 17:30:05[main] [Http11NioProtocol:173] - Initializing ProtocolHandler ["https-jsse-nio-80"]
+INFO  20-08-03 17:30:05[main] [StandardService:173] - Starting service [Tomcat]
+INFO  20-08-03 17:30:05[main] [StandardEngine:173] - Starting Servlet engine: [Apache Tomcat/9.0.36]
+INFO  20-08-03 17:30:05[main] [TldScanner:173] - At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+INFO  20-08-03 17:30:05[main] [[/]:173] - Initializing Spring embedded WebApplicationContext
+INFO  20-08-03 17:30:05[main] [ServletWebServerApplicationContext:285] - Root WebApplicationContext: initialization completed in 3118 ms
+INFO  20-08-03 17:30:05[main] [ThreadPoolTaskExecutor:181] - Initializing ExecutorService 'applicationTaskExecutor'
+INFO  20-08-03 17:30:05[main] [HikariDataSource:110] - HikariPool-1 - Starting...
+ERROR 20-08-03 17:30:27[main] [HikariPool:593] - HikariPool-1 - Exception during pool initialization.
+com.mysql.cj.jdbc.exceptions.CommunicationsException: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+	at com.mysql.cj.jdbc.exceptions.SQLError.createCommunicationsException(SQLError.java:174)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:64)
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:836)
+	at com.mysql.cj.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:456)
+	at com.mysql.cj.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:246)
+	at com.mysql.cj.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:197)
+	at com.zaxxer.hikari.util.DriverDataSource.getConnection(DriverDataSource.java:138)
+	at com.zaxxer.hikari.pool.PoolBase.newConnection(PoolBase.java:358)
+	at com.zaxxer.hikari.pool.PoolBase.newPoolEntry(PoolBase.java:206)
+	at com.zaxxer.hikari.pool.HikariPool.createPoolEntry(HikariPool.java:477)
+	at com.zaxxer.hikari.pool.HikariPool.checkFailFast(HikariPool.java:560)
+	at com.zaxxer.hikari.pool.HikariPool.<init>(HikariPool.java:115)
+	at com.zaxxer.hikari.HikariDataSource.getConnection(HikariDataSource.java:112)
+	at org.springframework.jdbc.datasource.DataSourceUtils.fetchConnection(DataSourceUtils.java:158)
+	at org.springframework.jdbc.datasource.DataSourceUtils.doGetConnection(DataSourceUtils.java:116)
+	at org.springframework.jdbc.datasource.DataSourceUtils.getConnection(DataSourceUtils.java:79)
+	at org.springframework.jdbc.core.JdbcTemplate.execute(JdbcTemplate.java:324)
+	at org.springframework.boot.jdbc.EmbeddedDatabaseConnection.isEmbedded(EmbeddedDatabaseConnection.java:120)
+	at org.springframework.boot.autoconfigure.orm.jpa.HibernateDefaultDdlAutoProvider.getDefaultDdlAuto(HibernateDefaultDdlAutoProvider.java:42)
+	at org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaConfiguration.lambda$getVendorProperties$1(HibernateJpaConfiguration.java:130)
+	at org.springframework.boot.autoconfigure.orm.jpa.HibernateSettings.getDdlAuto(HibernateSettings.java:41)
+	at org.springframework.boot.autoconfigure.orm.jpa.HibernateProperties.determineDdlAuto(HibernateProperties.java:136)
+	at org.springframework.boot.autoconfigure.orm.jpa.HibernateProperties.getAdditionalProperties(HibernateProperties.java:102)
+	at org.springframework.boot.autoconfigure.orm.jpa.HibernateProperties.determineHibernateProperties(HibernateProperties.java:94)
+	at org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaConfiguration.getVendorProperties(HibernateJpaConfiguration.java:132)
+	at org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration.entityManagerFactory(JpaBaseConfiguration.java:133)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:567)
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:154)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:650)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:635)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1338)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1177)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:557)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:517)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:323)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:226)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:321)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+	at org.springframework.context.support.AbstractApplicationContext.getBean(AbstractApplicationContext.java:1109)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:869)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:551)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:143)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:758)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:750)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:397)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1237)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1226)
+	at com.web.WebApplication.main(WebApplication.java:12)
+Caused by: com.mysql.cj.exceptions.CJCommunicationsException: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:500)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:481)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:61)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:105)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:151)
+	at com.mysql.cj.exceptions.ExceptionFactory.createCommunicationsException(ExceptionFactory.java:167)
+	at com.mysql.cj.protocol.a.NativeProtocol.readMessage(NativeProtocol.java:538)
+	at com.mysql.cj.protocol.a.NativeProtocol.readServerCapabilities(NativeProtocol.java:490)
+	at com.mysql.cj.protocol.a.NativeProtocol.beforeHandshake(NativeProtocol.java:377)
+	at com.mysql.cj.protocol.a.NativeProtocol.connect(NativeProtocol.java:1340)
+	at com.mysql.cj.NativeSession.connect(NativeSession.java:157)
+	at com.mysql.cj.jdbc.ConnectionImpl.connectOneTryOnly(ConnectionImpl.java:956)
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:826)
+	... 49 common frames omitted
+Caused by: java.net.SocketException: Connection reset
+	at java.base/sun.nio.ch.NioSocketImpl.implRead(NioSocketImpl.java:324)
+	at java.base/sun.nio.ch.NioSocketImpl.read(NioSocketImpl.java:351)
+	at java.base/sun.nio.ch.NioSocketImpl$1.read(NioSocketImpl.java:802)
+	at java.base/java.net.Socket$SocketInputStream.read(Socket.java:937)
+	at com.mysql.cj.protocol.ReadAheadInputStream.fill(ReadAheadInputStream.java:107)
+	at com.mysql.cj.protocol.ReadAheadInputStream.readFromUnderlyingStreamIfNecessary(ReadAheadInputStream.java:150)
+	at com.mysql.cj.protocol.ReadAheadInputStream.read(ReadAheadInputStream.java:180)
+	at java.base/java.io.FilterInputStream.read(FilterInputStream.java:133)
+	at com.mysql.cj.protocol.FullReadInputStream.readFully(FullReadInputStream.java:64)
+	at com.mysql.cj.protocol.a.SimplePacketReader.readHeader(SimplePacketReader.java:63)
+	at com.mysql.cj.protocol.a.SimplePacketReader.readHeader(SimplePacketReader.java:45)
+	at com.mysql.cj.protocol.a.NativeProtocol.readMessage(NativeProtocol.java:532)
+	... 55 common frames omitted
+INFO  20-08-03 17:30:27[task-1] [LogHelper:31] - HHH000204: Processing PersistenceUnitInfo [name: default]
+INFO  20-08-03 17:30:27[task-1] [Version:44] - HHH000412: Hibernate ORM core version 5.4.17.Final
+INFO  20-08-03 17:30:28[task-1] [Version:49] - HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+WARN  20-08-03 17:30:28[main] [JpaBaseConfiguration$JpaWebConfiguration:220] - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+INFO  20-08-03 17:30:28[task-1] [HikariDataSource:110] - HikariPool-1 - Starting...
+INFO  20-08-03 17:30:28[main] [Http11NioProtocol:173] - Starting ProtocolHandler ["https-jsse-nio-80"]
+INFO  20-08-03 17:30:30[main] [TomcatWebServer:220] - Tomcat started on port(s): 80 (https) with context path ''
+INFO  20-08-03 17:30:30[main] [DeferredRepositoryInitializationListener:49] - Triggering deferred initialization of Spring Data repositories…
+INFO  20-08-03 17:30:30[main] [DeferredRepositoryInitializationListener:53] - Spring Data repositories initialized!
+INFO  20-08-03 17:30:30[main] [WebApplication:61] - Started WebApplication in 28.595 seconds (JVM running for 29.078)
+INFO  20-08-03 17:30:38[https-jsse-nio-80-exec-1] [[/]:173] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+INFO  20-08-03 17:30:38[https-jsse-nio-80-exec-1] [DispatcherServlet:525] - Initializing Servlet 'dispatcherServlet'
+INFO  20-08-03 17:30:38[https-jsse-nio-80-exec-1] [DispatcherServlet:547] - Completed initialization in 7 ms
+INFO  20-08-03 17:30:45[main] [WebApplication:55] - Starting WebApplication on DESKTOP-CA5EFVH with PID 143316 (C:\Users\jacob\Desktop\privateInformation\WEB 주요기능완성\target\classes started by han1g in C:\Users\jacob\Desktop\privateInformation\WEB 주요기능완성)
+DEBUG 20-08-03 17:30:45[main] [WebApplication:56] - Running with Spring Boot v2.3.1.RELEASE, Spring v5.2.7.RELEASE
+INFO  20-08-03 17:30:45[main] [WebApplication:655] - The following profiles are active: local
+INFO  20-08-03 17:30:46[main] [RepositoryConfigurationDelegate:127] - Bootstrapping Spring Data JPA repositories in DEFERRED mode.
+INFO  20-08-03 17:30:46[main] [RepositoryConfigurationDelegate:187] - Finished Spring Data repository scanning in 25ms. Found 0 JPA repository interfaces.
+DEBUG 20-08-03 17:30:46[main] [LogFactory:105] - Logging initialized using 'class org.apache.ibatis.logging.slf4j.Slf4jImpl' adapter.
+INFO  20-08-03 17:30:46[main] [PostProcessorRegistrationDelegate$BeanPostProcessorChecker:335] - Bean 'org.springframework.ws.config.annotation.DelegatingWsConfiguration' of type [org.springframework.ws.config.annotation.DelegatingWsConfiguration$$EnhancerBySpringCGLIB$$bbf038bb] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+INFO  20-08-03 17:30:46[main] [AnnotationActionEndpointMapping:236] - Supporting [WS-Addressing August 2004, WS-Addressing 1.0]
+INFO  20-08-03 17:30:48[main] [TomcatWebServer:108] - Tomcat initialized with port(s): 80 (https)
+INFO  20-08-03 17:30:48[main] [Http11NioProtocol:173] - Initializing ProtocolHandler ["https-jsse-nio-80"]
+INFO  20-08-03 17:30:48[main] [StandardService:173] - Starting service [Tomcat]
+INFO  20-08-03 17:30:48[main] [StandardEngine:173] - Starting Servlet engine: [Apache Tomcat/9.0.36]
+INFO  20-08-03 17:30:49[main] [TldScanner:173] - At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+INFO  20-08-03 17:30:49[main] [[/]:173] - Initializing Spring embedded WebApplicationContext
+INFO  20-08-03 17:30:49[main] [ServletWebServerApplicationContext:285] - Root WebApplicationContext: initialization completed in 3275 ms
+INFO  20-08-03 17:30:49[main] [ThreadPoolTaskExecutor:181] - Initializing ExecutorService 'applicationTaskExecutor'
+INFO  20-08-03 17:30:49[main] [HikariDataSource:110] - HikariPool-1 - Starting...
+INFO  20-08-03 17:30:49[main] [HikariDataSource:123] - HikariPool-1 - Start completed.
+INFO  20-08-03 17:30:49[task-1] [LogHelper:31] - HHH000204: Processing PersistenceUnitInfo [name: default]
+INFO  20-08-03 17:30:49[task-1] [Version:44] - HHH000412: Hibernate ORM core version 5.4.17.Final
+INFO  20-08-03 17:30:49[task-1] [Version:49] - HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+WARN  20-08-03 17:30:49[main] [JpaBaseConfiguration$JpaWebConfiguration:220] - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+INFO  20-08-03 17:30:49[task-1] [Dialect:172] - HHH000400: Using dialect: org.hibernate.dialect.MySQL55Dialect
+INFO  20-08-03 17:30:50[task-1] [JtaPlatformInitiator:52] - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+INFO  20-08-03 17:30:50[task-1] [LocalContainerEntityManagerFactoryBean:416] - Initialized JPA EntityManagerFactory for persistence unit 'default'
+INFO  20-08-03 17:30:50[main] [Http11NioProtocol:173] - Starting ProtocolHandler ["https-jsse-nio-80"]
+INFO  20-08-03 17:30:51[main] [TomcatWebServer:220] - Tomcat started on port(s): 80 (https) with context path ''
+INFO  20-08-03 17:30:51[main] [DeferredRepositoryInitializationListener:49] - Triggering deferred initialization of Spring Data repositories…
+INFO  20-08-03 17:30:51[main] [DeferredRepositoryInitializationListener:53] - Spring Data repositories initialized!
+INFO  20-08-03 17:30:51[main] [WebApplication:61] - Started WebApplication in 6.542 seconds (JVM running for 7.034)
+INFO  20-08-03 17:30:53[https-jsse-nio-80-exec-8] [[/]:173] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+INFO  20-08-03 17:30:53[https-jsse-nio-80-exec-8] [DispatcherServlet:525] - Initializing Servlet 'dispatcherServlet'
+INFO  20-08-03 17:30:53[https-jsse-nio-80-exec-8] [DispatcherServlet:547] - Completed initialization in 8 ms
+WARN  20-08-03 17:30:55[https-jsse-nio-80-exec-8] [SessionIdGeneratorBase:173] - Creation of SecureRandom instance for session ID generation using [SHA1PRNG] took [1,178] milliseconds.
+INFO  20-08-03 17:31:53[main] [WebApplication:55] - Starting WebApplication on DESKTOP-CA5EFVH with PID 146264 (C:\Users\jacob\Desktop\privateInformation\WEB 주요기능완성\target\classes started by han1g in C:\Users\jacob\Desktop\privateInformation\WEB 주요기능완성)
+DEBUG 20-08-03 17:31:53[main] [WebApplication:56] - Running with Spring Boot v2.3.1.RELEASE, Spring v5.2.7.RELEASE
+INFO  20-08-03 17:31:53[main] [WebApplication:655] - The following profiles are active: local
+INFO  20-08-03 17:31:54[main] [RepositoryConfigurationDelegate:127] - Bootstrapping Spring Data JPA repositories in DEFERRED mode.
+INFO  20-08-03 17:31:54[main] [RepositoryConfigurationDelegate:187] - Finished Spring Data repository scanning in 21ms. Found 0 JPA repository interfaces.
+DEBUG 20-08-03 17:31:54[main] [LogFactory:105] - Logging initialized using 'class org.apache.ibatis.logging.slf4j.Slf4jImpl' adapter.
+INFO  20-08-03 17:31:54[main] [PostProcessorRegistrationDelegate$BeanPostProcessorChecker:335] - Bean 'org.springframework.ws.config.annotation.DelegatingWsConfiguration' of type [org.springframework.ws.config.annotation.DelegatingWsConfiguration$$EnhancerBySpringCGLIB$$75dc1ff3] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+INFO  20-08-03 17:31:54[main] [AnnotationActionEndpointMapping:236] - Supporting [WS-Addressing August 2004, WS-Addressing 1.0]
+INFO  20-08-03 17:31:56[main] [TomcatWebServer:108] - Tomcat initialized with port(s): 80 (https)
+INFO  20-08-03 17:31:56[main] [Http11NioProtocol:173] - Initializing ProtocolHandler ["https-jsse-nio-80"]
+INFO  20-08-03 17:31:56[main] [StandardService:173] - Starting service [Tomcat]
+INFO  20-08-03 17:31:56[main] [StandardEngine:173] - Starting Servlet engine: [Apache Tomcat/9.0.36]
+INFO  20-08-03 17:31:56[main] [TldScanner:173] - At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+INFO  20-08-03 17:31:56[main] [[/]:173] - Initializing Spring embedded WebApplicationContext
+INFO  20-08-03 17:31:56[main] [ServletWebServerApplicationContext:285] - Root WebApplicationContext: initialization completed in 3117 ms
+INFO  20-08-03 17:31:56[main] [ThreadPoolTaskExecutor:181] - Initializing ExecutorService 'applicationTaskExecutor'
+INFO  20-08-03 17:31:56[main] [HikariDataSource:110] - HikariPool-1 - Starting...
+INFO  20-08-03 17:31:56[main] [HikariDataSource:123] - HikariPool-1 - Start completed.
+INFO  20-08-03 17:31:56[task-1] [LogHelper:31] - HHH000204: Processing PersistenceUnitInfo [name: default]
+INFO  20-08-03 17:31:57[task-1] [Version:44] - HHH000412: Hibernate ORM core version 5.4.17.Final
+INFO  20-08-03 17:31:57[task-1] [Version:49] - HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+WARN  20-08-03 17:31:57[main] [JpaBaseConfiguration$JpaWebConfiguration:220] - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+INFO  20-08-03 17:31:57[task-1] [Dialect:172] - HHH000400: Using dialect: org.hibernate.dialect.MySQL55Dialect
+INFO  20-08-03 17:31:57[task-1] [JtaPlatformInitiator:52] - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+INFO  20-08-03 17:31:57[task-1] [LocalContainerEntityManagerFactoryBean:416] - Initialized JPA EntityManagerFactory for persistence unit 'default'
+INFO  20-08-03 17:31:57[main] [Http11NioProtocol:173] - Starting ProtocolHandler ["https-jsse-nio-80"]
+INFO  20-08-03 17:31:59[main] [TomcatWebServer:220] - Tomcat started on port(s): 80 (https) with context path ''
+INFO  20-08-03 17:31:59[main] [DeferredRepositoryInitializationListener:49] - Triggering deferred initialization of Spring Data repositories…
+INFO  20-08-03 17:31:59[main] [DeferredRepositoryInitializationListener:53] - Spring Data repositories initialized!
+INFO  20-08-03 17:31:59[main] [WebApplication:61] - Started WebApplication in 6.415 seconds (JVM running for 6.89)
+INFO  20-08-03 17:31:59[https-jsse-nio-80-exec-3] [[/]:173] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+INFO  20-08-03 17:31:59[https-jsse-nio-80-exec-3] [DispatcherServlet:525] - Initializing Servlet 'dispatcherServlet'
+INFO  20-08-03 17:31:59[https-jsse-nio-80-exec-3] [DispatcherServlet:547] - Completed initialization in 7 ms
+WARN  20-08-03 17:32:01[https-jsse-nio-80-exec-3] [SessionIdGeneratorBase:173] - Creation of SecureRandom instance for session ID generation using [SHA1PRNG] took [1,168] milliseconds.
+DEBUG 20-08-03 17:32:06[https-jsse-nio-80-exec-3] [certList:137] - ==>  Preparing: SELECT * FROM TB_CERTIFICATION
+DEBUG 20-08-03 17:32:06[https-jsse-nio-80-exec-3] [certList:137] - ==> Parameters: 
+DEBUG 20-08-03 17:32:06[https-jsse-nio-80-exec-3] [certList:137] - <==      Total: 1
+INFO  20-08-03 17:32:28[main] [WebApplication:55] - Starting WebApplication on DESKTOP-CA5EFVH with PID 143260 (C:\Users\jacob\Desktop\privateInformation\WEB 주요기능완성\target\classes started by han1g in C:\Users\jacob\Desktop\privateInformation\WEB 주요기능완성)
+DEBUG 20-08-03 17:32:28[main] [WebApplication:56] - Running with Spring Boot v2.3.1.RELEASE, Spring v5.2.7.RELEASE
+INFO  20-08-03 17:32:28[main] [WebApplication:655] - The following profiles are active: local
+INFO  20-08-03 17:32:29[main] [RepositoryConfigurationDelegate:127] - Bootstrapping Spring Data JPA repositories in DEFERRED mode.
+INFO  20-08-03 17:32:29[main] [RepositoryConfigurationDelegate:187] - Finished Spring Data repository scanning in 24ms. Found 0 JPA repository interfaces.
+DEBUG 20-08-03 17:32:29[main] [LogFactory:105] - Logging initialized using 'class org.apache.ibatis.logging.slf4j.Slf4jImpl' adapter.
+INFO  20-08-03 17:32:30[main] [PostProcessorRegistrationDelegate$BeanPostProcessorChecker:335] - Bean 'org.springframework.ws.config.annotation.DelegatingWsConfiguration' of type [org.springframework.ws.config.annotation.DelegatingWsConfiguration$$EnhancerBySpringCGLIB$$c28f5db9] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+INFO  20-08-03 17:32:30[main] [AnnotationActionEndpointMapping:236] - Supporting [WS-Addressing August 2004, WS-Addressing 1.0]
+INFO  20-08-03 17:32:31[main] [TomcatWebServer:108] - Tomcat initialized with port(s): 80 (https)
+INFO  20-08-03 17:32:31[main] [Http11NioProtocol:173] - Initializing ProtocolHandler ["https-jsse-nio-80"]
+INFO  20-08-03 17:32:31[main] [StandardService:173] - Starting service [Tomcat]
+INFO  20-08-03 17:32:31[main] [StandardEngine:173] - Starting Servlet engine: [Apache Tomcat/9.0.36]
+INFO  20-08-03 17:32:32[main] [TldScanner:173] - At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+INFO  20-08-03 17:32:32[main] [[/]:173] - Initializing Spring embedded WebApplicationContext
+INFO  20-08-03 17:32:32[main] [ServletWebServerApplicationContext:285] - Root WebApplicationContext: initialization completed in 3205 ms
+INFO  20-08-03 17:32:32[main] [ThreadPoolTaskExecutor:181] - Initializing ExecutorService 'applicationTaskExecutor'
+INFO  20-08-03 17:32:32[main] [HikariDataSource:110] - HikariPool-1 - Starting...
+INFO  20-08-03 17:32:32[main] [HikariDataSource:123] - HikariPool-1 - Start completed.
+INFO  20-08-03 17:32:32[task-1] [LogHelper:31] - HHH000204: Processing PersistenceUnitInfo [name: default]
+INFO  20-08-03 17:32:32[task-1] [Version:44] - HHH000412: Hibernate ORM core version 5.4.17.Final
+INFO  20-08-03 17:32:32[task-1] [Version:49] - HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+WARN  20-08-03 17:32:32[main] [JpaBaseConfiguration$JpaWebConfiguration:220] - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+INFO  20-08-03 17:32:32[task-1] [Dialect:172] - HHH000400: Using dialect: org.hibernate.dialect.MySQL55Dialect
+INFO  20-08-03 17:32:33[task-1] [JtaPlatformInitiator:52] - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+INFO  20-08-03 17:32:33[task-1] [LocalContainerEntityManagerFactoryBean:416] - Initialized JPA EntityManagerFactory for persistence unit 'default'
+INFO  20-08-03 17:32:33[main] [Http11NioProtocol:173] - Starting ProtocolHandler ["https-jsse-nio-80"]
+INFO  20-08-03 17:32:34[main] [TomcatWebServer:220] - Tomcat started on port(s): 80 (https) with context path ''
+INFO  20-08-03 17:32:34[main] [DeferredRepositoryInitializationListener:49] - Triggering deferred initialization of Spring Data repositories…
+INFO  20-08-03 17:32:34[main] [DeferredRepositoryInitializationListener:53] - Spring Data repositories initialized!
+INFO  20-08-03 17:32:34[main] [WebApplication:61] - Started WebApplication in 6.469 seconds (JVM running for 6.945)
+INFO  20-08-03 17:32:34[https-jsse-nio-80-exec-9] [[/]:173] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+INFO  20-08-03 17:32:34[https-jsse-nio-80-exec-9] [DispatcherServlet:525] - Initializing Servlet 'dispatcherServlet'
+INFO  20-08-03 17:32:34[https-jsse-nio-80-exec-9] [DispatcherServlet:547] - Completed initialization in 8 ms
+WARN  20-08-03 17:32:36[https-jsse-nio-80-exec-9] [SessionIdGeneratorBase:173] - Creation of SecureRandom instance for session ID generation using [SHA1PRNG] took [1,173] milliseconds.
+INFO  20-08-03 17:34:09[main] [WebApplication:55] - Starting WebApplication on DESKTOP-CA5EFVH with PID 146260 (C:\Users\jacob\Desktop\privateInformation\WEB 주요기능완성\target\classes started by han1g in C:\Users\jacob\Desktop\privateInformation\WEB 주요기능완성)
+DEBUG 20-08-03 17:34:10[main] [WebApplication:56] - Running with Spring Boot v2.3.1.RELEASE, Spring v5.2.7.RELEASE
+INFO  20-08-03 17:34:10[main] [WebApplication:655] - The following profiles are active: local
+INFO  20-08-03 17:34:10[main] [RepositoryConfigurationDelegate:127] - Bootstrapping Spring Data JPA repositories in DEFERRED mode.
+INFO  20-08-03 17:34:10[main] [RepositoryConfigurationDelegate:187] - Finished Spring Data repository scanning in 24ms. Found 0 JPA repository interfaces.
+DEBUG 20-08-03 17:34:10[main] [LogFactory:105] - Logging initialized using 'class org.apache.ibatis.logging.slf4j.Slf4jImpl' adapter.
+INFO  20-08-03 17:34:11[main] [PostProcessorRegistrationDelegate$BeanPostProcessorChecker:335] - Bean 'org.springframework.ws.config.annotation.DelegatingWsConfiguration' of type [org.springframework.ws.config.annotation.DelegatingWsConfiguration$$EnhancerBySpringCGLIB$$120a1fdf] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+INFO  20-08-03 17:34:11[main] [AnnotationActionEndpointMapping:236] - Supporting [WS-Addressing August 2004, WS-Addressing 1.0]
+INFO  20-08-03 17:34:12[main] [TomcatWebServer:108] - Tomcat initialized with port(s): 80 (https)
+INFO  20-08-03 17:34:12[main] [Http11NioProtocol:173] - Initializing ProtocolHandler ["https-jsse-nio-80"]
+INFO  20-08-03 17:34:12[main] [StandardService:173] - Starting service [Tomcat]
+INFO  20-08-03 17:34:12[main] [StandardEngine:173] - Starting Servlet engine: [Apache Tomcat/9.0.36]
+INFO  20-08-03 17:34:13[main] [TldScanner:173] - At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+INFO  20-08-03 17:34:13[main] [[/]:173] - Initializing Spring embedded WebApplicationContext
+INFO  20-08-03 17:34:13[main] [ServletWebServerApplicationContext:285] - Root WebApplicationContext: initialization completed in 3162 ms
+INFO  20-08-03 17:34:13[main] [ThreadPoolTaskExecutor:181] - Initializing ExecutorService 'applicationTaskExecutor'
+INFO  20-08-03 17:34:13[main] [HikariDataSource:110] - HikariPool-1 - Starting...
+INFO  20-08-03 17:34:13[main] [HikariDataSource:123] - HikariPool-1 - Start completed.
+INFO  20-08-03 17:34:13[task-1] [LogHelper:31] - HHH000204: Processing PersistenceUnitInfo [name: default]
+INFO  20-08-03 17:34:13[task-1] [Version:44] - HHH000412: Hibernate ORM core version 5.4.17.Final
+INFO  20-08-03 17:34:13[task-1] [Version:49] - HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+WARN  20-08-03 17:34:14[main] [JpaBaseConfiguration$JpaWebConfiguration:220] - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+INFO  20-08-03 17:34:14[task-1] [Dialect:172] - HHH000400: Using dialect: org.hibernate.dialect.MySQL55Dialect
+INFO  20-08-03 17:34:14[task-1] [JtaPlatformInitiator:52] - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+INFO  20-08-03 17:34:14[main] [Http11NioProtocol:173] - Starting ProtocolHandler ["https-jsse-nio-80"]
+INFO  20-08-03 17:34:14[task-1] [LocalContainerEntityManagerFactoryBean:416] - Initialized JPA EntityManagerFactory for persistence unit 'default'
+INFO  20-08-03 17:34:16[main] [TomcatWebServer:220] - Tomcat started on port(s): 80 (https) with context path ''
+INFO  20-08-03 17:34:16[main] [DeferredRepositoryInitializationListener:49] - Triggering deferred initialization of Spring Data repositories…
+INFO  20-08-03 17:34:16[main] [DeferredRepositoryInitializationListener:53] - Spring Data repositories initialized!
+INFO  20-08-03 17:34:16[main] [WebApplication:61] - Started WebApplication in 6.511 seconds (JVM running for 6.996)
+INFO  20-08-03 17:34:16[https-jsse-nio-80-exec-3] [[/]:173] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+INFO  20-08-03 17:34:16[https-jsse-nio-80-exec-3] [DispatcherServlet:525] - Initializing Servlet 'dispatcherServlet'
+INFO  20-08-03 17:34:16[https-jsse-nio-80-exec-3] [DispatcherServlet:547] - Completed initialization in 9 ms
+WARN  20-08-03 17:34:18[https-jsse-nio-80-exec-3] [SessionIdGeneratorBase:173] - Creation of SecureRandom instance for session ID generation using [SHA1PRNG] took [1,158] milliseconds.
+INFO  20-08-03 17:34:54[main] [WebApplication:55] - Starting WebApplication on DESKTOP-CA5EFVH with PID 146036 (C:\Users\jacob\Desktop\privateInformation\WEB 주요기능완성\target\classes started by han1g in C:\Users\jacob\Desktop\privateInformation\WEB 주요기능완성)
+DEBUG 20-08-03 17:34:54[main] [WebApplication:56] - Running with Spring Boot v2.3.1.RELEASE, Spring v5.2.7.RELEASE
+INFO  20-08-03 17:34:54[main] [WebApplication:655] - The following profiles are active: local
+INFO  20-08-03 17:34:55[main] [RepositoryConfigurationDelegate:127] - Bootstrapping Spring Data JPA repositories in DEFERRED mode.
+INFO  20-08-03 17:34:55[main] [RepositoryConfigurationDelegate:187] - Finished Spring Data repository scanning in 23ms. Found 0 JPA repository interfaces.
+DEBUG 20-08-03 17:34:55[main] [LogFactory:105] - Logging initialized using 'class org.apache.ibatis.logging.slf4j.Slf4jImpl' adapter.
+INFO  20-08-03 17:34:55[main] [PostProcessorRegistrationDelegate$BeanPostProcessorChecker:335] - Bean 'org.springframework.ws.config.annotation.DelegatingWsConfiguration' of type [org.springframework.ws.config.annotation.DelegatingWsConfiguration$$EnhancerBySpringCGLIB$$20922e35] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+INFO  20-08-03 17:34:55[main] [AnnotationActionEndpointMapping:236] - Supporting [WS-Addressing August 2004, WS-Addressing 1.0]
+INFO  20-08-03 17:34:57[main] [TomcatWebServer:108] - Tomcat initialized with port(s): 80 (https)
+INFO  20-08-03 17:34:57[main] [Http11NioProtocol:173] - Initializing ProtocolHandler ["https-jsse-nio-80"]
+INFO  20-08-03 17:34:57[main] [StandardService:173] - Starting service [Tomcat]
+INFO  20-08-03 17:34:57[main] [StandardEngine:173] - Starting Servlet engine: [Apache Tomcat/9.0.36]
+INFO  20-08-03 17:34:57[main] [TldScanner:173] - At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+INFO  20-08-03 17:34:57[main] [[/]:173] - Initializing Spring embedded WebApplicationContext
+INFO  20-08-03 17:34:57[main] [ServletWebServerApplicationContext:285] - Root WebApplicationContext: initialization completed in 3213 ms
+INFO  20-08-03 17:34:58[main] [ThreadPoolTaskExecutor:181] - Initializing ExecutorService 'applicationTaskExecutor'
+INFO  20-08-03 17:34:58[main] [HikariDataSource:110] - HikariPool-1 - Starting...
+INFO  20-08-03 17:34:58[main] [HikariDataSource:123] - HikariPool-1 - Start completed.
+INFO  20-08-03 17:34:58[task-1] [LogHelper:31] - HHH000204: Processing PersistenceUnitInfo [name: default]
+INFO  20-08-03 17:34:58[task-1] [Version:44] - HHH000412: Hibernate ORM core version 5.4.17.Final
+INFO  20-08-03 17:34:58[task-1] [Version:49] - HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+WARN  20-08-03 17:34:58[main] [JpaBaseConfiguration$JpaWebConfiguration:220] - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+INFO  20-08-03 17:34:58[task-1] [Dialect:172] - HHH000400: Using dialect: org.hibernate.dialect.MySQL55Dialect
+INFO  20-08-03 17:34:59[main] [Http11NioProtocol:173] - Starting ProtocolHandler ["https-jsse-nio-80"]
+INFO  20-08-03 17:34:59[task-1] [JtaPlatformInitiator:52] - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+INFO  20-08-03 17:34:59[task-1] [LocalContainerEntityManagerFactoryBean:416] - Initialized JPA EntityManagerFactory for persistence unit 'default'
+INFO  20-08-03 17:35:00[main] [TomcatWebServer:220] - Tomcat started on port(s): 80 (https) with context path ''
+INFO  20-08-03 17:35:00[main] [DeferredRepositoryInitializationListener:49] - Triggering deferred initialization of Spring Data repositories…
+INFO  20-08-03 17:35:00[main] [DeferredRepositoryInitializationListener:53] - Spring Data repositories initialized!
+INFO  20-08-03 17:35:00[main] [WebApplication:61] - Started WebApplication in 6.624 seconds (JVM running for 7.112)
+INFO  20-08-03 17:35:00[https-jsse-nio-80-exec-9] [[/]:173] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+INFO  20-08-03 17:35:00[https-jsse-nio-80-exec-9] [DispatcherServlet:525] - Initializing Servlet 'dispatcherServlet'
+INFO  20-08-03 17:35:00[https-jsse-nio-80-exec-9] [DispatcherServlet:547] - Completed initialization in 7 ms
+WARN  20-08-03 17:35:02[https-jsse-nio-80-exec-9] [SessionIdGeneratorBase:173] - Creation of SecureRandom instance for session ID generation using [SHA1PRNG] took [1,175] milliseconds.
+INFO  20-08-03 17:36:49[main] [WebApplication:55] - Starting WebApplication on DESKTOP-CA5EFVH with PID 152048 (C:\Users\jacob\Desktop\privateInformation\WEB 주요기능완성\target\classes started by han1g in C:\Users\jacob\Desktop\privateInformation\WEB 주요기능완성)
+DEBUG 20-08-03 17:36:49[main] [WebApplication:56] - Running with Spring Boot v2.3.1.RELEASE, Spring v5.2.7.RELEASE
+INFO  20-08-03 17:36:49[main] [WebApplication:655] - The following profiles are active: local
+INFO  20-08-03 17:36:50[main] [RepositoryConfigurationDelegate:127] - Bootstrapping Spring Data JPA repositories in DEFERRED mode.
+INFO  20-08-03 17:36:50[main] [RepositoryConfigurationDelegate:187] - Finished Spring Data repository scanning in 25ms. Found 0 JPA repository interfaces.
+DEBUG 20-08-03 17:36:50[main] [LogFactory:105] - Logging initialized using 'class org.apache.ibatis.logging.slf4j.Slf4jImpl' adapter.
+INFO  20-08-03 17:36:50[main] [PostProcessorRegistrationDelegate$BeanPostProcessorChecker:335] - Bean 'org.springframework.ws.config.annotation.DelegatingWsConfiguration' of type [org.springframework.ws.config.annotation.DelegatingWsConfiguration$$EnhancerBySpringCGLIB$$76fd55ef] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+INFO  20-08-03 17:36:50[main] [AnnotationActionEndpointMapping:236] - Supporting [WS-Addressing August 2004, WS-Addressing 1.0]
+INFO  20-08-03 17:36:52[main] [TomcatWebServer:108] - Tomcat initialized with port(s): 80 (https)
+INFO  20-08-03 17:36:52[main] [Http11NioProtocol:173] - Initializing ProtocolHandler ["https-jsse-nio-80"]
+INFO  20-08-03 17:36:52[main] [StandardService:173] - Starting service [Tomcat]
+INFO  20-08-03 17:36:52[main] [StandardEngine:173] - Starting Servlet engine: [Apache Tomcat/9.0.36]
+INFO  20-08-03 17:36:52[main] [TldScanner:173] - At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+INFO  20-08-03 17:36:52[main] [[/]:173] - Initializing Spring embedded WebApplicationContext
+INFO  20-08-03 17:36:52[main] [ServletWebServerApplicationContext:285] - Root WebApplicationContext: initialization completed in 3054 ms
+INFO  20-08-03 17:36:53[main] [ThreadPoolTaskExecutor:181] - Initializing ExecutorService 'applicationTaskExecutor'
+INFO  20-08-03 17:36:53[main] [HikariDataSource:110] - HikariPool-1 - Starting...
+INFO  20-08-03 17:36:53[main] [HikariDataSource:123] - HikariPool-1 - Start completed.
+INFO  20-08-03 17:36:53[task-1] [LogHelper:31] - HHH000204: Processing PersistenceUnitInfo [name: default]
+INFO  20-08-03 17:36:53[task-1] [Version:44] - HHH000412: Hibernate ORM core version 5.4.17.Final
+INFO  20-08-03 17:36:53[task-1] [Version:49] - HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+WARN  20-08-03 17:36:53[main] [JpaBaseConfiguration$JpaWebConfiguration:220] - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+INFO  20-08-03 17:36:53[task-1] [Dialect:172] - HHH000400: Using dialect: org.hibernate.dialect.MySQL55Dialect
+INFO  20-08-03 17:36:53[task-1] [JtaPlatformInitiator:52] - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+INFO  20-08-03 17:36:53[task-1] [LocalContainerEntityManagerFactoryBean:416] - Initialized JPA EntityManagerFactory for persistence unit 'default'
+INFO  20-08-03 17:36:54[main] [Http11NioProtocol:173] - Starting ProtocolHandler ["https-jsse-nio-80"]
+INFO  20-08-03 17:36:55[main] [TomcatWebServer:220] - Tomcat started on port(s): 80 (https) with context path ''
+INFO  20-08-03 17:36:55[main] [DeferredRepositoryInitializationListener:49] - Triggering deferred initialization of Spring Data repositories…
+INFO  20-08-03 17:36:55[main] [DeferredRepositoryInitializationListener:53] - Spring Data repositories initialized!
+INFO  20-08-03 17:36:55[main] [WebApplication:61] - Started WebApplication in 6.314 seconds (JVM running for 6.808)
+INFO  20-08-03 17:36:57[https-jsse-nio-80-exec-3] [[/]:173] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+INFO  20-08-03 17:36:57[https-jsse-nio-80-exec-3] [DispatcherServlet:525] - Initializing Servlet 'dispatcherServlet'
+INFO  20-08-03 17:36:57[https-jsse-nio-80-exec-3] [DispatcherServlet:547] - Completed initialization in 10 ms
+WARN  20-08-03 17:36:58[https-jsse-nio-80-exec-3] [SessionIdGeneratorBase:173] - Creation of SecureRandom instance for session ID generation using [SHA1PRNG] took [1,183] milliseconds.
+INFO  20-08-03 17:54:29[main] [WebApplication:55] - Starting WebApplication on DESKTOP-CA5EFVH with PID 160740 (C:\Users\jacob\Desktop\privateInformation\WEB 주요기능완성\target\classes started by han1g in C:\Users\jacob\Desktop\privateInformation\WEB 주요기능완성)
+DEBUG 20-08-03 17:54:29[main] [WebApplication:56] - Running with Spring Boot v2.3.1.RELEASE, Spring v5.2.7.RELEASE
+INFO  20-08-03 17:54:29[main] [WebApplication:655] - The following profiles are active: local
+INFO  20-08-03 17:54:30[main] [RepositoryConfigurationDelegate:127] - Bootstrapping Spring Data JPA repositories in DEFERRED mode.
+INFO  20-08-03 17:54:30[main] [RepositoryConfigurationDelegate:187] - Finished Spring Data repository scanning in 25ms. Found 0 JPA repository interfaces.
+DEBUG 20-08-03 17:54:30[main] [LogFactory:105] - Logging initialized using 'class org.apache.ibatis.logging.slf4j.Slf4jImpl' adapter.
+INFO  20-08-03 17:54:30[main] [PostProcessorRegistrationDelegate$BeanPostProcessorChecker:335] - Bean 'org.springframework.ws.config.annotation.DelegatingWsConfiguration' of type [org.springframework.ws.config.annotation.DelegatingWsConfiguration$$EnhancerBySpringCGLIB$$d761cb82] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+INFO  20-08-03 17:54:30[main] [AnnotationActionEndpointMapping:236] - Supporting [WS-Addressing August 2004, WS-Addressing 1.0]
+INFO  20-08-03 17:54:32[main] [TomcatWebServer:108] - Tomcat initialized with port(s): 80 (https)
+INFO  20-08-03 17:54:32[main] [Http11NioProtocol:173] - Initializing ProtocolHandler ["https-jsse-nio-80"]
+INFO  20-08-03 17:54:32[main] [StandardService:173] - Starting service [Tomcat]
+INFO  20-08-03 17:54:32[main] [StandardEngine:173] - Starting Servlet engine: [Apache Tomcat/9.0.36]
+INFO  20-08-03 17:54:32[main] [TldScanner:173] - At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+INFO  20-08-03 17:54:32[main] [[/]:173] - Initializing Spring embedded WebApplicationContext
+INFO  20-08-03 17:54:32[main] [ServletWebServerApplicationContext:285] - Root WebApplicationContext: initialization completed in 3141 ms
+INFO  20-08-03 17:54:33[main] [ThreadPoolTaskExecutor:181] - Initializing ExecutorService 'applicationTaskExecutor'
+INFO  20-08-03 17:54:33[main] [HikariDataSource:110] - HikariPool-1 - Starting...
+INFO  20-08-03 17:54:33[main] [HikariDataSource:123] - HikariPool-1 - Start completed.
+INFO  20-08-03 17:54:33[task-1] [LogHelper:31] - HHH000204: Processing PersistenceUnitInfo [name: default]
+INFO  20-08-03 17:54:33[task-1] [Version:44] - HHH000412: Hibernate ORM core version 5.4.17.Final
+INFO  20-08-03 17:54:33[task-1] [Version:49] - HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+WARN  20-08-03 17:54:33[main] [JpaBaseConfiguration$JpaWebConfiguration:220] - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+INFO  20-08-03 17:54:33[task-1] [Dialect:172] - HHH000400: Using dialect: org.hibernate.dialect.MySQL55Dialect
+INFO  20-08-03 17:54:34[task-1] [JtaPlatformInitiator:52] - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+INFO  20-08-03 17:54:34[main] [Http11NioProtocol:173] - Starting ProtocolHandler ["https-jsse-nio-80"]
+INFO  20-08-03 17:54:34[task-1] [LocalContainerEntityManagerFactoryBean:416] - Initialized JPA EntityManagerFactory for persistence unit 'default'
+INFO  20-08-03 17:54:35[main] [TomcatWebServer:220] - Tomcat started on port(s): 80 (https) with context path ''
+INFO  20-08-03 17:54:35[main] [DeferredRepositoryInitializationListener:49] - Triggering deferred initialization of Spring Data repositories…
+INFO  20-08-03 17:54:35[main] [DeferredRepositoryInitializationListener:53] - Spring Data repositories initialized!
+INFO  20-08-03 17:54:35[main] [WebApplication:61] - Started WebApplication in 6.597 seconds (JVM running for 7.096)
+INFO  20-08-03 17:54:35[https-jsse-nio-80-exec-3] [[/]:173] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+INFO  20-08-03 17:54:35[https-jsse-nio-80-exec-3] [DispatcherServlet:525] - Initializing Servlet 'dispatcherServlet'
+INFO  20-08-03 17:54:35[https-jsse-nio-80-exec-3] [DispatcherServlet:547] - Completed initialization in 9 ms
+WARN  20-08-03 17:54:38[https-jsse-nio-80-exec-3] [SessionIdGeneratorBase:173] - Creation of SecureRandom instance for session ID generation using [SHA1PRNG] took [1,249] milliseconds.
+INFO  20-08-03 17:57:23[main] [WebApplication:55] - Starting WebApplication on DESKTOP-CA5EFVH with PID 165356 (C:\Users\jacob\Desktop\privateInformation\WEB 주요기능완성\target\classes started by han1g in C:\Users\jacob\Desktop\privateInformation\WEB 주요기능완성)
+DEBUG 20-08-03 17:57:23[main] [WebApplication:56] - Running with Spring Boot v2.3.1.RELEASE, Spring v5.2.7.RELEASE
+INFO  20-08-03 17:57:23[main] [WebApplication:655] - The following profiles are active: local
+INFO  20-08-03 17:57:24[main] [RepositoryConfigurationDelegate:127] - Bootstrapping Spring Data JPA repositories in DEFERRED mode.
+INFO  20-08-03 17:57:24[main] [RepositoryConfigurationDelegate:187] - Finished Spring Data repository scanning in 21ms. Found 0 JPA repository interfaces.
+DEBUG 20-08-03 17:57:24[main] [LogFactory:105] - Logging initialized using 'class org.apache.ibatis.logging.slf4j.Slf4jImpl' adapter.
+INFO  20-08-03 17:57:24[main] [PostProcessorRegistrationDelegate$BeanPostProcessorChecker:335] - Bean 'org.springframework.ws.config.annotation.DelegatingWsConfiguration' of type [org.springframework.ws.config.annotation.DelegatingWsConfiguration$$EnhancerBySpringCGLIB$$51fc9fcc] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+INFO  20-08-03 17:57:24[main] [AnnotationActionEndpointMapping:236] - Supporting [WS-Addressing August 2004, WS-Addressing 1.0]
+INFO  20-08-03 17:57:26[main] [TomcatWebServer:108] - Tomcat initialized with port(s): 80 (https)
+INFO  20-08-03 17:57:26[main] [Http11NioProtocol:173] - Initializing ProtocolHandler ["https-jsse-nio-80"]
+INFO  20-08-03 17:57:26[main] [StandardService:173] - Starting service [Tomcat]
+INFO  20-08-03 17:57:26[main] [StandardEngine:173] - Starting Servlet engine: [Apache Tomcat/9.0.36]
+INFO  20-08-03 17:57:26[main] [TldScanner:173] - At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+INFO  20-08-03 17:57:26[main] [[/]:173] - Initializing Spring embedded WebApplicationContext
+INFO  20-08-03 17:57:26[main] [ServletWebServerApplicationContext:285] - Root WebApplicationContext: initialization completed in 3066 ms
+INFO  20-08-03 17:57:27[main] [ThreadPoolTaskExecutor:181] - Initializing ExecutorService 'applicationTaskExecutor'
+INFO  20-08-03 17:57:27[main] [HikariDataSource:110] - HikariPool-1 - Starting...
+INFO  20-08-03 17:57:27[main] [HikariDataSource:123] - HikariPool-1 - Start completed.
+INFO  20-08-03 17:57:27[task-1] [LogHelper:31] - HHH000204: Processing PersistenceUnitInfo [name: default]
+INFO  20-08-03 17:57:27[task-1] [Version:44] - HHH000412: Hibernate ORM core version 5.4.17.Final
+INFO  20-08-03 17:57:27[task-1] [Version:49] - HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+WARN  20-08-03 17:57:27[main] [JpaBaseConfiguration$JpaWebConfiguration:220] - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+INFO  20-08-03 17:57:27[task-1] [Dialect:172] - HHH000400: Using dialect: org.hibernate.dialect.MySQL55Dialect
+INFO  20-08-03 17:57:28[task-1] [JtaPlatformInitiator:52] - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+INFO  20-08-03 17:57:28[main] [Http11NioProtocol:173] - Starting ProtocolHandler ["https-jsse-nio-80"]
+INFO  20-08-03 17:57:28[task-1] [LocalContainerEntityManagerFactoryBean:416] - Initialized JPA EntityManagerFactory for persistence unit 'default'
+INFO  20-08-03 17:57:29[main] [TomcatWebServer:220] - Tomcat started on port(s): 80 (https) with context path ''
+INFO  20-08-03 17:57:29[main] [DeferredRepositoryInitializationListener:49] - Triggering deferred initialization of Spring Data repositories…
+INFO  20-08-03 17:57:29[main] [DeferredRepositoryInitializationListener:53] - Spring Data repositories initialized!
+INFO  20-08-03 17:57:29[main] [WebApplication:61] - Started WebApplication in 6.301 seconds (JVM running for 6.794)
+INFO  20-08-03 17:57:30[https-jsse-nio-80-exec-4] [[/]:173] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+INFO  20-08-03 17:57:30[https-jsse-nio-80-exec-4] [DispatcherServlet:525] - Initializing Servlet 'dispatcherServlet'
+INFO  20-08-03 17:57:30[https-jsse-nio-80-exec-4] [DispatcherServlet:547] - Completed initialization in 8 ms
+WARN  20-08-03 17:57:32[https-jsse-nio-80-exec-4] [SessionIdGeneratorBase:173] - Creation of SecureRandom instance for session ID generation using [SHA1PRNG] took [1,133] milliseconds.
+INFO  20-08-03 17:58:35[main] [WebApplication:55] - Starting WebApplication on DESKTOP-CA5EFVH with PID 163000 (C:\Users\jacob\Desktop\privateInformation\WEB 주요기능완성\target\classes started by han1g in C:\Users\jacob\Desktop\privateInformation\WEB 주요기능완성)
+DEBUG 20-08-03 17:58:35[main] [WebApplication:56] - Running with Spring Boot v2.3.1.RELEASE, Spring v5.2.7.RELEASE
+INFO  20-08-03 17:58:35[main] [WebApplication:655] - The following profiles are active: local
+INFO  20-08-03 17:58:36[main] [RepositoryConfigurationDelegate:127] - Bootstrapping Spring Data JPA repositories in DEFERRED mode.
+INFO  20-08-03 17:58:36[main] [RepositoryConfigurationDelegate:187] - Finished Spring Data repository scanning in 21ms. Found 0 JPA repository interfaces.
+DEBUG 20-08-03 17:58:36[main] [LogFactory:105] - Logging initialized using 'class org.apache.ibatis.logging.slf4j.Slf4jImpl' adapter.
+INFO  20-08-03 17:58:36[main] [PostProcessorRegistrationDelegate$BeanPostProcessorChecker:335] - Bean 'org.springframework.ws.config.annotation.DelegatingWsConfiguration' of type [org.springframework.ws.config.annotation.DelegatingWsConfiguration$$EnhancerBySpringCGLIB$$79f1f7b8] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+INFO  20-08-03 17:58:36[main] [AnnotationActionEndpointMapping:236] - Supporting [WS-Addressing August 2004, WS-Addressing 1.0]
+INFO  20-08-03 17:58:38[main] [TomcatWebServer:108] - Tomcat initialized with port(s): 80 (https)
+INFO  20-08-03 17:58:38[main] [Http11NioProtocol:173] - Initializing ProtocolHandler ["https-jsse-nio-80"]
+INFO  20-08-03 17:58:38[main] [StandardService:173] - Starting service [Tomcat]
+INFO  20-08-03 17:58:38[main] [StandardEngine:173] - Starting Servlet engine: [Apache Tomcat/9.0.36]
+INFO  20-08-03 17:58:38[main] [TldScanner:173] - At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+INFO  20-08-03 17:58:38[main] [[/]:173] - Initializing Spring embedded WebApplicationContext
+INFO  20-08-03 17:58:38[main] [ServletWebServerApplicationContext:285] - Root WebApplicationContext: initialization completed in 3105 ms
+INFO  20-08-03 17:58:38[main] [ThreadPoolTaskExecutor:181] - Initializing ExecutorService 'applicationTaskExecutor'
+INFO  20-08-03 17:58:38[main] [HikariDataSource:110] - HikariPool-1 - Starting...
+INFO  20-08-03 17:58:39[main] [HikariDataSource:123] - HikariPool-1 - Start completed.
+INFO  20-08-03 17:58:39[task-1] [LogHelper:31] - HHH000204: Processing PersistenceUnitInfo [name: default]
+INFO  20-08-03 17:58:39[task-1] [Version:44] - HHH000412: Hibernate ORM core version 5.4.17.Final
+INFO  20-08-03 17:58:39[task-1] [Version:49] - HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+WARN  20-08-03 17:58:39[main] [JpaBaseConfiguration$JpaWebConfiguration:220] - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+INFO  20-08-03 17:58:39[task-1] [Dialect:172] - HHH000400: Using dialect: org.hibernate.dialect.MySQL55Dialect
+INFO  20-08-03 17:58:39[task-1] [JtaPlatformInitiator:52] - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+INFO  20-08-03 17:58:39[task-1] [LocalContainerEntityManagerFactoryBean:416] - Initialized JPA EntityManagerFactory for persistence unit 'default'
+INFO  20-08-03 17:58:39[main] [Http11NioProtocol:173] - Starting ProtocolHandler ["https-jsse-nio-80"]
+INFO  20-08-03 17:58:41[main] [TomcatWebServer:220] - Tomcat started on port(s): 80 (https) with context path ''
+INFO  20-08-03 17:58:41[main] [DeferredRepositoryInitializationListener:49] - Triggering deferred initialization of Spring Data repositories…
+INFO  20-08-03 17:58:41[main] [DeferredRepositoryInitializationListener:53] - Spring Data repositories initialized!
+INFO  20-08-03 17:58:41[main] [WebApplication:61] - Started WebApplication in 6.348 seconds (JVM running for 6.825)
+INFO  20-08-03 17:58:43[https-jsse-nio-80-exec-1] [[/]:173] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+INFO  20-08-03 17:58:43[https-jsse-nio-80-exec-1] [DispatcherServlet:525] - Initializing Servlet 'dispatcherServlet'
+INFO  20-08-03 17:58:43[https-jsse-nio-80-exec-1] [DispatcherServlet:547] - Completed initialization in 8 ms
+WARN  20-08-03 17:58:45[https-jsse-nio-80-exec-1] [SessionIdGeneratorBase:173] - Creation of SecureRandom instance for session ID generation using [SHA1PRNG] took [1,156] milliseconds.
+INFO  20-08-03 17:59:17[main] [WebApplication:55] - Starting WebApplication on DESKTOP-CA5EFVH with PID 160940 (C:\Users\jacob\Desktop\privateInformation\WEB 주요기능완성\target\classes started by han1g in C:\Users\jacob\Desktop\privateInformation\WEB 주요기능완성)
+DEBUG 20-08-03 17:59:17[main] [WebApplication:56] - Running with Spring Boot v2.3.1.RELEASE, Spring v5.2.7.RELEASE
+INFO  20-08-03 17:59:17[main] [WebApplication:655] - The following profiles are active: local
+INFO  20-08-03 17:59:18[main] [RepositoryConfigurationDelegate:127] - Bootstrapping Spring Data JPA repositories in DEFERRED mode.
+INFO  20-08-03 17:59:18[main] [RepositoryConfigurationDelegate:187] - Finished Spring Data repository scanning in 21ms. Found 0 JPA repository interfaces.
+DEBUG 20-08-03 17:59:18[main] [LogFactory:105] - Logging initialized using 'class org.apache.ibatis.logging.slf4j.Slf4jImpl' adapter.
+INFO  20-08-03 17:59:18[main] [PostProcessorRegistrationDelegate$BeanPostProcessorChecker:335] - Bean 'org.springframework.ws.config.annotation.DelegatingWsConfiguration' of type [org.springframework.ws.config.annotation.DelegatingWsConfiguration$$EnhancerBySpringCGLIB$$fa6d5509] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+INFO  20-08-03 17:59:18[main] [AnnotationActionEndpointMapping:236] - Supporting [WS-Addressing August 2004, WS-Addressing 1.0]
+INFO  20-08-03 17:59:20[main] [TomcatWebServer:108] - Tomcat initialized with port(s): 80 (https)
+INFO  20-08-03 17:59:20[main] [Http11NioProtocol:173] - Initializing ProtocolHandler ["https-jsse-nio-80"]
+INFO  20-08-03 17:59:20[main] [StandardService:173] - Starting service [Tomcat]
+INFO  20-08-03 17:59:20[main] [StandardEngine:173] - Starting Servlet engine: [Apache Tomcat/9.0.36]
+INFO  20-08-03 17:59:20[main] [TldScanner:173] - At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+INFO  20-08-03 17:59:20[main] [[/]:173] - Initializing Spring embedded WebApplicationContext
+INFO  20-08-03 17:59:20[main] [ServletWebServerApplicationContext:285] - Root WebApplicationContext: initialization completed in 3161 ms
+INFO  20-08-03 17:59:20[main] [ThreadPoolTaskExecutor:181] - Initializing ExecutorService 'applicationTaskExecutor'
+INFO  20-08-03 17:59:20[main] [HikariDataSource:110] - HikariPool-1 - Starting...
+INFO  20-08-03 17:59:20[main] [HikariDataSource:123] - HikariPool-1 - Start completed.
+INFO  20-08-03 17:59:21[task-1] [LogHelper:31] - HHH000204: Processing PersistenceUnitInfo [name: default]
+INFO  20-08-03 17:59:21[task-1] [Version:44] - HHH000412: Hibernate ORM core version 5.4.17.Final
+INFO  20-08-03 17:59:21[task-1] [Version:49] - HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+WARN  20-08-03 17:59:21[main] [JpaBaseConfiguration$JpaWebConfiguration:220] - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+INFO  20-08-03 17:59:21[task-1] [Dialect:172] - HHH000400: Using dialect: org.hibernate.dialect.MySQL55Dialect
+INFO  20-08-03 17:59:21[main] [Http11NioProtocol:173] - Starting ProtocolHandler ["https-jsse-nio-80"]
+INFO  20-08-03 17:59:21[task-1] [JtaPlatformInitiator:52] - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+INFO  20-08-03 17:59:21[task-1] [LocalContainerEntityManagerFactoryBean:416] - Initialized JPA EntityManagerFactory for persistence unit 'default'
+INFO  20-08-03 17:59:23[main] [TomcatWebServer:220] - Tomcat started on port(s): 80 (https) with context path ''
+INFO  20-08-03 17:59:23[main] [DeferredRepositoryInitializationListener:49] - Triggering deferred initialization of Spring Data repositories…
+INFO  20-08-03 17:59:23[main] [DeferredRepositoryInitializationListener:53] - Spring Data repositories initialized!
+INFO  20-08-03 17:59:23[main] [WebApplication:61] - Started WebApplication in 6.331 seconds (JVM running for 6.806)
+INFO  20-08-03 17:59:47[main] [WebApplication:55] - Starting WebApplication on DESKTOP-CA5EFVH with PID 53272 (C:\Users\jacob\Desktop\privateInformation\WEB 주요기능완성\target\classes started by han1g in C:\Users\jacob\Desktop\privateInformation\WEB 주요기능완성)
+DEBUG 20-08-03 17:59:47[main] [WebApplication:56] - Running with Spring Boot v2.3.1.RELEASE, Spring v5.2.7.RELEASE
+INFO  20-08-03 17:59:47[main] [WebApplication:655] - The following profiles are active: local
+INFO  20-08-03 17:59:48[main] [RepositoryConfigurationDelegate:127] - Bootstrapping Spring Data JPA repositories in DEFERRED mode.
+INFO  20-08-03 17:59:48[main] [RepositoryConfigurationDelegate:187] - Finished Spring Data repository scanning in 25ms. Found 0 JPA repository interfaces.
+DEBUG 20-08-03 17:59:48[main] [LogFactory:105] - Logging initialized using 'class org.apache.ibatis.logging.slf4j.Slf4jImpl' adapter.
+INFO  20-08-03 17:59:48[main] [PostProcessorRegistrationDelegate$BeanPostProcessorChecker:335] - Bean 'org.springframework.ws.config.annotation.DelegatingWsConfiguration' of type [org.springframework.ws.config.annotation.DelegatingWsConfiguration$$EnhancerBySpringCGLIB$$fe8e0e36] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+INFO  20-08-03 17:59:48[main] [AnnotationActionEndpointMapping:236] - Supporting [WS-Addressing August 2004, WS-Addressing 1.0]
+INFO  20-08-03 17:59:50[main] [TomcatWebServer:108] - Tomcat initialized with port(s): 80 (https)
+INFO  20-08-03 17:59:50[main] [Http11NioProtocol:173] - Initializing ProtocolHandler ["https-jsse-nio-80"]
+INFO  20-08-03 17:59:50[main] [StandardService:173] - Starting service [Tomcat]
+INFO  20-08-03 17:59:50[main] [StandardEngine:173] - Starting Servlet engine: [Apache Tomcat/9.0.36]
+INFO  20-08-03 17:59:50[main] [TldScanner:173] - At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+INFO  20-08-03 17:59:50[main] [[/]:173] - Initializing Spring embedded WebApplicationContext
+INFO  20-08-03 17:59:50[main] [ServletWebServerApplicationContext:285] - Root WebApplicationContext: initialization completed in 3266 ms
+INFO  20-08-03 17:59:50[main] [ThreadPoolTaskExecutor:181] - Initializing ExecutorService 'applicationTaskExecutor'
+INFO  20-08-03 17:59:50[main] [HikariDataSource:110] - HikariPool-1 - Starting...
+INFO  20-08-03 17:59:51[main] [HikariDataSource:123] - HikariPool-1 - Start completed.
+INFO  20-08-03 17:59:51[task-1] [LogHelper:31] - HHH000204: Processing PersistenceUnitInfo [name: default]
+INFO  20-08-03 17:59:51[task-1] [Version:44] - HHH000412: Hibernate ORM core version 5.4.17.Final
+INFO  20-08-03 17:59:51[task-1] [Version:49] - HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+WARN  20-08-03 17:59:51[main] [JpaBaseConfiguration$JpaWebConfiguration:220] - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+INFO  20-08-03 17:59:51[task-1] [Dialect:172] - HHH000400: Using dialect: org.hibernate.dialect.MySQL55Dialect
+INFO  20-08-03 17:59:51[task-1] [JtaPlatformInitiator:52] - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+INFO  20-08-03 17:59:51[task-1] [LocalContainerEntityManagerFactoryBean:416] - Initialized JPA EntityManagerFactory for persistence unit 'default'
+INFO  20-08-03 17:59:51[main] [Http11NioProtocol:173] - Starting ProtocolHandler ["https-jsse-nio-80"]
+INFO  20-08-03 17:59:53[main] [TomcatWebServer:220] - Tomcat started on port(s): 80 (https) with context path ''
+INFO  20-08-03 17:59:53[main] [DeferredRepositoryInitializationListener:49] - Triggering deferred initialization of Spring Data repositories…
+INFO  20-08-03 17:59:53[main] [DeferredRepositoryInitializationListener:53] - Spring Data repositories initialized!
+INFO  20-08-03 17:59:53[main] [WebApplication:61] - Started WebApplication in 6.548 seconds (JVM running for 7.094)
+INFO  20-08-03 17:59:53[https-jsse-nio-80-exec-8] [[/]:173] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+INFO  20-08-03 17:59:53[https-jsse-nio-80-exec-8] [DispatcherServlet:525] - Initializing Servlet 'dispatcherServlet'
+INFO  20-08-03 17:59:53[https-jsse-nio-80-exec-8] [DispatcherServlet:547] - Completed initialization in 8 ms
+WARN  20-08-03 17:59:55[https-jsse-nio-80-exec-8] [SessionIdGeneratorBase:173] - Creation of SecureRandom instance for session ID generation using [SHA1PRNG] took [1,180] milliseconds.

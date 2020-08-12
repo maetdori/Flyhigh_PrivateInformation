@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/PostJson.iml" filepath="$PROJECT_DIR$/PostJson.iml" group="PostJson" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/PostJson-app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/PostJson-app.iml" group="PostJson/app" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/PostJsonAndroid-PostJson.iml" filepath="$PROJECT_DIR$/.idea/modules/PostJsonAndroid-PostJson.iml" group="PostJson" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" group="PostJson/app" />
+      <module fileurl="file://$PROJECT_DIR$/app/private_information/private_information.iml" filepath="$PROJECT_DIR$/app/private_information/private_information.iml" group="PostJson/app/private_information" />
+    </modules>
+  </component>
+</project>
