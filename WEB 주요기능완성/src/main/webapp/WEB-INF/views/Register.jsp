@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@page import="com.web.consts.WASJSONConsts" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -50,10 +51,9 @@
 									<label class="control-label" for="co_rrn1"><strong>주민번호 (개인-필수)</strong></label>
 										<input class="form-control" type="text" id="co_rrn1" name="co_rrn1" placeholder="앞자리 6자" style="float:left ; width:40%;" 
 										maxlength="6" onKeyup="this.value=this.value.replace(/[^0-9 | \x20]/g,'');" required/>
-										<!--  주민번호 뒷자리는 일단 안받는걸로
 										<div style="float:left ;" >&nbsp;-&nbsp;</div>
-										<input class="form-control" type="text" id="co_rrn2" name="co_rrn2" placeholder="뒷자리 7자" style="float:left; width:40%;"/>
-										-->
+										<input class="form-control" type="text" id="co_rrn2" name="co_rrn2" placeholder="뒷자리 7자" style="float:left; width:40%;"
+										maxlength="7" onKeyup="this.value=this.value.replace(/[^0-9 | \x20]/g,'');" />
 								</div>
 								<div class="form-group has-feedback">
 									<label class="control-label" for="co_saupja_num"><strong>사업자 번호 (법인-필수)</strong></label>
@@ -329,7 +329,7 @@
 			var co_ename = document.getElementById("co_ename").value;
 			var co_corp = bupin.checked;
 			var co_rrn1 = document.getElementById("co_rrn1").value;
-			var co_rrn2 = null;
+			var co_rrn2 = document.getElementById("co_rrn2").value;
 			var co_tel = document.getElementById("co_tel").value;
 			// addr1 : 전역변수
 			// addr2 : 전역변수
@@ -402,45 +402,44 @@
 			
 			var json = new Object();
 			var personalInfo = new Object();
-			json.subject = co_name;
+			json.<%=WASJSONConsts.STRING_SUBJECT%> = co_name;
 			
-			personalInfo.kname = co_kname;
-			personalInfo.ename = co_ename;
-			personalInfo.corp = co_corp;
-			personalInfo.rrn1 = co_rrn1;
-			personalInfo.rrn2 = co_rrn2;
-			personalInfo.tel = co_tel;
-			personalInfo.addr1 = addr1;
-			personalInfo.addr2 = addr2;
-			personalInfo.addr3 = addr3;
-			personalInfo.relation = co_relation;
-			personalInfo.relation_name = co_relation_name;
-			personalInfo.house_hold = co_house_hold;
-			personalInfo.hojuk_name = co_hojuk_name;
-			personalInfo.car = co_car;
-			personalInfo.saupja_num = co_saupja_num;
+			personalInfo.<%=WASJSONConsts.STRING_KNAME%> = co_kname;
+			personalInfo.<%=WASJSONConsts.STRING_ENAME%> = co_ename;
+			personalInfo.<%=WASJSONConsts.BOOLEAN_CORP%> = co_corp;
+			personalInfo.<%=WASJSONConsts.STRING_RRN1%> = co_rrn1;
+			personalInfo.<%=WASJSONConsts.STRING_RRN2%> = co_rrn2;
+			personalInfo.<%=WASJSONConsts.STRING_TEL%> = co_tel;
+			personalInfo.<%=WASJSONConsts.STRING_ADDR1%> = addr1;
+			personalInfo.<%=WASJSONConsts.STRING_ADDR2%> = addr2;
+			personalInfo.<%=WASJSONConsts.STRING_ADDR3%> = addr3;
+			personalInfo.<%=WASJSONConsts.STRING_RELATION%> = co_relation;
+			personalInfo.<%=WASJSONConsts.STRING_RELATION_NAME%> = co_relation_name;
+			personalInfo.<%=WASJSONConsts.STRING_HOUSE_HOLD%> = co_house_hold;
+			personalInfo.<%=WASJSONConsts.STRING_HOJUK_NAME%> = co_hojuk_name;
+			personalInfo.<%=WASJSONConsts.STRING_CAR%> = co_car;
+			personalInfo.<%=WASJSONConsts.STRING_SAUPJA_NUM%> = co_saupja_num;
 			
-			json.personalInfo = personalInfo;
+			json.<%=WASJSONConsts.JO_PERSONALINFO%> = personalInfo;
 			
-			json.cert_pw = co_cert_pw;
-			json.cert_type = co_cert_type;
-			
+			json.<%=WASJSONConsts.STRING_CERT_PW%> = co_cert_pw;
+			json.<%=WASJSONConsts.INTEGER_CERT_TYPE%> = co_cert_type;
 			var certification = new Object();
-			certification.der = co_cert_der;
-			certification.key = co_cert_key;
-			certification.pfx = co_certification;
-			json.certification = certification;
+			certification.<%=WASJSONConsts.STRING_DER%> = co_cert_der;
+			certification.<%=WASJSONConsts.STRING_KEY%> = co_cert_key;
+			certification.<%=WASJSONConsts.STRING_PFX%> = co_certification;
+			json.<%=WASJSONConsts.JO_CERTIFICATION%> = certification;
 			
 			var account = new Array();
 			for(var i = 0; i < urls.length;i++) {
 				var element = new Object();
-				element.site = urls[i].value;
-				element.id = ids[i].value;
-				element.pw = pws[i].value;
+				element.<%=WASJSONConsts.STRING_DOMAIN%> = urls[i].value;
+				element.<%=WASJSONConsts.STRING_ID%> = ids[i].value;
+				element.<%=WASJSONConsts.STRING_PW%> = pws[i].value;
 				account.push(element);
 			}
-			json.account = account;
-			json.count = urls.length;
+			json.<%=WASJSONConsts.JO_ACCOUNT%> = account;
+			json.<%=WASJSONConsts.STRING_COUNT%> = urls.length;
 			
 			console.log("request: \n" + JSON.stringify(json));
 			
@@ -470,8 +469,8 @@
 		    	return response.json();  
 			}).then(function(myjson) {
 				  console.log(JSON.stringify(myjson));
-				  if(myjson.hasOwnProperty("code")) //json 객체가 code 값을 포함할 때 (에러발생)
-					alert(myjson["message"]);
+				  if(myjson.hasOwnProperty("<%=WASJSONConsts.STRING_ERROR_CODE%>")) //json 객체가 code 값을 포함할 때 (에러발생)
+					alert(myjson["<%=WASJSONConsts.STRING_ERROR_MESSAGE%>"]);
 			});
 		}
 		

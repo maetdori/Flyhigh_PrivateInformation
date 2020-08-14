@@ -2,9 +2,12 @@ package com.web.security;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import com.web.consts.WASJSONConsts;
 import com.web.exception.WebException;
 
 import javax.crypto.BadPaddingException;
@@ -21,10 +24,8 @@ import java.security.cert.X509Certificate;
 import java.security.spec.InvalidKeySpecException;
 import java.util.*;
 
-@Controller
-@RequestMapping("/private")
+
 public class ResponseEncryptModule {
-	
 	
 	private static final Logger logger = LoggerFactory.getLogger(ResponseEncryptModule.class);
 
@@ -65,7 +66,7 @@ public class ResponseEncryptModule {
 			throw new WebException("Cannot reslove password Algorithm",WebException.RENCM_GET_PRIVKEY_FROM_KS_UNKNOWNALG ,e);
 		}
     }
-    private static Certificate loadCertFromKeyStore(String keyStorePath, String passWord) throws WebException {
+    public static Certificate loadCertFromKeyStore(String keyStorePath, String passWord) throws WebException {
         KeyStore keystore = loadKeyStore(keyStorePath,passWord);
         try {
             String alias = keystore.aliases().nextElement();
@@ -80,7 +81,7 @@ public class ResponseEncryptModule {
         Map<String,Object>[] pairs = new Map[elements.length];
         for(int i = 0 ; i < elements.length;i++) {
             pairs[i] = new HashMap<>();
-            pairs[i].put("name",elements[i]);
+            pairs[i].put(WASJSONConsts.STRING_ENCNAME,elements[i]);
         }
         return pairs;
     }
@@ -109,31 +110,20 @@ public class ResponseEncryptModule {
             }
         }
     }
-    @GetMapping(value = "/getCert")
-    public @ResponseBody
-    Map<String,String> getKey(@RequestHeader(value="Device-id", required = true) String deviceId) throws WebException {
-        X509Certificate certificate = (X509Certificate) loadCertFromKeyStore("keystore2.p12","123456");
-        Map<String,String> ret = new HashMap<>();
-        try {
-			ret.put("cert_base64",new String(Base64.getEncoder().encode(certificate.getEncoded())));
-		} catch (CertificateEncodingException e) {
-			throw new WebException("Failed get encoded certificate", WebException.RENCM_GETKEY_CERT_ENCODING_ERROR,e);
-		}
-        return ret;
-    }
+    
     public static void encrypt(String keystorePath,String passWord,String[] encryptElements,
                                               Map<String,Object> reqParam,Map<String,Object> response) throws WebException {
         SecureRandom rand = new SecureRandom();
         String sPubKey = new String(loadCertFromKeyStore(keystorePath,passWord).getPublicKey().getEncoded());
         
-        String cPubKey = new String(Base64.getDecoder().decode((String) reqParam.get("pubKey")));
+        String cPubKey = new String(Base64.getDecoder().decode((String) reqParam.get(WASJSONConsts.STRING_PUBKEY)));
         if(!sPubKey.equals(cPubKey)) {
         	logger.error("sPubkey : " + sPubKey);
         	logger.error("cPubkey : " + cPubKey);
             WebException e = new WebException("PublicKey Incorrect",WebException.RENCM_ENCRYPT_PUBKEY_INCORRECT);
             throw e;
         }
-        byte[] cKey = Base64.getDecoder().decode((String) reqParam.get("cKey"));
+        byte[] cKey = Base64.getDecoder().decode((String) reqParam.get(WASJSONConsts.STRING_CKEY));
         byte[] privKey = getPrivateKeyFromKeyStore(keystorePath,passWord);
         cKey = RSAModule.decryptRSA(privKey,cKey);
         logger.info("cKeyBase64 : " + Base64.getEncoder().encodeToString(cKey));
@@ -153,8 +143,8 @@ public class ResponseEncryptModule {
         String ret = Base64.getEncoder().encodeToString(RSAModule.encryptRSA(privKey,sKey));
         Map<String,Object>[] encryptedElements = ResponseEncryptModule.setEncryptElements(encryptElements);
 
-        response.put("encryptedElements",encryptedElements);
-        response.put("sKey",ret);
+        response.put(WASJSONConsts.JO_ENCRYPTED_ELEMENTS,encryptedElements);
+        response.put(WASJSONConsts.STRING_SKEY,ret);
     }
 
 }

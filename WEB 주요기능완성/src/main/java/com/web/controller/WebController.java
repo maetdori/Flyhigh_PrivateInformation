@@ -27,6 +27,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.web.consts.WASJSONConsts;
 import com.web.domain.CertVO;
 import com.web.domain.PersonalInfoVO;
 import com.web.domain.SiteVO;
@@ -67,8 +68,8 @@ public class WebController {
 	@ResponseBody
 	private Map<String, Object> certRegister(@RequestBody Map<String, Object> req, HttpServletResponse resp) {
 		try {
-			resp.setContentType("application/json");
-			resp.addHeader("Location", "http://localhost:8080/private/register");
+			resp.setContentType(WASJSONConsts.RES_HDR_CONTENT_TYPE_VAL);
+			resp.addHeader(WASJSONConsts.RES_HDR_LOCATION, WASJSONConsts.RES_HDR_LOCATION_VAL + WASJSONConsts.METHOD_PATH + "/register");
 			
 			Map<String, Object> response = new HashMap<>(); //리턴할 HashMap
 			
@@ -83,8 +84,8 @@ public class WebController {
 				else
 					resp.setStatus(400);
 				Map<String, Object> error = new HashMap<>();
-				error.put("code",String.format("0x%x", e.getCode()));
-				error.put("message",e.getMessage());
+				error.put(WASJSONConsts.STRING_ERROR_CODE,String.format("0x%x", e.getCode()));
+				error.put(WASJSONConsts.STRING_ERROR_MESSAGE,e.getMessage());
 				return error;
 			}
 			
@@ -92,13 +93,13 @@ public class WebController {
 			
 			String activeDate = cv.getCo_active_date();
 			
-			validity.put("notBefore", activeDate);
-			validity.put("notAfter", cv.getCo_exp_date());
+			validity.put(WASJSONConsts.STRING_NOT_BEFORE, activeDate);
+			validity.put(WASJSONConsts.STRING_NOT_AFTER, cv.getCo_exp_date());
 			
-			response.put("registerDate", currentDate);
-			response.put("subject", cv.getCo_name());
-			response.put("validity", validity);
-			response.put("count", (int) req.get("count"));
+			//response.put("registerDate", currentDate);
+			response.put(WASJSONConsts.STRING_SUBJECT, cv.getCo_name());
+			response.put(WASJSONConsts.JO_VALIDITY, validity);
+			response.put(WASJSONConsts.STRING_COUNT, (int) req.get(WASJSONConsts.STRING_COUNT));
 			
 			return response;
 			
@@ -106,8 +107,8 @@ public class WebController {
 			logger.error(e.toString(),e);
 			resp.setStatus(500);
 			Map<String, Object> error = new HashMap<>(); //리턴할 HashMap
-			error.put("code",String.format("0x%x", WebException.WC_REGISTER));
-			error.put("message","Unknown Error");
+			error.put(WASJSONConsts.STRING_ERROR_CODE,String.format("0x%x", WebException.WC_REGISTER));
+			error.put(WASJSONConsts.STRING_ERROR_MESSAGE,"Unknown Error");
 			return error;
 		}
 	}
@@ -118,8 +119,8 @@ public class WebController {
 	@ResponseBody
 	private Map<String, Object> certModify(@RequestBody Map<String, Object> req, HttpServletResponse resp) {
 		try {
-			resp.setContentType("application/json");
-			resp.addHeader("Location", "http://localhost:8080/private/modify");
+			resp.setContentType(WASJSONConsts.RES_HDR_CONTENT_TYPE_VAL);
+			resp.addHeader(WASJSONConsts.RES_HDR_LOCATION, WASJSONConsts.RES_HDR_LOCATION_VAL + WASJSONConsts.METHOD_PATH + "/modify");
 			
 			
 			Map<String, Object> response = new HashMap<>(); //리턴할 HashMap
@@ -133,29 +134,28 @@ public class WebController {
 				else
 					resp.setStatus(400);
 				Map<String, Object> error = new HashMap<>();
-				error.put("code",String.format("0x%x", e.getCode()));
-				error.put("message",e.getMessage());
+				error.put(WASJSONConsts.STRING_ERROR_CODE,String.format("0x%x", e.getCode()));
+				error.put(WASJSONConsts.STRING_ERROR_MESSAGE,e.getMessage());
 				return error;
 			}
 			
 			
 			Map<String, String> validity = new HashMap<>(); //validity map
-			validity.put("notBefore", cv.getCo_active_date());
-			validity.put("notAfter", cv.getCo_exp_date());
+			validity.put(WASJSONConsts.STRING_NOT_BEFORE, cv.getCo_active_date());
+			validity.put(WASJSONConsts.STRING_NOT_AFTER, cv.getCo_exp_date());
 			
-			response.put("registerDate", currentDate);
-			response.put("subject", cv.getCo_name());
-			response.put("validity", validity);
-			response.put("count", (int) req.get("count"));
+			//response.put("registerDate", currentDate);
+			response.put(WASJSONConsts.STRING_SUBJECT, cv.getCo_name());
+			response.put(WASJSONConsts.JO_VALIDITY, validity);
+			response.put(WASJSONConsts.STRING_COUNT, (int) req.get(WASJSONConsts.STRING_COUNT));
 			
 			return response;
 		}  catch(Exception e) {
 			logger.error(e.toString(),e);
 			resp.setStatus(500);
 			Map<String, Object> error = new HashMap<>(); //리턴할 HashMap
-			error.put("status", 500);
-			error.put("code",String.format("0x%x", WebException.WC_MODIFY));
-			error.put("message","Unknown Error");
+			error.put(WASJSONConsts.STRING_ERROR_CODE,String.format("0x%x", WebException.WC_MODIFY));
+			error.put(WASJSONConsts.STRING_ERROR_MESSAGE,"Unknown Error");
 			return error;
 		}
 	}
@@ -164,18 +164,18 @@ public class WebController {
 	@ResponseBody
 	private Map<String, Object> certDelete(@RequestBody Map<String, Object> req, HttpServletResponse resp) {
 		try {
-			resp.setContentType("application/json");
-			resp.addHeader("Location", "http://localhost:8080/private/delete");
+			resp.setContentType(WASJSONConsts.RES_HDR_CONTENT_TYPE_VAL);
+			resp.addHeader(WASJSONConsts.RES_HDR_LOCATION, WASJSONConsts.RES_HDR_LOCATION_VAL + WASJSONConsts.METHOD_PATH + "/delete");
 			
-			String co_name = (String)req.get("subject");
+			String co_name = (String)req.get(WASJSONConsts.STRING_SUBJECT);
 			
 			if(co_name == null) {
 				WebException e = new WebException("Invalid Name", WebException.WC_DELETE_INV_NAME);
 				logger.error(e.toString(),e);
 				resp.setStatus(400);
 				Map<String, Object> error = new HashMap<>(); //리턴할 HashMap
-				error.put("code",String.format("0x%x", WebException.WC_DELETE_INV_NAME));
-				error.put("message","Invalid Name");
+				error.put(WASJSONConsts.STRING_ERROR_CODE,String.format("0x%x", WebException.WC_DELETE_INV_NAME));
+				error.put(WASJSONConsts.STRING_ERROR_MESSAGE,"Invalid Name");
 				return error;
 			}
 			
@@ -187,19 +187,19 @@ public class WebController {
 			} catch(DataAccessException e) {
 				resp.setStatus(500);
 				Map<String, Object> error = new HashMap<>(); //리턴할 HashMap
-				error.put("code",String.format("0x%x", WebException.WC_DELETE_DATABASE_ERROR));
-				error.put("message","Error while Accessing Database");
+				error.put(WASJSONConsts.STRING_ERROR_CODE,String.format("0x%x", WebException.WC_DELETE_DATABASE_ERROR));
+				error.put(WASJSONConsts.STRING_ERROR_MESSAGE,"Error while Accessing Database");
 				return error;
 			}
 			
-			response.put("subject",co_name);
+			response.put(WASJSONConsts.STRING_SUBJECT,co_name);
 			return response;
 		} catch(Exception e) {
 			logger.error(e.toString(),e);
 			resp.setStatus(500);
 			Map<String, Object> error = new HashMap<>(); //리턴할 HashMap
-			error.put("code",String.format("0x%x", WebException.WC_DELETE));
-			error.put("message","Unknown Error");
+			error.put(WASJSONConsts.STRING_ERROR_CODE,String.format("0x%x", WebException.WC_DELETE));
+			error.put(WASJSONConsts.STRING_ERROR_MESSAGE,"Unknown Error");
 			return error;
 		}
 	}
@@ -208,7 +208,7 @@ public class WebController {
 	//RequestBody로 들어온 정보를 VO에 저장
 	private void insertOrModify(Map<String, Object> req,int mode) throws WebException {
 		try {
-			String co_name = (String)req.get("subject");
+			String co_name = (String)req.get(WASJSONConsts.STRING_SUBJECT);
 			
 			//이미 등록된 name을 register하려고 할 때 오류 발생 (하지말고 업데이트)
 			/*if(mode==INSERT && certService.ifThereIsService(co_name)==true) {
@@ -216,16 +216,16 @@ public class WebController {
 			}*/
 			
 			@SuppressWarnings("unchecked")
-			Map<String, String> certification = (Map<String, String>) req.get("certification");
+			Map<String, String> certification = (Map<String, String>) req.get(WASJSONConsts.JO_CERTIFICATION);
 			cv = new CertVO();
 			sv = new SiteVO();
 			pv = new PersonalInfoVO();
 			
-			String der = certification.get("der");
-			String key = certification.get("key");
-			String pfx = certification.get("pfx");
-			cv.setCo_name((String) req.get("subject")); //co_name
-			cv.setCo_cert_pw((String) req.get("cert_pw")); //co_cert_pw
+			String der = certification.get(WASJSONConsts.STRING_DER);
+			String key = certification.get(WASJSONConsts.STRING_KEY);
+			String pfx = certification.get(WASJSONConsts.STRING_PFX);
+			cv.setCo_name((String) req.get(WASJSONConsts.STRING_SUBJECT)); //co_name
+			cv.setCo_cert_pw((String) req.get(WASJSONConsts.STRING_CERT_PW)); //co_cert_pw
 			
 			cv.setCo_cert_der(der); //co_cert_der
 			cv.setCo_cert_key(key);
@@ -250,9 +250,9 @@ public class WebController {
 			 */
 			
 			
-			if(certification.get("der") != null) { //인증서 확장자가 der인 경우 
+			if(certification.get(WASJSONConsts.STRING_DER) != null) { //인증서 확장자가 der인 경우 
 				try { 
-					byte[] certBytes = ((String) certification.get("der")).getBytes(); //certification StringToByte
+					byte[] certBytes = ((String) certification.get(WASJSONConsts.STRING_DER)).getBytes(); //certification StringToByte
 					byte[] cert_decoded = base64Decoder(certBytes); //certification decoding
 					ParseDer cert_parsed = new ParseDer(cert_decoded);
 					cv.setCo_active_date(cert_parsed.getNotBefore()); //co_active_date
@@ -267,7 +267,7 @@ public class WebController {
 					throw new WebException("null key for given der",WebException.WC_IOM_NO_KEY);
 				}
 				
-			} else if(certification.get("pfx") != null) {
+			} else if(certification.get(WASJSONConsts.STRING_PFX) != null) {
 				try {
 					byte[] bpfx = base64Decoder(cv.getCo_certification().getBytes());
 					KeyStore keystore = KeyStore.getInstance("PKCS12");
@@ -316,23 +316,23 @@ public class WebController {
 				private String co_car;
 				private String co_saupja_num;
 			 */
-			Map<String,Object> personalInfo = (Map<String, Object>) req.get("personalInfo");
+			Map<String,Object> personalInfo = (Map<String, Object>) req.get(WASJSONConsts.JO_PERSONALINFO);
 			logger.debug("personalInfo" + personalInfo);
-			String co_kname = (String) personalInfo.get("kname");
-			String co_ename = (String) personalInfo.get("ename");
-			boolean co_corp = (boolean) personalInfo.get("corp");
-			String co_rrn1 = (String) personalInfo.get("rrn1");;
-			String co_rrn2 = (String) personalInfo.get("rrn2");;
-			String co_tel = (String) personalInfo.get("tel");;
-			String co_addr1 = (String) personalInfo.get("addr1");;
-			String co_addr2 = (String) personalInfo.get("addr2");;
-			String co_addr3 = (String) personalInfo.get("addr3");;
-			String co_relation = (String) personalInfo.get("relation");;
-			String co_relation_name = (String) personalInfo.get("relation_name");;
-			String co_house_hold = (String) personalInfo.get("house_hold");;
-			String co_hojuk_name = (String) personalInfo.get("hojuk_name");
-			String co_car = (String) personalInfo.get("car");;
-			String co_saupja_num = (String) personalInfo.get("saupja_num");;
+			String co_kname = (String) personalInfo.get(WASJSONConsts.STRING_KNAME);
+			String co_ename = (String) personalInfo.get(WASJSONConsts.STRING_ENAME);
+			boolean co_corp = (boolean) personalInfo.get(WASJSONConsts.BOOLEAN_CORP);
+			String co_rrn1 = (String) personalInfo.get(WASJSONConsts.STRING_RRN1);;
+			String co_rrn2 = (String) personalInfo.get(WASJSONConsts.STRING_RRN2);;
+			String co_tel = (String) personalInfo.get(WASJSONConsts.STRING_TEL);;
+			String co_addr1 = (String) personalInfo.get(WASJSONConsts.STRING_ADDR1);;
+			String co_addr2 = (String) personalInfo.get(WASJSONConsts.STRING_ADDR2);;
+			String co_addr3 = (String) personalInfo.get(WASJSONConsts.STRING_ADDR3);;
+			String co_relation = (String) personalInfo.get(WASJSONConsts.STRING_RELATION);;
+			String co_relation_name = (String) personalInfo.get(WASJSONConsts.STRING_RELATION_NAME);;
+			String co_house_hold = (String) personalInfo.get(WASJSONConsts.STRING_HOUSE_HOLD);;
+			String co_hojuk_name = (String) personalInfo.get(WASJSONConsts.STRING_HOJUK_NAME);
+			String co_car = (String) personalInfo.get(WASJSONConsts.STRING_CAR);;
+			String co_saupja_num = (String) personalInfo.get(WASJSONConsts.STRING_SAUPJA_NUM);;
 			
 			pv.setCo_addr1(co_addr1);
 			pv.setCo_addr2(co_addr2);
@@ -376,18 +376,18 @@ public class WebController {
 			 */
 			
 			@SuppressWarnings("unchecked")
-			ArrayList<Map<String, String>> accList = (ArrayList<Map<String, String>>) req.get("account"); //accountList
+			ArrayList<Map<String, String>> accList = (ArrayList<Map<String, String>>) req.get(WASJSONConsts.JO_ACCOUNT); //accountList
 			if(accList == null) {
 				throw new WebException("Invalid_Account",WebException.WC_IOM_INV_SITE_INFO);
 			}
 			
-			sv.setCo_name((String) req.get("subject")); //co_name
+			sv.setCo_name((String) req.get(WASJSONConsts.STRING_SUBJECT)); //co_name
 			try {
 				siteService.siteListDeleteService(sv.getCo_name());
 				for(Map<String, String> acc : accList) {
-					sv.setCo_domain((String)acc.get("site")); //co_domain
-					sv.setCo_id((String)acc.get("id")); //co_id
-					sv.setCo_pw((String)acc.get("pw")); //co_pw
+					sv.setCo_domain((String)acc.get(WASJSONConsts.STRING_DOMAIN)); //co_domain
+					sv.setCo_id((String)acc.get(WASJSONConsts.STRING_ID)); //co_id
+					sv.setCo_pw((String)acc.get(WASJSONConsts.STRING_PW)); //co_pw
 					if(sv.getCo_id().equals("") || sv.getCo_domain().equals("") || sv.getCo_pw().equals("")) {
 						logger.warn(String.format("Invalid Account. This will not be registered \n "
 								+ "domain : %s \n "

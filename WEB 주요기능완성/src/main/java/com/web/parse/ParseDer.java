@@ -28,7 +28,7 @@ public class ParseDer{
 		this.notAfter = format.format(certificate.getNotAfter());	
 		
 	}
-public ParseDer(X509Certificate certificate) {
+	public ParseDer(X509Certificate certificate) {
 		
 		SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");
 		

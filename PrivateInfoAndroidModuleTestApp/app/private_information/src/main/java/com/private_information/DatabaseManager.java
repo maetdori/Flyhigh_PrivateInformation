@@ -129,11 +129,11 @@ class DatabaseManager {
             Log.i("DatabaseManager", "notAfter : " + notAfter);
             JSONObject account = new JSONObject();
             try {
-                account.accumulate("subject", co_name);
+                account.accumulate(WASJSONConsts.STRING_SUBJECT, co_name);
                 JSONObject validity = new JSONObject();
-                validity.accumulate("notBefore", notBefore);
-                validity.accumulate("notAfter", notAfter);
-                account.accumulate("validity", validity);
+                validity.accumulate(WASJSONConsts.STRING_NOT_BEFORE, notBefore);
+                validity.accumulate(WASJSONConsts.STRING_NOT_AFTER, notAfter);
+                account.accumulate(WASJSONConsts.JO_VALIDITY, validity);
                 accountArr.put(account);
             } catch (JSONException e) {
                 throw new APIException("error while building JSON", APIException.GET_LIST |
@@ -145,8 +145,8 @@ class DatabaseManager {
                     APIException.DB_NO_DATA);
         }
         try {
-            obj.accumulate("count", count);
-            obj.accumulate("account", accountArr);
+            obj.accumulate(WASJSONConsts.STRING_COUNT, count);
+            obj.accumulate(WASJSONConsts.JO_ACCOUNT, accountArr);
             return obj.toString();
         } catch (JSONException e) {
             throw new APIException("error while building JSON", APIException.GET_LIST |
@@ -223,30 +223,30 @@ class DatabaseManager {
                     throw e;
             }
 
-            json.accumulate("cert_pw", cert_pw);
-            json.accumulate("cert_type", cert_type);
+            json.accumulate(WASJSONConsts.STRING_CERT_PW, cert_pw);
+            json.accumulate(WASJSONConsts.INTEGER_CERT_TYPE, cert_type);
             JSONObject certification = new JSONObject();
-            certification.accumulate("der", cert_der);
-            certification.accumulate("key", cert_key);
-            certification.accumulate("pfx", cert_pfx);
-            json.accumulate("certification", certification);
+            certification.accumulate(WASJSONConsts.STRING_DER, cert_der);
+            certification.accumulate(WASJSONConsts.STRING_KEY, cert_key);
+            certification.accumulate(WASJSONConsts.STRING_PFX, cert_pfx);
+            json.accumulate(WASJSONConsts.JO_CERTIFICATION, certification);
             JSONObject personalInfo = new JSONObject();
-            personalInfo.accumulate("ename",ename);
-            personalInfo.accumulate("kname",kname);
-            personalInfo.accumulate("corp",corp);
-            personalInfo.accumulate("addr1",addr1);
-            personalInfo.accumulate("addr2",addr2);
-            personalInfo.accumulate("addr3",addr3);
-            personalInfo.accumulate("car",car);
-            personalInfo.accumulate("hojuk_name",hojuk_name);
-            personalInfo.accumulate("house_hold",house_hold);
-            personalInfo.accumulate("relation",relation);
-            personalInfo.accumulate("relation_name",relation_name);
-            personalInfo.accumulate("rrn1",rrn1);
-            personalInfo.accumulate("rrn2",rrn2);
-            personalInfo.accumulate("saupja_num",saupja_num);
-            personalInfo.accumulate("tel",tel);
-            json.accumulate("personalInfo",personalInfo);
+            personalInfo.accumulate(WASJSONConsts.STRING_ENAME,ename);
+            personalInfo.accumulate(WASJSONConsts.STRING_KNAME,kname);
+            personalInfo.accumulate(WASJSONConsts.BOOLEAN_CORP,corp);
+            personalInfo.accumulate(WASJSONConsts.STRING_ADDR1,addr1);
+            personalInfo.accumulate(WASJSONConsts.STRING_ADDR2,addr2);
+            personalInfo.accumulate(WASJSONConsts.STRING_ADDR3,addr3);
+            personalInfo.accumulate(WASJSONConsts.STRING_CAR,car);
+            personalInfo.accumulate(WASJSONConsts.STRING_HOJUK_NAME,hojuk_name);
+            personalInfo.accumulate(WASJSONConsts.STRING_HOUSE_HOLD,house_hold);
+            personalInfo.accumulate(WASJSONConsts.STRING_RELATION,relation);
+            personalInfo.accumulate(WASJSONConsts.STRING_RELATION_NAME,relation_name);
+            personalInfo.accumulate(WASJSONConsts.STRING_RRN1,rrn1);
+            personalInfo.accumulate(WASJSONConsts.STRING_RRN2,rrn2);
+            personalInfo.accumulate(WASJSONConsts.STRING_SAUPJA_NUM,saupja_num);
+            personalInfo.accumulate(WASJSONConsts.STRING_TEL,tel);
+            json.accumulate(WASJSONConsts.JO_PERSONALINFO,personalInfo);
 
 
 
@@ -275,9 +275,9 @@ class DatabaseManager {
                 String site = cur.getString(1);
                 String id = new String(aes.decrypt(Base64.decode(cur.getString(2),Base64.NO_WRAP)));
                 String pw = new String(aes.decrypt(Base64.decode(cur.getString(3),Base64.NO_WRAP)));
-                accountInfo.accumulate("site", site);
-                accountInfo.accumulate("id", id);
-                accountInfo.accumulate("pw", pw);
+                accountInfo.accumulate(WASJSONConsts.STRING_DOMAIN, site);
+                accountInfo.accumulate(WASJSONConsts.STRING_ID, id);
+                accountInfo.accumulate(WASJSONConsts.STRING_PW, pw);
                 Log.i("DatabaseManager", "site : " + site);
                 Log.i("DatabaseManager", "id : " + id);
                 Log.i("DatabaseManager", "pw : " + pw);
@@ -288,7 +288,7 @@ class DatabaseManager {
             }
         }
         try {
-            json.accumulate("account", account);
+            json.accumulate(WASJSONConsts.JO_ACCOUNT, account);
         } catch (JSONException e) {
             throw new APIException("error while building JSON", APIException.SEARCH_FROM_PRIVATEINFO |
                     APIException.JSON_BUILD_ERR, e);
@@ -306,14 +306,14 @@ class DatabaseManager {
         }
         try {
             JSONArray list = null;
-            list = json.getJSONArray("account");
+            list = json.getJSONArray(WASJSONConsts.JO_ACCOUNT);
             for (int i = 0; i < list.length(); i++) {
                 JSONObject element = null;
                 element = list.getJSONObject(i);
-                String co_name = element.getString("subject");
-                JSONObject validity = element.getJSONObject("validity");
-                String notBefore = validity.getString("notBefore");
-                String notAfter = validity.getString("notAfter");
+                String co_name = element.getString(WASJSONConsts.STRING_SUBJECT);
+                JSONObject validity = element.getJSONObject(WASJSONConsts.JO_VALIDITY);
+                String notBefore = validity.getString(WASJSONConsts.STRING_NOT_BEFORE);
+                String notAfter = validity.getString(WASJSONConsts.STRING_NOT_AFTER);
                 Log.i("DatabaseManager","updatePrivateInformation account[" +i +"] subject:" + co_name);
                 Log.i("DatabaseManager","updatePrivateInformation account[" +i +"] notBefore:" + notBefore);
                 Log.i("DatabaseManager","updatePrivateInformation account[" +i +"] notAfter:" + notAfter);
@@ -361,40 +361,40 @@ class DatabaseManager {
                 ");");*/
         try {
             String cert_pw = Base64.encodeToString(
-                    aes.encrypt(json.getString("cert_pw").getBytes()),Base64.NO_WRAP);
-            int cert_type = json.getInt("cert_type"); // 암호화해서 저장
+                    aes.encrypt(json.getString(WASJSONConsts.STRING_CERT_PW).getBytes()),Base64.NO_WRAP);
+            int cert_type = json.getInt(WASJSONConsts.INTEGER_CERT_TYPE); // 암호화해서 저장
             String co_cert_der = Base64.encodeToString(
-                    aes.encrypt(json.getJSONObject("certification").getString("der").getBytes())
+                    aes.encrypt(json.getJSONObject(WASJSONConsts.JO_CERTIFICATION).getString(WASJSONConsts.STRING_DER).getBytes())
                     ,Base64.NO_WRAP);
             String co_cert_key = Base64.encodeToString(
-                    aes.encrypt(json.getJSONObject("certification").getString("key").getBytes())
+                    aes.encrypt(json.getJSONObject(WASJSONConsts.JO_CERTIFICATION).getString(WASJSONConsts.STRING_KEY).getBytes())
                     ,Base64.NO_WRAP);
             String co_certification = Base64.encodeToString(
-                    aes.encrypt(json.getJSONObject("certification").getString("pfx").getBytes())
+                    aes.encrypt(json.getJSONObject(WASJSONConsts.JO_CERTIFICATION).getString(WASJSONConsts.STRING_PFX).getBytes())
                     ,Base64.NO_WRAP);
-            String ename = json.getJSONObject("personalInfo").getString("ename");
-            String kname = json.getJSONObject("personalInfo").getString("kname");
-            boolean corp = json.getJSONObject("personalInfo").getBoolean("corp");
+            String ename = json.getJSONObject(WASJSONConsts.JO_PERSONALINFO).getString(WASJSONConsts.STRING_ENAME);
+            String kname = json.getJSONObject(WASJSONConsts.JO_PERSONALINFO).getString(WASJSONConsts.STRING_KNAME);
+            boolean corp = json.getJSONObject(WASJSONConsts.JO_PERSONALINFO).getBoolean(WASJSONConsts.BOOLEAN_CORP);
             String rrn1 = Base64.encodeToString(
-                    aes.encrypt(json.getJSONObject("personalInfo").getString("rrn1").getBytes())
+                    aes.encrypt(json.getJSONObject(WASJSONConsts.JO_PERSONALINFO).getString(WASJSONConsts.STRING_RRN1).getBytes())
                     ,Base64.NO_WRAP); // 암호화해서 저장
             String rrn2 = Base64.encodeToString(
-                    aes.encrypt(json.getJSONObject("personalInfo").getString("rrn2").getBytes())
+                    aes.encrypt(json.getJSONObject(WASJSONConsts.JO_PERSONALINFO).getString(WASJSONConsts.STRING_RRN2).getBytes())
                     ,Base64.NO_WRAP); //암호화해서 저장
             String tel = Base64.encodeToString(
-                    aes.encrypt(json.getJSONObject("personalInfo").getString("tel").getBytes()),
+                    aes.encrypt(json.getJSONObject(WASJSONConsts.JO_PERSONALINFO).getString(WASJSONConsts.STRING_TEL).getBytes()),
                     Base64.NO_WRAP); //암호화 해서 저장
-            String addr1 = json.getJSONObject("personalInfo").getString("addr1");
-            String addr2 = json.getJSONObject("personalInfo").getString("addr2");
-            String addr3 = json.getJSONObject("personalInfo").getString("addr3");
-            String relation = json.getJSONObject("personalInfo").getString("relation");
-            String relation_name = json.getJSONObject("personalInfo").getString("relation_name");
-            String house_hold = json.getJSONObject("personalInfo").getString("house_hold");
-            String hojuk_name = json.getJSONObject("personalInfo").getString("hojuk_name");
-            String car = json.getJSONObject("personalInfo").getString("car");
+            String addr1 = json.getJSONObject(WASJSONConsts.JO_PERSONALINFO).getString(WASJSONConsts.STRING_ADDR1);
+            String addr2 = json.getJSONObject(WASJSONConsts.JO_PERSONALINFO).getString(WASJSONConsts.STRING_ADDR2);
+            String addr3 = json.getJSONObject(WASJSONConsts.JO_PERSONALINFO).getString(WASJSONConsts.STRING_ADDR3);
+            String relation = json.getJSONObject(WASJSONConsts.JO_PERSONALINFO).getString(WASJSONConsts.STRING_RELATION);
+            String relation_name = json.getJSONObject(WASJSONConsts.JO_PERSONALINFO).getString(WASJSONConsts.STRING_RELATION_NAME);
+            String house_hold = json.getJSONObject(WASJSONConsts.JO_PERSONALINFO).getString(WASJSONConsts.STRING_HOUSE_HOLD);
+            String hojuk_name = json.getJSONObject(WASJSONConsts.JO_PERSONALINFO).getString(WASJSONConsts.STRING_HOJUK_NAME);
+            String car = json.getJSONObject(WASJSONConsts.JO_PERSONALINFO).getString(WASJSONConsts.STRING_CAR);
 
             String saupja_num = Base64.encodeToString(
-                    aes.encrypt(json.getJSONObject("personalInfo").getString("saupja_num").getBytes()),
+                    aes.encrypt(json.getJSONObject(WASJSONConsts.JO_PERSONALINFO).getString(WASJSONConsts.STRING_SAUPJA_NUM).getBytes()),
                     Base64.NO_WRAP); //암호화해서 저장
 
 
@@ -425,15 +425,15 @@ class DatabaseManager {
             myDatabase.insertWithOnConflict(TABLE_INFO,null,vals,
                     SQLiteDatabase.CONFLICT_REPLACE);
 
-            JSONArray account = (JSONArray) json.get("account");
+            JSONArray account = (JSONArray) json.get(WASJSONConsts.JO_ACCOUNT);
             for(int i = 0 ; i <account.length();i++) {
                 JSONObject acc = account.getJSONObject(i);
                 vals = new ContentValues();
-                String site = acc.getString("site");
+                String site = acc.getString(WASJSONConsts.STRING_DOMAIN);
                 String id = Base64.encodeToString(
-                        aes.encrypt(acc.getString("id").getBytes()),Base64.NO_WRAP);
+                        aes.encrypt(acc.getString(WASJSONConsts.STRING_ID).getBytes()),Base64.NO_WRAP);
                 String pw = Base64.encodeToString(
-                        aes.encrypt(acc.getString("pw").getBytes()),Base64.NO_WRAP);
+                        aes.encrypt(acc.getString(WASJSONConsts.STRING_PW).getBytes()),Base64.NO_WRAP);
                 Log.d("DatabaseManager","updatePrivateInformation account[" +i +"] site:" + site);
                 Log.d("DatabaseManager","updatePrivateInformation account[" +i +"] id:" + id);
                 Log.d("DatabaseManager","updatePrivateInformation account[" +i +"] pw:" + pw);
@@ -464,8 +464,8 @@ class DatabaseManager {
         String cert_key = new String(aes.decrypt(Base64.decode(cur.getString(1),Base64.NO_WRAP)));
 
         try {
-            json.accumulate("der", cert_der);
-            json.accumulate("key", cert_key);
+            json.accumulate(WASJSONConsts.STRING_DER, cert_der);
+            json.accumulate(WASJSONConsts.STRING_KEY, cert_key);
         } catch (JSONException e) {
             throw new APIException("error while building JSON", APIException.SEARCH_FROM_PRIVATEINFO |
                     APIException.JSON_BUILD_ERR, e);

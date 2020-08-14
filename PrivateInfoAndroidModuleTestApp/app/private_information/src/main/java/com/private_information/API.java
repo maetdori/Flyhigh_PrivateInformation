@@ -62,21 +62,27 @@ import org.json.JSONObject;
 import android.util.Log;
 
 
+import com.example.module.R;
+
 import javax.crypto.BadPaddingException;
 import javax.crypto.IllegalBlockSizeException;
 import javax.crypto.NoSuchPaddingException;
 import javax.net.ssl.HostnameVerifier;
 import javax.net.ssl.HttpsURLConnection;
 import javax.net.ssl.SSLContext;
+import javax.net.ssl.SSLHandshakeException;
 import javax.net.ssl.SSLPeerUnverifiedException;
 import javax.net.ssl.SSLSession;
+import javax.net.ssl.TrustManager;
 import javax.net.ssl.TrustManagerFactory;
+
+
 public class API {
     static final int TYPE_WIFI = 1;
     static final int TYPE_MOBILE = 2;
     static final int TYPE_NOT_CONNECTED = 3;
-    private static final int CONNECTION_TIMEOUT = 1000; // 서버의 응답을 기다리는 최대 시간
-    private static final int READ_TIMEOUT = 1000; // 서버의 응답을 읽는 최대 시간
+    private static final int CONNECTION_TIMEOUT = 2000; // 서버의 응답을 기다리는 최대 시간
+    private static final int READ_TIMEOUT = 2000; // 서버의 응답을 읽는 최대 시간
     private static final String CERTPATH = "/cert.cer";
 
     //네트워크 연결 여부 반환
@@ -113,13 +119,13 @@ public class API {
     }
 
     //미리 설치한 서버 인증서를 신뢰하는 ca로 등록 후 SSLContext생성
-    private static SSLContext cert(String certPath) throws APIException {
+    private static SSLContext cert(Context context) throws APIException {
         // Load CAs from an InputStream
         // (could be from a resource or ByteArrayInputStream or ...)
         Certificate ca;
         try {
             CertificateFactory cf = CertificateFactory.getInstance("X.509");
-            InputStream caInput = new BufferedInputStream(new FileInputStream(certPath));
+            InputStream caInput = new BufferedInputStream(context.getResources().openRawResource(R.raw.cert));//인증서 파일 로드
 
             try {
                 ca = cf.generateCertificate(caInput);
@@ -146,7 +152,7 @@ public class API {
         }
 
         // Create a TrustManager that trusts the CAs in our KeyStore
-        TrustManagerFactory tmf;
+       TrustManagerFactory tmf;
         try {
             String tmfAlgorithm = TrustManagerFactory.getDefaultAlgorithm();
             tmf = TrustManagerFactory.getInstance(tmfAlgorithm);
@@ -155,13 +161,12 @@ public class API {
             throw new APIException("Can't create TrustManager with given certification",
                     APIException.CERT | APIException.CREATE_TMF_ERROR,e);
         }
-
         // Create an SSLContext that uses our TrustManager
-        SSLContext context;
+        SSLContext sslContext;
         try {
-            context = SSLContext.getInstance("TLS");
-            context.init(null, tmf.getTrustManagers(), null);
-            return context;
+            sslContext = SSLContext.getInstance("TLS");
+            sslContext.init(null,  tmf.getTrustManagers(), null);
+            return sslContext;
         } catch (KeyManagementException | NoSuchAlgorithmException e) {
             throw new APIException("Can't create SSLContext with given TrustManager",
                     APIException.CERT | APIException.CREATE_SSL_ERROR,e);
@@ -171,10 +176,12 @@ public class API {
 
     //서버와 연결 수립. 사설인증서로 연결되지 않을경우, 사용하지 않고 다시연결. 또 안되면 예외 발생
     private static HttpsURLConnection setConnection(Context context,String url) throws APIException {
-        SSLContext sslContext = cert(context.getFilesDir().getAbsolutePath() + CERTPATH);
+        SSLContext sslContext = cert(context);
+        HttpsURLConnection httpCon = null;
+        URL urlCon = null;
         try {
-            URL urlCon = new URL(url);
-            HttpsURLConnection httpCon = (HttpsURLConnection) urlCon.openConnection();
+            urlCon = new URL(url);
+            httpCon = (HttpsURLConnection) urlCon.openConnection();
             httpCon.setSSLSocketFactory(sslContext.getSocketFactory());
             httpCon.setHostnameVerifier(new HostnameVerifier() {
                 @Override
@@ -184,9 +191,29 @@ public class API {
             });
             httpCon.setConnectTimeout(CONNECTION_TIMEOUT);
             httpCon.setReadTimeout(READ_TIMEOUT);
+        }  catch(IOException e) {
+            throw new APIException("Can't openConnection to url :" + url,APIException.SET_CONNECTION | APIException.INV_SERVERURL,e);
+        }
+        try {
             httpCon.connect();
-            //connect에서 오류나면 연결 실패로 판단
+            //connect에서 SSLHandShakeException발생하면 인증서 문제로 판단하고 안드로이드 기본 CA로 재시도
+        } catch (SSLHandshakeException e) {
+            Log.e("set Connection", "reconnect");
+            try {
+                urlCon = new URL(url);
+                httpCon = (HttpsURLConnection) urlCon.openConnection();
+                httpCon.setConnectTimeout(CONNECTION_TIMEOUT);
+                httpCon.setReadTimeout(READ_TIMEOUT);
+                return httpCon;
+            } catch (IOException ex) {
+                throw new APIException("Can't openConnection to url :" + url, APIException.SET_CONNECTION | APIException.INV_SERVERURL, ex);
+            }
+        } catch(IOException e) {
+            throw new APIException("Can't openConnection to url :" + url,APIException.SET_CONNECTION | APIException.INV_SERVERURL,e);
+        }
 
+        //connect후 연결이 초기화 되기때문에 재설정
+        try {
             urlCon = new URL(url);
             httpCon = (HttpsURLConnection) urlCon.openConnection();
             httpCon.setSSLSocketFactory(sslContext.getSocketFactory());
@@ -199,19 +226,8 @@ public class API {
             httpCon.setConnectTimeout(CONNECTION_TIMEOUT);
             httpCon.setReadTimeout(READ_TIMEOUT);
             return httpCon;
-        } catch (Exception e) { // sslContext를 이용한 연결 실패시 사용하지 않고 재시도
-            e.printStackTrace();
-            Log.e("set Connection","reconnect");
-            URL urlCon = null;
-            try {
-                urlCon = new URL(url);
-                HttpsURLConnection httpCon = (HttpsURLConnection) urlCon.openConnection();
-                httpCon.setConnectTimeout(CONNECTION_TIMEOUT);
-                httpCon.setReadTimeout(READ_TIMEOUT);
-                return httpCon;
-            } catch (IOException ex) {
-                throw new APIException("Can't openConnection to url :" + url,APIException.SET_CONNECTION | APIException.INV_SERVERURL,ex);
-            }
+        } catch(IOException e) {
+            throw new APIException("Can't openConnection to url :" + url,APIException.SET_CONNECTION | APIException.INV_SERVERURL,e);
         }
     }
 
@@ -233,9 +249,9 @@ public class API {
             throw new APIException("Can't get SSL Certificate From Server",APIException.SET_HEADER | APIException.SSL_PEER_UNVERIFIED,e);
         }
         //setHeaders
-        httpCon.setRequestProperty("Content-Type", "application/json");
-        httpCon.setRequestProperty("Device-Id", androidId);
-        httpCon.setRequestProperty("Server-Cert-Id", Base64.encodeToString(
+        httpCon.setRequestProperty(WASJSONConsts.REQ_HDR_CONTENT_TYPE, WASJSONConsts.RES_HDR_CONTENT_TYPE_VAL);
+        httpCon.setRequestProperty(WASJSONConsts.REQ_HDR_DEVICE_ID, androidId);
+        httpCon.setRequestProperty(WASJSONConsts.REQ_HDR_SERVER_CERT_ID, Base64.encodeToString(
                 cert.getSignature(), Base64.NO_WRAP));
 
         Log.i("SSAID",androidId);
@@ -253,7 +269,7 @@ public class API {
             e.printStackTrace();
         }
         //setHeaders
-        setHeader(context,httpCon,url);
+        //setHeader(context,httpCon,url);
         // OutputStream으로 POST 데이터를 넘겨주겠다는 옵션.
         httpCon.setDoOutput(false);
 
@@ -292,8 +308,8 @@ public class API {
 
         String host = getHost(url);
         try {
-            JSONObject json = new JSONObject(requestCertBase64(context,host + "/private/getCert"));
-            String cert_base64 = json.getString("cert_base64");
+            JSONObject json = new JSONObject(requestCertBase64(context,host + WASJSONConsts.METHOD_PATH + WASJSONConsts.GET_CERT));
+            String cert_base64 = json.getString(WASJSONConsts.STRING_CERT_BASE64);
             Log.d("getCert","cert_base64 : " + cert_base64);
             byte[] input = Base64.decode(cert_base64,Base64.NO_WRAP);
             InputStream is = new ByteArrayInputStream(input);
@@ -334,28 +350,29 @@ public class API {
         try {
             // build jsonObject
             int pos = url.lastIndexOf("/");
-            String ext = url.substring(pos + 1);
-            jsonObject.accumulate("pubKey", Base64.encodeToString(pubKey.getEncoded(),
+            String ext = url.substring(pos);
+            jsonObject.accumulate(WASJSONConsts.STRING_PUBKEY, Base64.encodeToString(pubKey.getEncoded(),
                     Base64.NO_WRAP));
-            jsonObject.accumulate("cKey", Base64.encodeToString(ecKey, Base64.NO_WRAP));
-            if (ext.equals("test")) {
+            jsonObject.accumulate(WASJSONConsts.STRING_CKEY, Base64.encodeToString(ecKey, Base64.NO_WRAP));
+
+            if (ext.equals("/test")) {
                 //use for test
                 ;
-            } else if (ext.equals("getList")) {
+            } else if (ext.equals(WASJSONConsts.GET_LIST)) {
                 if(args == null || args[0] == null) {
                     throw new APIException("Invalid arguments for getList",APIException.POSTSSL | APIException.INV_ARGS);
                 }
-                jsonObject.accumulate("username", args[0]);
-            } else if (ext.equals("getInfo")) {
+                jsonObject.accumulate(WASJSONConsts.STRING_USERNAME, args[0]);
+            } else if (ext.equals(WASJSONConsts.GET_INFO)) {
                 if(args == null || args.length < 4 || args[0] == null || args[1] == null || args[2] == null || args[3] == null) {
                     throw new APIException("Invalid arguments for getList",APIException.POSTSSL | APIException.INV_ARGS);
                 }
-                jsonObject.accumulate("username", args[0]);
-                jsonObject.accumulate("subject", args[1]);
+                jsonObject.accumulate(WASJSONConsts.STRING_USERNAME, args[0]);
+                jsonObject.accumulate(WASJSONConsts.STRING_SUBJECT, args[1]);
                 JSONObject validity = new JSONObject();
-                validity.accumulate("notBefore", args[2]);
-                validity.accumulate("notAfter", args[3]);
-                jsonObject.accumulate("validity", validity);
+                validity.accumulate(WASJSONConsts.STRING_NOT_BEFORE, args[2]);
+                validity.accumulate(WASJSONConsts.STRING_NOT_AFTER, args[3]);
+                jsonObject.accumulate(WASJSONConsts.JO_VALIDITY,validity);
             } else {
                 throw new APIException("Invalid POST method",APIException.POSTSSL | APIException.INV_METHOD_URL);
             }
@@ -396,7 +413,7 @@ public class API {
             if (result == null) return "null";
             JSONObject responseJSON = new JSONObject(result);
             try {
-                responseJSON.get("code");
+                responseJSON.get(WASJSONConsts.STRING_ERROR_CODE);
                 return responseJSON.toString();
             } catch(JSONException e){
                 ;
@@ -404,18 +421,18 @@ public class API {
 
             JSONArray encryptedListJSON = null;
             try {
-                encryptedListJSON = (JSONArray) responseJSON.get("encryptedElements");
+                encryptedListJSON = (JSONArray) responseJSON.get(WASJSONConsts.JO_ENCRYPTED_ELEMENTS);
             } catch (JSONException e) {
                 return responseJSON.toString();
             }
             List<String> encList = new ArrayList<>();
             for (int i = 0; i < encryptedListJSON.length(); i++) {
-                encList.add(encryptedListJSON.getJSONObject(i).getString("name"));
+                encList.add(encryptedListJSON.getJSONObject(i).getString(WASJSONConsts.STRING_ENCNAME));
             }
             Log.d("ckeyBase64", Base64.encodeToString(cKey, Base64.NO_WRAP));
             byte[] key = new byte[32];
             System.arraycopy(cKey, 0, key, 0, 16);
-            byte[] sKey = Base64.decode(responseJSON.getString("sKey"), Base64.NO_WRAP);
+            byte[] sKey = Base64.decode(responseJSON.getString(WASJSONConsts.STRING_SKEY), Base64.NO_WRAP);
             sKey = RSAModule.decryptRSA(pubKey.getEncoded(), sKey);
             Log.d("skeyBase64", Base64.encodeToString(sKey, Base64.NO_WRAP));
             System.arraycopy(sKey, 0, key, 16, 16);
@@ -426,8 +443,8 @@ public class API {
                 Log.d("ENCLIST", s);
                 JsonDecryptModule.Decrypt(s, responseJSON, aes);
             }
-            responseJSON.remove("encryptedElements");
-            responseJSON.remove("sKey");
+            responseJSON.remove(WASJSONConsts.JO_ENCRYPTED_ELEMENTS);
+            responseJSON.remove(WASJSONConsts.STRING_SKEY);
             result = responseJSON.toString(1);
             return result;
         } catch (JSONException e) {
@@ -442,12 +459,11 @@ public class API {
     /*인터넷에 연결되어 있을경우 postssl로 데이터 받아옴. 네트워크가 없을 경우 로컬데이터베이스에서 받아옴
      *로컬데이터베이스도 비어있을 경우 에러
      * */
-
     public static String getListPrivateInformation(Context context,String url,String username) throws APIException {
         String ret = null;
         DatabaseManager db = DatabaseManager.getInstance(context);
         try {
-            ret = POSTSSL(context,url + "/private/getList",username,null);
+            ret = POSTSSL(context,url + WASJSONConsts.METHOD_PATH + WASJSONConsts.GET_LIST,username,null);
         } catch (Exception e) {
             Log.e("API","getListPrivateInformation : getList from Android Database");
             e.printStackTrace();
@@ -456,7 +472,7 @@ public class API {
 
         try {
             JSONObject tmp = new JSONObject(ret);
-            tmp.get("code");
+            tmp.get(WASJSONConsts.STRING_ERROR_CODE);
             return ret;
         } catch (JSONException e) {
             ;
@@ -470,7 +486,8 @@ public class API {
         String ret = null;
         DatabaseManager db = DatabaseManager.getInstance(context);
         try {
-            ret = POSTSSL(context,url + "/private/getInfo",username,subject,notBefore,notAfter);
+            ret = POSTSSL(context,url + WASJSONConsts.METHOD_PATH + WASJSONConsts.GET_INFO
+                    ,username,subject,notBefore,notAfter);
         }catch(Exception e) {
             Log.e("API","getPrivateInformation : getList from Android Database");
             e.printStackTrace();
@@ -479,7 +496,7 @@ public class API {
         }
         try {
             JSONObject tmp = new JSONObject(ret);
-            tmp.get("code");
+            tmp.get(WASJSONConsts.STRING_ERROR_CODE);
             return ret;
         } catch (JSONException e) {
             ;
@@ -493,7 +510,40 @@ public class API {
         return db.getNpki(name);
     }
 
-    public static String test(Context context, String url)  {
+    public static String test(Context context, String url) throws APIException, IOException {
+        HttpsURLConnection httpCon = setConnection(context,"https://www.naver.com");
+        httpCon.setRequestMethod("GET");
+
+//        Host: www.naver.com
+//        Connection: keep-alive
+//        Cache-Control: max-age=0
+//        Upgrade-Insecure-Requests: 1
+//        User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.125 Safari/537.36
+//        Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+//        Sec-Fetch-Site: none
+//        Sec-Fetch-Mode: navigate
+//        Sec-Fetch-User: ?1
+//        Sec-Fetch-Dest: document
+//        Accept-Encoding: gzip, deflate, br
+//        Accept-Language: ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7
+
+        httpCon.setRequestProperty("Host","www.naver.com");
+        httpCon.setRequestProperty("Connection","keep-alive");
+        httpCon.setRequestProperty("Cache-Control","max-age=0");
+        httpCon.setRequestProperty("Upgrade-Insecure-Requests","1");
+        httpCon.setRequestProperty("User-Agent","Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.125 Safari/537.36");
+        httpCon.setRequestProperty("Accept","text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9");
+        httpCon.setRequestProperty("Sec-Fetch-Site","none");
+        httpCon.setRequestProperty("Sec-Fetch-Mode","navigate");
+        httpCon.setRequestProperty("Sec-Fetch-User","?1");
+        httpCon.setRequestProperty("Sec-Fetch-Dest","document");
+        httpCon.setRequestProperty("Accept-Encoding","gzip, deflate, br");
+        httpCon.setRequestProperty("Accept-Language","ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7");
+        httpCon.setDoInput(true);
+
+
+        InputStream is = httpCon.getInputStream();
+        Log.d("TAG",convertInputStreamToString(is));
         return null;
     }
     public static String getSSAID(Context context) {
@@ -511,18 +561,15 @@ public class API {
 
         try {
             if(e instanceof APIException)
-                exception.accumulate("code",((APIException) e).getCode());
+                exception.accumulate(WASJSONConsts.STRING_ERROR_CODE,((APIException) e).getCode());
             else
-                exception.accumulate("code",APIException.API);
-            exception.accumulate("message",e.getMessage());
-            json.accumulate("Exception",exception);
+                exception.accumulate(WASJSONConsts.STRING_ERROR_CODE,APIException.API);
+            exception.accumulate(WASJSONConsts.STRING_ERROR_MESSAGE,e.getMessage());
+            json.accumulate(WASJSONConsts.JO_EXCEPTION,exception);
         } catch (JSONException ex) {
             ex.printStackTrace();
         }
 
         return json.toString();
     }
-
-
-
 }
